@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+import Logo from '../components/Logo.astro';
+import Button from '../components/Button.astro';
+
+import "../styles/main.scss";
+---
+
+<Layout title="Get started with Dream and build your pipeline.">
+	<header>
+		<nav>
+			<Logo />
+			<Button 	
+				label="Get started"
+				href="https://getdream.ai" 
+			/>
+		</nav>
+		<section class="header-text">
+			<h1 class="page-title">An AI powered SDR that doesn't sound like AI</h1>
+			<span>Fancy technology shouldn't mean sending a million awful emails. <br />With Dream you can accelerate your sales, without compromising on quality.</span>
+			<Button 	
+				label="Get started with Dream"
+				href="https://getdream.ai" 
+			/>
+		</section>
+	</header>
+	<main>
+	</main>
+</Layout>

@@ -1,0 +1,86 @@
+@import './colours.scss';
+@import './type.scss';
+
+$spacing: 8px;
+
+
+body {
+    background: $brand-background-light;
+    font-family: 'SplineSans', sans-serif;
+    color: $brand-text;
+    margin: 0;
+    padding: 0;
+
+    *, * > * {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: $spacing*3 $spacing*2;
+    background: $brand-background;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+        padding: $spacing*3 $spacing*4;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 100%;
+
+        svg {
+            height: 32px;
+
+            @media (min-width: 768px) {
+                height: 40px;
+            }
+        }
+    }
+
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+        max-width: 1152px;
+        margin: auto;
+        min-height: 500px;
+
+        h1 {
+            @include heading3;
+            font-weight: 500;
+
+            background: linear-gradient(125deg, $brand-text, $brand-body);
+            background-clip: text;
+            color: transparent;
+
+            @media (min-width: 1024px) {
+                @include pageHeading;
+            }
+        }
+
+        span {
+            @include heading6;
+            
+            @media (min-width: 768px) {
+                @include heading5;
+            }
+            
+            font-weight: 400;
+        }
+
+        .button {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    }
+    
+}

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "SplineSans";
+    src: url("fonts/SplineSans-VariableFont_wght.woff2") format("woff2-variations");
+    font-weight: 300 700;
+  }
+
+  @mixin pageHeading {
+    font-size: 84px;
+    line-height: 96px;
+    letter-spacing: -0.3px;
+  }
+
+  @mixin heading1 {
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: -0.3px;
+  }
+
+  @mixin heading2 {
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: -0.3px;
+  }
+
+  @mixin heading3 {
+    font-size: 44px;
+    line-height: 52px;
+  }
+  
+  @mixin heading4 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.1px;
+  }
+
+  @mixin heading5 {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+  }
+
+  @mixin heading6 {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .page-title {
+    @include pageHeading();
+  }
+
+  h1, .h1 {
+    @include heading1;
+  }
+
+  h2, .h2 {
+    @include heading2;
+  }
+
+  h3, .h3 {
+    @include heading3;
+  }
+
+  h4, .h4 {
+    @include heading4;
+  }
+
+  h5, .h5 {
+    @include heading5;
+  }
+
+  h6, .h6 {
+    @include heading6;
+  }
