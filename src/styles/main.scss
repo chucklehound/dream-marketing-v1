@@ -22,7 +22,8 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     padding: $spacing*3 $spacing*2;
-    background: $brand-background;
+    background: $brand-background url('../img/logo-background.svg') no-repeat center;
+    background-size: 130%;
     gap: 32px;
 
     @media (min-width: 768px) {
@@ -52,7 +53,7 @@ header {
         gap: 24px;
         max-width: 1152px;
         margin: auto;
-        min-height: 500px;
+        min-height: 600px;
 
         h1 {
             @include heading3;
