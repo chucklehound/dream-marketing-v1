@@ -23,7 +23,7 @@ header {
     justify-content: flex-start;
     padding: $spacing*3 $spacing*2;
     background: $brand-background url('../img/logo-background.svg') no-repeat center;
-    background-size: 130%;
+    background-size: 150%;
     gap: 32px;
 
     @media (min-width: 768px) {
@@ -45,43 +45,114 @@ header {
         }
     }
 
+    
     .header-text {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
         gap: 24px;
-        max-width: 1152px;
-        margin: auto;
         min-height: 600px;
-
+        
         h1 {
             @include heading3;
             font-weight: 500;
-
+            
             background: linear-gradient(125deg, $brand-text, $brand-body);
             background-clip: text;
             color: transparent;
-
+            
             @media (min-width: 1024px) {
                 @include pageHeading;
             }
         }
-
+        
         span {
             @include heading6;
+            
+            font-weight: 400;
             
             @media (min-width: 768px) {
                 @include heading5;
             }
-            
-            font-weight: 400;
         }
-
+        
         .button {
-            font-size: 20px;
-            line-height: 24px;
+            
+            @media (min-width: 768px) {
+                font-size: 20px;
+                line-height: 24px;
+            }
         }
     }
     
+}
+
+main {
+    padding: 64px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @media (min-width: 768px) {
+        padding: 128px 32px;
+    }
+}
+
+.main-content {
+    width: 100%;
+    max-width: 1152px;
+    margin: auto;
+
+    &.content-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        @media (min-width: 768px) {
+            gap: 64px;
+        }
+    }
+
+    .content-card {
+        display: flex;
+        gap: 32px;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            padding: 48px;
+            gap: 48px;
+
+            &:nth-of-type(2n) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        img {
+            padding: 24px;
+            border-radius: 8px;
+            background: transparentize(lighten($brand-main, 85%), 0.3) url('../img/logo-background.svg') no-repeat center;
+            background-size: 200%;
+            flex: 1;
+
+            @media (min-width: 768px) {
+                flex: 1 50%;
+            }
+        }
+    }
+}
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1 50%;
+
+    span {
+        color: desaturate(lighten($brand-text, 50%), 70%);
+        font-size: 14px;
+    }
 }

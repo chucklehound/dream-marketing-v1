@@ -1,7 +1,7 @@
 
 $brand-main: #000D26;
-$brand-background: #FFD601;
-$brand-background-light: lighten($brand-background,90%);
+$brand-background: rgb(255, 214, 1);
+$brand-background-light: desaturate(lighten($brand-background,39%),50%);
 $brand-actions: #000D26;
 $brand-actions-dark: darken($brand-actions,20%);
 

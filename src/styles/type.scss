@@ -1,3 +1,5 @@
+@import './colours.scss';
+
 @font-face {
     font-family: "SplineSans";
     src: url("fonts/SplineSans-VariableFont_wght.woff2") format("woff2-variations");
@@ -8,41 +10,55 @@
     font-size: 84px;
     line-height: 96px;
     letter-spacing: -0.3px;
+    font-weight: 500;
   }
 
   @mixin heading1 {
     font-size: 64px;
     line-height: 68px;
     letter-spacing: -0.3px;
+    font-weight: 500;
   }
 
   @mixin heading2 {
     font-size: 56px;
     line-height: 64px;
     letter-spacing: -0.3px;
+    font-weight: 500;
   }
 
   @mixin heading3 {
     font-size: 44px;
     line-height: 52px;
+    font-weight: 500;
   }
   
   @mixin heading4 {
     font-size: 32px;
     line-height: 40px;
     letter-spacing: 0.1px;
+    font-weight: 600;
   }
 
   @mixin heading5 {
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.2px;
+    font-weight: 600;
   }
 
   @mixin heading6 {
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.2px;
+    font-weight: 600;
+  }
+
+  @mixin body {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    color: $brand-body;
   }
 
   .page-title {
@@ -71,4 +87,8 @@
 
   h6, .h6 {
     @include heading6;
+  }
+
+  p, .p {
+    @include body;
   }

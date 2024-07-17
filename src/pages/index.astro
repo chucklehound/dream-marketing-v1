@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import ContentCard from '../components/ContentCard.astro';
 
 import Logo from '../components/Logo.astro';
 import Button from '../components/Button.astro';
@@ -17,8 +18,8 @@ import "../styles/main.scss";
 				href="https://getdream.ai" 
 			/>
 		</nav>
-		<section class="header-text">
-			<h1 class="page-title">An AI powered SDR that doesn't sound like AI</h1>
+		<section class="header-text main-content">
+			<h1 class="page-title">The AI SDR that <br />doesn't sound like AI</h1>
 			<span>Accelerate your sales without compromising on quality. Start using Dream today.</span>
 			<Button 	
 				label="Get started with Dream"
@@ -27,5 +28,36 @@ import "../styles/main.scss";
 		</section>
 	</header>
 	<main>
+		<section class="main-content content-list">
+			<ContentCard>
+				<img src=""/>
+				<div class="content-text">
+					<span>Built better</span>
+					<h4>Meet your new SDR. They've got the same high standards as you.</h4>
+					<p>When was the last time you hired someone that didn't meet your quality bar? Then why should you accept anything less from an AI. Dream wins you more business, faster - without sending spammy junk to your customers. Great news for you, great news for them.</p>
+				</div>
+			</ContentCard>
+			<ContentCard>
+				<img src=""/>
+				<div class="content-text">
+					<span>Experienced team</span>
+					<h4>Built by people who've actually done sales.</h4>
+					<p>Our technology isn't just a fancy demo. Our tool was made by people who've been on the front lines of selling, and know how it works. We've honed our approach by speaking to people like you, so it's full of features you'll actually use.</p>
+				</div>
+			</ContentCard>
+			<ContentCard>
+				<img src=""/>
+				<div class="content-text">
+					<span>Better every day</span>
+					<h4>This will change the way you work.</h4>
+					<p>You've heard it before, but we mean what we say. Dream will unlock growth you've only ever dreamt about - get it? Our AI platform builds context as you use it, learning and growing just like you do.</p>
+				</div>
+			</ContentCard>
+		</section>
+		<section class="contrast-row">
+			<article class="main-content">
+				<span>test</span>
+			</article>
+		</section>
 	</main>
 </Layout>
