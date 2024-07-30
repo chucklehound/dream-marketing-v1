@@ -1,7 +1,11 @@
+$wallstreetBlack: #000D26;
+$plusWhite: #FFFEFA;
 
-$brand-main: #000D26;
+$gray-lightest: #F3F3F5;
+
+$brand-main: $wallstreetBlack;
 $brand-background: rgb(255, 214, 1);
-$brand-background-light: desaturate(lighten($brand-background,39%),50%);
+$brand-background-light: $plusWhite;
 $brand-actions: #000D26;
 $brand-actions-dark: darken($brand-actions,20%);
 
@@ -9,6 +13,7 @@ $brand-titles: $brand-main;
 $brand-body: #061636;
 
 $brand-text: $brand-main;
+$brand-text-light: #FFFEFA;
 
 /* brand one colours
 

@@ -22,8 +22,8 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     padding: $spacing*3 $spacing*2;
-    background: $brand-background url('../img/logo-background.svg') no-repeat center;
-    background-size: 150%;
+    background: $brand-background url('../img/pulses.svg') no-repeat center;
+    background-size: cover;
     gap: 32px;
 
     @media (min-width: 768px) {
@@ -37,10 +37,10 @@ header {
         flex: 1 100%;
 
         svg {
-            height: 32px;
+            height: 24px;
 
             @media (min-width: 768px) {
-                height: 40px;
+                height: 32px;
             }
         }
     }
@@ -50,7 +50,8 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
         gap: 24px;
         min-height: 600px;
         
@@ -74,13 +75,21 @@ header {
             
             @media (min-width: 768px) {
                 @include heading5;
+
+                font-weight: 400;
             }
         }
         
         .button {
+            background: $brand-main;
+            color: $plusWhite;
+
+            &:hover {
+                color: $brand-main;
+            }
             
             @media (min-width: 768px) {
-                font-size: 20px;
+                font-size: 18px;
                 line-height: 24px;
             }
         }
@@ -89,13 +98,16 @@ header {
 }
 
 main {
-    padding: 64px 24px;
     display: flex;
     flex-direction: column;
     gap: 64px;
 
-    @media (min-width: 768px) {
-        padding: 128px 32px;
+    section {
+        padding: 64px 24px;
+
+        @media (min-width: 768px) {
+            padding: 128px 32px;
+        }
     }
 }
 
@@ -117,6 +129,7 @@ main {
     .content-card {
         display: flex;
         gap: 32px;
+        min-height: 440px;
 
         @media (max-width: 767px) {
             flex-direction: column;
@@ -131,12 +144,19 @@ main {
             }
         }
 
-        img {
-            padding: 24px;
-            border-radius: 8px;
-            background: transparentize(lighten($brand-main, 85%), 0.3) url('../img/logo-background.svg') no-repeat center;
-            background-size: 200%;
+        .content-image {
+            padding: 16px;
             flex: 1;
+            position: relative;
+            display: block;
+            z-index: 2;
+
+            img {
+                object-fit: contain;
+                object-position: center;
+                width: 100%;
+                height: 100%;
+            }
 
             @media (min-width: 768px) {
                 flex: 1 50%;
@@ -148,6 +168,8 @@ main {
 .content-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-self: center;
     gap: 16px;
     flex: 1 50%;
 
@@ -155,4 +177,152 @@ main {
         color: desaturate(lighten($brand-text, 50%), 70%);
         font-size: 14px;
     }
+}
+
+.contrast-row {
+    background: $brand-text;
+    color: $brand-text-light;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+
+    .section-title {
+        text-align: center;
+
+        h5 {
+            font-weight: 400;
+            color: $gray-lightest;
+        }
+    }
+
+    h2 {
+        @include heading3;
+
+        margin-bottom: 12px;
+
+        @media (min-width: 960px) {
+            @include heading2;
+        }
+    }
+    
+    .main-content {
+        display: flex;
+        gap: 24px;
+        flex-direction: column;
+
+        @media (min-width: 960px) {
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+    }
+
+    .contrast-item {
+        background: $brand-main;
+        flex: 1;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px;
+        position: relative;
+        background: linear-gradient(#59E0FF,#07A0C3);
+        transition: box-shadow .2s ease;
+
+        &:hover {
+            box-shadow: 0 0 16px 4px rgba(89, 224, 255, .5);
+        }
+
+        & > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+
+        span {
+            color: #59E0FF;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+        }
+
+        &:nth-child(2) {
+            background: linear-gradient(#FFA6A6,#F67E7D);
+
+            &:hover {
+                box-shadow: 0 0 16px 4px rgba(255, 166, 166, .5);
+            }
+
+            span {
+                color: #FFA6A6;
+            }
+        }
+
+        &:nth-child(3) {
+            background: linear-gradient(#77D9CD,#64B6AC);
+
+            &:hover {
+                box-shadow: 0 0 16px 4px rgba(119, 217, 205, .5);
+            }
+
+            span {
+                color: #77D9CD;
+            }
+        }
+
+        h4 {
+            color: white;
+            font-weight: 500;
+        }
+
+        p {
+            color: $gray-lightest;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            background: $brand-main;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            border-radius: 11px;
+        }
+    }
+}
+
+.contact-box {
+    padding: 32px 16px;
+    display: flex;
+
+    h4 {
+        margin-bottom: 12px;
+    }
+
+    article {
+        background: $brand-background;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        border-radius: 24px;
+        padding: 96px 32px;
+    }
+}
+
+footer {
+    padding: 24px;
+    width: 100%;
+    text-align: center;
+    color: $brand-main;
 }
