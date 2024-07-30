@@ -112,7 +112,6 @@ main {
 }
 
 .main-content {
-    width: 100%;
     max-width: 1152px;
     margin: auto;
 
@@ -315,6 +314,7 @@ main {
         justify-content: center;
         align-items: center;
         gap: 24px;
+        flex: 1;
         border-radius: 24px;
         padding: 96px 32px;
     }
@@ -322,7 +322,6 @@ main {
 
 footer {
     padding: 24px;
-    width: 100%;
     text-align: center;
     color: $brand-main;
 }
