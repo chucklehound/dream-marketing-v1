@@ -6,6 +6,14 @@ import ContentCard from '../components/ContentCard.astro';
 import Logo from '../components/Logo.astro';
 import Button from '../components/Button.astro';
 
+import promoBlockOneImage from '/src/img/promo-block-1.png';
+import promoBlockTwoImage from '/src/img/promo-block-2.png';
+import promoBlockThreeImage from '/src/img/promo-block-3.png';
+
+import featureIconOne from "/src/img/list-builder.svg";
+import featureIconTwo from "/src/img/analyst.svg";
+import featureIconThree from "/src/img/SDRs.svg";
+
 import "../styles/main.scss";
 ---
 
@@ -32,7 +40,7 @@ import "../styles/main.scss";
 	<main>
 		<section class="main-content content-list">
 			<ContentCard>
-				<div class="content-image"><img src="src/img/promo-block-1.png" alt="An illustration showing that Dream's SDRs pull in personal context, company research, and contextual triggers to make great decisions"/></div>
+				<div class="content-image"><img src={promoBlockOneImage.src} alt="An illustration showing that Dream's SDRs pull in personal context, company research, and contextual triggers to make great decisions"/></div>
 				<div class="content-text">
 					<span>Built better</span>
 					<h4>Meet your new SDR. They've got the same high standards as you.</h4>
@@ -40,7 +48,7 @@ import "../styles/main.scss";
 				</div>
 			</ContentCard>
 			<ContentCard>
-				<div class="content-image"><img src="src/img/promo-block-2.png" alt="A representation of the three agents in Dream; List Builder, Analyst, and SDR"/></div>
+				<div class="content-image"><img src={promoBlockTwoImage.src} alt="A representation of the three agents in Dream; List Builder, Analyst, and SDR"/></div>
 				<div class="content-text">
 					<span>Experienced team</span>
 					<h4>Built by people who've actually done sales.</h4>
@@ -48,7 +56,7 @@ import "../styles/main.scss";
 				</div>
 			</ContentCard>
 			<ContentCard>
-				<div class="content-image"><img src="src/img/promo-block-3.png" alt="Abstract UI showing an Autopilot button covering stats about calls booked and success."/></div>
+				<div class="content-image"><img src={promoBlockThreeImage.src} alt="Abstract UI showing an Autopilot button covering stats about calls booked and success."/></div>
 				<div class="content-text">
 					<span>Better every day</span>
 					<h4>This will change the way you work.</h4>
@@ -64,19 +72,19 @@ import "../styles/main.scss";
 			<div class="main-content">
 				<div class="contrast-item">
 					<span>List Builder</span>
-					<img src="/src/img/list-builder.svg" role="presentation">
+					<img src={featureIconOne.src} role="presentation">
 					<h4>Find better prospects, faster</h4>
 					<p>Source prospects 24/7. Dream's smart List Builder uses your context and filters to generate high-quality lists for your SDRs. Bring your own, or let Dream find them for you.</p>
 				</div>
 				<div class="contrast-item">
 					<span>Analyst</span>
-					<img src="/src/img/analyst.svg" role="presentation">
+					<img src={featureIconTwo.src} role="presentation">
 					<h4>Research that drives action</h4>
 					<p>Selling isn't just about the message, it's about the timing. Dream's analyst takes your triggers and builds its own research to make sure your message lands at the right time.</p>
 				</div>
 				<div class="contrast-item">
 					<span>SDR</span>
-					<img src="/src/img/SDRs.svg" role="presentation">
+					<img src={featureIconThree.src} role="presentation">
 					<h4>Yes, it's AI - but you won't be sure</h4>
 					<p>We've built an SDR that aims to know you better than you know yourself; so it doesn't just write emails, it builds connections between you and your prospects.</p>
 				</div>
