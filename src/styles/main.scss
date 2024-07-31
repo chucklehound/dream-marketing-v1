@@ -184,7 +184,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 
     .section-title {
@@ -210,27 +210,32 @@ main {
         display: flex;
         gap: 24px;
         flex-direction: column;
+        width: 100%;
+        max-width: 1024px;
 
         @media (min-width: 960px) {
             flex-wrap: wrap;
-            flex-direction: row;
         }
     }
 
     .contrast-item {
         background: $brand-main;
         flex: 1;
-        border-radius: 12px;
+        border-radius: 32px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         gap: 12px;
         padding: 24px;
+        min-height: 360px;
         position: relative;
         background: linear-gradient(#59E0FF,#07A0C3);
         transition: box-shadow .2s ease;
 
         &:hover {
-            box-shadow: 0 0 16px 4px rgba(89, 224, 255, .5);
+            box-shadow: 0 0 24px 12px rgba(89, 224, 255, .5);
         }
 
         & > * {
@@ -239,15 +244,15 @@ main {
         }
 
         img {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
         }
 
         span {
             color: #59E0FF;
             margin-bottom: 8px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px;
             display: block;
         }
 
@@ -255,7 +260,7 @@ main {
             background: linear-gradient(#FFA6A6,#F67E7D);
 
             &:hover {
-                box-shadow: 0 0 16px 4px rgba(255, 166, 166, .5);
+                box-shadow: 0 0 24px 12px rgba(255, 166, 166, .5);
             }
 
             span {
@@ -267,7 +272,7 @@ main {
             background: linear-gradient(#77D9CD,#64B6AC);
 
             &:hover {
-                box-shadow: 0 0 16px 4px rgba(119, 217, 205, .5);
+                box-shadow: 0 0 24px 12px rgba(119, 217, 205, .5);
             }
 
             span {
@@ -278,10 +283,15 @@ main {
         h4 {
             color: white;
             font-weight: 500;
+
+            @media (min-width: 960px) {
+                @include heading3;
+            }
         }
 
         p {
             color: $gray-lightest;
+            max-width: 500px;
         }
 
         &:after {
@@ -293,7 +303,7 @@ main {
             position: absolute;
             left: 1px;
             top: 1px;
-            border-radius: 11px;
+            border-radius: 31px;
         }
     }
 }
