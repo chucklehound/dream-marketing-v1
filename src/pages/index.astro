@@ -14,6 +14,30 @@ import featureIconOne from "/src/img/list-builder.svg";
 import featureIconTwo from "/src/img/analyst.svg";
 import featureIconThree from "/src/img/SDRs.svg";
 
+import headerHero from "/src/img/website-hero.png";
+
+import arrowRightBlue from "/src/img/arrow-right-blue.svg";
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import slackIcon from "/src/img/slack.png";
+import gCalIcon from "/src/img/g-cal.png";
+import outlookIcon from "/src/img/outlook.png";
+import salesforceIcon from "/src/img/salesforce.png";
+import hubspotIcon from "/src/img/hubspot.png";
+import msCalIcon from "/src/img/ms-cal.png";
+import pipedriveIcon from "/src/img/pipedrive.png";
+import calendlyIcon from "/src/img/calendly.png";
+import gmailIcon from "/src/img/gmail.png";
+
+import listImage1 from "/src/img/list-image-1.png";
+import listImage2 from "/src/img/list-image-2.png";
+import listImage3 from "/src/img/list-image-3.png";
+import listImage4 from "/src/img/list-image-4.png";
+import listImage5 from "/src/img/list-image-5.png";
+import listImage6 from "/src/img/list-image-6.png";
+
+
+
 import "../styles/main.scss";
 ---
 
@@ -21,88 +45,180 @@ import "../styles/main.scss";
 	<header>
 		<nav>
 			<Logo />
-			<Button 	
-				label="Get started"
-				href="https://calendly.com/cgdcowley/discovery-call-dream" 
-				target="_blank"
-			/>
 		</nav>
-		<section class="header-text main-content">
-			<h1 class="page-title">The AI SDR that <br />doesn't sound like AI</h1>
-			<span>Accelerate your sales without compromising on quality. Start using Dream today.</span>
-			<Button 	
-				label="Get started with Dream"
-				href="https://calendly.com/cgdcowley/discovery-call-dream" 
-				target="_blank"
-			/>
-		</section>
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">The AI sales team built for success, not spam.</h1>
+				<span>Accelerate your sales without compromising on quality. Our AI Sales Agents land the right message at the right time. </span>
+				<Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightBlue.src} role="presentation" /></Button>
+			</section>
+			<img class="hero-img" src={headerHero.src} alt="A montage of abstract UI elements showing AI SDR taking input and generating leads" />
+		</div>
 	</header>
 	<main>
 		<section class="main-content content-list">
-			<ContentCard>
-				<div class="content-image"><img src={promoBlockOneImage.src} alt="An illustration showing that Dream's SDRs pull in personal context, company research, and contextual triggers to make great decisions"/></div>
-				<div class="content-text">
-					<span>Built better</span>
-					<h4>Meet your new SDR. They've got the same high standards as you.</h4>
-					<p>When was the last time you hired someone that didn't meet your quality bar?</p> <p>Then why should you accept anything less from an AI. Dream wins you more business, faster - without sending spammy junk. Great news for you, great news for your prospects.</p>
+			<article class="contrast-row content-row">
+				<div class="section-title">
+					<h4>From <span>prospect</span> to <span>call</span>, Dream works 24/7</h4>
+					<p>End-to-end sales agents to book new business on autopilot</p>
 				</div>
-			</ContentCard>
-			<ContentCard>
-				<div class="content-image"><img src={promoBlockTwoImage.src} alt="A representation of the three agents in Dream; List Builder, Analyst, and SDR"/></div>
-				<div class="content-text">
-					<span>Experienced team</span>
-					<h4>Built by people who've actually done sales.</h4>
-					<p>Our technology isn't just a fancy demo. Our tool was made by people who've been on the front lines of selling, and know how it works.</p> <p> We've honed our approach by speaking to people like you, so it's full of features you'll actually use.</p>
+
+					<ul class="content-list">
+						<li>
+							<div class="list-text">
+								<h5>Create purpose-driven lists that understand the prospects you want and why</h5>
+								<p>List Builder uses your context to understand why you’re searching for companies, and which ones are relevant to you.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage1.src} role="presentation" alt="An abstract interface showing a goal of finding creative directors, and methods to do it" />
+							</div>
+						</li>
+						<li>
+							<div class="list-text">
+								<h5>Use research to send the right message, at the right time</h5>
+								<p>Elevate your campaigns with on-demand research. Analyst gives you the tools to ask any question about your prospects, and use them to control your campaigns.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage2.src} role="presentation" alt="An abstract interface showing a question about recent CFO hires and a research answer." />
+							</div>
+						</li>
+						<li>
+							<div class="list-text">
+								<h5>Smart contact generation gives you precision-guided emails</h5>
+								<p>The best written email doesn’t matter if it doesn’t go to the right person. Our prospect search can navigate job titles and company structures to find the right person.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage3.src} role="presentation" alt="An abstract interface showing a job search for titles with the agent intuiting titles" />
+							</div>
+						</li>
+						<li>
+							<div class="list-text">
+								<h5>Personalised emails that know you better than you know yourself</h5>
+								<p>Make a connection without having to say a word. Dream gets to know you, then finds common ground between you and your prospects. Get a summary of the conversation before a call, so you’re briefed for success.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage4.src} role="presentation" alt="An abstract interface showing an email discussion. Buttons for improving a biography and generating a conversation summary are overlaid" />
+							</div>
+						</li>
+						<li>
+							<div class="list-text">
+								<h5>Set & forget. Automate your agents and let the calls roll in.</h5>
+								<p>Our agents are built to work together. Just create your campaign and Dream will keep building lists, learning about prospects, and making the sale. We’ll only involve you if your agent is unsure.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage5.src} role="presentation" alt="An abstract interface showing activity finding prospects. A button for autopilot, and a box showing 26 calls booked are overland." />
+							</div>
+						</li>
+						<li>
+							<div class="list-text">
+								<h5>Smart scheduling, all you need to do is take the call</h5>
+								<p>Our SDRs can juggle calendars like a pro. Whether it’s just for you or your team, Dream will manage your calls - leaving you to do the bit you’re best at.</p>
+							</div>
+							<div class="list-image">
+								<img src={listImage6.src} role="presentation" alt="An abstract interface a call booked, and flowing into different calendar apps." />
+							</div>
+						</li>
+					</ul>
+					<div class="cta-section">
+						<h4>Get your sales running on autopilot</h4>
+						<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" /></Button> 
+					</div>
 				</div>
-			</ContentCard>
-			<ContentCard>
-				<div class="content-image"><img src={promoBlockThreeImage.src} alt="Abstract UI showing an Autopilot button covering stats about calls booked and success."/></div>
-				<div class="content-text">
-					<span>Better every day</span>
-					<h4>This will change the way you work.</h4>
-					<p>You've heard it before, but we mean what we say.</p> <p> Dream will unlock growth you've only ever dreamt about - get it? Our AI platform builds context as you use it, learning and growing just like you do.</p>
-				</div>
-			</ContentCard>
+			</article>
 		</section>
-		<section class="contrast-row">
-			<div class="section-title">
-				<h2>Powerful agents that collaborate seamlessly</h2>
-				<h5>Your Dream sales team is made to work together</h5>
-			</div>
-			<div class="main-content">
-				<div class="contrast-item">
-					<span>List Builder</span>
-					<img src={featureIconOne.src} role="presentation">
-					<h4>Find better prospects, faster</h4>
-					<p>Source prospects 24/7. Dream's smart List Builder uses your context and filters to generate high-quality lists for your SDRs. Bring your own, or let Dream find them for you.</p>
-				</div>
-				<div class="contrast-item">
-					<span>Analyst</span>
-					<img src={featureIconTwo.src} role="presentation">
-					<h4>Research that drives action</h4>
-					<p>Selling isn't just about the message, it's about the timing. Dream's analyst takes your triggers and builds its own research to make sure your message lands at the right time.</p>
-				</div>
-				<div class="contrast-item">
-					<span>SDR</span>
-					<img src={featureIconThree.src} role="presentation">
-					<h4>Yes, it's AI - but you won't be sure</h4>
-					<p>We've built an SDR that aims to know you better than you know yourself; so it doesn't just write emails, it builds connections between you and your prospects.</p>
-				</div>
-			</div>
+		<section class="main-content content-row">
+			<article class="stats-box">
+				<h4>Dream is your competitive <span>advantage</span></h4>
+
+				<ul class="stats-items">
+					<li><span class="number">10x</span><p>Your pipeline generation</p>
+					<li><span class="number">25%</span><p>The cost vs a human</p>
+					<li><span class="number">0%</span><p>New hire risk</p>
+				</ul>
+			</article>
 		</section>
-		<section class="contact-box">
-			<article class="main-content">
-				<div>
-					<h4>Start working with your Dream sales team</h4>
-					<span>Schedule your call to find out how Dream can accelerate your sales</span>
+		<section class="main-content content-row">
+			<article class="">
+				<h4>Why do we <span>outperform</span> other AI tools?</h4>
+
+				<div class="tabs">
+					<div class="tab">
+						<input type="radio" id="tab-1" name="tab-group-1" checked>
+						<label for="tab-1">Context-driven intelligence</label>
+						
+						<div class="content">
+							<h5>Drive decisions with intelligent research</h5>
+							<p>Dream’s agents combine context about your goals and campaigns with a constantly growing knowledge base about your prospects and companies. You can tap into this knowledge at any time, whether you want to decide on your next campaigns, or get a personalised briefing before a call.</p>
+						</div> 
+					</div>
+						
+					<div class="tab">
+						<input type="radio" id="tab-2" name="tab-group-1">
+						<label for="tab-2">Insights & triggers</label>
+						
+						<div class="content">
+							<h5>Smarter messages, sent at the right time</h5>
+							<p>Knowledge is power, and with our advanced Analyst tools you'll keep building knowledge about your prospects and companies every day. Using these insights you can kick off entire campaigns when a company meets certain criteria. Or let Dream answer any question you have about your target companies.</p>
+						</div> 
+					</div>
+						
+						<div class="tab">
+						<input type="radio" id="tab-3" name="tab-group-1">
+						<label for="tab-3">Quality in every interaction</label>
+						
+						<div class="content">
+							<h5>The same high standard you'd expect from your team</h5>
+							<p>Delivering a great experience for your customers means delivering a great experience for you. Using AI supervisors we make sure that your agents are delivering authentic, honest messages to your customers. Where your agents don't know how to respond they'll automatically escalate to you, keeping you in control.</p>
+						</div> 
+					</div>
 				</div>
-				<Button 	
-					label="Get started with Dream"
-					href="https://calendly.com/cgdcowley/discovery-call-dream"
-					target="_blank" 
-				/>
+			</article>
+		</section>
+		<section class="main-content content-row content-list">
+			<h4>From <span>prospect</span> to <span>call</span>, Dream works 24/7</h4>
+			<article class="contrast-row content-row">
+				<ul class="content-list brand-partner">
+						<li>
+							<div class="list-text">
+								<h5>Plug & play. Dream slots right into your existing tools.</h5>
+								<p>Automated from the first outreach to the first call. Dream meets you where you’re already working, creating messages and booking meetings.</p>
+								<p>Get started with your existing lists from your CRM, then enhance them with Dream’s AI power.</p>
+							</div>
+							<div class="brand-icons">
+								<img src={gmailIcon.src} alt="The gmail logo" />
+								<img src={outlookIcon.src} alt="The Outlook logo" />
+								<img src={calendlyIcon.src} alt="The Calendly logo" />
+								<img src={salesforceIcon.src} alt="The Salesforce logo" />
+								<img src={pipedriveIcon.src} alt="The Pipedrive logo" />
+								<img src={hubspotIcon.src} alt="The Hubspot logo" />
+								<img src={gCalIcon.src} alt="The Google Calendar" />
+								<img src={msCalIcon.src} alt="The Outlook calendar logo" />
+								<img src={slackIcon.src} alt="The Slack logo" />
+							</div>
+						</li>
+					</ul>
+				</div>
 			</article>
 		</section>
 	</main>
-	<footer><small>Copyright Dream 2024</small></footer>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" /></Button> 
+		</article>
+		<footer><small>Copyright Dream 2024</small></footer>
+	</section>
 </Layout>

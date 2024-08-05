@@ -28,30 +28,30 @@
   }
 
   @mixin heading3 {
-    font-size: 44px;
-    line-height: 52px;
-    font-weight: 500;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 400;
   }
   
   @mixin heading4 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 0.1px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   @mixin heading5 {
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 32px;
+    line-height: 40px;
     letter-spacing: 0.2px;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   @mixin heading6 {
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.2px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   @mixin body {

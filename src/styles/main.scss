@@ -10,10 +10,12 @@ body {
     color: $brand-text;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 
     *, * > * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
 }
 
@@ -22,7 +24,7 @@ header {
     flex-direction: column;
     justify-content: flex-start;
     padding: $spacing*3 $spacing*2;
-    background: $brand-background url('../img/pulses.svg') no-repeat center;
+    background: linear-gradient($color-dream-yellow, $color-plus-white);
     background-size: cover;
     gap: 32px;
 
@@ -30,9 +32,29 @@ header {
         padding: $spacing*3 $spacing*4;
     }
 
+    .hero-elements {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: $spacing*8 0;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            gap: 32px;
+
+            img.hero-img {
+                width: 50%;
+            }
+        
+            .header-text {
+                width: 50%;
+            }
+        }
+    }
+
     nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         flex: 1 100%;
 
@@ -50,10 +72,9 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 24px;
-        min-height: 600px;
+        align-items: flex-start;
+        text-align: left;
+        gap: 16px;
         
         h1 {
             @include heading3;
@@ -63,34 +84,19 @@ header {
             background-clip: text;
             color: transparent;
             
-            @media (min-width: 1024px) {
-                @include pageHeading;
-            }
         }
         
         span {
-            @include heading6;
+            @include body;
             
-            font-weight: 400;
-            
-            @media (min-width: 768px) {
-                @include heading5;
-
-                font-weight: 400;
-            }
         }
         
         .button {
             background: $brand-main;
-            color: $plusWhite;
+            color: $color-plus-white;
 
             &:hover {
                 color: $brand-main;
-            }
-            
-            @media (min-width: 768px) {
-                font-size: 18px;
-                line-height: 24px;
             }
         }
     }
@@ -113,12 +119,14 @@ main {
 
 .main-content {
     max-width: 1152px;
+    width: 100%;
     margin: auto;
 
     &.content-list {
         display: flex;
         flex-direction: column;
         gap: 32px;
+        max-width: calc(1152px + 64px);
 
         @media (min-width: 768px) {
             gap: 64px;
@@ -178,12 +186,61 @@ main {
     }
 }
 
+.content-row {
+    padding: 48px 24px;
+    max-width: 1152px;
+
+    @media (min-width: 1024px) {
+        padding: 96px 64px;
+    }
+
+    .section-title {
+        text-align: center;
+    }
+
+    h4 {
+        text-align: center;
+
+        span {
+            background: linear-gradient(45deg, $color-light-blue, $color-light-green);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+.stats-items {
+    list-style: none;
+    margin: 0;
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    li {
+        flex: 1;
+        text-align: center;
+        
+        .number {
+            font-size: 96px;
+            line-height: 112px;
+            color: $color-dark-blue;
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
 .contrast-row {
     background: $brand-text;
     color: $brand-text-light;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    border-radius: 32px;
     align-items: stretch;
     justify-content: center;
 
@@ -211,10 +268,85 @@ main {
         gap: 24px;
         flex-direction: column;
         width: 100%;
-        max-width: 1024px;
+        max-width: 1152px;
 
         @media (min-width: 960px) {
             flex-wrap: wrap;
+        }
+    }
+
+    .content-list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 48px;
+
+        li {
+            display: flex;
+            flex-direction: column-reverse;
+            text-align: left;
+            justify-content: space-between;
+            align-items: center;
+            padding: 64px 0;
+            gap: 32px;
+
+            .list-text {
+
+                @media (min-width: 800px) {
+                    flex: 1 50%;
+                }
+            }
+
+            h5 {
+                margin-bottom: 16px;
+            }
+
+            .list-image {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @media (min-width: 800px) {
+                    width: 50%;
+                }
+
+                img {
+                    max-width: 100%;
+                    opacity: 90%;
+                }
+            }
+
+            p {
+                font-size: 16px;
+                color: $color-grays-light;
+            }
+
+            @media (min-width: 800px) {
+                flex-direction: row;
+                gap: 64px;
+
+                &:nth-child(2n) {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+    }
+
+    .cta-section {
+        padding: 64px 0 0;
+        border-top: 1px solid $color-grays-medium;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+
+        .button {
+            background: $color-dream-yellow;
+            color: $color-wallstreet-black;
         }
     }
 
@@ -227,7 +359,7 @@ main {
         justify-content: center;
         align-items: center;
         text-align: center;
-        gap: 12px;
+        gap: 32px;
         padding: 24px;
         min-height: 360px;
         position: relative;
@@ -335,3 +467,132 @@ footer {
     text-align: center;
     color: $brand-main;
 }
+
+.contrast-row .content-list.brand-partner li {
+    padding: 24px 0;
+
+    @media (max-width: 799px) {
+        flex-direction: column-reverse;
+        padding: 32px 0;
+    }
+}
+
+.brand-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+    width: 100%;
+    
+    @media (min-width: 900px) {
+        width: 50%;
+    }
+
+    img {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+.tabs {
+    position: relative;  
+    display: flex;
+    justify-content: center; 
+    gap: 8px;
+    min-height: 500px; /* This part sucks */
+    margin: 56px 0;
+    flex-wrap: wrap;
+
+    @media (min-width: 600px) {
+        gap: 24px;
+        min-height: 400px;
+    }
+
+    @media (max-width: 800px) {
+        min-height: 100px;
+        margin: 56px 0 540px;
+    }
+  }
+
+  .tab label {
+    background: $color-lisa-yellow; 
+    padding: 12px 24px; 
+    border-radius: 32px;  
+    position: relative;
+    display: block;
+    flex: 1;
+
+    @media (min-width: 600px) {
+        display: inline;
+        width: auto;
+    }
+  }
+
+  .tab [type=radio] {
+    display: none;   
+  }
+
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    top: 160px;
+    left: 0;
+    height: 540px;
+    background: $color-dream-yellow;
+    border-radius: 32px;
+    box-shadow: inset 0 0 0 1px $color-wallstreet-black;
+    right: 0;
+    padding: 48px 32px;
+
+    @media (min-width: 750px) {
+        top: 112px;
+        height: 440px;
+    }
+
+    @media (min-width: 800px) {
+        padding: 96px 64px;
+        top: 48px;
+        height: 360px;
+    }
+  }
+  
+  [type=radio]:checked ~ label {
+    background: $color-dream-yellow;
+    box-shadow: inset 0 0 0 1px $color-wallstreet-black;
+    z-index: 2;
+  }
+  [type=radio]:checked ~ label ~ .content {
+    z-index: 1;
+  }
+
+  .final-cta {
+        background: linear-gradient($color-plus-white, $color-dream-yellow);
+
+        .cta-container {
+            background: $color-performa-black url('/src/img/call-bg-light.png') no-repeat 50%;
+            background-size: cover;
+            padding: 48px 32px;
+            border-radius: 32px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            color: $color-plus-white;
+
+            p {
+                color: $gray-lightest;
+            }
+
+            @media (min-width: 800px) {
+                padding: 96px 64px;
+            }
+        }
+  }
