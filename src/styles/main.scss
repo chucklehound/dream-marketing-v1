@@ -29,7 +29,7 @@ header {
     gap: 32px;
 
     @media (min-width: 768px) {
-        padding: $spacing*3 $spacing*4;
+        padding: $spacing*5 $spacing*4;
     }
 
     .hero-elements {
@@ -59,10 +59,10 @@ header {
         flex: 1 100%;
 
         svg {
-            height: 24px;
+            height: 32px;
 
             @media (min-width: 768px) {
-                height: 32px;
+                height: 40px;
             }
         }
     }
@@ -188,7 +188,7 @@ main {
 
 .content-row {
     padding: 48px 24px;
-    max-width: 1152px;
+    max-width: 1216px;
 
     @media (min-width: 1024px) {
         padding: 96px 64px;
@@ -576,7 +576,7 @@ footer {
         padding: 24px;
 
         .cta-container {
-            background: $color-performa-black url('/src/img/call-bg-light.png') no-repeat 50%;
+            background: $color-performa-black url('/src/img/call-bg-light.svg') no-repeat 50%;
             background-size: cover;
             padding: 48px 32px;
             border-radius: 32px;
