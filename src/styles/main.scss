@@ -740,3 +740,35 @@ footer {
         }
     }
 }
+
+.policy {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    max-width: 960px;
+    margin: auto;
+
+    a {
+        color: $color-wallstreet-black;
+    }
+
+    p {
+        margin-bottom: 12px;
+        line-height: 24px;
+    }
+
+    h2 {
+        text-align: left;
+    }
+
+    ul {
+        padding-left: 24px;
+
+        li {
+            margin-bottom: 12px;
+            line-height: 22px;
+        }
+    }
+}
