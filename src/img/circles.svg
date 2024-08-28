@@ -1,0 +1,38 @@
+<svg width="1336" height="1336" viewBox="0 0 1336 1336" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<style>
+      @keyframes grow4 {
+        0%{ transform: scale(0); opacity: 0;  }
+        10% { transform: opacity: 1; }
+        50%, 100% { transform: scale(1); opacity: 0.35; }
+      }
+
+    #cir4 { animation: grow4 4s cubic-bezier(0.86,0,0.07,1) 1 forwards; transform-origin: 50%; }
+</style>
+
+<g id="cir4">
+<circle cx="668" cy="668" r="200" stroke="url(#paint1_linear_1616_80392)" stroke-opacity="0.3"  stroke-width="2"/>
+<circle cx="668" cy="668" r="345" stroke="url(#paint1_linear_1616_80392)" stroke-opacity="0.3" stroke-width="2"/>
+<circle cx="668" cy="668" r="512" stroke="url(#paint1_linear_1616_80392)" stroke-opacity="0.3" stroke-width="2"/>
+<circle cx="668" cy="668" r="667.5" stroke="url(#paint1_linear_1616_80392)" stroke-opacity="0.3" stroke-width="2"/>
+</g>
+
+<defs>
+<linearGradient id="paint0_linear_1616_80392" x1="668" y1="160" x2="668" y2="1176" gradientUnits="userSpaceOnUse">
+<stop stop-color="#000D26"/>
+<stop offset="1" stop-color="#838B9B"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1616_80392" x1="668" y1="0" x2="668" y2="1336" gradientUnits="userSpaceOnUse">
+<stop stop-color="#000D26"/>
+<stop offset="1" stop-color="#838B9B"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1616_80392" x1="668" y1="323" x2="668" y2="1013" gradientUnits="userSpaceOnUse">
+<stop stop-color="#000D26"/>
+<stop offset="1" stop-color="#838B9B"/>
+</linearGradient>
+<linearGradient id="paint3_linear_1616_80392" x1="668" y1="446.502" x2="668" y2="889.498" gradientUnits="userSpaceOnUse">
+<stop stop-color="#000D26"/>
+<stop offset="1" stop-color="#838B9B"/>
+</linearGradient>
+</defs>
+</svg>

@@ -22,6 +22,13 @@ $color-grays-lightest: #f3f3f5;
 	box-shadow: 0px 8px 16px #061636, 0px 2px 4px #000d26;
 }
 
+@mixin headline-text-gradient {
+	background: var(--Website-Text-Gradient, linear-gradient(92deg, #000D26 13%, #5C6880 84%));
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 $gray-lightest: #F3F3F5;
 
 $brand-main: $color-wallstreet-black;

@@ -1,22 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import ContentCard from '../components/ContentCard.astro';
 
 import Logo from '../components/Logo.astro';
 import Button from '../components/Button.astro';
 
-import promoBlockOneImage from '/src/img/promo-block-1.png';
-import promoBlockTwoImage from '/src/img/promo-block-2.png';
-import promoBlockThreeImage from '/src/img/promo-block-3.png';
+import TabComponent from '../components/TabComponent.astro';
 
-import featureIconOne from "/src/img/list-builder.svg";
-import featureIconTwo from "/src/img/analyst.svg";
-import featureIconThree from "/src/img/SDRs.svg";
+import introImage1 from '/src/img/intro-img-1.png';
+import introImage2 from '/src/img/intro-img-2.png';
+import introImage3 from '/src/img/intro-img-3.png';
 
-import headerHero from "/src/img/website-hero.png";
+import introIcon1 from '/src/img/intro-icon-1.svg';
+import introIcon2 from '/src/img/intro-icon-2.svg';
+import introIcon3 from '/src/img/intro-icon-3.svg';
 
-import arrowRightBlue from "/src/img/arrow-right-blue.svg";
+import speedIcon1 from '/src/img/speed-icon-1.svg';
+import speedIcon2 from '/src/img/speed-icon-2.svg';
+import speedIcon3 from '/src/img/speed-icon-3.svg';
+
+import arrowRightYellow from "/src/img/arrow-right-yellow.svg";
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
 import slackIcon from "/src/img/slack.png";
@@ -29,184 +31,164 @@ import pipedriveIcon from "/src/img/pipedrive.png";
 import calendlyIcon from "/src/img/calendly.png";
 import gmailIcon from "/src/img/gmail.png";
 
-import listImage1 from "/src/img/list-image-1.png";
-import listImage2 from "/src/img/list-image-2.png";
-import listImage3 from "/src/img/list-image-3.png";
-import listImage4 from "/src/img/list-image-4.png";
-import listImage5 from "/src/img/list-image-5.png";
-import listImage6 from "/src/img/list-image-6.png";
-
-
+import iconWide from '/src/img/partner-wide.png';
 
 import "../styles/main.scss";
 ---
 
-<Layout title="Get started with Dream and build your pipeline.">
+<Layout title="Target the right company, at the right time, with the right message">
 	<header>
 		<nav>
 			<Logo />
 		</nav>
 		<div class="hero-elements main-content">
 			<section class="header-text ">
-				<h1 class="page-title">The AI sales team built for success, not spam.</h1>
-				<span>Accelerate your sales without compromising on quality. Our AI Sales Agents land the right message at the right time. </span>
+				<h1 class="page-title">SDRs that target the right company,<br />
+					at the right time, <br />
+					with the right message</h1>
+				<span>Dream’s AI-powered sales agents combine deep research about your prospects with custom targeting to give you perfectly tailored emails, sent 24/7</span>
 				<Button 	
 					label="Get started with Dream"
 					href="https://calendly.com/cgdcowley/discovery-call-dream" 
 					target="_blank"
-				><img src={arrowRightBlue.src} role="presentation" /></Button>
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
 			</section>
-			<img class="hero-img" src={headerHero.src} alt="A montage of abstract UI elements showing AI SDR taking input and generating leads" />
 		</div>
 	</header>
 	<main>
 		<section class="main-content content-list">
-			<article class="contrast-row content-row">
-				<div class="section-title">
-					<h4>From <span>prospect</span> to <span>call</span>, Dream works 24/7</h4>
-					<p>End-to-end sales agents to book new business on autopilot</p>
-				</div>
-
-					<ul class="content-list">
-						<li>
-							<div class="list-text">
-								<h5>Create purpose-driven lists that understand the prospects you want and why</h5>
-								<p>List Builder uses your context to understand why you’re searching for companies, and which ones are relevant to you.</p>
+				<article class="tools-section">
+					<h2 class="section-heading">Faster growth with powerful, precise AI tools</h2>
+					<div class="tools-grid">
+						<!-- First row -->
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-icon">
+									<img src={introIcon1.src} role="presentation">
+								</div>
+								<div class="tool-content">
+									<h3 class="tool-title">Dream is your 24/7 <br />AI-powered SDR</h3>
+									<p class="tool-description">Reach more prospects, faster. Without scaling your sales team. Dream lets you sell more starting today.</p>
+								</div>
 							</div>
-							<div class="list-image">
-								<img src={listImage1.src} role="presentation" alt="An abstract interface showing a goal of finding creative directors, and methods to do it" />
+							<div class="tool-image">
+								<img src={introImage1.src} alt="Illustration of AI-powered SDR">
 							</div>
-						</li>
-						<li>
-							<div class="list-text">
-								<h5>Use research to send the right message, at the right time</h5>
-								<p>Elevate your campaigns with on-demand research. Analyst gives you the tools to ask any question about your prospects, and use them to control your campaigns.</p>
+						</div>
+				
+						<!-- Second row -->
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-icon">
+									<img src={introIcon2.src} role="presentation">
+								</div>
+								<div class="tool-content">
+									<h3 class="tool-title">Tailored messaging, <br />sent at the right time</h3>
+									<p class="tool-description">Dream’s AI learns all about your prospects, crafting individual emails to each one. You set the timing, so each message lands exactly when needed.</p>
+								</div>
 							</div>
-							<div class="list-image">
-								<img src={listImage2.src} role="presentation" alt="An abstract interface showing a question about recent CFO hires and a research answer." />
+							<div class="tool-image">
+								<img src={introImage2.src} alt="Illustration of tailored messaging">
 							</div>
-						</li>
-						<li>
-							<div class="list-text">
-								<h5>Smart contact generation gives you precision-guided emails</h5>
-								<p>The best written email doesn’t matter if it doesn’t go to the right person. Our prospect search can navigate job titles and company structures to find the right person.</p>
+						</div>
+				
+						<!-- Third row -->
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-icon">
+									<img src={introIcon3.src} role="presentation">
+								</div>
+								<div class="tool-content">
+									<h3 class="tool-title">All you have to do is<br /> take the call</h3>
+									<p class="tool-description">Your sales agents can handle outbound, replies, and booking meetings. Choose to manually approve messages, or let Dream handle it all autonomously.</p>
+								</div>
 							</div>
-							<div class="list-image">
-								<img src={listImage3.src} role="presentation" alt="An abstract interface showing a job search for titles with the agent intuiting titles" />
+							<div class="tool-image">
+								<img src={introImage3.src} alt="Illustration of call handling">
 							</div>
-						</li>
-						<li>
-							<div class="list-text">
-								<h5>Personalised emails that know you better than you know yourself</h5>
-								<p>Make a connection without having to say a word. Dream gets to know you, then finds common ground between you and your prospects. Get a summary of the conversation before a call, so you’re briefed for success.</p>
-							</div>
-							<div class="list-image">
-								<img src={listImage4.src} role="presentation" alt="An abstract interface showing an email discussion. Buttons for improving a biography and generating a conversation summary are overlaid" />
-							</div>
-						</li>
-						<li>
-							<div class="list-text">
-								<h5>Set & forget. Automate your agents and let the calls roll in.</h5>
-								<p>Our agents are built to work together. Just create your campaign and Dream will keep building lists, learning about prospects, and making the sale. We’ll only involve you if your agent is unsure.</p>
-							</div>
-							<div class="list-image">
-								<img src={listImage5.src} role="presentation" alt="An abstract interface showing activity finding prospects. A button for autopilot, and a box showing 26 calls booked are overland." />
-							</div>
-						</li>
-						<li>
-							<div class="list-text">
-								<h5>Smart scheduling, all you need to do is take the call</h5>
-								<p>Our SDRs can juggle calendars like a pro. Whether it’s just for you or your team, Dream will manage your calls - leaving you to do the bit you’re best at.</p>
-							</div>
-							<div class="list-image">
-								<img src={listImage6.src} role="presentation" alt="An abstract interface a call booked, and flowing into different calendar apps." />
-							</div>
-						</li>
-					</ul>
-					<div class="cta-section">
-						<h4>Get your sales running on autopilot</h4>
-						<Button 	
-							label="Book your demo"
-							href="https://calendly.com/cgdcowley/discovery-call-dream" 
-							target="_blank"
-						><img src={arrowRightDark.src} role="presentation" /></Button> 
+						</div>
 					</div>
-				</div>
-			</article>
+				</article>
 		</section>
-		<section class="main-content content-row">
-			<article class="stats-box">
-				<h4>Dream is your competitive <span>advantage</span></h4>
-
-				<ul class="stats-items">
-					<li><span class="number">10x</span><p>Your pipeline generation</p>
-					<li><span class="number">25%</span><p>The cost vs a human</p>
-					<li><span class="number">0%</span><p>New hire risk</p>
-				</ul>
-			</article>
+		<section class="main-content content-row"> 
+			<h2 class="section-heading">From prospect to pitch, Dream can handle it all</h2>
+			<TabComponent />
 		</section>
-		<section class="main-content content-row">
-			<article class="">
-				<h4>Why do we <span>outperform</span> other AI tools?</h4>
-
-				<div class="tabs">
-					<div class="tab">
-						<input type="radio" id="tab-1" name="tab-group-1" checked>
-						<label for="tab-1">Context-driven intelligence</label>
-						
-						<div class="content">
-							<h5>Drive decisions with intelligent research</h5>
-							<p>Dream’s agents combine context about your goals and campaigns with a constantly growing knowledge base about your prospects and companies. You can tap into this knowledge at any time, whether you want to decide on your next campaigns, or get a personalised briefing before a call.</p>
-						</div> 
-					</div>
-						
-					<div class="tab">
-						<input type="radio" id="tab-2" name="tab-group-1">
-						<label for="tab-2">Insights & triggers</label>
-						
-						<div class="content">
-							<h5>Smarter messages, sent at the right time</h5>
-							<p>Knowledge is power, and with our advanced Analyst tools you'll keep building knowledge about your prospects and companies every day. Using these insights you can kick off entire campaigns when a company meets certain criteria. Or let Dream answer any question you have about your target companies.</p>
-						</div> 
-					</div>
-						
-						<div class="tab">
-						<input type="radio" id="tab-3" name="tab-group-1">
-						<label for="tab-3">Quality in every interaction</label>
-						
-						<div class="content">
-							<h5>The same high standard you'd expect from your team</h5>
-							<p>Delivering a great experience for your customers means delivering a great experience for you. Using AI supervisors we make sure that your agents are delivering authentic, honest messages to your customers. Where your agents don't know how to respond they'll automatically escalate to you, keeping you in control.</p>
-						</div> 
-					</div>
-				</div>
-			</article>
+		<section class="main-content content-row"> 
+			<article class="stats-box"> 
+			<h2>Dream is your competitive <span>advantage</span></h2> 
+			<ul class="stats-items"> 
+				<li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+				<li><span class="number">25%</span><p>The cost vs a human</p> </li>
+				<li><span class="number">0%</span><p>New hire risk</p> </li></ul> 
+			</article> 
 		</section>
 		<section class="main-content content-row content-list">
-			<h4>From <span>prospect</span> to <span>call</span>, Dream works 24/7</h4>
 			<article class="contrast-row content-row">
-				<ul class="content-list brand-partner">
-						<li>
-							<div class="list-text">
-								<h5>Plug & play. Dream slots right into your existing tools.</h5>
-								<p>Automated from the first outreach to the first call. Dream meets you where you’re already working, creating messages and booking meetings.</p>
-								<p>Get started with your existing lists from your CRM, then enhance them with Dream’s AI power.</p>
-							</div>
-							<div class="brand-icons">
-								<img src={gmailIcon.src} alt="The gmail logo" />
-								<img src={outlookIcon.src} alt="The Outlook logo" />
-								<img src={calendlyIcon.src} alt="The Calendly logo" />
-								<img src={salesforceIcon.src} alt="The Salesforce logo" />
-								<img src={pipedriveIcon.src} alt="The Pipedrive logo" />
-								<img src={hubspotIcon.src} alt="The Hubspot logo" />
-								<img src={gCalIcon.src} alt="The Google Calendar" />
-								<img src={msCalIcon.src} alt="The Outlook calendar logo" />
-								<img src={slackIcon.src} alt="The Slack logo" />
-							</div>
-						</li>
-					</ul>
+				<div class="content-list brand-partner">
+						<div class="list-text">
+							<h3>Plays nice with others</h3>
+							<p>Automated from the first outreach to the first call. Dream meets you where you’re already working, creating messages, and booking meetings.</p>
+							<p>Get started with existing lists from your CRM, then enhance them with Dream’s AI power.</p>
+						</div>
+						<div class="brand-icons">
+							<img class="icons-wide" src={iconWide.src} />
+							<ul>
+								<li><img src={gmailIcon.src} alt="The gmail logo" /></li>
+								<li><img src={outlookIcon.src} alt="The Outlook logo" /></li>
+								<li><img src={calendlyIcon.src} alt="The Calendly logo" /></li>
+								<li><img src={salesforceIcon.src} alt="The Salesforce logo" /></li>
+								<li><img src={pipedriveIcon.src} alt="The Pipedrive logo" /></li>
+								<li><img src={hubspotIcon.src} alt="The Hubspot logo" /></li>
+								<li><img src={gCalIcon.src} alt="The Google Calendar" /></li>
+								<li><img src={msCalIcon.src} alt="The Outlook calendar logo" /></li>
+								<li><img src={slackIcon.src} alt="The Slack logo" /></li>
+							</ul>
+						</div>
+				</div>
 				</div>
 			</article>
+		</section>
+		<section class="main-content content-row">
+			<section class="speed-section">
+				<h2 class="section-heading">From your speed, to light speed</h2>
+				
+				<div class="speed-grid">
+					<!-- First card -->
+					<div class="speed-card">
+						<div class="speed-icon">
+							<img src={speedIcon1.src} role="presentation">
+						</div>
+						<div class="speed-content">
+							<h3 class="speed-title">Get setup</h3>
+							<p class="speed-description">Craft your account with details on your products, services, and sales profiles. Build your ideal account setup and then sit back and let your agents draw on the information.</p>
+						</div>
+					</div>
+			
+					<!-- Second card -->
+					<div class="speed-card">
+						<div class="speed-icon">
+							<img src={speedIcon3.src} role="presentation">
+						</div>
+						<div class="speed-content">
+							<h3 class="speed-title">Stay in control</h3>
+							<p class="speed-description">You’re in control of your campaigns. Dream lets you specify approvals over replies, escalations, or for all outbound messages. If you don’t like a message you can regenerate in seconds.</p>
+						</div>
+					</div>
+			
+					<!-- Third card with highlighted background -->
+					<div class="speed-card highlight">
+						<div class="speed-icon">
+							<img src={speedIcon2.src} role="presentation">
+						</div>
+						<div class="speed-content">
+							<h3 class="speed-title">Take off!</h3>
+							<p class="speed-description">When you’re ready, switch your campaign to autopilot and let Dream bring you meetings. Track your campaign performance in real-time whilst Dream does the hard work. All that’s left for you to do is close!</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			
 		</section>
 	</main>
 	<section class="final-cta">
