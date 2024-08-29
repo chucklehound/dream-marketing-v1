@@ -547,8 +547,13 @@ footer {
     text-align: center;
     display: flex;
     flex-direction: row;
+    gap: 16px;
     color: $brand-main;
     justify-content: center;
+
+    a {
+        color: $color-wallstreet-black;
+    }
 
     small {
         text-align: center;
