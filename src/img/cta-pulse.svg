@@ -2,20 +2,21 @@
     <style>
       @keyframes grow1 {
         0% { transform: scale(0); }
-        80% {transform: scale(0.8); filter: blur(4px); }
-        100% { transform: scale(1); filter: blur(32px); }
+        80% {transform: scale(0.8); filter: blur(4px); opacity: 1; }
+        100% { transform: scale(1); filter: blur(32px); opacity: 0; }
       }
       
       @keyframes grow2 {
         0% { transform: scale(0); }
         60% {transform: scale(0.6); filter: blur(8px); }
-        100% { transform: scale(1); filter: blur(32px); }
+        80% { opacity: 1; }
+        100% { transform: scale(1); filter: blur(32px); opacity: 0; }
       }
       
       @keyframes grow3 {
         0% { transform: scale(0); }
-        75% {transform: scale(0.75); filter: blur(12px); }
-        100% { transform: scale(1); filter: blur(32px); }
+        75% {transform: scale(0.75); filter: blur(12px); opacity: 1; }
+        100% { transform: scale(1); filter: blur(32px); opacity: 0; }
       }
       
       .circ1, .circ2, .circ3 { transform-origin: 50%; }
