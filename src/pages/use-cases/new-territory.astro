@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Header from '../../components/Header.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import expandingSales from '/src/img/expanding-sales.svg';
+import newTerritory from '/src/img/new-territory.svg';
+import firstSales from '/src/img/first-sales.svg';
+import hiringPartnerships from '/src/img/hiring-partnerships.svg';
+
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+import "../../styles/main.scss";
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+
+---
+
+<Layout title="Dream use cases - extend sales to new markets">
+	<header>
+		<Header />
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+                <small class="tag"><a href="/use-cases">Use cases</a></small>
+				<h1 class="page-title">For companies who want to extend sales to new markets</h1>
+				<span>Dream now enables companies to introduce new markets to their outbound sales in a matter of hours. 
+                    Where companies would previously have had to hire sales people that covered all the desired languages requirements - now companies that kick start new market penetration when they want.                     
+                </span>
+                <Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+			<UseCaseBlock state="state4" />
+            <UseCaseBlock state="state1" />
+            <UseCaseBlock state="state2" />
+            <UseCaseBlock state="state3" />
+		</section>
+        <section class="main-content content-list">
+            <section class="main-content content-row"> 
+                <article class="stats-box"> 
+                <h2>What this delivers</h2> 
+                <ul class="stats-items"> 
+                    <li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+                    <li><span class="number">25%</span><p>The cost vs a human</p> </li>
+                </article> 
+            </section>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
+	</section>
+</Layout>

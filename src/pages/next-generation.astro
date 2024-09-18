@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Button from '../components/Button.astro';
+import Header from '../components/Header.astro';
+import MessageSelector from  '../components/MessageSelector.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import "../styles/main.scss";
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+	<header>
+		<Header />
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">Technology has got smarter,<br />
+                    meet the AI SDR that has too</h1>
+				<span>We've tapped the best that technology can offer to create an app that work like magic. Find out how Dream leaves old-generation AI SDRs in the dust.</span>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+			<h2>The biggest thing to happen to sales <br />since...well, ever</h2> 
+            <div class="limit-para">
+                <p>The first generation of AI SDRs were big on promise, showcasing features that performed well in demos. But they all relied on similar technology to early ChatGPT models, meaning frequent hallucinations and light touch personalisation. </p>
+                <p>Where the first generation can best be thought of as a fresh-faced junior sales hire straight out of their high-school exams, second generation sales agents are a hardened sales manager who can take anything that's thrown at them. Relying on cutting-edge technology like GPT-4o and Claude Sonnet, these agents fully deliver on the future of sales AI, holding convincing conversations without any human intervention.</p>
+                <p>Dream delivers on the promise of sales AI, offering you more context and more intelligence through better technology.</p>
+            </div>
+		</section>
+        <section class="main-content content-list">
+            <article class="tools-section">
+                <h2 class="section-heading">Sales technology - the story so far</h2>
+                <div class="tools-grid">
+                    <!-- First row -->
+                    <div class="tool-container">
+                        <div class="tool-card gen-card">
+                            <div class="tool-content">
+                                <h3 class="gen-number">Pre-LLM</h3>
+                                <p class="tool-description">Technology has always supported the sales process, but in the pre-LLM era it still required someone to stitch it all together. Tools like Apollo or Reply.io helped with specific pain-points, but needed human intervention to work.</p>
+                            </div>
+                        </div>
+                        <div class="tool-image">
+                        </div>
+                    </div>
+            
+                    <!-- Second row -->
+                    <div class="tool-container">
+                        <div class="tool-card gen-card">
+                            <div class="tool-content">
+                                <h3 class="gen-number">Gen 1.0</h3>
+                                <p class="tool-description">The first-generation of sales agents used AI to power parts of the sales process; such as writing messages or researching prospects. Depending on early LLM technology they were able to offer light personalisation for a broad audience. Ideal for companies doing mass cold outreach.</p>
+                            </div>
+                        </div>
+                        <div class="tool-image">
+                        </div>
+                    </div>
+            
+                    <!-- Third row -->
+                    <div class="tool-container">
+                        <div class="tool-card gen-card">
+                            <div class="tool-content">
+                                <h3 class="gen-number">Gen 2.0</h3>
+                                <p class="tool-description">Using the advanced features of modern LLMs like GPT-4o and Claude, second-generation sales agents can create more natural, creative responses. Taking in far larger context windows, along with stronger coherence and memory lets these agents personalise more deeply across longer conversations. </p>
+                            </div>
+                        </div>
+                        <div class="tool-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="compare-links">
+                    <h4>Learn more about how Dream compares to other sales tools</h4>
+                    <ul>
+                        <li><a href="compare/vs-11x"><span>Dream vs 11x</span></a></li>
+                        <li><a href="compare/vs-relevance"><span>Dream vs Relevance.ai</span></a></li>
+                        <li><a href="compare/vs-clay"><span>Dream vs Clay</span></a></li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <section class="main-content content-list">
+            <MessageSelector />
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
+	</section>
+</Layout>

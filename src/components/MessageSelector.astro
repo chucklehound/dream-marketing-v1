@@ -1,0 +1,131 @@
+---
+const messages = {
+  'Gen 1.0': {
+    'Person 1': {
+      'Initial message': 'Hello, this is GPT3.5 talking to Person 1 for the first time.',
+      'Follow-up': 'GPT3.5 follow-up message for Person 1.',
+      'Reply': 'GPT3.5 reply to Person 1.'
+    },
+    'Person 2': {
+      'Initial message': 'Hi, this is GPT3.5 talking to Person 2 for the first time.',
+      'Follow-up': 'GPT3.5 follow-up message for Person 2.',
+      'Reply': 'GPT3.5 reply to Person 2.'
+    },
+    'Person 3': {
+      'Initial message': 'Greetings, this is GPT3.5 reaching out to Person 3.',
+      'Follow-up': 'GPT3.5 follow-up message for Person 3.',
+      'Reply': 'GPT3.5 reply to Person 3.'
+    }
+  },
+  'Gen 2.0': {
+    'Person 1': {
+      'Initial message': 'Hello, this is GPT4.0 talking to Person 1 for the first time.',
+      'Follow-up': 'GPT4.0 follow-up message for Person 1.',
+      'Reply': 'GPT4.0 reply to Person 1.'
+    },
+    'Person 2': {
+      'Initial message': 'Hi, this is GPT4.0 talking to Person 2 for the first time.',
+      'Follow-up': 'GPT4.0 follow-up message for Person 2.',
+      'Reply': 'GPT4.0 reply to Person 2.'
+    },
+    'Person 3': {
+      'Initial message': 'Greetings, this is GPT4.0 reaching out to Person 3.',
+      'Follow-up': 'GPT4.0 follow-up message for Person 3.',
+      'Reply': 'GPT4.0 reply to Person 3.'
+    }
+  }
+};
+
+// Stringify the messages object for safe embedding into JavaScript
+const messagesJson = JSON.stringify(messages);
+
+import '../components/messageSelector.scss';
+---
+
+<article class="message-examples">
+    <h2 id="messageSelectorHeading">See what a difference Gen 2.0 makes to your messages</h2>
+    <div id="message-selector" class="message-selector" data-messages={messagesJson} role="region" aria-labelledby="messageSelectorHeading">
+    
+      <div class="selectors">
+        <!-- GPT Version Select -->
+        <label for="gpt-select" aria-label="Select GPT Version">GPT Version</label>
+        <select id="gpt-select" aria-live="polite">
+          <option value="Gen 1.0" selected>Gen 1.0</option>
+          <option value="Gen 2.0">Gen 2.0</option>
+        </select>
+    
+        <!-- Person Select -->
+        <label for="person-select" aria-label="Select Person">Person</label>
+        <select id="person-select" aria-live="polite">
+          <option value="Person 1" selected>Person 1</option>
+          <option value="Person 2">Person 2</option>
+          <option value="Person 3">Person 3</option>
+        </select>
+    
+        <!-- Message Type Select -->
+        <label for="message-type-select" aria-label="Select Message Type">Message Type</label>
+        <select id="message-type-select" aria-live="polite">
+          <option value="Initial message" selected>Initial message</option>
+          <option value="Follow-up">Follow-up</option>
+          <option value="Reply">Reply</option>
+        </select>
+      </div>
+    
+      <!-- Display Message -->
+      <div id="message-display" class="message-display" aria-live="polite">
+        <p>Select options above to see the message.</p>
+      </div>
+    
+      <!-- Loading Spinner -->
+      <div id="loading-spinner" class="loading-spinner" role="status" aria-live="assertive" aria-busy="true" hidden>
+        <span class="visually-hidden">Loading...</span>
+        🔄
+      </div>
+    </div>
+</article>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const messageSelector = document.getElementById('message-selector');
+
+    if (!messageSelector) {
+      console.error("Message selector element not found.");
+      return;
+    }
+
+    const messages = JSON.parse(messageSelector.dataset.messages);
+
+    const gptSelect = document.getElementById('gpt-select') as HTMLSelectElement;
+    const personSelect = document.getElementById('person-select') as HTMLSelectElement;
+    const messageTypeSelect = document.getElementById('message-type-select') as HTMLSelectElement;
+    const messageDisplay = document.getElementById('message-display');
+    const loadingSpinner = document.getElementById('loading-spinner');
+
+    const updateMessage = () => {
+      const gptVersion = gptSelect.value;
+      const person = personSelect.value;
+      const messageType = messageTypeSelect.value;
+
+      loadingSpinner.hidden = false;
+      messageDisplay.innerHTML = '';
+
+      setTimeout(() => {
+        loadingSpinner.hidden = true;
+        const message = messages[gptVersion]?.[person]?.[messageType];
+        if (message) {
+          messageDisplay.innerHTML = `<p>${message}</p>`;
+        } else {
+          messageDisplay.innerHTML = '<p>Message not found for selected options!</p>';
+        }
+      }, 500); // Simulated delay
+    };
+
+    // Add event listeners to the selects
+    gptSelect.addEventListener('change', updateMessage);
+    personSelect.addEventListener('change', updateMessage);
+    messageTypeSelect.addEventListener('change', updateMessage);
+
+    // Initialize with default values
+    updateMessage();
+  });
+</script>
