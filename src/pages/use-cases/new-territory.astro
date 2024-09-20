@@ -2,31 +2,40 @@
 import Layout from '../../layouts/Layout.astro';
 
 import Button from '../../components/Button.astro';
-import Header from '../../components/Navigation.astro';
+import Navigation from '../../components/Navigation.astro';
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
-
-import expandingSales from '/src/img/expanding-sales.svg';
-import newTerritory from '/src/img/new-territory.svg';
-import firstSales from '/src/img/first-sales.svg';
-import hiringPartnerships from '/src/img/hiring-partnerships.svg';
-
 import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
 
 import "../../styles/main.scss";
-import UseCaseBlock from '../../components/UseCaseBlock.astro';
 
+// Define a map of supported languages and their respective H1 content
+const translations = {
+  en: 'For companies who want to extend sales to new markets',
+  fr: 'Pour les entreprises qui souhaitent étendre leurs ventes à de nouveaux marchés',
+  es: 'Para las empresas que quieren expandir las ventas a nuevos mercados',
+  de: 'Für Unternehmen, die ihren Vertrieb auf neue Märkte ausdehnen möchten'
+  // Add more languages as needed
+};
+
+// Access the query parameter using Astro.request.url
+const url = new URL(Astro.request.url);
+const lang = url.searchParams.get('lang') || 'en'; // Default to English if no lang parameter
+
+// Get the H1 content based on the lang parameter, or default to English
+const h1Content = translations[lang] || translations['en'];
 ---
 
 <Layout title="Dream use cases - extend sales to new markets">
+	<Navigation />
 	<header>
-		<Header />
 		<div class="hero-elements main-content">
-			<section class="header-text ">
+			<section class="header-text">
                 <small class="tag"><a href="/use-cases">Use cases</a></small>
-				<h1 class="page-title">For companies who want to extend sales to new markets</h1>
+				<h1 class="page-title">{h1Content}</h1>
 				<span>Dream now enables companies to introduce new markets to their outbound sales in a matter of hours. 
-                    Where companies would previously have had to hire sales people that covered all the desired languages requirements - now companies that kick start new market penetration when they want.                     
+                    Where companies would previously have had to hire sales people that covered all the desired languages requirements - now companies can kick start new market penetration when they want.                     
                 </span>
                 <Button 	
 					label="Get started with Dream"
@@ -59,10 +68,10 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
 			<p>Get your sales running on autopilot. Start using Dream today.</p>
 			<Button 	
-							label="Book your demo"
-							href="https://calendly.com/cgdcowley/discovery-call-dream" 
-							target="_blank"
-						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+				label="Book your demo"
+				href="https://calendly.com/cgdcowley/discovery-call-dream" 
+				target="_blank"
+			><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
 		</article>
 		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
 	</section>

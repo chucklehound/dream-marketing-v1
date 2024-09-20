@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 
 import Button from '../../components/Button.astro';
-import Header from '../../components/Navigation.astro';
+import Navigation from '../../components/Navigation.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
@@ -13,8 +13,8 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 ---
 
 <Layout title="Target the right company, at the right time, with the right message">
+	<Navigation />
 	<header>
-		<Header />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
                 <small class="tag"><a href="/use-cases">Use cases</a></small>
