@@ -18,13 +18,6 @@ const translations = {
   de: 'Für Unternehmen, die ihren Vertrieb auf neue Märkte ausdehnen möchten'
   // Add more languages as needed
 };
-
-// Access the query parameter using Astro.request.url
-const url = new URL(Astro.request.url);
-const lang = url.searchParams.get('lang') || 'en'; // Default to English if no lang parameter
-
-// Get the H1 content based on the lang parameter, or default to English
-const h1Content = translations[lang] || translations['en'];
 ---
 
 <Layout title="Dream use cases - extend sales to new markets">
@@ -33,7 +26,7 @@ const h1Content = translations[lang] || translations['en'];
 		<div class="hero-elements main-content">
 			<section class="header-text">
                 <small class="tag"><a href="/use-cases">Use cases</a></small>
-				<h1 class="page-title">{h1Content}</h1>
+				<h1 id="page-title" class="page-title">For companies who want to extend sales to new markets</h1> <!-- Default text -->
 				<span>Dream now enables companies to introduce new markets to their outbound sales in a matter of hours. 
                     Where companies would previously have had to hire sales people that covered all the desired languages requirements - now companies can kick start new market penetration when they want.                     
                 </span>
@@ -75,4 +68,24 @@ const h1Content = translations[lang] || translations['en'];
 		</article>
 		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
 	</section>
+
+	<!-- Add client-side script to handle the dynamic language switch -->
+	<script>
+		const translations = {
+			en: 'For companies who want to extend sales to new markets',
+			fr: 'Pour les entreprises qui souhaitent étendre leurs ventes à de nouveaux marchés',
+			es: 'Para las empresas que quieren expandir las ventas a nuevos mercados',
+			de: 'Für Unternehmen, die ihren Vertrieb auf neue Märkte ausdehnen möchten'
+		};
+
+		// Get the current URL search params
+		const params = new URLSearchParams(window.location.search);
+		const lang = params.get('lang') || 'en'; // Default to 'en' if no lang parameter
+
+		// Update the H1 content based on the language
+		const pageTitle = document.getElementById('page-title');
+		if (pageTitle) {
+			pageTitle.textContent = translations[lang] || translations['en'];
+		}
+	</script>
 </Layout>
