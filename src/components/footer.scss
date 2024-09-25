@@ -1,9 +1,10 @@
 @import '../styles/main.scss';
 
 .footer {
-    background-color: $color-wallstreet-black;
+    background: $color-wallstreet-black radial-gradient(rgba($color-wallstreet-black,1) 50%, rgba($color-pomona-black,.3)) center no-repeat;
+    background-size: cover;
     color: $color-plus-white;
-    padding: 96px 24px 32px;
+    padding: 64px 24px 32px;
     min-height: 440px;
     display: flex;
     flex-direction: column;
@@ -17,7 +18,7 @@
       max-width: 1152px;
       gap: 32px;
       flex-wrap: wrap;
-      margin: auto;
+      margin: auto auto 48px;
   
       .footer-section {
         flex: 1;
@@ -86,7 +87,9 @@
         max-width: 1152px;
         text-align: left;
         color: $color-grays-light;
-        border-top: 1px solid $color-pomona-black;
+        border-top: 1px solid transparent; /* Make the border itself transparent */
+border-image: linear-gradient(90deg, rgba(255, 254, 250, 0.1), rgba(255, 254, 250, 0.2), rgba(255, 254, 250, 0.1)) 1;
+
       }
   }
   

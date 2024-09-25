@@ -3,13 +3,16 @@ import Layout from '../layouts/Layout.astro';
 
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
 
 
 import "../styles/main.scss";
 ---
 
 <Layout title="Dream Terms of Service">
+    <Navigation />
     <header>
+        <Logo />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">Terms of Service</h1>
@@ -87,5 +90,5 @@ import "../styles/main.scss";
     <p>Please review our <a href="https://usedream.ai/privacy" target="_blank">Privacy Policy</a> to understand our practices regarding the collection and use of your personal information.</p>
         </section>
     </main>
-    <footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
+    <Footer />
 </Layout>

@@ -165,29 +165,33 @@ main {
     position: relative;
     z-index: 2;
 
-    & > section {
-        position: relative;
-
-        &:after, &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            height: 100%;
-            width: 1px;
-            background: rgba($color-wallstreet-black, .1);
-            top: 0;
-            left: -1.5vw;
-        }
+    @media (min-width: 1010px) {
+        & > section {
+            position: relative;
     
-        &:after {
-            right: -1.5vw;
-            left: auto;
-        }
-
-        &:first-of-type {
-
             &:after, &:before {
-                background: linear-gradient(rgba($color-wallstreet-black, 0), rgba($color-wallstreet-black, .1) 20%);
+                content: '';
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 1px;
+                background: rgba($color-wallstreet-black, .15);
+                top: 0;
+                left: -1.5vw;
+            }
+        
+            &:after {
+                right: -1.5vw;
+                left: auto;
+            }
+    
+            &:first-of-type {
+    
+                &:after, &:before {
+                    height: 105%;
+                    top: -5%;
+                    background: linear-gradient(rgba($color-wallstreet-black, 0), rgba($color-wallstreet-black, .15) 20%);
+                }
             }
         }
     }
@@ -205,6 +209,10 @@ main {
 
         @media (min-width: 768px) {
             padding: 96px 32px;
+        }
+
+        &:first-of-type {
+            padding-top: 32px;
         }
     }
 }
@@ -228,12 +236,12 @@ main {
         gap: 8px;
         align-self: stretch;
         border-radius: 12px 12px 0px 0px;
-        background: linear-gradient(0deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+        background: $color-plus-white linear-gradient(0deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
 
         @media (min-width: 800px) {
             flex-direction: row;
             border-radius: 0px 12px 12px 0px;
-            background: linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+            background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
         }
 
         .tool-card, .tool-image {
@@ -779,7 +787,7 @@ footer {
 
 .final-cta {
     background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center bottom -30vh no-repeat;
-    padding: 24px;
+    padding: 24px 24px 64px;
 
     .cta-container {
         background: $color-performa-black url('/src/img/cta-pulse.svg') no-repeat center -224px;
@@ -851,7 +859,7 @@ footer {
         font-style: normal;
         font-weight: 300;
         line-height: 112px; /* 116.667% */
-        background: linear-gradient(101deg, #5C6880 0%, #838B9B 100%);
+        background: #fff linear-gradient(101deg, #5C6880 0%, #838B9B 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1143,6 +1151,19 @@ footer {
                 p:last-of-type {
                     margin-bottom: 0;
                 }
+
+                @media (max-width: 800px) {
+                    flex-direction: column-reverse;
+
+                    .sequence-text {
+                        padding: 32px 24px;
+                    }
+
+                    .sequence-img {
+                        min-height: 300px;
+                        max-height: 360px;
+                    }
+                }
             }
 
             &:nth-of-type(4) {
@@ -1163,6 +1184,47 @@ footer {
             
                 .sequence-img {
                     background: rgba($color-light-green, .05);
+                }
+            }
+        }
+    }
+
+    .customer-quote {
+
+        .quote-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+
+            blockquote {
+                max-width: 560px;
+                text-align: center;
+
+                p {
+                    font-size: 20px;
+                    line-height: 28px;
+                    margin-bottom: 12px;
+                    color: $color-wallstreet-black;
+                }
+
+                cite {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 16px;
+                    margin-top: 32px;
+
+                    span {
+                        font-style: normal;
+                        color: $color-pomona-black;
+                    }
+
+                    img {
+                        max-height: 48px;
+                    }
                 }
             }
         }
