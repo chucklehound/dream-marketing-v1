@@ -4,9 +4,13 @@ interface Props {
 
 const { } = Astro.props;
 
-import Logo from './Logo.astro';
 import '../components/navigation.scss';
 import hamburgerIcon from '/src/img/nav.svg';
+
+import expandingSales from '/src/img/expanding-sales.svg';
+import newTerritory from '/src/img/new-territory.svg';
+import firstSales from '/src/img/first-sales.svg';
+import hiringPartnerships from '/src/img/hiring-partnerships.svg';
 ---
 
 <div class="navigation">
@@ -24,10 +28,10 @@ import hamburgerIcon from '/src/img/nav.svg';
         <li class="dropdown">
             <a href="/use-cases" class="dropdown-toggle">Use cases</a>
             <ul class="dropdown-menu">
-                <li><a href="/use-cases/expanding-sales">Expanding sales</a></li>
-                <li><a href="/use-cases/new-territory">New Territory Expansion</a></li>
-                <li><a href="/use-cases/first-sales-hire">Your First Sales Hire</a></li>
-                <li><a href="/use-cases/hiring-partnerships">Hiring for Partnerships</a></li>
+                <li><a href="/use-cases/expanding-sales"><img src={expandingSales.src} alt="" role="presentation">Expanding sales</a></li>
+                <li><a href="/use-cases/new-territory"><img src={newTerritory.src} alt="" role="presentation">New Territory Expansion</a></li>
+                <li><a href="/use-cases/first-sales-hire"><img src={firstSales.src} alt="" role="presentation">Your First Sales Hire</a></li>
+                <li><a href="/use-cases/hiring-partnerships"><img src={hiringPartnerships.src} alt="" role="presentation">Hiring for Partnerships</a></li>
             </ul>
         </li>
         <!-- <li><a href="/">Resources</a></li> -->
@@ -38,7 +42,6 @@ import hamburgerIcon from '/src/img/nav.svg';
     <a href="https://app.usedream.ai" target="_blank" class="login-button mobile-login">Log in</a>
   </nav>
 
-  <Logo />
 </div>
 
 <script>

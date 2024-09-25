@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    position: relative;
 
     *, * > * {
         margin: 0;
@@ -29,27 +30,57 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: $spacing*3 $spacing*2;
-    background: linear-gradient($color-dream-yellow, $color-plus-white);
+    padding: $spacing*2;
     background-size: cover;
     gap: 32px;
+    position: relative;
+    z-index: 1;
+    padding-top: 32px;
+
+    svg.logo {
+        height: 32px;
+  
+        @media (min-width: 768px) {
+            height: 40px;
+        }
+    }
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 200vh;
+        position: absolute;
+        top: calc(-100vh + 20px);
+        left: 0%;
+        z-index: 0;
+        pointer-events: none;
+        background-size: 1536px;
+        z-index: -1;
+        background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center top -30vh no-repeat;
+
+    }
 
     &:after {
         content: '';
         width: 100%;
         height: 200vh;
         position: absolute;
-        top: calc(-100vh + 40px);
+        top: calc(-100vh + 20px);
         left: 0%;
         z-index: 0;
         pointer-events: none;
         background: url('/src/img/circles.svg') no-repeat 50%;
-        background-size: 1600px;
+        background-size: 1536px;
+
+        @media (max-width: 1000px) {
+            background-size: 1152px;
+            
+        }
     }
 
     @media (min-width: 768px) {
-        padding: $spacing*5 $spacing*4;
-        min-height: 700px;
+        min-height: 60vh;
+        max-height: 768px;
     }
 
     .hero-elements {
@@ -131,7 +162,35 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    position: relative;
+    z-index: 2;
+
+    & > section {
+        position: relative;
+
+        &:after, &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 1px;
+            background: rgba($color-wallstreet-black, .1);
+            top: 0;
+            left: -1.5vw;
+        }
+    
+        &:after {
+            right: -1.5vw;
+            left: auto;
+        }
+
+        &:first-of-type {
+
+            &:after, &:before {
+                background: linear-gradient(rgba($color-wallstreet-black, 0), rgba($color-wallstreet-black, .1) 20%);
+            }
+        }
+    }
 
     h2 {
         @include headline-text-gradient;
@@ -240,7 +299,7 @@ main {
 }
 
 .main-content {
-    max-width: 1152px;
+    max-width: calc(1152px + 64px);
     width: 100%;
     margin: auto;
 
@@ -974,7 +1033,7 @@ footer {
     .sequence-section {
         display: flex;
         flex-direction: column;
-        gap: 64px;
+        gap: 72px;
 
         .sequence-item {
             position: relative;
@@ -985,7 +1044,7 @@ footer {
                 position: absolute;
                 z-index: 0;
                 top: 16px;
-                bottom: -64px;
+                bottom: -70px;
                 left: 21px;
             }
 
@@ -1050,17 +1109,53 @@ footer {
                 position: relative;
                 z-index: 1;
                 display: flex;
-                padding: 32px 32px 32px 44px;
-                align-items: center;
-                gap: 32px;
+                align-items: stretch;
                 align-self: stretch;
+                justify-content: stretch;
                 border-radius: 16px;
                 border: 1px solid var(--Grays-Light, #C1C5CD);
                 background: var(--White, #FFF);
                 box-shadow: 0px 1px 2px 0px rgba(21, 38, 71, 0.20);
+                overflow: hidden;
+                min-height: 480px;
+
+                .sequence-text {
+                    padding: 80px 32px 80px 44px;
+                    flex: 1 50%;
+                    margin: auto;
+                }
+
+                .sequence-img {
+                    flex: 1 50%;
+                    padding: 0;
+                    background: rgba($color-light-blue, .05);
+                    display: flex;
+                    justify-content: stretch;
+                    align-items: stretch;
+
+                    img {
+                        max-width: 100%;
+                        object-fit: cover;
+                        object-position: 0;
+                    }
+                }
 
                 p:last-of-type {
                     margin-bottom: 0;
+                }
+            }
+
+            &:nth-of-type(1n+2) {
+            
+                .sequence-img {
+                    background: rgba($color-light-red, .05);
+                }
+            }
+
+            &:nth-of-type(1n+3) {
+            
+                .sequence-img {
+                    background: rgba($color-light-green, .05);
                 }
             }
         }

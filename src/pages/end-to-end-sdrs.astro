@@ -3,9 +3,15 @@ import Layout from '../layouts/Layout.astro';
 
 import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
-import MessageSelector from  '../components/MessageSelector.astro';
+import Logo from '../components/Logo.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import e2eLists from '/src/img/e2e-lists.png';
+import e2eResearch from '/src/img/e2e-research.png';
+import e2eProspect from '/src/img/e2e-prospect.png';
+import e2eMessage from '/src/img/e2e-message.png';
+
 
 import "../styles/main.scss";
 ---
@@ -13,6 +19,7 @@ import "../styles/main.scss";
 <Layout title="With Dream’s End-to-end SDRs all you have to do is take the call">
     <Navigation />
 	<header>
+        <Logo />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">With Dream’s End-to-end SDRs <br />all you have to do is take the call</h1>
@@ -21,19 +28,21 @@ import "../styles/main.scss";
 		</div>
 	</header>
 	<main>
-        <section class="content-list">
-            <article class="sequence-section main-content">
+        <section class="content-list main-content">
+            <article class="sequence-section ">
                 <div class="sequence-item">
                     <div class="sequence-title">
                         <aside>Sourcing</aside>    
-                        <h4>Deep target lists from multiple sources, all in one place</h4>
+                        <h4>Create deep target lists from multiple sources, all in one place</h4>
                         <div class="sequence-content">
                             <div class="sequence-text">
                                 <p>Dream’s sourcing agents uses advanced search techniques to find more companies, faster.</p>
                                 <p>Use multiple search types to find companies. Search by criteria like company size and location, or go deeper and explore based on signals like hiring, announcements, and news.</p>
                                 <p>Easily import your own lists, or connect your CRM to automate target ingestion. Enhance them with extra data sources to have all your information in one place.</p>
                             </div>
-                            <img class="sequence-img" alt="" role="presentation"/> 
+                            <div class="sequence-img">
+                                <img src={e2eLists.src} alt="" role="presentation"/> 
+                            </div>
                         </div>
                     </div>    
                 </div>        
@@ -47,7 +56,9 @@ import "../styles/main.scss";
                                 <p>Add complex data within minutes, with full control over the format and content. Set triggers in your lists to ensure your messages land when prospects want to buy.</p>
                                 <p>Dream isn’t just a library of information. Everything you add gives your agents more context to make better decisions, send better messages, and sell better. </p>
                             </div>
-                            <img class="sequence-img" alt="" role="presentation"/> 
+                            <div class="sequence-img">
+                                <img src={e2eResearch.src} alt="" role="presentation"/> 
+                            </div>
                         </div>
                     </div>    
                 </div>           
@@ -61,7 +72,9 @@ import "../styles/main.scss";
                                 <p>Use search sequences to make sure you never miss a prospect. Set up multiple search sources in one pass, and Dream will use your context to rank them. </p>
                                 <p>Your research is your key - search against datapoints you’ve created to find relevant people. Need to find the hiring manager for open roles, or someone mentioned in an article. Dream can do that. </p>
                             </div>
-                            <img class="sequence-img" alt="" role="presentation"/> 
+                            <div class="sequence-img">
+                                <img src={e2eProspect.src} alt="" role="presentation"/> 
+                            </div>
                         </div>
                     </div>    
                 </div>    
@@ -72,10 +85,12 @@ import "../styles/main.scss";
                         <div class="sequence-content">
                             <div class="sequence-text">
                                 <p>The core of a good campaign is your message. What it says, when it arrives, and who it reaches. Compared to Gen 1.0 sales agents that relied on simple customisation, Dream uses deeper personalisation to match every message to its recipient.</p>
-                                <p>You have full control over your messages. Use research to inform your prompts, then review and edit the output. Or use your existing templates and tap into Dream’s customisation. </p>
+                                <p>You have full control over your messages. Use research to inform your prompts, then review and edit the output. Or enhance your existing templates with Dream’s research-led personalisation. </p>
                                 <p>Testing a new market? Dream can hold conversations in 40+ languages, letting you test the waters on expansion or driving growth where you’re doing well.</p>
                             </div>
-                            <img class="sequence-img" alt="" role="presentation"/> 
+                            <div class="sequence-img">
+                                <img src={e2eMessage.src} alt="" role="presentation"/> 
+                            </div>
                         </div>
                     </div>    
                 </div>        
