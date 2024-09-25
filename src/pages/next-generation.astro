@@ -4,6 +4,8 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
 import MessageSelector from  '../components/MessageSelector.astro';
+import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
@@ -13,6 +15,7 @@ import "../styles/main.scss";
 <Layout title="Target the right company, at the right time, with the right message">
     <Navigation />
 	<header>
+        <Logo />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">Technology has got smarter,<br />
@@ -94,6 +97,6 @@ import "../styles/main.scss";
 							target="_blank"
 						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
 		</article>
-		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
 	</section>
+    <Footer />
 </Layout>

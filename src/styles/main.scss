@@ -778,7 +778,7 @@ footer {
 }
 
 .final-cta {
-    background: linear-gradient($color-plus-white, $color-dream-yellow);
+    background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center bottom -30vh no-repeat;
     padding: 24px;
 
     .cta-container {
@@ -1145,14 +1145,21 @@ footer {
                 }
             }
 
-            &:nth-of-type(1n+2) {
+            &:nth-of-type(4) {
+            
+                .sequence-img {
+                    background: rgba($color-light-blue, .05);
+                }
+            }
+
+            &:nth-of-type(2), &:nth-of-type(5) {
             
                 .sequence-img {
                     background: rgba($color-light-red, .05);
                 }
             }
 
-            &:nth-of-type(1n+3) {
+            &:nth-of-type(3) {
             
                 .sequence-img {
                     background: rgba($color-light-green, .05);

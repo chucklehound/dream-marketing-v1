@@ -4,6 +4,8 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
 import Logo from '../components/Logo.astro';
+import Footer from '../components/Footer.astro';
+
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
@@ -11,6 +13,7 @@ import e2eLists from '/src/img/e2e-lists.png';
 import e2eResearch from '/src/img/e2e-research.png';
 import e2eProspect from '/src/img/e2e-prospect.png';
 import e2eMessage from '/src/img/e2e-message.png';
+import e2eAdmin from '/src/img/e2e-admin.png';
 
 
 import "../styles/main.scss";
@@ -103,7 +106,9 @@ import "../styles/main.scss";
                                 <p>Let your sales team spend more time on calls & closing deals, Dream takes on the time-consuming work of answering questions and booking meetings. You can review all communication with a prospect beforehand to see what drove their interest.</p>
                                 <p>If your agents have to escalate it’s shared directly to the channels you use most - letting you take action directly through apps like Slack. Notes are posted automatically to your CRM.</p>
                             </div>
-                            <img class="sequence-img" alt="" role="presentation"/> 
+                            <div class="sequence-img">
+                                <img src={e2eAdmin.src} alt="" role="presentation"/> 
+                            </div>
                         </div>
                     </div>    
                 </div>                  
@@ -120,6 +125,6 @@ import "../styles/main.scss";
 							target="_blank"
 						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
 		</article>
-		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
 	</section>
+    <Footer />
 </Layout>

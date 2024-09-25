@@ -4,6 +4,8 @@ import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
 import Navigation from '../../components/Navigation.astro';
 import UseCaseBlock from '../../components/UseCaseBlock.astro';
+import Footer from '../../components/Footer.astro';
+
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
@@ -57,8 +59,9 @@ import "../../styles/main.scss";
 				target="_blank"
 			><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
 		</article>
-		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
+		
 	</section>
+	<Footer />
 
 	<!-- Add client-side script to handle the dynamic language switch -->
 	<script>

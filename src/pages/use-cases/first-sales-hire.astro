@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 
 import Button from '../../components/Button.astro';
 import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
@@ -16,6 +18,7 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 <Layout title="Target the right company, at the right time, with the right message">
 	<Navigation />
 	<header>
+		<Logo />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
                 <small class="tag"><a href="/use-cases">Use cases</a></small>
@@ -60,6 +63,6 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 							target="_blank"
 						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
 		</article>
-		<footer><small>Copyright Dream 2024</small> <small><a href="/privacy">Privacy Policy</a></small></footer>
 	</section>
+	<Footer />
 </Layout>

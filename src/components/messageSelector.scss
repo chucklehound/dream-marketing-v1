@@ -59,10 +59,12 @@
 
   #message-display {
     display: flex;
+    flex-direction: column;
     padding: 24px 40px 40px 40px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    text-align: left;
     align-self: stretch;
 
     p {

@@ -18,10 +18,10 @@ const messages = {
     }
   },
   'Gen 2.0': {
-    'Person 1': {
-      'Initial message': 'Hello, this is GPT4.0 talking to Person 1 for the first time.',
-      'Follow-up': 'GPT4.0 follow-up message for Person 1.',
-      'Reply': 'GPT4.0 reply to Person 1.'
+  'Person 1': {
+    'Initial message': 'Hi Karen,\n\nI read that Tullibardine recently launched your new 18YO whisky, with some great feedback on the packaging design. Congratulations on that success! It got me thinking about how AI could potentially supercharge your sales and distribution efforts for new product launches.\n\nHave you explored using AI sales agents for your outreach campaigns? If not, it could be a game-changer for Tullibardine. Here\'s why:\n\n* Global reach: AI can manage outreach in multiple languages, perfect for expanding your international market presence beyond the UK, Europe, and USA.\n* 24/7 engagement: Generates personalized outreach, handles responses, and schedules calls with potential distributors and retailers around the clock.\n* Targeted approach: Conducts deep research on potential accounts, identifying the right contacts and optimal timing to maximize conversion rates for your premium whiskies.\n\nHow does a quick demo with one of our founders sound? We\'d love to show you how Dream AI could help amplify Tullibardine\'s sales efforts for your boutique, family-owned distillery.\n\nLooking forward to hearing from you,\nChris',
+    'Follow-up': 'GPT4.0 follow-up message for Person 1.',
+    'Reply': 'GPT4.0 reply to Person 1.'
     },
     'Person 2': {
       'Initial message': 'Hi, this is GPT4.0 talking to Person 2 for the first time.',
@@ -102,17 +102,20 @@ import '../components/messageSelector.scss';
     const loadingSpinner = document.getElementById('loading-spinner');
 
     const updateMessage = () => {
-      const gptVersion = gptSelect.value;
-      const person = personSelect.value;
-      const messageType = messageTypeSelect.value;
+    const gptVersion = gptSelect.value;
+    const person = personSelect.value;
+    const messageType = messageTypeSelect.value;
 
       loadingSpinner.hidden = false;
       messageDisplay.innerHTML = '';
 
       setTimeout(() => {
         loadingSpinner.hidden = true;
-        const message = messages[gptVersion]?.[person]?.[messageType];
+        let message = messages[gptVersion]?.[person]?.[messageType];
+        
         if (message) {
+          // Replace line breaks with <br> tags for HTML rendering
+          message = message.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
           messageDisplay.innerHTML = `<p>${message}</p>`;
         } else {
           messageDisplay.innerHTML = '<p>Message not found for selected options!</p>';
