@@ -1,38 +1,14 @@
 ---
 const messages = {
   'Gen 1.0': {
-    'Person 1': {
-      'Initial message': 'Hello, this is GPT3.5 talking to Person 1 for the first time.',
-      'Follow-up': 'GPT3.5 follow-up message for Person 1.',
-      'Reply': 'GPT3.5 reply to Person 1.'
-    },
-    'Person 2': {
-      'Initial message': 'Hi, this is GPT3.5 talking to Person 2 for the first time.',
-      'Follow-up': 'GPT3.5 follow-up message for Person 2.',
-      'Reply': 'GPT3.5 reply to Person 2.'
-    },
-    'Person 3': {
-      'Initial message': 'Greetings, this is GPT3.5 reaching out to Person 3.',
-      'Follow-up': 'GPT3.5 follow-up message for Person 3.',
-      'Reply': 'GPT3.5 reply to Person 3.'
-    }
+    'Sales Coordinator at Tullibardine Whisky': 'Hello Karen, this is GPT3.5 talking to you for the first time. I wanted to reach out and discuss how AI could help Tullibardine Whisky streamline sales processes.',
+    'Head of Sales at Microsoft': 'Hello, this is GPT3.5 reaching out to discuss how AI can revolutionize your sales operations at Microsoft.',
+    'CEO at Apple': 'Greetings, this is GPT3.5 reaching out to discuss the future of AI at Apple and how it can transform your global outreach.'
   },
   'Gen 2.0': {
-  'Sales Coordinator at Tullibardine Whisky': {
-    'Initial message': 'Hi Karen,\n\nI read that Tullibardine recently launched your new 18YO whisky, with some great feedback on the packaging design. Congratulations on that success! It got me thinking about how AI could potentially supercharge your sales and distribution efforts for new product launches.\n\nHave you explored using AI sales agents for your outreach campaigns? If not, it could be a game-changer for Tullibardine. Here\'s why:\n\n* Global reach: AI can manage outreach in multiple languages, perfect for expanding your international market presence beyond the UK, Europe, and USA.\n* 24/7 engagement: Generates personalized outreach, handles responses, and schedules calls with potential distributors and retailers around the clock.\n* Targeted approach: Conducts deep research on potential accounts, identifying the right contacts and optimal timing to maximize conversion rates for your premium whiskies.\n\nHow does a quick demo with one of our founders sound? We\'d love to show you how Dream AI could help amplify Tullibardine\'s sales efforts for your boutique, family-owned distillery.\n\nLooking forward to hearing from you,\nChris',
-    'Follow-up': 'GPT4.0 follow-up message for Person 1.',
-    'Reply': 'GPT4.0 reply to Person 1.'
-    },
-    'Person 2': {
-      'Initial message': 'Hi, this is GPT4.0 talking to Person 2 for the first time.',
-      'Follow-up': 'GPT4.0 follow-up message for Person 2.',
-      'Reply': 'GPT4.0 reply to Person 2.'
-    },
-    'Person 3': {
-      'Initial message': 'Greetings, this is GPT4.0 reaching out to Person 3.',
-      'Follow-up': 'GPT4.0 follow-up message for Person 3.',
-      'Reply': 'GPT4.0 reply to Person 3.'
-    }
+    'Sales Coordinator at Tullibardine Whisky': `Hi Karen,\n\nI read that Tullibardine recently launched a new 18-year-old whisky with updated packaging design. Congratulations on the positive feedback - it's always exciting when a project comes together so well!\n\nSpeaking of projects coming together, I wanted to reach out about how AI could potentially revolutionize your sales and logistics processes at Tullibardine. As an independent, family-owned distillery, I imagine you're always looking for ways to streamline operations while maintaining that personal touch.\n\nHere's how our AI sales tool could be a game-changer for you:\n\n* Right company, right time: Conducts deep research on your target accounts, identifying which whisky enthusiasts and retailers to reach out to and when, maximizing conversion rates.\n* 10x outreach: Generates personalized outreach, handles engagement, and schedules calls for your sales team 24/7, allowing you to focus on crafting exceptional whiskies.\n* Global markets: As you're exporting to the UK, Europe, and the USA, our tool can handle outreach in multiple languages, helping you expand your international presence.\n\nHow does an intro call with one of our founders sound to run through a demo of the platform? We'd love to show you how we can help Tullibardine reach more whisky lovers while maintaining that boutique, family-owned spirit.\n\nBest regards,\nChris`,
+    'Head of Sales at Microsoft': 'Hi, this is GPT4.0 reaching out to discuss how AI can transform your sales processes at Microsoft by increasing automation and global reach.',
+    'CEO at Apple': 'Hello, GPT4.0 here. I wanted to explore how AI could support Apple’s global growth strategy with innovative solutions.'
   }
 };
 
@@ -40,95 +16,82 @@ const messages = {
 const messagesJson = JSON.stringify(messages);
 
 import '../components/messageSelector.scss';
+
 ---
 
 <article class="message-examples">
-    <h2 id="messageSelectorHeading">See what a difference Gen 2.0 makes to your messages</h2>
-    <div id="message-selector" class="message-selector" data-messages={messagesJson} role="region" aria-labelledby="messageSelectorHeading">
-    
-      <div class="selectors">
-        <!-- GPT Version Select -->
-        <label for="gpt-select" aria-label="Select GPT Version">GPT Version</label>
-        <select id="gpt-select" aria-live="polite">
-          <option value="Gen 1.0" selected>Gen 1.0</option>
-          <option value="Gen 2.0">Gen 2.0</option>
-        </select>
-    
-        <!-- Person Select -->
-        <label for="person-select" aria-label="Select Person">Person</label>
-        <select id="person-select" aria-live="polite">
-          <option value="Person 1" selected>Person 1</option>
-          <option value="Person 2">Person 2</option>
-          <option value="Person 3">Person 3</option>
-        </select>
-    
-        <!-- Message Type Select -->
-        <!-- <label for="message-type-select" aria-label="Select Message Type">Message Type</label>
-        <select id="message-type-select" aria-live="polite">
-          <option value="Initial message" selected>Initial message</option>
-          <option value="Follow-up">Follow-up</option>
-          <option value="Reply">Reply</option>
-        </select> -->
-      </div>
-    
-      <!-- Display Message -->
-      <div id="message-display" class="message-display" aria-live="polite">
-        <p>Select options above to see the message.</p>
-      </div>
-    
-      <!-- Loading Spinner -->
-      <div id="loading-spinner" class="loading-spinner" role="status" aria-live="assertive" aria-busy="true" hidden>
-        <span class="visually-hidden">Loading...</span>
-        🔄
-      </div>
+  <h2 id="messageSelectorHeading">See what a difference Gen 2.0 makes to your messages</h2>
+  <div id="message-selector" class="message-selector" data-messages={messagesJson} role="region" aria-labelledby="messageSelectorHeading">
+  
+    <div class="selectors">
+      <!-- GPT Version Select -->
+      <label for="gpt-select" aria-label="Select GPT Version">GPT Version</label>
+      <select id="gpt-select" aria-live="polite">
+        <option value="Gen 1.0" selected>Gen 1.0</option>
+        <option value="Gen 2.0">Gen 2.0</option>
+      </select>
+  
+      <!-- Person Select -->
+      <label for="person-select" aria-label="Select Person">Person</label>
+      <select id="person-select" aria-live="polite">
+        <option value="Sales Coordinator at Tullibardine Whisky" selected>Sales Coordinator at Tullibardine Whisky</option>
+        <option value="Head of Sales at Microsoft">Head of Sales at Microsoft</option>
+        <option value="CEO at Apple">CEO at Apple</option>
+      </select>
     </div>
+  
+    <!-- Display Message -->
+    <div id="message-display" class="message-display" aria-live="polite">
+      <p>Select options above to see the message.</p>
+    </div>
+  
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" role="status" aria-live="assertive" aria-busy="true" hidden>
+      <span class="visually-hidden">Loading...</span>
+      🔄
+    </div>
+  </div>
 </article>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const messageSelector = document.getElementById('message-selector');
+document.addEventListener('DOMContentLoaded', () => {
+  const messageSelector = document.getElementById('message-selector');
 
-    if (!messageSelector) {
-      console.error("Message selector element not found.");
-      return;
-    }
+  if (!messageSelector) {
+    console.error("Message selector element not found.");
+    return;
+  }
 
-    const messages = JSON.parse(messageSelector.dataset.messages);
+  const messages = JSON.parse(messageSelector.dataset.messages);
 
-    const gptSelect = document.getElementById('gpt-select') as HTMLSelectElement;
-    const personSelect = document.getElementById('person-select') as HTMLSelectElement;
-    const messageTypeSelect = document.getElementById('message-type-select') as HTMLSelectElement;
-    const messageDisplay = document.getElementById('message-display');
-    const loadingSpinner = document.getElementById('loading-spinner');
+  const gptSelect = document.getElementById('gpt-select') as HTMLSelectElement;
+  const personSelect = document.getElementById('person-select') as HTMLSelectElement;
+  const messageDisplay = document.getElementById('message-display');
+  const loadingSpinner = document.getElementById('loading-spinner');
 
-    const updateMessage = () => {
+  const updateMessage = () => {
     const gptVersion = gptSelect.value;
     const person = personSelect.value;
-    const messageType = messageTypeSelect.value;
 
-      loadingSpinner.hidden = false;
-      messageDisplay.innerHTML = '';
+    loadingSpinner.hidden = false;
+    messageDisplay.innerHTML = '';
 
-      setTimeout(() => {
-        loadingSpinner.hidden = true;
-        let message = messages[gptVersion]?.[person]?.[messageType];
-        
-        if (message) {
-          // Replace line breaks with <br> tags for HTML rendering
-          message = message.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
-          messageDisplay.innerHTML = `<p>${message}</p>`;
-        } else {
-          messageDisplay.innerHTML = '<p>Message not found for selected options!</p>';
-        }
-      }, 500); // Simulated delay
-    };
+    setTimeout(() => {
+      loadingSpinner.hidden = true;
+      let message = messages[gptVersion]?.[person];
+      
+      if (message) {
+        message = message.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+        messageDisplay.innerHTML = `<p>${message}</p>`;
+      } else {
+        messageDisplay.innerHTML = '<p>Message not found for selected options!</p>';
+      }
+    }, 500); // Simulated delay
+  };
 
-    // Add event listeners to the selects
-    gptSelect.addEventListener('change', updateMessage);
-    personSelect.addEventListener('change', updateMessage);
-    messageTypeSelect.addEventListener('change', updateMessage);
+  gptSelect.addEventListener('change', updateMessage);
+  personSelect.addEventListener('change', updateMessage);
 
-    // Initialize with default values
-    updateMessage();
-  });
+  updateMessage();
+});
 </script>
