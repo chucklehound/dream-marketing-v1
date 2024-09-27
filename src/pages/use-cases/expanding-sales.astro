@@ -14,6 +14,12 @@ import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
 import "../../styles/main.scss";
 import UseCaseBlock from '../../components/UseCaseBlock.astro';
 
+import introImage1 from '/src/img/use-target.png';
+import introImage2 from '/src/img/use-agents.png';
+import introImage3 from '/src/img/use-research.png';
+import introImage4 from '/src/img/use-language.png';
+import introImage5 from '/src/img/use-presale.png';
+
 ---
 
 <Layout title="Dream use cases - Expanding sales">
@@ -24,7 +30,8 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 			<section class="header-text ">
                 <small class="tag"><a href="/use-cases">Use cases</a></small>
 				<h1 class="page-title">For companies who want to ramp up outbound sales</h1>
-				<span>Traditionally, companies looking to expand their sales efforts would have turned to increasing the size of their sales team. Hiring new SDRs/BDRs to increase the amount of outbound sales that they can do. That is now the past. Companies now use Dream to reliably expand their sales efforts, without the cost & pain of hiring big junior sales teams. 
+				<span>Traditionally, companies looking to expand their sales efforts would have turned to increasing the size of their sales team. Hiring new SDRs/BDRs to increase the amount of outbound sales that they can do. That is now the past. </span>
+				<span>Companies now use Dream to reliably expand their sales efforts, without the cost & pain of hiring big junior sales teams. 
                 </span>
                 <Button 	
 					label="Get started with Dream"
@@ -36,7 +43,27 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 	</header>
 	<main>
 		<section class="main-content content-row">
-			<UseCaseBlock state="state2" />
+			<article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Ramp up your SDR headcount instantly</h2>
+					<div class="tool-container">
+					  <div class="tool-card">
+						<div class="tool-content">
+						  <h3 class="tool-title">Deploy new sales agents, without the hiring risk</h3>
+						  <p class="tool-description">Traditionally, when you’re looking to ramp up the volume of outbound sales, you’d have to go and hire a big SDR or BDR team.</p>
+						  <p class="tool-description">With Dream, you can ramp up and down the number of sales professionals you have in place in a matter of seconds. So whether you’re looking to add one more hire to your outbound sales or to hire over 10 - you can do that immediately with Dream, without the usual pain of ramp ups & failed probations. </p>
+						</div>
+						<div class="tool-content">
+						  <h3 class="tool-title">Real or Digital Profiles</h3>
+						  <p class="tool-description">You’re able to set up your agents as real profiles (i.e. it seems like your sales team are 10x’ing their current outreach) or as digital profiles (i.e. it seems like you’ve hired 10x more sales professionals).</p>
+						</div>
+					  </div>
+					  <div class="tool-image">
+						<img src={introImage2.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
             <UseCaseBlock state="state4" />
             <UseCaseBlock state="state3" />
             <UseCaseBlock state="state5" />

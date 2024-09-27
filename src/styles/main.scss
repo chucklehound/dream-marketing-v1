@@ -127,8 +127,10 @@ header {
         
         h1 {
             @include headline-text-gradient();
+
+            max-width: 800px;
             
-            @include heading4;
+            @include heading5;
             font-weight: 500;
 
             @media (min-width: 768px) {
@@ -152,7 +154,7 @@ header {
             color: $color-plus-white;
 
             &:hover {
-                color: $brand-main;
+                background: $color-dark-blue;
             }
         }
     }
@@ -202,6 +204,11 @@ main {
         font-size: 40px;
         line-height: 48px;
         text-align: center;
+
+        @media (max-width: 768px) {
+            @include heading5;
+            font-weight: 500;
+        }
     }
 
     section {
@@ -273,6 +280,19 @@ main {
                     br { display: none; }
                 }
             }
+
+            h4 {
+                font-size: 20px;
+                line-height: 24px;
+                margin-bottom: 8px;
+            }
+        }
+
+        .tool-content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
         }
 
         .tool-image {
@@ -1225,6 +1245,83 @@ footer {
                     img {
                         max-height: 48px;
                     }
+                }
+            }
+        }
+    }
+
+    .guide-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 24px;
+        justify-content: stretch;
+        flex-direction: column;
+        
+        .guide-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: stretch;
+            overflow: hidden;
+
+            border-radius: 16px;
+            border: 1px solid $color-grays-light;
+            background: var(--White, #FFF);
+
+            /* Container-shadow */
+            box-shadow: 0px 1px 2px 0px rgba(21, 38, 71, 0.20);
+            transition: background-color .2s ease;
+
+            &:hover {
+                background-color: $gray-lightest;
+            }
+
+            a {
+                display: flex;
+                gap: 12px;
+                text-decoration: none;
+                justify-content: stretch;
+                align-items: stretch;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                
+
+                @media (max-width: 800px) {
+                    flex-direction: column;
+                }
+
+                .guide-img {
+                    flex: 1;
+                    max-width: 320px;
+                    background: $gray-lightest;
+                }
+
+                .guide-description {
+                    flex: 1;
+                    padding: 24px;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+
+                img {
+                    max-width: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                h3 {
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 32px; /* 125% */
+
+                    background: var(--Website-Text-Gradient, linear-gradient(92deg, #000D26 13.02%, #5C6880 84.33%));
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
                 }
             }
         }

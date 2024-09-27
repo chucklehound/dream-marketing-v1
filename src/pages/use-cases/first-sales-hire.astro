@@ -13,6 +13,12 @@ import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
 import "../../styles/main.scss";
 import UseCaseBlock from '../../components/UseCaseBlock.astro';
 
+import introImage1 from '/src/img/use-target.png';
+import introImage2 from '/src/img/use-agents.png';
+import introImage3 from '/src/img/use-research.png';
+import introImage4 from '/src/img/use-language.png';
+import introImage5 from '/src/img/use-presale.png';
+
 ---
 
 <Layout title="Target the right company, at the right time, with the right message">
@@ -38,8 +44,48 @@ import UseCaseBlock from '../../components/UseCaseBlock.astro';
 	</header>
 	<main>
 		<section class="main-content content-row">
-			<UseCaseBlock state="state1" />
-            <UseCaseBlock state="state3" />
+			<article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Build highly targeted lists of potential customers</h2>
+					<div class="tool-container">
+					  <div class="tool-card">
+						<div class="tool-content">
+						  <h3 class="tool-title">Know exactly who you should be selling to</h3>
+						  <h4>1. Building lists & deep research</h4>
+						  <p class="tool-description">Dream enables you to pull together comprehensive lists of companies that you want to target, and then run deep research & analysis on them. Our agents research information across the internet (from sources like LinkedIn, Google, Crunchbase & others) so you have all the information needed to prioritise your outreach. </p>
+						</div>
+						<div class="tool-content">
+						  <h4 class="tool-title">2. Pulling in prospect & contact information</h4>
+						  <p class="tool-description">When you have the list of companies you want to target, you then use Dream to determine who are the typical stakeholders at those companies that you want to target. Dream pulls in their profiles, as well as their contact information, so you can start to run outreach directly to the key people at those companies. </p>
+						</div>
+					  </div>
+					  <div class="tool-image">
+						<img src={introImage1.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
+			<article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Hyper-personalise every email</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Meet your current % conversion - no matter the volume</h3>
+							<p class="tool-description">You’re able to instruct your agents on how to tailor emails to every prospect - in line with what you know works well. You can then apply that to 10, 100 or 10,000 prospects.</p>
+						</div>
+						<div class="tool-content">
+							<h3 class="tool-title">Research-led outreach to drive conversion</h3>
+							<p class="tool-description">You’re able to weave deep research on companies & prospects into emails that maximises your likelihood of getting replies & calls being booked. </p>
+						</div>
+						</div>
+					  <div class="tool-image">
+						<img src={introImage3.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
+            <UseCaseBlock state="state2" />
             <UseCaseBlock state="state5" />
 		</section>
         <section class="main-content content-list">

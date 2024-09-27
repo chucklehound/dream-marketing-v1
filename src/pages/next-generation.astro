@@ -9,6 +9,10 @@ import Logo from '../components/Logo.astro';
 
 import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
+import Gen1 from '/src/img/gen-1.png';
+import Gen2 from '/src/img/gen-2.png';
+import Gen3 from '/src/img/gen-3.png';
+
 import "../styles/main.scss";
 ---
 
@@ -46,6 +50,7 @@ import "../styles/main.scss";
                             </div>
                         </div>
                         <div class="tool-image">
+                            <img src={Gen1.src} alt="A table of sales process stages. Example tools are shown for sourcing and messaging" />
                         </div>
                     </div>
             
@@ -58,6 +63,7 @@ import "../styles/main.scss";
                             </div>
                         </div>
                         <div class="tool-image">
+                            <img src={Gen2.src} alt="A table of sales process stages. Two tools are shown as deploying AI for combined stages" />
                         </div>
                     </div>
             
@@ -70,15 +76,16 @@ import "../styles/main.scss";
                             </div>
                         </div>
                         <div class="tool-image">
+                            <img src={Gen3.src} alt="A table of sales process stages. 3 tools are shown handling the whole process with AI" />
                         </div>
                     </div>
                 </div>
                 <div class="compare-links">
                     <h4>Learn more about how Dream compares to other sales tools</h4>
                     <ul>
-                        <li><a href="compare/vs-11x"><span>Dream vs 11x</span></a></li>
-                        <li><a href="compare/vs-relevance"><span>Dream vs Relevance.ai</span></a></li>
-                        <li><a href="compare/vs-clay"><span>Dream vs Clay</span></a></li>
+                        <li><a href="versus/11x"><span>Dream vs 11x</span></a></li>
+                        <li><a href="versus/relevance-ai"><span>Dream vs Relevance.ai</span></a></li>
+                        <li><a href="versus/clay"><span>Dream vs Clay</span></a></li>
                     </ul>
                 </div>
             </article>

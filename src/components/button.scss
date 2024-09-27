@@ -1,0 +1,25 @@
+@import '../styles/main.scss';
+
+.button {
+    background: $color-wallstreet-black;
+    color: $color-plus-white;
+    box-shadow: inset 0 0 0 1px #061636;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.button:hover {
+    background-color: $color-dark-blue;
+}
+
+.button img {
+    width: 24px;
+    height: 24px;
+}

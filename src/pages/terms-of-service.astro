@@ -1,11 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
 import Logo from '../components/Logo.astro';
-
-
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
 import "../styles/main.scss";
 ---
 
@@ -13,6 +11,9 @@ import "../styles/main.scss";
     <Navigation />
     <header>
         <Logo />
+		<nav>
+			
+		</nav>
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">Terms of Service</h1>
@@ -86,9 +87,13 @@ import "../styles/main.scss";
     <h2>14. Governing Law & Jurisdiction</h2>
     <p>These Terms shall be governed by and construed in accordance with the laws of England. Any disputes arising out of or related to these Terms will be subject to the exclusive jurisdiction of the courts of England. Both parties agree to resolve disputes in good faith before pursuing any formal legal action.</p>
 
-    <h2>9. Privacy Policy</h2>
-    <p>Please review our <a href="https://usedream.ai/privacy" target="_blank">Privacy Policy</a> to understand our practices regarding the collection and use of your personal information.</p>
-        </section>
-    </main>
+    <h2>15. Contacting Dream</h2>
+    <p>For any inquiries, support issues, or questions related to these Terms, you can contact Dream via email at support@usedream.ai. By communicating with us, you acknowledge that email is not a secure medium of communication, and you grant Dream permission to use any feedback, suggestions, or comments you provide unless otherwise agreed upon in writing.</p>
+
+    <h2>16. Amendments to the Terms</h2>
+    <p>Dream reserves the right to modify or update these Terms at any time. We will notify you of any significant changes by posting the updated Terms on our website. Changes will not apply retroactively and will take effect no sooner than seven (7) days after they are posted. By continuing to use the Service after the changes take effect, you agree to be bound by the updated Terms.</p>
+
+		</section>
+	</main>
     <Footer />
 </Layout>

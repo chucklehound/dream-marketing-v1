@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+import "../../styles/main.scss";
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+	<Navigation />
+	<header>
+		<Logo />
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">Dream vs Relevance.ai</h1>
+				<span>From discovery to booking, automate your whole process with Dream. Our sales agents deliver on every step, meaning you're not just working faster, but better.</span>
+				<span>Find out how we compare with Relevance.ai.</span>
+                <Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+
+		</section>
+        <section class="main-content content-list">
+            <section class="main-content content-row"> 
+                <article class="stats-box"> 
+                <h2>What this delivers</h2> 
+                <ul class="stats-items"> 
+                    <li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+                    <li><span class="number">25%</span><p>The cost vs a human</p> </li>
+                </article> 
+            </section>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+	<Footer />
+</Layout>
