@@ -5,22 +5,24 @@ interface Props {
 const { } = Astro.props;
 
 import '../components/navigation.scss';
-import hamburgerIcon from '/src/img/nav.svg';
+import HamburgerIcon from '/src/img/nav.svg?raw';
 
 import expandingSales from '/src/img/expanding-sales.svg';
 import newTerritory from '/src/img/new-territory.svg';
 import firstSales from '/src/img/first-sales.svg';
 import hiringPartnerships from '/src/img/hiring-partnerships.svg';
+
+import Logo from '../components/Logo.astro';
 ---
 
 <div class="navigation">
   <nav>
     <!-- Hamburger button for small screens -->
     <button class="hamburger" aria-label="Toggle navigation">
-      <img src={hamburgerIcon.src} alt="Menu" />
+      <Fragment set:html={HamburgerIcon} />
       <span class="visually-hidden">Toggle navigation</span>
     </button>
-
+    <Logo />
     <ul class="navbar">
         <li><a href="/">Home</a></li>
         <li><a href="/end-to-end-sdrs">End-to-end SDRs</a></li>
@@ -36,10 +38,9 @@ import hiringPartnerships from '/src/img/hiring-partnerships.svg';
         </li>
         <li><a href="/resources">Resources</a></li>
         <li><a target="_blank" href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
-        <li><a href="https://app.usedream.ai" target="_blank" class="login-button desktop-login">Log in</a></li>
     </ul>
     <!-- Always visible login button -->
-    <a href="https://app.usedream.ai" target="_blank" class="login-button mobile-login">Log in</a>
+    <a href="https://app.usedream.ai" target="_blank" class="login-button">Log in</a>
   </nav>
 
 </div>

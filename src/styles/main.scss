@@ -1,5 +1,58 @@
 @import './colours.scss';
 
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  
+  /*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /*
+    6. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /*
+    8. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
 
 body {
     background: $brand-background-light;
@@ -9,12 +62,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     position: relative;
-
-    *, * > * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 }
 
 @import './type.scss';
@@ -37,6 +84,10 @@ header {
     z-index: 1;
     padding-top: 32px;
 
+    @media (min-width: 960px) {
+        padding-top: 64px;
+    }
+
     svg.logo {
         height: 32px;
   
@@ -45,19 +96,29 @@ header {
         }
     }
 
+    @keyframes gradientGrow {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
     &:before {
         content: '';
+        animation: gradientGrow 3s ease 1;
         width: 100%;
         height: 200vh;
         position: absolute;
-        top: calc(-100vh + 20px);
+        top: -70vh;
         left: 0%;
         z-index: 0;
         pointer-events: none;
-        background-size: 1536px;
+        background: radial-gradient($color-dream-yellow 5%, $color-plus-white 25%) center no-repeat;
         z-index: -1;
-        background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center top -30vh no-repeat;
 
+        @media (max-width: 1000px) {
+            background-size: 768px;
+            height: 768px;
+            top: -200px;
+        }
     }
 
     &:after {
@@ -65,16 +126,19 @@ header {
         width: 100%;
         height: 200vh;
         position: absolute;
-        top: calc(-100vh + 20px);
+        top: -70vh;
         left: 0%;
         z-index: 0;
+        opacity: .95;
         pointer-events: none;
         background: url('/src/img/circles.svg') no-repeat 50%;
         background-size: 1536px;
 
         @media (max-width: 1000px) {
-            background-size: 1152px;
-            
+            background-size: 768px;
+            height: 768px;
+            top: -200px;
+        
         }
     }
 
@@ -167,37 +231,6 @@ main {
     position: relative;
     z-index: 2;
 
-    @media (min-width: 1010px) {
-        & > section {
-            position: relative;
-    
-            &:after, &:before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 100%;
-                width: 1px;
-                background: rgba($color-wallstreet-black, .15);
-                top: 0;
-                left: -1.5vw;
-            }
-        
-            &:after {
-                right: -1.5vw;
-                left: auto;
-            }
-    
-            &:first-of-type {
-    
-                &:after, &:before {
-                    height: 105%;
-                    top: -5%;
-                    background: linear-gradient(rgba($color-wallstreet-black, 0), rgba($color-wallstreet-black, .15) 20%);
-                }
-            }
-        }
-    }
-
     h2 {
         @include headline-text-gradient;
 
@@ -212,10 +245,10 @@ main {
     }
 
     section {
-        padding: 64px 24px;
+        padding: 64px 16px;
 
         @media (min-width: 768px) {
-            padding: 96px 32px;
+            padding: 96px 0;
         }
 
         &:first-of-type {
@@ -234,6 +267,14 @@ main {
         display: flex;
         flex-direction: column;
         gap: 24px;
+        background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+
+        @media (max-width: 801px) {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid $color-grays-lighter;
+            gap: 48px;
+        }
     }
 
     .tool-container {
@@ -243,12 +284,9 @@ main {
         gap: 8px;
         align-self: stretch;
         border-radius: 12px 12px 0px 0px;
-        background: $color-plus-white linear-gradient(0deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
 
-        @media (min-width: 800px) {
-            flex-direction: row;
-            border-radius: 0px 12px 12px 0px;
-            background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+        @media (max-width: 801px) {
+            gap: 0;
         }
 
         .tool-card, .tool-image {
@@ -260,12 +298,19 @@ main {
             padding: 24px;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: center;
             gap: 8px;
             flex: 1 0 0;
-            border-radius: 12px;
+            border-radius: 0 12px 12px 0;
             border: 1px solid rgba(92, 104, 128, 0.45);
+            border-left: 0;
             background: var(--Plus-White, #FFFEFC);
             box-shadow: 2px 2px 1px 0px rgba(92, 104, 128, 0.10);
+
+            @media (max-width: 801px) {
+                border-radius: 12px;
+                border: 1px solid rgba(92, 104, 128, 0.45);
+            }
 
             h3 {
                 color: $color-wallstreet-black;
@@ -274,7 +319,6 @@ main {
                 font-weight: 500;
                 line-height: 40px; /* 125% */
                 letter-spacing: -0.32px;
-                margin-bottom: 8px;
 
                 @media (max-width: 801px) {
                     br { display: none; }
@@ -290,9 +334,10 @@ main {
 
         .tool-content {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: flex-start;
             flex-direction: column;
+            gap: 12px;
         }
 
         .tool-image {
@@ -305,29 +350,44 @@ main {
             flex: 1 0 0;
             align-self: stretch;
 
-            border-radius: 12px 12px 0px 0px;
-            border-top: 1px solid rgba(92, 104, 128, 0.25);
-            border-right: 1px solid rgba(92, 104, 128, 0.25);
-            border-left: 1px solid rgba(92, 104, 128, 0.25);
-
-            @media (min-width: 800px) {
-                border-radius: 0px 12px 12px 0px;
-                border-top: 1px solid rgba(92, 104, 128, 0.25);
-                border-right: 1px solid rgba(92, 104, 128, 0.25);
-                border-left: 0;
-                border-bottom: 1px solid rgba(92, 104, 128, 0.25);
-            }
 
             img {
                 max-width: 480px;
                 width: 100%;
             }
         }
+
+        @media (min-width: 800px) {
+            flex-direction: row;
+            border-radius: 0px 12px 12px 0px;
+            background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+
+            .tool-content {
+                max-width: 560px;
+            }
+
+            .tool-card {
+                align-items: flex-end;
+                padding: 64px 32px;
+            }
+
+            &:nth-of-type(2n) {
+                flex-direction: row-reverse;
+
+                .tool-card {
+                    border-radius: 12px 0 0 12px;
+                    border-right: 0;
+                    border-left: 1px solid rgba(92, 104, 128, 0.45);
+                    align-items: flex-start;
+                }
+            }
+
+            
+        }
     }
 }
 
 .main-content {
-    max-width: calc(1152px + 64px);
     width: 100%;
     margin: auto;
 
@@ -394,6 +454,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
 
     .section-title {
         text-align: center;
@@ -428,7 +490,7 @@ main {
 
         border-radius: 24px;
         border: 1px solid rgba(92, 104, 128, 0.25);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, #FFFEFC 100%);
+        background: #fff linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, #FFFEFC 100%);
 
         transition: transform .2s cubic-bezier(0.86,0,0.07,1), border .2s cubic-bezier(0.86,0,0.07,1), box-shadow .2s cubic-bezier(0.86,0,0.07,1);
 
@@ -473,9 +535,12 @@ main {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    border-radius: 32px;
     align-items: stretch;
     justify-content: center;
+
+    @media (max-width: 801px) {
+        border-radius: 24px;
+    }
 
     .section-title {
         text-align: center;
@@ -526,7 +591,6 @@ main {
     .contrast-item {
         background: $brand-main;
         flex: 1;
-        border-radius: 32px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -538,6 +602,10 @@ main {
         position: relative;
         background: linear-gradient(#59E0FF,#07A0C3);
         transition: box-shadow .2s ease;
+
+        @media (max-width: 801px) {
+            border-radius: 16px;
+        }
 
         &:hover {
             box-shadow: 0 0 24px 12px rgba(89, 224, 255, .5);
@@ -667,6 +735,7 @@ footer {
 
     .list-text {
         width: 50%;
+        max-width: 560px;
 
         @media (max-width: 900px) {
             width: 100%;
@@ -729,6 +798,7 @@ footer {
     
     @media (min-width: 900px) {
         width: 50%;
+        max-width: 560px;
     }
 
     
@@ -807,7 +877,13 @@ footer {
 
 .final-cta {
     background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center bottom -30vh no-repeat;
-    padding: 24px 24px 64px;
+    padding: 24px 0 64px;
+    max-width: 1216px;
+    margin: auto;
+
+    @media (max-width: 1216px) {
+        padding: 24px 16px;
+    }
 
     .cta-container {
         background: $color-performa-black url('/src/img/cta-pulse.svg') no-repeat center -224px;
@@ -821,6 +897,15 @@ footer {
         flex-direction: column;
         gap: 24px;
         color: $color-plus-white;
+
+        a.button {
+            background: $color-dream-yellow;
+            color: $color-wallstreet-black;
+
+            &:hover {
+                background: $color-light-blue;
+            }
+        }
 
         @media (max-width: 800px) {
             h3 {
@@ -1062,6 +1147,8 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 72px;
+        max-width: 1440px;
+        margin: auto;
 
         .sequence-item {
             position: relative;
@@ -1324,5 +1411,50 @@ footer {
                     -webkit-text-fill-color: transparent;
                 }
             }
+        }
+    }
+
+    .use-cases {
+        .tools-section .tools-grid {
+            background: transparent;
+            border: none;
+        }
+
+        .tools-section .tool-container {
+            background: $color-plus-white linear-gradient(0deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+            gap: 8px;
+
+            @media (min-width: 801px) {
+                background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+            }
+
+            .tool-image {
+                border: 1px solid $color-grays-lighter;
+                border-bottom: 0;
+                border-radius: 12px 12px 0 0;
+
+                @media (min-width: 801px) {
+                    border: 1px solid $color-grays-lighter;
+                    border-radius: 0 12px 12px 0;
+                    border-left: 0;
+                }
+            }
+
+            .tool-card {
+                @media (min-width: 801px) {
+                    border: 1px solid $color-grays-light;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+
+    .faq-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        h2 {
+            margin-bottom: 24px;
         }
     }

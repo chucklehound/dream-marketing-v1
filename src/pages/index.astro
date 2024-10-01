@@ -3,10 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
-import Logo from '../components/Logo.astro';
 import Footer from '../components/Footer.astro';
-
-import { Image } from 'astro:assets';
 
 import TabComponent from '../components/TabComponent.astro';
 
@@ -37,13 +34,11 @@ import gmailIcon from "/src/img/gmail.png";
 
 import iconWide from '/src/img/partner-wide.png';
 
-import "../styles/main.scss";
 ---
 
 <Layout title="Target the right company, at the right time, with the right message">
 	<Navigation />
 	<header>
-		<Logo />
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">SDRs that target the right company,<br />
@@ -66,10 +61,10 @@ import "../styles/main.scss";
 						<!-- First row -->
 						<div class="tool-container">
 							<div class="tool-card">
-								<div class="tool-icon">
-									<img src={introIcon1.src} role="presentation">
-								</div>
 								<div class="tool-content">
+									<div class="tool-icon">
+										<img src={introIcon1.src} role="presentation">
+									</div>
 									<h3 class="tool-title">Dream is your 24/7 <br />AI-powered SDR</h3>
 									<p class="tool-description">Reach more prospects, faster. Without scaling your sales team. Dream lets you sell more starting today.</p>
 								</div>
@@ -82,10 +77,10 @@ import "../styles/main.scss";
 						<!-- Second row -->
 						<div class="tool-container">
 							<div class="tool-card">
-								<div class="tool-icon">
-									<img src={introIcon2.src} role="presentation">
-								</div>
 								<div class="tool-content">
+									<div class="tool-icon">
+										<img src={introIcon2.src} role="presentation">
+									</div>
 									<h3 class="tool-title">Tailored messaging, <br />sent at the right time</h3>
 									<p class="tool-description">Dream’s AI learns all about your prospects, crafting individual emails to each one. You set the timing, so each message lands exactly when needed.</p>
 								</div>
@@ -98,10 +93,10 @@ import "../styles/main.scss";
 						<!-- Third row -->
 						<div class="tool-container">
 							<div class="tool-card">
-								<div class="tool-icon">
-									<img src={introIcon3.src} role="presentation">
-								</div>
 								<div class="tool-content">
+									<div class="tool-icon">
+										<img src={introIcon3.src} role="presentation">
+									</div>
 									<h3 class="tool-title">All you have to do is<br /> take the call</h3>
 									<p class="tool-description">Your sales agents can handle outbound, replies, and booking meetings. Choose to manually approve messages, or let Dream handle it all autonomously.</p>
 								</div>
@@ -126,8 +121,8 @@ import "../styles/main.scss";
 				<li><span class="number">0%</span><p>New hire risk</p> </li></ul> 
 			</article> 
 		</section>
-		<section class="main-content content-row content-list">
-			<article class="contrast-row content-row">
+		<section class="main-content content-list">
+			<article class="contrast-row">
 				<div class="content-list brand-partner">
 						<div class="list-text">
 							<h3>Plays nice with others</h3>
@@ -154,7 +149,7 @@ import "../styles/main.scss";
 		</section>
 		<section class="main-content content-row">
 			<section class="speed-section">
-				<h2 class="section-heading">From your speed, to light speed</h2>
+				<h2 class="section-heading">Your speed, to light speed</h2>
 				
 				<div class="speed-grid">
 					<!-- First card -->
