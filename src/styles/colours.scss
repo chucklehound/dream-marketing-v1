@@ -34,7 +34,7 @@ $gray-lightest: #F3F3F5;
 
 $brand-main: $color-wallstreet-black;
 $brand-background: rgb(255, 214, 1);
-$brand-background-light: $color-plus-white;
+$brand-background-light: rgba($color-lisa-yellow, 0.25);
 $brand-actions: $color-wallstreet-black;
 $brand-actions-dark: darken($brand-actions,20%);
 

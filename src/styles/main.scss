@@ -89,10 +89,10 @@ header {
     }
 
     svg.logo {
-        height: 32px;
+        height: 28px;
   
         @media (min-width: 768px) {
-            height: 40px;
+            height: 32px;
         }
     }
 
@@ -111,7 +111,7 @@ header {
         left: 0%;
         z-index: 0;
         pointer-events: none;
-        background: radial-gradient($color-dream-yellow 5%, $color-plus-white 25%) center no-repeat;
+        background: radial-gradient($color-plus-white 5%, rgba($color-lisa-yellow, 0.25) 55%) center no-repeat;
         z-index: -1;
 
         @media (max-width: 1000px) {
@@ -171,7 +171,7 @@ header {
         position: relative;
 
         svg {
-            height: 32px;
+            height: 28px;
 
             @media (min-width: 768px) {
                 height: 40px;
@@ -192,7 +192,7 @@ header {
         h1 {
             @include headline-text-gradient();
 
-            max-width: 800px;
+            max-width: 820px;
             
             @include heading5;
             font-weight: 500;
@@ -876,7 +876,7 @@ footer {
 }
 
 .final-cta {
-    background: radial-gradient($color-dream-yellow 15%, $color-plus-white 65%) center bottom -30vh no-repeat;
+    
     padding: 24px 0 64px;
     max-width: 1216px;
     margin: auto;
