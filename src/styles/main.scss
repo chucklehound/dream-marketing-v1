@@ -975,6 +975,11 @@ footer {
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+        @media (max-width: 800px) {
+            font-size: 72px;
+            line-height: 84px;
+        }
     }
 }
 
@@ -1011,7 +1016,8 @@ footer {
     ul {
         list-style: none;
         display: flex;
-        flex-direction: column;
+        padding: 0;
+        flex-direction: row;
 
         @media (min-width: 650px) {
             flex-direction: row;
