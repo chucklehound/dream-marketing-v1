@@ -887,6 +887,8 @@ footer {
     padding: 24px 0 64px;
     max-width: 1216px;
     margin: auto;
+    z-index: 3;
+    position: relative;
 
     @media (max-width: 1216px) {
         padding: 24px 16px;
