@@ -1,14 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.astro';
+
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+
 import "../styles/main.scss";
 ---
 
 <Layout title="Dream Privacy Policy">
+    <Navigation />
     <header>
-		<nav>
-			<Logo />
-		</nav>
 		<div class="hero-elements main-content">
 			<section class="header-text">
 				<h1 class="page-title">Privacy Policy</h1>
@@ -120,7 +122,6 @@ import "../styles/main.scss";
 
             <p>As a global service, Dream may transfer your personal data to countries outside of your jurisdiction. We ensure that any transfer of data complies with applicable laws and that appropriate safeguards are in place, such as Standard Contractual Clauses (SCCs) or</p>
         </section>
-	</main>
-    <footer><small>© Zally Mix Ltd 2024</small> <small><a href="/privacy">Privacy Policy</a></small> <small><a href="/terms-of-service">Terms of Service</a></small></footer>
-
+    </main>
+    <Footer />
 </Layout>

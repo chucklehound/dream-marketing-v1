@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 
 import Logo from '../components/Logo.astro';
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
 import "../styles/main.scss";
 ---
 
 <Layout title="Dream Terms of Service">
+    <Navigation />
     <header>
-		<nav>
-			<Logo />
-		</nav>
 		<div class="hero-elements main-content">
 			<section class="header-text ">
 				<h1 class="page-title">Terms of Service</h1>
@@ -91,6 +91,5 @@ import "../styles/main.scss";
 
 		</section>
 	</main>
-    <footer><small>© Zally Mix Ltd 2024</small> <small><a href="/privacy">Privacy Policy</a></small> <small><a href="/terms-of-service">Terms of Service</a></small></footer>
-
+    <Footer />
 </Layout>

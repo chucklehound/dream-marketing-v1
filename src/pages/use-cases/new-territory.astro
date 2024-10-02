@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+import introImage1 from '/src/img/use-target.png';
+import introImage2 from '/src/img/use-agents.png';
+import introImage3 from '/src/img/use-research.png';
+import introImage4 from '/src/img/use-language.png';
+import introImage5 from '/src/img/use-presale.png';
+
+import "../../styles/main.scss";
+---
+
+<Layout title="Dream use cases - extend sales to new markets">
+	<Navigation />
+	<header>
+		<div class="hero-elements main-content">
+			<section class="header-text">
+                <small class="tag"><a href="/use-cases">Use cases</a></small>
+				<h1 id="page-title" class="page-title">For companies who want to extend sales to new markets</h1> <!-- Default text -->
+				<span>Dream now enables companies to introduce new markets to their outbound sales in a matter of hours. 
+                    Where companies would previously have had to hire sales people that covered all the desired languages requirements - now companies can kick start new market penetration when they want.                     
+                </span>
+                <Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content use-cases content-row">
+			<article class="tools-section">
+				<div class="tools-grid english-content">
+					<h2 class="section-heading">Sell in 40+ languages</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Start Selling in French, German, Spanish, Swedish (& others) instantly</h3>
+							<p class="tool-description">If you’re looking to test outbound sales in a new market, or need to start ramping up your sales team in a foreign market - with Dream, you can instruct your sales agents to switch from English to any of 40 other different languages supported.</p>
+							<Button 	
+								label="Start selling to new markets now"
+								href="https://calendly.com/cgdcowley/discovery-call-dream" 
+								target="_blank"
+							><img src={arrowRightYellow.src} role="presentation" /></Button>
+						</div>
+						</div>
+						<div class="tool-image">
+						<img src={introImage4.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+				  </div>
+				  
+				  <div class="tools-grid french-content">
+					<h2 class="section-heading">Sell in 40+ languages</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Start Selling in French instantly. <br/>Or German, Swedish, Spanish...</h3>
+							<p class="tool-description">If you’re looking to test outbound sales in a new market, or need to start ramping up your sales team in a foreign market - with Dream, you can instruct your sales agents to switch from English to French, or any of 40 other different languages supported.</p>
+							<Button 	
+								label="Start selling in French now"
+								href="https://calendly.com/cgdcowley/discovery-call-dream" 
+								target="_blank"
+							><img src={arrowRightYellow.src} role="presentation" /></Button>
+						</div>
+						</div>
+						<div class="tool-image">
+						<img src={introImage4.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+				</div>
+				  
+				  <div class="tools-grid german-content">
+					<h2 class="section-heading">Sell in 40+ languages</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Start Selling in German instantly. <br/>Or French, Swedish, Spanish...</h3>
+							<p class="tool-description">If you’re looking to test outbound sales in a new market, or need to start ramping up your sales team in a foreign market - with Dream, you can instruct your sales agents to switch from English to German, or any of 40 other different languages supported.</p>
+							<Button 	
+								label="Start selling in German now"
+								href="https://calendly.com/cgdcowley/discovery-call-dream" 
+								target="_blank"
+							><img src={arrowRightYellow.src} role="presentation" /></Button>
+						</div>
+						</div>
+						<div class="tool-image">
+						<img src={introImage4.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+				</div>
+
+				<div class="tools-grid spanish-content">
+					<h2 class="section-heading">Sell in 40+ languages</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Start Selling in Spanish instantly. <br/>Or French, Swedish, German...</h3>
+							<p class="tool-description">If you’re looking to test outbound sales in a new market, or need to start ramping up your sales team in a foreign market - with Dream, you can instruct your sales agents to switch from English to Spanish, or any of 40 other different languages supported.</p>
+							<Button 	
+								label="Start selling in Spanish now"
+								href="https://calendly.com/cgdcowley/discovery-call-dream" 
+								target="_blank"
+							><img src={arrowRightYellow.src} role="presentation" /></Button>
+						</div>
+						</div>
+						<div class="tool-image">
+						<img src={introImage4.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+				</div>
+
+				<div class="tools-grid swedish-content">
+					<h2 class="section-heading">Sell in 40+ languages</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Start Selling in Swedish instantly. <br/>Or French, German, Spanish...</h3>
+							<p class="tool-description">If you’re looking to test outbound sales in a new market, or need to start ramping up your sales team in a foreign market - with Dream, you can instruct your sales agents to switch from English to Swedish, or any of 40 other different languages supported.</p>
+							<Button 	
+								label="Start selling in Swedish now"
+								href="https://calendly.com/cgdcowley/discovery-call-dream" 
+								target="_blank"
+							><img src={arrowRightYellow.src} role="presentation" /></Button>
+						</div>
+						</div>
+						<div class="tool-image">
+						<img src={introImage4.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+				</div>
+			</article>
+			
+            <article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Know who to target</h2>
+					<div class="tool-container">
+					  <div class="tool-card">
+						<div class="tool-content">
+						  <h3 class="tool-title">New market target lists & deep research</h3>
+						  <p class="tool-description">Identifying lists of companies to start targeting in your new market & doing deep research on them is a daunting task. That’s where Dream comes in. Our agents research information across the internet (from sources like LinkedIn, Google, Crunchbase & others) so you have all the information needed to prioritise your outreach. </p>
+						</div>
+						<div class="tool-content">
+						  <h3 class="tool-title">Identify the right prospect & contact information</h3>
+						  <p class="tool-description">Finding the right person to target in a new market is a complex task - they may have different titles or simply be in a different language. Dream can determine who the best stakeholders are at those companies for you to target. Dream pulls in their profiles, as well as their contact information, so you can start to run outreach directly to the key people at those companies. </p>
+						</div>
+					  </div>
+					  <div class="tool-image">
+						<img src={introImage1.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
+            <UseCaseBlock state="state2" />
+            <UseCaseBlock state="state3" />
+		</section>
+        <section class="main-content content-list">
+            <section class="main-content content-row"> 
+                <article class="stats-box"> 
+                <h2>What this delivers</h2> 
+                <ul class="stats-items"> 
+                    <li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+                    <li><span class="number">25%</span><p>The cost vs a human</p> </li>
+                </article> 
+            </section>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+				label="Book your demo"
+				href="https://calendly.com/cgdcowley/discovery-call-dream" 
+				target="_blank"
+			><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+		
+	</section>
+	<Footer />
+
+	<!-- Client-side script for handling dynamic language switching -->
+	<script>
+		// Language-specific headings
+		const translations = {
+			en: 'For companies who want to extend sales to new markets',
+			fr: 'For companies who want to extend sales to the French market',
+			es: 'For companies who want to extend sales to the Spanish market',
+			de: 'For companies who want to extend sales to the German market',
+			sv: 'For companies who want to extend sales to the Swedish market'
+		};
+	
+		// Get the current URL search params
+		const params = new URLSearchParams(window.location.search);
+		const lang = params.get('lang') || 'en'; // Default to 'en' if no lang parameter is provided
+	
+		// Update the H1 content based on the language
+		const pageTitle = document.getElementById('page-title');
+		if (pageTitle) {
+			pageTitle.textContent = translations[lang] || translations['en'];
+		}
+	
+		// Hide all language-specific content
+		const allContentBlocks = document.querySelectorAll('.english-content, .french-content, .german-content, .spanish-content, .swedish-content');
+		allContentBlocks.forEach((el) => {
+			// Cast the element as HTMLElement to access 'style'
+			(el as HTMLElement).style.display = 'none';
+		});
+	
+		// Show the relevant content block based on the language flag
+		const contentClassMap = {
+			en: '.english-content',
+			fr: '.french-content',
+			de: '.german-content',
+			es: '.spanish-content',
+			sv: '.swedish-content'
+		};
+	
+		const contentClass = contentClassMap[lang];
+		if (contentClass) {
+			const langContent = document.querySelector(contentClass);
+			if (langContent) {
+				(langContent as HTMLElement).style.display = 'flex'; // Show the relevant content block
+			}
+		}
+	</script>
+	
+</Layout>

@@ -1,0 +1,21 @@
+---
+export interface Props {
+  summary: string;
+}
+
+// Destructure the `state` prop from the passed props
+const { summary } = Astro.props;
+
+import '../components/FAQ.scss';
+
+---
+
+ <!-- Slot for overriding the tool-content sections -->
+        <details>
+            <summary>
+                {summary}
+            </summary>
+            <div class="faq-content">
+                <slot />
+            </div>
+        </details>

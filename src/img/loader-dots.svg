@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes flashOn {
+      0% { opacity: 0; }
+      25%, 75% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    circle {
+      animation: flashOn 1s ease-in infinite;
+    }
+    
+    circle:nth-of-type(2) {
+      animation-delay: 0.5s;
+    }
+  </style>
+<circle cx="6" cy="16" r="3" fill="#FFFEFC"/>
+<circle cx="16" cy="16" r="3" fill="#FFFEFC"/>
+<circle cx="26" cy="16" r="3" fill="#FFFEFC"/>
+</svg>

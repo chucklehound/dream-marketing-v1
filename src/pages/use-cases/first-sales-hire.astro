@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+import "../../styles/main.scss";
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+
+import introImage1 from '/src/img/use-target.png';
+import introImage2 from '/src/img/use-agents.png';
+import introImage3 from '/src/img/use-research.png';
+import introImage4 from '/src/img/use-language.png';
+import introImage5 from '/src/img/use-presale.png';
+
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+	<Navigation />
+	<header>
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+                <small class="tag"><a href="/use-cases">Use cases</a></small>
+				<h1 class="page-title">For companies who are hiring their first sales person</h1>
+				<span>Companies look to hire their first dedicated sales person to ramp up their capacity to do outbound sales - sales that’s typically heavily founder-led. As a result, hiring that first sales person is difficult, where all you really want is more resource to have new business booked in your calendar.                  
+                </span>
+                <span>
+                    That’s Dream. Your sales partner that will do all the leg work of booking new business in your calendar.  
+                </span>
+                <Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content use-cases content-row">
+			<article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Build highly targeted lists of potential customers</h2>
+					<div class="tool-container">
+					  <div class="tool-card">
+						<div class="tool-content">
+						  <h3 class="tool-title">Know exactly who you should be selling to</h3>
+						  <h4>1. Building lists & deep research</h4>
+						  <p class="tool-description">Dream enables you to pull together comprehensive lists of companies that you want to target, and then run deep research & analysis on them. Our agents research information across the internet (from sources like LinkedIn, Google, Crunchbase & others) so you have all the information needed to prioritise your outreach. </p>
+						</div>
+						<div class="tool-content">
+						  <h4 class="tool-title">2. Pulling in prospect & contact information</h4>
+						  <p class="tool-description">When you have the list of companies you want to target, you then use Dream to determine who are the typical stakeholders at those companies that you want to target. Dream pulls in their profiles, as well as their contact information, so you can start to run outreach directly to the key people at those companies. </p>
+						</div>
+					  </div>
+					  <div class="tool-image">
+						<img src={introImage1.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
+			<article class="tools-section">
+				<div class="tools-grid">
+					<h2 class="section-heading">Hyper-personalise every email</h2>
+					<div class="tool-container">
+						<div class="tool-card">
+						<div class="tool-content">
+							<h3 class="tool-title">Meet your current % conversion - no matter the volume</h3>
+							<p class="tool-description">You’re able to instruct your agents on how to tailor emails to every prospect - in line with what you know works well. You can then apply that to 10, 100 or 10,000 prospects.</p>
+						</div>
+						<div class="tool-content">
+							<h3 class="tool-title">Research-led outreach to drive conversion</h3>
+							<p class="tool-description">You’re able to weave deep research on companies & prospects into emails that maximises your likelihood of getting replies & calls being booked. </p>
+						</div>
+						</div>
+					  <div class="tool-image">
+						<img src={introImage3.src} alt="Illustration of AI-powered SDR">
+					  </div>
+					</div>
+				  </div>
+			</article>
+            <UseCaseBlock state="state2" />
+            <UseCaseBlock state="state5" />
+		</section>
+        <section class="main-content content-list">
+            <section class="main-content content-row"> 
+                <article class="stats-box"> 
+                <h2>What this delivers</h2> 
+                <ul class="stats-items"> 
+                    <li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+                    <li><span class="number">25%</span><p>The cost vs a human</p> </li>
+                </article> 
+            </section>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+	<Footer />
+</Layout>

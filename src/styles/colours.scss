@@ -1,5 +1,6 @@
 $color-wallstreet-black: #000d26;
 $color-performa-black: #152647;
+$color-pomona-black: #5C6880;
 $color-plus-white: #fffefa;
 $color-lisa-yellow: #f0eddc;
 $color-dream-yellow: #ffd601;
@@ -33,7 +34,7 @@ $gray-lightest: #F3F3F5;
 
 $brand-main: $color-wallstreet-black;
 $brand-background: rgb(255, 214, 1);
-$brand-background-light: $color-plus-white;
+$brand-background-light: rgba($color-lisa-yellow, 0.25);
 $brand-actions: $color-wallstreet-black;
 $brand-actions-dark: darken($brand-actions,20%);
 
@@ -42,17 +43,3 @@ $brand-body: #061636;
 
 $brand-text: $brand-main;
 $brand-text-light: #FFFEFA;
-
-/* brand one colours
-
-
-$brand-main: #47FF9C;
-$brand-background: #000D26;
-$brand-background-light: lighten($brand-background,90%);
-$brand-actions: #00A7E1;
-$brand-actions-dark: darken($brand-actions,20%);
-
-$brand-titles: #000D26;
-$brand-body: #061636;
-
- */

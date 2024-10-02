@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import MessageSelector from  '../../components/MessageSelector.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import e2eLists from '/src/img/e2e-lists.png';
+
+import "../../styles/main.scss";
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+    <Navigation />
+	<header>
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">Find out how to make the best AI tool even better</h1>
+				<span>Browse our easy-to-follow guides for tips and information on using Dream.</span>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+			<h2>Guides</h2>
+			<ul class="guide-list">
+				<li class="guide-list-item">
+					<a href="/resources/list-building">
+						<div class="guide-img">
+							<img src={e2eLists.src} alt="" role="presentation"/> 
+						</div>
+						<div class="guide-description">
+							<h3>Using Dream for List Building</h3>
+							<p></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+    <Footer />
+</Layout>

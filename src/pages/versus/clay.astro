@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+import "../../styles/main.scss";
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+	<Navigation />
+	<header>
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">Dream vs Clay</h1>
+				<span><b>Verdict:</b> Clay is good for companies that just want to prospect but for those automating the sales journey, Dream's combination of research and outreach is unbeatable</span>
+                <Button 	
+					label="Get started with Dream"
+					href="https://calendly.com/cgdcowley/discovery-call-dream" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+		</div>
+	</header>
+	<main>
+     <section>
+            <article class="main-content faq-row">
+                <h2 class="section-heading">How we stack up</h2>
+                <FAQ summary="How does Dream differ from Clay.com?">
+                    While Clay.com excels in research capabilities to help you identify prospects, its outreach features are less established. Dream not only offers advanced research to find highly targeted prospects at the right time in their buying cycle but also provides robust and proven outreach methods. Additionally, Dream is multi-modal, supporting various outbound methods beyond email, making it a more comprehensive solution for sales teams.
+                </FAQ>
+
+                <FAQ summary="What makes Dream's AI SDR more effective than Clay.com's solution in generating qualified leads?">
+                    Dream's AI SDR is more effective because it combines deep, continuous research with established outreach strategies. While Clay.com focuses on gathering prospect information, its outreach isn't as strong. Dream operates around the clock to keep information up-to-date, enabling you to engage prospects at the perfect moment—like contacting an office manager right when they announce a new office opening. This timely and personalized approach leads to higher open rates and conversions.
+                </FAQ>
+
+                <FAQ summary="In what ways does Dream provide a more personalized customer experience than Clay.com?">
+                    Dream offers a more personalized customer experience by enabling sales teams to both research high-value prospects and execute effective outreach. Unlike Clay.com, which is primarily research-focused, Dream adjusts messaging based on deeper sales agent profiling and the individual prospect. This dual personalization ensures communications are highly relevant, facilitating market expansion and more meaningful customer interactions.
+                </FAQ>
+
+                <FAQ summary="How does Dream integrate with existing CRM systems better than Clay.com?">
+                    Dream integrates with existing CRM systems just like Clay.com but stands out by leveraging historical context to adjust outreach. It uses past interactions and data from your CRM to personalize communications more effectively. By incorporating this historical insight, Dream enhances the relevance and impact of your outreach, leading to better engagement and improved sales outcomes.
+                </FAQ>
+                <FAQ summary="How long does it take to get started with Dream?">
+                    Within a week.
+                </FAQ>
+            </article>
+        </section>
+        <section class="main-content use-cases content-row">
+            <UseCaseBlock state="state1" />
+            <UseCaseBlock state="state3" />
+        </section>
+       
+        <section class="main-content content-list">
+            <section class="main-content content-row"> 
+                <article class="stats-box"> 
+                <h2>What this delivers</h2> 
+                <ul class="stats-items"> 
+                    <li><span class="number">10x</span><p>Your pipeline generation</p> </li>
+                    <li><span class="number">25%</span><p>The cost vs a human</p> </li>
+                </article> 
+            </section>
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+	<Footer />
+</Layout>

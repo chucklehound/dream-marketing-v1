@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Logo from '../../components/Logo.astro';
+
+
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import expandingSales from '/src/img/expanding-sales.svg';
+import newTerritory from '/src/img/new-territory.svg';
+import firstSales from '/src/img/first-sales.svg';
+import hiringPartnerships from '/src/img/hiring-partnerships.svg';
+
+import "../../styles/main.scss";
+---
+
+<Layout title="Target the right company, at the right time, with the right message">
+    <Navigation />
+	<header>
+		<div class="hero-elements main-content">
+			<section class="header-text ">
+				<h1 class="page-title">Built to support you, <br />however you work</h1>
+				<span>From deep-targeting and research, to hyper personalisation, Dream's features can turbocharge your sales. Learn more about how we can support you.</span>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+			<article class="content-grid">
+                <div class="content-grid-item">
+                    <img class="content-icon" src={expandingSales.src} alt="" role="presentation">
+                    <h4>Expanding sales</h4>
+                    <p>For companies looking to scale outbound sales, the traditional approach was to hire more SDRs and BDRs. But now, they use Dream to grow their efforts—without the cost and hassle of building large junior sales teams.</p>
+                    <a href="/use-cases/expanding-sales">Learn how Dream helps with expanding sales</a>
+                </div>
+                <div class="content-grid-item">
+                    <img class="content-icon" src={newTerritory.src} alt="" role="presentation">
+                    <h4>New territory expansion</h4>
+                    <p>For companies looking to extend sales to new markets, Dream enables them to do so in a matter of hours. Instead of hiring salespeople to cover every language, companies can now launch into new markets whenever they're ready.</p>
+                    <a href="/use-cases/new-territory">Learn how Dream helps with new territory expansion</a>
+                </div>
+                <div class="content-grid-item">
+                    <img class="content-icon" src={firstSales.src} alt="" role="presentation">
+                    <h4>First sales hire</h4>
+                    <p>For companies hiring their first salesperson, it’s often to offload founder-led sales efforts. But finding that first hire can be tough when all you really want is more meetings on the calendar. That’s where Dream comes in—your sales partner, doing the heavy lifting to book new business for you.</p>
+                    <a href="/use-cases/first-sales-hire">Learn how Dream helps for early sales hires</a>
+                </div>
+                <div class="content-grid-item">
+                    <img class="content-icon" src={hiringPartnerships.src} alt="" role="presentation">
+                    <h4>Hiring for partnerships</h4>
+                    <p>For companies hiring to grow partnerships, it’s a lot like building a sales team—hit or miss. What you really need is to get your foot in the door with target companies. That’s where Dream shines. Deploy sales agents from day one to start targeting partnerships, while you focus on taking the calls.</p>
+                    <a href="/use-cases/hiring-partnerships">Learn how Dream helps with hiring for partnerships</a>
+                </div>
+            </article>
+		</section>
+        <section class="main-content content-list">
+            
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="https://calendly.com/cgdcowley/discovery-call-dream" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+    <Footer />
+</Layout>

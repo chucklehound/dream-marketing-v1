@@ -1,0 +1,110 @@
+---
+interface Props {
+}
+
+const { } = Astro.props;
+
+import '../components/navigation.scss';
+import HamburgerIcon from '/src/img/nav.svg?raw';
+
+import expandingSales from '/src/img/expanding-sales.svg';
+import newTerritory from '/src/img/new-territory.svg';
+import firstSales from '/src/img/first-sales.svg';
+import hiringPartnerships from '/src/img/hiring-partnerships.svg';
+
+import Logo from '../components/Logo.astro';
+---
+
+<div class="navigation">
+  <nav>
+    <!-- Hamburger button for small screens -->
+    <button class="hamburger" aria-label="Toggle navigation">
+      <Fragment set:html={HamburgerIcon} />
+      <span class="visually-hidden">Toggle navigation</span>
+    </button>
+    <Logo />
+    <ul class="navbar">
+        <li><a href="/">Home</a></li>
+        <li><a href="/end-to-end-sdrs">Meet Your AI Sales Team</a></li>
+        <li><a href="/next-generation">What's a Gen 2.0 Agent?</a></li>
+        <li class="dropdown">
+            <a href="/use-cases" class="dropdown-toggle">Use Cases</a>
+            <ul class="dropdown-menu">
+                <li><a href="/use-cases/expanding-sales"><img src={expandingSales.src} alt="" role="presentation">Expanding sales</a></li>
+                <li><a href="/use-cases/new-territory"><img src={newTerritory.src} alt="" role="presentation">New Territory Expansion</a></li>
+                <li><a href="/use-cases/first-sales-hire"><img src={firstSales.src} alt="" role="presentation">Your First Sales Hire</a></li>
+                <li><a href="/use-cases/hiring-partnerships"><img src={hiringPartnerships.src} alt="" role="presentation">Hiring for Partnerships</a></li>
+            </ul>
+        </li>
+        <li><a href="/resources">Resources</a></li>
+        <li><a target="_blank" href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
+    </ul>
+    <!-- Always visible login button -->
+    <a href="https://app.usedream.ai" target="_blank" class="login-button">Log in</a>
+  </nav>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.navbar');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    // Hamburger menu toggle
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      hamburger.classList.toggle('navOpen');
+    });
+
+    // Check viewport size and apply appropriate dropdown behavior
+    function handleDropdown() {
+      if (window.innerWidth > 1000) {
+        // Enable hover and click for larger screens
+        dropdownToggle.addEventListener('mouseenter', () => {
+          dropdownMenu.classList.add('show');
+          dropdownToggle.classList.add('active');
+        });
+
+        dropdownToggle.addEventListener('mouseleave', () => {
+          dropdownMenu.classList.remove('show');
+          dropdownToggle.classList.remove('active');
+        });
+
+        dropdownToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('show');
+          dropdownToggle.classList.toggle('active');
+        });
+      } else {
+        // Remove hover behavior for smaller screens
+        dropdownToggle.removeEventListener('mouseenter', null);
+        dropdownToggle.removeEventListener('mouseleave', null);
+
+        // Dropdown only on click for smaller screens
+        dropdownToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          dropdownMenu.classList.toggle('show');
+          dropdownToggle.classList.toggle('active');
+        });
+      }
+    }
+
+    // Initial load
+    handleDropdown();
+
+    // Reapply dropdown behavior when window is resized
+    window.addEventListener('resize', handleDropdown);
+
+    // Optionally close the dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const targetElement = e.target as Element;
+      if (!dropdownToggle.contains(targetElement) && !dropdownMenu.contains(targetElement)) {
+        dropdownMenu.classList.remove('show');
+        dropdownToggle.classList.remove('active');
+      }
+    });
+  });
+</script>
+

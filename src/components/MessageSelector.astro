@@ -1,0 +1,92 @@
+---
+const messages = {
+  'Gen 1.0': {
+    'Sales Coordinator at Tullibardine Whisky': "Hi Karen,\n\nI noticed that you are the Sales Director at Tullabardine Whisky. I wanted to reach out to introduce you to the potential benefits of incorporating Artificial Intelligence (AI) into your sales processes.\n\nAI can revolutionize the way you approach sales by streamlining workflows, automating repetitive tasks, and providing invaluable insights to help your team make data-driven decisions. By utilizing AI-powered tools, Tullabardine Whisky can improve efficiency, optimize resources, and ultimately drive higher sales revenues.\n\nI would love to set up a meeting to discuss how AI can specifically benefit Tullabardine Whisky's sales team and explore potential solutions tailored to your unique needs. Please let me know if you are interested and available for a conversation.\n\nLooking forward to the opportunity to chat further.\n\nBest regards,\n\n[Your Name]",
+  },
+  'Gen 2.0': {
+    'Sales Coordinator at Tullibardine Whisky': `Hi Karen,\n\nI read that Tullibardine recently launched a new 18-year-old whisky with updated packaging design. Congratulations on the positive feedback - it's always exciting when a project comes together so well!\n\nSpeaking of projects coming together, I wanted to reach out about how AI could dramatically improve your sales and logistics processes at Tullibardine. As an independent, family-owned distillery, I imagine you're always looking for ways to streamline operations while maintaining that personal touch.\n\nHere's how our AI sales tool could be a game-changer for you:\n\n* Right company, right time: Conducts deep research on your target accounts, identifying which whisky enthusiasts and retailers to reach out to and when, maximizing conversion rates.\n* 10x outreach: Generates personalized outreach, handles engagement, and schedules calls for your sales team 24/7, allowing you to focus on crafting exceptional whiskies.\n* Global markets: As you're exporting to the UK, Europe, and the USA, our tool can handle outreach in multiple languages, helping you expand your international presence.\n\nHow does an intro call with one of our founders sound to run through a demo of the platform? We'd love to show you how we can help Tullibardine reach more whisky lovers while maintaining that boutique, family-owned spirit.\n\nBest regards,\nChris`,
+  }
+};
+
+// Stringify the messages object for safe embedding into JavaScript
+const messagesJson = JSON.stringify(messages);
+
+import LoaderDots from '../img/loader-dots.svg';
+
+import '../components/messageSelector.scss';
+
+---
+
+<article class="message-examples">
+  <h2 id="messageSelectorHeading">See what a difference Gen 2.0 makes to your messages</h2>
+  <div id="message-selector" class="message-selector" data-messages={messagesJson} role="region" aria-labelledby="messageSelectorHeading">
+  
+    <div class="selectors">
+      <!-- GPT Version Select -->
+      <label for="gpt-select" aria-label="Select GPT Version">GPT Version</label>
+      <select id="gpt-select" aria-live="polite">
+        <option value="Gen 1.0" selected>Gen 1.0</option>
+        <option value="Gen 2.0">Gen 2.0</option>
+      </select>
+  
+      <!-- Person Select -->
+      <label for="person-select" aria-label="Select Person">Person</label>
+      <select id="person-select" aria-live="polite">
+        <option value="Sales Coordinator at Tullibardine Whisky" selected>Sales Coordinator at Tullibardine Whisky</option>
+      </select>
+    </div>
+  
+    <!-- Display Message -->
+    <div id="message-display" class="message-display" aria-live="polite">
+      <p>Select options above to see the message.</p>
+    </div>
+  
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner" role="status" aria-live="assertive" aria-busy="true" hidden>
+      <img src={LoaderDots.src} alt="" />
+    </div>
+  </div>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const messageSelector = document.getElementById('message-selector');
+
+  if (!messageSelector) {
+    console.error("Message selector element not found.");
+    return;
+  }
+
+  const messages = JSON.parse(messageSelector.dataset.messages);
+
+  const gptSelect = document.getElementById('gpt-select') as HTMLSelectElement;
+  const personSelect = document.getElementById('person-select') as HTMLSelectElement;
+  const messageDisplay = document.getElementById('message-display');
+  const loadingSpinner = document.getElementById('loading-spinner');
+
+  const updateMessage = () => {
+    const gptVersion = gptSelect.value;
+    const person = personSelect.value;
+
+    loadingSpinner.hidden = false;
+    messageDisplay.innerHTML = '';
+
+    setTimeout(() => {
+      loadingSpinner.hidden = true;
+      let message = messages[gptVersion]?.[person];
+      
+      if (message) {
+        message = message.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+        messageDisplay.innerHTML = `<p>${message}</p>`;
+      } else {
+        messageDisplay.innerHTML = '<p>Message not found for selected options!</p>';
+      }
+    }, 500); // Simulated delay
+  };
+
+  gptSelect.addEventListener('change', updateMessage);
+  personSelect.addEventListener('change', updateMessage);
+
+  updateMessage();
+});
+</script>
