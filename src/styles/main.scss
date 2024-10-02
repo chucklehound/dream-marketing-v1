@@ -111,7 +111,7 @@ header {
         left: 0%;
         z-index: 0;
         pointer-events: none;
-        background: radial-gradient($color-plus-white 5%, rgba($color-lisa-yellow, 0.25) 55%) center no-repeat;
+        background: radial-gradient($color-plus-white 10%, #FAF9F5 55%) center no-repeat;
         z-index: -1;
 
         @media (max-width: 1000px) {
@@ -197,12 +197,20 @@ header {
             @include heading5;
             font-weight: 500;
 
+            br {
+                display: none;
+            }
+
             @media (min-width: 768px) {
                 font-size: 48px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 56px; /* 116.667% */
                 letter-spacing: -0.48px;
+
+                br {
+                    display: initial;
+                }
             }            
         }
         
@@ -855,7 +863,6 @@ footer {
             border-top: 1px solid $color-grays-medium;
             border-bottom: 1px solid $color-grays-medium;
             border-left: 1px solid $color-grays-medium;
-            background: $color-plus-white;
 
             @media (max-width: 850px) {
                 border-radius: 12px 12px 0px 0px ;
@@ -1147,8 +1154,12 @@ footer {
         display: flex;
         flex-direction: column;
         gap: 72px;
-        max-width: 1440px;
+        max-width: 1366px;
         margin: auto;
+
+        @media (min-width: 768px) {
+            padding: 0 24px;
+        }
 
         .sequence-item {
             position: relative;
@@ -1217,6 +1228,11 @@ footer {
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     padding-left: 44px;
+
+                    @media (max-width: 768px) {
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
                 }
             }
 
