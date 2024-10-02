@@ -28,18 +28,18 @@ import safariTab from "/src/img/safari-pinned-tab.svg";
 		<meta name="theme-color" content="#ffd601">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+			<!-- Google tag (gtag.js) -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16724054319"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'AW-16724054319');
+			</script>
 	</head>
 	<body>
 		<slot />
 	</body>
-
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16724054319"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'AW-16724054319');
-	</script>
 </html>
