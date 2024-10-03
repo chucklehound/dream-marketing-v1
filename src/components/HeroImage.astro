@@ -1,3 +1,17 @@
+---
+interface Props {
+}
+
+const {} = Astro.props;
+
+import heroElementsSub3 from '../../src/img/hero-elements-sub3.png';
+import heroElementsSub2 from '../../src/img/hero-elements-sub2.png';
+import heroElementsSub1 from '../../src/img/hero-elements-sub1.png';
+import heroStack2 from '../../src/img/hero-stack-2.png';
+import heroStack1 from '../../src/img/hero-stack-1.png';
+
+---
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 580" width="600" height="580">
 
     <style>
@@ -101,11 +115,11 @@
     </style>
 
   <g x="0" y="0" width="600" height="600">
-    <image class="substack" href="/src/img/hero-elements-sub3.png" x="100" y="0" width="450" height="432" />
-    <image class="substack" href="/src/img/hero-elements-sub3.png" x="100" y="0" width="450" height="432" />
-    <image class="substack" href="/src/img/hero-elements-sub2.png" x="100" y="0" width="450" height="432" />
-    <image class="substack" href="/src/img/hero-elements-sub1.png" x="100" y="0" width="450" height="432" />
-    <image class="shade" href="/src/img/hero-stack-2.png" x="100" y="0" width="450" height="432" />
-    <image href="/src/img/hero-stack-1.png" x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub3.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub3.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub2.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub1.src} x="100" y="0" width="450" height="432" />
+    <image class="shade" href={heroStack2.src} x="100" y="0" width="450" height="432" />
+    <image href={heroStack1.src} x="100" y="0" width="450" height="432" />
   </g>
 </svg>

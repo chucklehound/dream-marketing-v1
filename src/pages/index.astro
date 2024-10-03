@@ -34,6 +34,8 @@ import gmailIcon from "/src/img/gmail.png";
 
 import iconWide from '/src/img/partner-wide.png';
 
+import HeroImage from '../components/HeroImage.astro';
+
 import heroStack1 from '/src/img/hero-image.svg?raw';
 
 ---
@@ -54,7 +56,7 @@ import heroStack1 from '/src/img/hero-image.svg?raw';
 				><img src={arrowRightYellow.src} role="presentation" /></Button>
 			</section>
 			<section class="header-image">
-				<Fragment set:html={heroStack1} />
+				<HeroImage />
 			</section>
 		</div>
 	</header>
