@@ -345,8 +345,13 @@ main {
         text-align: center;
 
         @media (max-width: 768px) {
-            @include heading5;
+            font-size: 24px;
+            line-height: 32px;
             font-weight: 500;
+
+            br {
+                display: none;
+            }
         }
     }
 
@@ -427,6 +432,9 @@ main {
                 letter-spacing: -0.32px;
 
                 @media (max-width: 801px) {
+                    font-size: 24px;
+                    line-height: 32px;
+
                     br { display: none; }
                 }
             }
