@@ -248,11 +248,17 @@ header {
                 display: none;
             }
 
+            @keyframes back-wipe {
+                0% { width: 0; }
+                100% { width: 100%; }
+            }
+
             span {
                 @include heading5;
                 font-style: normal;
                 font-weight: 500;
                 position: relative;
+                text-wrap: nowrap;
 
                 &:after {
                     content: '';
@@ -263,6 +269,7 @@ header {
                     top: 8px;
                     z-index: -1;
                     background: $color-dream-yellow;
+                    animation-delay: 1s;
                 }
             }
 
