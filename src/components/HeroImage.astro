@@ -1,0 +1,119 @@
+---
+interface Props {
+}
+
+const {} = Astro.props;
+
+import heroElementsSub3 from '../../src/img/hero-elements-sub3.png';
+import heroElementsSub2 from '../../src/img/hero-elements-sub2.png';
+import heroElementsSub1 from '../../src/img/hero-elements-sub1.png';
+import heroStack2 from '../../src/img/hero-stack-2.png';
+import heroStack1 from '../../src/img/hero-stack-1.png';
+
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 580" width="600" height="580">
+
+    <style>
+        g {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            perspective-origin: 45% 45%;
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes expand-stack-1 {
+            0%, 50% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg);
+            }
+            100% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg) translate(32px, 20px);
+            }
+        }
+
+        @keyframes expand-stack-2 {
+            0%, 50% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg);
+            }
+            100% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg) translate(64px, 40px);
+            }
+        }
+
+        @keyframes expand-stack-3 {
+            0%, 50% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg);
+            }
+            100% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg) translate(96px, 60px);
+            }
+        }
+
+        @keyframes expand-stack-4 {
+            0%, 50% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg);
+            }
+            100% {
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg) translate(128px, 80px);
+                opacity: 0.3;
+            }
+        }
+
+        image {
+                max-width: 90%;
+                max-height: 280px;
+                position: absolute;
+                left: 30px;
+                object-fit: contain;
+                transform: rotateX(9deg) rotateY(-14deg) rotateZ(9deg) skewX(-2deg);
+                z-index: 2;
+        }
+
+        image:nth-of-type(2) {
+            z-index: -1;
+        }
+
+        g {
+            opacity: 0;
+            animation: fade-in .6s ease 1 forwards;
+        }
+
+        image.substack {
+            z-index: 1;
+            animation: expand-stack-1 3s cubic-bezier(0.86,0,0.07,1) 1 forwards;
+        }
+
+        image:nth-of-type(4) {
+            animation-name: expand-stack-1;
+        }
+
+        image:nth-of-type(3) {
+            animation-name: expand-stack-2;
+            z-index: -2;
+        }
+
+        image:nth-of-type(2) {
+            animation-name: expand-stack-3;
+            z-index: -3;
+        }
+
+        image:nth-of-type(1) {
+            animation-name: expand-stack-4;
+            z-index: -4;
+        }
+                
+    </style>
+
+  <g x="0" y="0" width="600" height="600">
+    <image class="substack" href={heroElementsSub3.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub3.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub2.src} x="100" y="0" width="450" height="432" />
+    <image class="substack" href={heroElementsSub1.src} x="100" y="0" width="450" height="432" />
+    <image class="shade" href={heroStack2.src} x="100" y="0" width="450" height="432" />
+    <image href={heroStack1.src} x="100" y="0" width="450" height="432" />
+  </g>
+</svg>

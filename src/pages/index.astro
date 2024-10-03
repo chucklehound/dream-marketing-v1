@@ -34,29 +34,35 @@ import gmailIcon from "/src/img/gmail.png";
 
 import iconWide from '/src/img/partner-wide.png';
 
+import HeroImage from '../components/HeroImage.astro';
+
+import heroStack1 from '/src/img/hero-image.svg?raw';
+
 ---
 
-<Layout title="SDRs that target the right company, at the right time, with the right message">
+<Layout title="Dream - Automated growth for companies that hate spam">
 	<Navigation />
-	<header>
+	<header class="hero-home">
 		<div class="hero-elements main-content">
-			<section class="header-text ">
-				<h1 class="page-title">SDRs that target the right company,<br />
-					at the right time, <br />
-					with the right message</h1>
-				<span>Dream’s AI-powered sales agents combine deep research about your prospects with custom targeting to give you perfectly tailored emails, sent 24/7</span>
+			<section class="header-text">
+				<h1 class="page-title"><span>Automated growth</span><br>
+					<aside>for companies that hate spam</aside>
+					</h1>
+				<span>Dream fuses your best salespeople's expertise with AI to source, research, and engage high-converting prospects</span>
 				<Button 	
 					label="Get a demo"
 					href="https://calendly.com/cgdcowley/discovery-call-dream" 
 					target="_blank"
 				><img src={arrowRightYellow.src} role="presentation" /></Button>
 			</section>
+			<section class="header-image">
+				<HeroImage />
+			</section>
 		</div>
 	</header>
 	<main>
 		<section class="main-content content-list">
 				<article class="tools-section">
-					<h2 class="section-heading">Faster growth with powerful, precise AI tools</h2>
 					<div class="tools-grid">
 						<!-- First row -->
 						<div class="tool-container">
