@@ -34,29 +34,42 @@ import gmailIcon from "/src/img/gmail.png";
 
 import iconWide from '/src/img/partner-wide.png';
 
+import heroStack1 from '/src/img/hero-elements.png';
+import heroStack2 from '/src/img/hero-shadow.png';
+
+import heroStack3 from '/src/img/hero-elements-sub1.png';
+import heroStack4 from '/src/img/hero-elements-sub2.png';
+import heroStack5 from '/src/img/hero-elements-sub3.png';
+
 ---
 
 <Layout title="SDRs that target the right company, at the right time, with the right message">
 	<Navigation />
 	<header>
 		<div class="hero-elements main-content">
-			<section class="header-text ">
-				<h1 class="page-title">SDRs that target the right company,<br />
-					at the right time, <br />
-					with the right message</h1>
-				<span>Dream’s AI-powered sales agents combine deep research about your prospects with custom targeting to give you perfectly tailored emails, sent 24/7</span>
+			<section class="header-text">
+				<h1 class="page-title"><span>Automated growth</span><br>
+					<aside>for companies that hate spam</aside>
+					</h1>
+				<span>Dream fuses your best salespeople's expertise with AI to source, research, and engage high-converting prospects</span>
 				<Button 	
-					label="Get started with Dream"
+					label="Get a demo"
 					href="https://calendly.com/cgdcowley/discovery-call-dream" 
 					target="_blank"
 				><img src={arrowRightYellow.src} role="presentation" /></Button>
+			</section>
+			<section class="header-image">
+				<img src={heroStack1.src} />
+				<img src={heroStack2.src} />
+					<img class="substack sub-1" src={heroStack3.src} />
+					<img class="substack sub-2" src={heroStack4.src} />
+					<img class="substack sub-3" src={heroStack5.src} />
 			</section>
 		</div>
 	</header>
 	<main>
 		<section class="main-content content-list">
 				<article class="tools-section">
-					<h2 class="section-heading">Faster growth with powerful, precise AI tools</h2>
 					<div class="tools-grid">
 						<!-- First row -->
 						<div class="tool-container">
