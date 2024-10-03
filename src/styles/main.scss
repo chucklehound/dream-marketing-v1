@@ -164,7 +164,7 @@ header {
         display: flex;
         flex-direction: column-reverse;
         gap: 32px;
-        padding: $spacing*4 12px;
+        padding: $spacing 0;
         max-width: 1366px;
         z-index: 2;
 
