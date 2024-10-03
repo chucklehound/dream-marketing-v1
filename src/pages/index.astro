@@ -34,18 +34,13 @@ import gmailIcon from "/src/img/gmail.png";
 
 import iconWide from '/src/img/partner-wide.png';
 
-import heroStack1 from '/src/img/hero-elements.png';
-import heroStack2 from '/src/img/hero-shadow.png';
-
-import heroStack3 from '/src/img/hero-elements-sub1.png';
-import heroStack4 from '/src/img/hero-elements-sub2.png';
-import heroStack5 from '/src/img/hero-elements-sub3.png';
+import heroStack1 from '/src/img/hero-image.svg?raw';
 
 ---
 
 <Layout title="SDRs that target the right company, at the right time, with the right message">
 	<Navigation />
-	<header>
+	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
 				<h1 class="page-title"><span>Automated growth</span><br>
@@ -59,11 +54,7 @@ import heroStack5 from '/src/img/hero-elements-sub3.png';
 				><img src={arrowRightYellow.src} role="presentation" /></Button>
 			</section>
 			<section class="header-image">
-				<img src={heroStack1.src} />
-				<img src={heroStack2.src} />
-					<img class="substack sub-1" src={heroStack3.src} />
-					<img class="substack sub-2" src={heroStack4.src} />
-					<img class="substack sub-3" src={heroStack5.src} />
+				<Fragment set:html={heroStack1} />
 			</section>
 		</div>
 	</header>
