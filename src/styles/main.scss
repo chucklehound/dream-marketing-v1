@@ -306,6 +306,11 @@ header {
 
             color: $color-performa-black;            
             max-width: 600px;
+
+            @media (min-width: 800px) {
+                font-size: 18px;
+            line-height: 24px;
+            }
         }
         
         .button {
