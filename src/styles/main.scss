@@ -203,6 +203,9 @@ header {
                     width: 100%;
                     max-height: 520px;
                     height: 100%;
+                    transform: scale(1.1);
+                    left: 32px;
+                    position: relative;
                 }
             }
         }
@@ -1642,5 +1645,11 @@ footer {
             border-left: 0;
             border-right: 0;
             padding: 0;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .calendly-inline-widget {
+            height: 1200px !important;
         }
     }

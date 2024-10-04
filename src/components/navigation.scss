@@ -350,3 +350,14 @@ nav {
     display: block;
   }
 }
+
+@media (max-width: 600px) {
+  nav {
+    gap: 8px;
+  }
+
+  .mobile-login-button, .mobile-demo-button {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
