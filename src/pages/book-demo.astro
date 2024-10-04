@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Button from '../components/Button.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
+
+import "../styles/main.scss";
+---
+
+<Layout title="Dream - Book your demo">
+    <Navigation />
+	<main>
+        <br />
+
+		<section class="main-content content-row calendly">
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/charlie-usedream/demo" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+        </section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>Accelerate your sales, maximise conversion, with instant ramp-up</h3>
+			<p>Get your sales running on autopilot. Start using Dream today.</p>
+			<Button 	
+							label="Book your demo"
+							href="/book-demo" 
+							target="_blank"
+						><img src={arrowRightDark.src} role="presentation" alt="" loading="lazy"/></Button> 
+		</article>
+	</section>
+    <Footer />
+</Layout>

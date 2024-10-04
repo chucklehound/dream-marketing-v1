@@ -1631,3 +1631,17 @@ footer {
             margin: 0;
         }
     }
+
+    section.calendly {
+        background: #fff;
+        border: 1px solid $color-grays-light;
+        border-radius: 24px; 
+        
+        @media (max-width: 1216px) {
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            padding: 0;
+            min-height: 1024px;
+        }
+    }
