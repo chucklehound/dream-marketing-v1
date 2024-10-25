@@ -13,6 +13,8 @@ import firstSales from '/src/img/first-sales.svg';
 import hiringPartnerships from '/src/img/hiring-partnerships.svg';
 
 import Logo from '../components/Logo.astro';
+
+import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
 ---
 
 <div class="navigation">
@@ -24,19 +26,77 @@ import Logo from '../components/Logo.astro';
     </button>
     <a class="logo" href="/"><Logo /><span class="visually-hidden">Return home</span></a>
     <ul class="navbar">
-        <li><a href="/end-to-end-sdrs">Why Dream?</a></li>
-        <li><a href="/next-generation">Research-led AI SDRs</a></li>
         <li class="dropdown">
-            <a href="/use-cases" class="dropdown-toggle">Use Cases</a>
-            <ul class="dropdown-menu">
-                <li><a href="/use-cases/expanding-sales"><img src={expandingSales.src} alt="" role="presentation">Expanding sales</a></li>
-                <li><a href="/use-cases/new-territory"><img src={newTerritory.src} alt="" role="presentation">New Territory Expansion</a></li>
-                <li><a href="/use-cases/first-sales-hire"><img src={firstSales.src} alt="" role="presentation">Your First Sales Hire</a></li>
-                <li><a href="/use-cases/hiring-partnerships"><img src={hiringPartnerships.src} alt="" role="presentation">Hiring for Partnerships</a></li>
-            </ul>
+          <a class="dropdown-toggle">What We Do</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"><h4><a href="/what-we-do/">What we do<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
+              <ul>
+                <li><h5>By Industry</h5></li>
+                <li><a href="/what-we-do/by-industry/travel">Travel</a></li>
+                <li><a href="/what-we-do/by-industry/hospitality">Hospitality</a></li>
+                <li><a href="/what-we-do/by-industry/healthcare">Healthcare</a></li>
+                <li><a href="/what-we-do/by-industry/fmcg">FMCG</a></li>
+                <li><a href="/what-we-do/by-industry/f-and-b">F&B</a></li>
+              </ul>
+              <ul>
+                <li><h5>By Audience</h5></li>
+                <li><a href="/what-we-do/by-audience/b2b-saas">B2B SaaS</a></li>
+                <li><a href="/what-we-do/by-audience/marketplace">Marketplace</a></li>
+                <li><a href="/what-we-do/by-audience/revenue-1-4m">$1M – $4M Revenue</a></li>
+                <li><a href="/what-we-do/by-audience/revenue-4-10m">$4M – $10M Revenue</a></li>
+              </ul>
+              <ul>
+                <li><h5>By Use Case</h5></li>
+                <li><a href="/what-we-do/by-use-case/deep-market-research">Deep Market Research</a></li>
+                <li><a href="/what-we-do/by-use-case/growing-sales-pipeline">Growing Sales Pipeline</a></li>
+                <li><a href="/what-we-do/by-use-case/reengaging-existing-customers">Re-engaging Existing Customers</a></li>
+                <li><a href="/what-we-do/by-use-case/testing-new-markets">Testing New Markets</a></li>
+              </ul>
+            </div>
+          </div>
         </li>
-        <li><a href="/resources">Resources</a></li>
-        <li><a target="_blank" href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle">How We Do It</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"><h4><a href="/how-we-do-it/">How we do it<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
+              <ul>
+                <li><a href="/how-we-do-it/research-engine">Research Engine</a></li>
+                <li><a href="/how-we-do-it/list-building">List Building</a></li>
+                <li><a href="/how-we-do-it/healthcare">Prospecting</a></li>
+                <li><a href="/how-we-do-it/fmcg">Sales Triggers</a></li>
+                <li><a href="/how-we-do-it/f-and-b">Multi-modal Outreach</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle">For RevOps</a>
+            <div class="dropdown-menu">
+              <div class="dropdown-inner"><h4><a href="/rev-ops/">For Rev-Ops<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
+                <ul>
+                  <li><a href="/how-we-do-it/f-and-b">All Documentation</a></li>
+                  <li><a href="/how-we-do-it/research-engine">Popular Documentation</a></li>
+                  <li><a href="/how-we-do-it/list-building">New market testing</a></li>
+                  <li><a href="/how-we-do-it/healthcare">Building Research Points</a></li>
+                  <li><a href="/how-we-do-it/fmcg">Setting up Account Management Team</a></li>
+                </ul>
+              </div>
+            </div>
+        </li>
+        <li><a href="/resources">Customers</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle">Resources</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"><h4><a href="/rev-ops/">Resources<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
+              <ul>
+                <li><a href="/resources/about-us">About Us</a></li>
+                <li><a href="/resources/customer-stories">Customer Stories</a></li>
+                <li><a href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
+                <li><a href="/resources/savings-calculator">Savings Calculator</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
         <li><a href="https://app.usedream.ai" target="_blank" class="mobile-login-button">Log in</a></li>
     </ul>
     <!-- Always visible login button -->
@@ -47,65 +107,81 @@ import Logo from '../components/Logo.astro';
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.navbar');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.navbar');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  const navigation = document.querySelector('.navigation');
+  const body = document.body; // Select the body element
 
-    // Hamburger menu toggle
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      hamburger.classList.toggle('navOpen');
-    });
+  // Hamburger menu toggle
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('navOpen');
+  });
 
-    // Check viewport size and apply appropriate dropdown behavior
-    function handleDropdown() {
-      if (window.innerWidth > 1000) {
-        // Enable hover and click for larger screens
-        dropdownToggle.addEventListener('mouseenter', () => {
-          dropdownMenu.classList.add('show');
-          dropdownToggle.classList.add('active');
-        });
-
-        dropdownToggle.addEventListener('mouseleave', () => {
-          dropdownMenu.classList.remove('show');
-          dropdownToggle.classList.remove('active');
-        });
-
-        dropdownToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          dropdownMenu.classList.toggle('show');
-          dropdownToggle.classList.toggle('active');
-        });
-      } else {
-        // Remove hover behavior for smaller screens
-        dropdownToggle.removeEventListener('mouseenter', null);
-        dropdownToggle.removeEventListener('mouseleave', null);
-
-        // Dropdown only on click for smaller screens
-        dropdownToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          dropdownMenu.classList.toggle('show');
-          dropdownToggle.classList.toggle('active');
-        });
-      }
+  // Function to check if any dropdown is open
+  function updateNavigationClass() {
+    const anyDropdownOpen = Array.from(dropdownToggles).some(toggle => toggle.classList.contains('active'));
+    if (anyDropdownOpen) {
+      navigation.classList.add('dropdown-open');
+      body.classList.add('dropdown-open'); // Add class to body
+    } else {
+      navigation.classList.remove('dropdown-open');
+      body.classList.remove('dropdown-open'); // Remove class from body
     }
+  }
 
-    // Initial load
-    handleDropdown();
-
-    // Reapply dropdown behavior when window is resized
-    window.addEventListener('resize', handleDropdown);
-
-    // Optionally close the dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      const targetElement = e.target as Element;
-      if (!dropdownToggle.contains(targetElement) && !dropdownMenu.contains(targetElement)) {
+  // Function to close all dropdowns
+  function closeAllDropdowns(excludeToggle = null) {
+    dropdownToggles.forEach((dropdownToggle) => {
+      if (dropdownToggle !== excludeToggle) { // Exclude the currently clicked toggle
+        const dropdownMenu = dropdownToggle.nextElementSibling;
         dropdownMenu.classList.remove('show');
         dropdownToggle.classList.remove('active');
       }
     });
+  }
+
+  // Apply click behavior for dropdowns
+  dropdownToggles.forEach((dropdownToggle) => {
+    const dropdownMenu = dropdownToggle.nextElementSibling;
+
+    // Toggle dropdown on click
+    dropdownToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // If the clicked dropdown is already open, close it
+      if (dropdownToggle.classList.contains('active')) {
+        dropdownMenu.classList.remove('show');
+        dropdownToggle.classList.remove('active');
+      } else {
+        // Close all other dropdowns, then open the clicked one
+        closeAllDropdowns(dropdownToggle);
+        dropdownMenu.classList.add('show');
+        dropdownToggle.classList.add('active');
+      }
+
+      updateNavigationClass();  // Update the class when the dropdown is toggled
+    });
   });
+
+  // Close all dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    const targetElement = e.target as Element;
+    const anyDropdownMenuOpen = Array.from(dropdownToggles).some((toggle) => {
+      const dropdownMenu = toggle.nextElementSibling;
+      return dropdownMenu.contains(targetElement) || toggle.contains(targetElement);
+    });
+
+    if (!anyDropdownMenuOpen) {
+      closeAllDropdowns();  // Close all dropdowns if clicked outside
+      updateNavigationClass();  // Update the class when all dropdowns are closed
+    }
+  });
+});
+
+
+
 </script>
 

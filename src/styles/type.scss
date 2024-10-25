@@ -3,62 +3,75 @@
 @font-face {
     font-family: "SplineSans";
     src: url("/src/styles/fonts/SplineSans-VariableFont_wght.woff2") format("woff2-variations");
-    font-weight: 300 700;
+    font-weight: 300 400 500 600 700;
+  }
+
+  @font-face {
+    font-family: "SpaceGrotesk";
+    src: url("/src/styles/fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2-variations");
+    font-weight: 300 400 500 600 700;
   }
 
   @mixin pageHeading {
     font-size: 84px;
     line-height: 96px;
     letter-spacing: -0.3px;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
 
   @mixin heading1 {
-    font-size: 64px;
-    line-height: 68px;
+    font-size: 68px;
+    line-height: 72px;
     letter-spacing: -0.3px;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
 
   @mixin heading2 {
     font-size: 56px;
     line-height: 64px;
     letter-spacing: -0.3px;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
 
   @mixin heading3 {
     font-size: 48px;
     line-height: 58px;
-    font-weight: 400;
+    font-weight: 600;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
   
   @mixin heading4 {
     font-size: 40px;
     line-height: 48px;
     letter-spacing: 0.1px;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
 
   @mixin heading5 {
+    font-weight: 600;
+    font-family: 'SpaceGrotesk', sans-serif;
     font-size: 32px;
     line-height: 40px;
     letter-spacing: 0.2px;
-    font-weight: 400;
   }
 
   @mixin heading6 {
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.2px;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: 'SpaceGrotesk', sans-serif;
   }
 
   @mixin body {
     font-size: 16px;
     line-height: 22px;
     font-weight: 400;
-    color: $brand-body;
+    color: $color-text-black;
   }
 
   .page-title {

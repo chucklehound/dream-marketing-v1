@@ -1,7 +1,7 @@
 @import '../styles/main.scss';
 
 .footer {
-    background: $color-wallstreet-black radial-gradient(rgba($color-wallstreet-black,1) 50%, rgba($color-pomona-black,.3)) center no-repeat;
+    background: $color-text-black radial-gradient(rgba($color-text-black,1) 50%, rgba($color-dark-blue,1)) center no-repeat;
     background-size: cover;
     color: $color-plus-white;
     padding: 64px 24px 32px;
@@ -67,7 +67,8 @@
       margin-right: 84px;
 
       svg {
-        height: 32px;
+        height: 64px;
+        max-height: 64px;
         width: auto;
         margin-bottom: 12px;
       }
