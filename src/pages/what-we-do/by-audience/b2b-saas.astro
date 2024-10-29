@@ -4,6 +4,8 @@ import Layout from '../../../layouts/Layout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+import leaf from '/src/img/leaf.svg';
+
 ---
 
 <Layout title="ADD TITLE">
@@ -13,7 +15,9 @@ import Footer from '../../../components/Footer.astro';
 			<section class="header-text">
 				<h1 class="page-title">Page title</h1>
 				<span>Subtitle</span>
-				</div>
+			</section>
+			<section class="header-image">
+				<img src={leaf.src} alt="">
 			</section>
 		</div>
 	</header>

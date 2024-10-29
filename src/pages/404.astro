@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+
+import "../styles/main.scss";
+---
+
+<Layout title="Dream Privacy Policy">
+    <Navigation />
+    <header>
+		<div class="hero-elements main-content">
+			<section class="header-text">
+				<h1 class="page-title">404</h1>
+                <span class="subtitle">We couldn't find the page you're looking for.</span>
+                <Button 
+                    variant='primary'
+                    href='/'
+                    label=""
+                    target="_self"
+                >
+                    Return to the home page
+                </Button>
+			</section>
+		</div>
+	</header>
+    <Footer />
+</Layout>

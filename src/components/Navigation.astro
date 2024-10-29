@@ -1,16 +1,12 @@
 ---
 interface Props {
+  onClose?: () => void;
 }
 
-const { } = Astro.props;
+const { onClose } = Astro.props;
 
 import '../components/navigation.scss';
 import HamburgerIcon from '/src/img/nav.svg?raw';
-
-import expandingSales from '/src/img/expanding-sales.svg';
-import newTerritory from '/src/img/new-territory.svg';
-import firstSales from '/src/img/first-sales.svg';
-import hiringPartnerships from '/src/img/hiring-partnerships.svg';
 
 import Logo from '../components/Logo.astro';
 
@@ -24,7 +20,7 @@ import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
       <Fragment set:html={HamburgerIcon} />
       <span class="visually-hidden">Toggle navigation</span>
     </button>
-    <a class="logo" href="/"><Logo /><span class="visually-hidden">Return home</span></a>
+    <a class="logo-nav" href="/"><Logo /><span class="visually-hidden">Return home</span></a>
     <ul class="navbar">
         <li class="dropdown">
           <a class="dropdown-toggle">What We Do</a>
@@ -83,7 +79,7 @@ import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
               </div>
             </div>
         </li>
-        <li><a href="/resources">Customers</a></li>
+        <li><a href="/customers">Customers</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle">Resources</a>
           <div class="dropdown-menu">

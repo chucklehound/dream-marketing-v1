@@ -22,14 +22,16 @@
       padding: 16px 32px 0;
     }
 
+    a.logo-nav {
+      padding: 0;
+      margin-left: 0;
+     margin-right: auto;
+    }
+
     svg.logo {
       max-height: 32px;
+      height: auto;
       width: 227px;
-    
-      @media (max-width: 600px) {
-        width: 160px;
-        max-height: 24px;
-      }
     }
 }
 
@@ -158,7 +160,7 @@ nav {
     width: 100vw;
     left: 0;
     background-color: $color-plus-white;
-    border-radius: 16px;
+    border-radius: 0;
     list-style: none;
     padding: 12px 32px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -234,11 +236,30 @@ nav {
         letter-spacing: -0.36px;
         text-align: left;
         margin-bottom: 8px;
+        color: $color-text-black;
       }
     }
 
     &.show {
       display: block;
+    }
+
+    @media (max-width: 1170px) {
+      position: relative;
+      width: auto;
+      top: auto;
+      padding: 0;
+
+      .dropdown-inner {
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+        
+        ul {
+          border-left: 0;
+          padding: 0;
+        }
+      }
     }
   }
 
@@ -294,8 +315,21 @@ nav {
   justify-content: center;
   align-items: center;
   background: rgba(0, 13, 38, 0.1);
-  border-radius: 8px;
+  border-radius: 12px;
   order: 2;
+  margin-left: 8px;
+  margin-right: 0;
+
+  @media (max-width: 500px) {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   &.navOpen {
     background: $color-text-black;
@@ -343,21 +377,24 @@ nav {
     gap: 12px;
     justify-content: stretch;
     align-items: stretch;
-    background-color: rgba($color-plus-white, .90);
+    background-color: white;
     border-radius: 12px;
     position: absolute;
     top: 68px;
     left: auto;
     right: 8px;
+    bottom: 0;
+    height: calc(100vh - 78px);
+    overflow: scroll;
     max-width: 480px;
     width: calc(100% - 32px);
-    backdrop-filter: blur(8px);
     transform-origin: top right;
     box-shadow: 0px 8px 16px 0px rgba(6, 22, 54, 0.10), 0px 2px 4px 0px rgba(0, 13, 38, 0.20);
 
     a {
       width: 100%;
       text-align: left;
+      font-size: 16px;
     }
   }
   
@@ -423,6 +460,14 @@ nav {
   }
 }
 
+@media (max-width: 500px) {
+  .mobile-demo-button {
+    max-height: 40px;
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}
+
 @media (min-width: 1171px) {
   .mobile-login-button, .mobile-demo-button {
     display: none;
@@ -449,13 +494,6 @@ nav {
   100% { max-height: 320px;}
 }
 
-.navbar .dropdown-menu {
-  width: 100vw;  // Full width of the viewport
-  left: 0;  // Align to the left of the screen
-  margin: 0;
-  border-radius: 0;  // Remove any border-radius to make it flush
-}
-
 .navigation.open {
   background-color: white;
 }
@@ -474,16 +512,13 @@ nav {
   transition: opacity 0.3s ease;
 }
 
-.navbar.open ~ .page-content {
-  opacity: 0.5;  // Lower the opacity when the dropdown is open
-}
-
-
-body.dropdown-open {
-  main, header, footer {
-    transition: filter .2s ease, opacity .2s ease;
-    filter: blur(8px);
-    opacity: 50%;
-    pointer-events: none;
+@media (min-width: 1171px) {
+  body.dropdown-open {
+    main, header, footer {
+      transition: filter .2s ease, opacity .2s ease;
+      filter: blur(8px);
+      opacity: 50%;
+      pointer-events: none;
+    }
   }
 }
