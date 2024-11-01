@@ -341,7 +341,7 @@ main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 40px;
+                gap: 64px;
 
                 @media (max-width: 1024px) {
                     flex-direction: column-reverse;
@@ -369,9 +369,13 @@ main {
 
             .image-container {
                 flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 img {
                     width: 100%;
+                    max-width: 550px;
                 }
 
                 @media (max-width: 1024px) {
@@ -429,6 +433,7 @@ main {
     h3 {
         font-size: 32px;
         font-size: 36px;
+        font-weight: 700;
 
         @media (min-width: 960px) {
             font-size: 40px;

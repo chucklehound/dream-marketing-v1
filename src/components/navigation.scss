@@ -45,7 +45,7 @@ nav {
     z-index: 2;
     width: 100%;
     display: flex;
-    border-bottom: 1px solid rgba(0, 13, 38, 0.5);
+    box-shadow: 0 1px 0 rgba($color-text-black, .5);
     padding: 0 0 12px;
 
     @media (max-width: 1170px) {
