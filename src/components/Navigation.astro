@@ -10,6 +10,8 @@ import HamburgerIcon from '/src/img/nav.svg?raw';
 
 import Logo from '../components/Logo.astro';
 
+import Button from '../components/Button.astro';
+
 import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
 ---
 
@@ -83,7 +85,7 @@ import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
         <li class="dropdown">
           <a class="dropdown-toggle">Resources</a>
           <div class="dropdown-menu">
-            <div class="dropdown-inner"><h4><a href="/rev-ops/">Resources<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
+            <div class="dropdown-inner"><h4><a href="/resources/">Resources<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
               <ul>
                 <li><a href="/resources/about-us">About Us</a></li>
                 <li><a href="/resources/customer-stories">Customer Stories</a></li>
@@ -93,11 +95,17 @@ import angledArrowDR from '/src/img/angled-arrow-down-right.svg';
             </div>
           </div>
         </li>
-        <li><a href="https://app.usedream.ai" target="_blank" class="mobile-login-button">Log in</a></li>
+        <li>
+          <div class="mobile-login-button">
+            <Button href="https://app.usedream.ai" target="_blank" variant="secondary" label="">Log in</Button>
+          </div>
+        </li>
     </ul>
     <!-- Always visible login button -->
-    <a href="https://app.usedream.ai" target="_blank" class="login-button">Log in</a>
-    <a href="/book-meeting" target="_blank" class="mobile-demo-button">Book meeting</a>
+    <div class="desktop-login"><Button href="https://app.usedream.ai" target="_blank" variant="secondary" label="">Log in</Button></div>
+    <div class="mobile-demo-button">
+      <Button href="/book-meeting" target="_blank" variant="secondary" label="">Book meeting</Button>
+    </div>
   </nav>
 
 </div>

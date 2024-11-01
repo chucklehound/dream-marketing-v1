@@ -7,8 +7,9 @@
     }
 
     @keyframes wave {
+        0% { transform: translate(0,0) scale(0.6); }
         50% { transform: translate(0,100px); }
-        0, 100% { transform: translate(0,0); }
+        100% { transform: translate(0,0) scale(0.6); }
     }
 
     svg * {
@@ -17,7 +18,7 @@
     }
 
     g#group {
-        animation: rotate 8s linear infinite;
+        animation: rotate 4s ease-in-out infinite;
         transform-origin: 50%;
     }
 
@@ -95,7 +96,7 @@
 
     circle, .halfG {
         animation: wave 4s ease-in-out infinite;
-        transform-origin: center;
+        transform-origin: bottom left;
     }
 
     rect {

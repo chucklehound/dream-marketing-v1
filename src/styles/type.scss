@@ -15,7 +15,7 @@
   @mixin pageHeading {
     font-size: 84px;
     line-height: 96px;
-    letter-spacing: -0.3px;
+    letter-spacing: -2.5px;
     font-weight: 700;
     font-family: 'SpaceGrotesk', sans-serif;
   }
@@ -23,7 +23,7 @@
   @mixin heading1 {
     font-size: 68px;
     line-height: 72px;
-    letter-spacing: -0.3px;
+    letter-spacing: -2.5px;
     font-weight: 700;
     font-family: 'SpaceGrotesk', sans-serif;
   }
@@ -31,7 +31,7 @@
   @mixin heading2 {
     font-size: 56px;
     line-height: 64px;
-    letter-spacing: -0.3px;
+    letter-spacing: -2px;
     font-weight: 700;
     font-family: 'SpaceGrotesk', sans-serif;
   }
@@ -39,6 +39,7 @@
   @mixin heading3 {
     font-size: 48px;
     line-height: 58px;
+    letter-spacing: -1.75px;
     font-weight: 600;
     font-family: 'SpaceGrotesk', sans-serif;
   }

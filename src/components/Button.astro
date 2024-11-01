@@ -3,7 +3,7 @@ interface Props {
 	label: string;
 	href: string;
     target: string;
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'reverse';
 }
 
 const { label, href, target, variant = 'primary' } = Astro.props;
@@ -20,6 +20,13 @@ import '../components/button.scss';
 
 {variant === 'secondary' && (
     <a class="button secondary" href={href} target={target}>
+        {label}
+        <slot />
+    </a>
+)}
+
+{variant === 'reverse' && (
+    <a class="button reverse" href={href} target={target}>
         {label}
         <slot />
     </a>

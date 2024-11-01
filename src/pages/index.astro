@@ -41,7 +41,7 @@ import quoteGw from '/src/img/givewheel-logo.png';
 				</div>
 			</section>
 			<section class="header-image">
-				<img src={rotate.src} alt="">
+				<object data={rotate.src} />
 			</section>
 		</div>
 	</header>
@@ -50,29 +50,29 @@ import quoteGw from '/src/img/givewheel-logo.png';
 			<div class="info-container">
 			  
 			  <!-- Box 1 -->
-			  <a href="#" class="info-box info-box-orange" aria-label="What impact can Applied Thought have for you?">
-				<span class="info-tag">Tag text</span>
+			  <a href="/what-we-do" class="info-box info-box-orange" aria-label="What impact can Applied Thought have for you?">
+				<span class="info-tag">What we do</span>
 				<h3>What impact can Applied Thought have for you?</h3>
 				<span class="read-more">Read more</span>
 			  </a>
 		  
 			  <!-- Box 2 -->
 			  <a href="#" class="info-box info-box-darkblue" aria-label="How does Applied Thought deliver better results?">
-				<span class="info-tag">Tag text</span>
+				<span class="info-tag">How we do it</span>
 				<h3>How does Applied Thought deliver better results?</h3>
 				<span class="read-more">Read more</span>
 			  </a>
 		  
 			  <!-- Box 3 -->
 			  <a href="#" class="info-box info-box-blue" aria-label="Launching a campaign in 40+ languages?">
-				<span class="info-tag">Tag text</span>
+				<span class="info-tag">For Rev-ops</span>
 				<h3>Launching a campaign in 40+ languages</h3>
 				<span class="read-more">Read more</span>
 			  </a>
 		  
 			  <!-- Box 4 -->
 			  <a href="#" class="info-box info-box-green" aria-label="Leveraging powerful lists for Revenue Ops?">
-				<span class="info-tag">Tag text</span>
+				<span class="info-tag">About us</span>
 				<h3>Leveraging powerful lists for Revenue Ops</h3>
 				<span class="read-more">Read more</span>
 			  </a>
@@ -197,7 +197,7 @@ import quoteGw from '/src/img/givewheel-logo.png';
 			<article class="main-content cta-container"> 
 				<h3>See what’s possible for your business</h3> 
 				<p>Learn how Applied Thought can 10X your growth. Book your personal meeting to explore our solutions.</p> 
-				<a class="button" href="/book-demo" target="_blank"> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </a> 
+				<Button variant="reverse" href="/book-demo" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
 			</article> 
 		</section>
 	</main>

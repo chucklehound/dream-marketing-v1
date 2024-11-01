@@ -4,11 +4,24 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import Button from '../../components/Button.astro';
+
 import circles from '/src/img/rotate-circ.svg';
+
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+
+
+import fmcg from '/src/img/industry-fmcg.jpg';
+import healthcare from '/src/img/industry-healthcare.jpg';
+import fb from '/src/img/industry-fb.jpg';
+import travel from '/src/img/industry-travel.jpg';
+import hospitality from '/src/img/industry-hospitality.jpg';
+
+import b2b from '/src/img/audience-b2b.jpg';
 
 ---
 
-<Layout title="ADD TITLE">
+<Layout title="Applied Thought - What We Do">
 	<Navigation />
 	<header class="hero-home">
 		<div class="hero-elements main-content">
@@ -16,11 +29,145 @@ import circles from '/src/img/rotate-circ.svg';
 				<h1 class="page-title">The AI platform <br />
 					built to accelerate your <span>growth</span></h1>
 			</section>
+			<section class="header-image">
+				<object data={circles.src} />
+			</section>
 		</div>
 	</header>
 	<main>
 		<section class="main-content">
-				
+				<article class="content-container">
+					<div class="section-title">
+						<h3>Solutions by Industry</h3>
+						<p>Combining features and expertise, we've tailored our platform to the challenges you encounter every day. Find out how we can support your industry.</p>
+					</div>
+					<section class="info-grid fancy-grid" style="padding-top: 12px;">
+						<!-- Box 1 -->
+						<a href="/what-we-do/by-industry/travel" class="info-box" aria-label="">
+						  <span class="info-tag">By Industry</span>
+						  <h3>Travel</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={travel.src} alt="" role="presentation" >
+						</a>
+					  
+						<!-- Box 2 -->
+						<a href="/what-we-do/by-industry/hospitality" class="info-box" aria-label="">
+						  <span class="info-tag">By Industry</span>
+						  <h3>Hospitality</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={hospitality.src} alt="" role="presentation" >
+						</a>
+			
+						<!-- Box 3 -->
+						<a href="/what-we-do/by-industry/healthcare" class="info-box" aria-label="">
+							<span class="info-tag">By Industry</span>
+							<h3>Healthcare</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={healthcare.src} alt="" role="presentation" >
+						  </a>
+			
+						  <!-- Box 4 -->
+						<a href="/what-we-do/by-industry/f-and-b" class="info-box" aria-label="">
+							<span class="info-tag">By Industry</span>
+							<h3>Food & Beverage</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={fb.src} alt="" role="presentation" >
+						  </a>
+			
+						  <!-- Box 5 -->
+						<a href="/what-we-do/by-industry/fmcg" class="info-box" aria-label="">
+							<span class="info-tag">By Industry</span>
+							<h3>FMCG</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={fmcg.src} alt="" role="presentation" >
+						  </a>
+						</section>
+				</article>
+				<article class="content-container">
+					<div class="section-title">
+						<h3>Solutions by Audience</h3>
+						<p>Reach the right person at the right time. Our advanced research and prospecting technology find the right people, to craft the right message.</p>
+					</div>
+					<section class="info-grid fancy-grid grid-two-up" style="padding-top: 12px;">
+						<!-- Box 1 -->
+						<a href="/what-we-do/by-audience/b2b-saas" class="info-box" aria-label="">
+						  <span class="info-tag">By Audience</span>
+						  <h3>B2B SaaS</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={b2b.src} alt="" role="presentation" >
+						</a>
+					  
+						<!-- Box 2 -->
+						<a href="/what-we-do/by-audience/marketplace" class="info-box" aria-label="">
+						  <span class="info-tag">By Audience</span>
+						  <h3>Marketplace</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={hospitality.src} alt="" role="presentation" >
+						</a>
+			
+						<!-- Box 3 -->
+						<a href="/what-we-do/by-audience/revenue-1-4m" class="info-box" aria-label="">
+							<span class="info-tag">By Audience</span>
+							<h3>$1M–$4M Revenue</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={healthcare.src} alt="" role="presentation" >
+						  </a>
+			
+						  <!-- Box 4 -->
+						<a href="/what-we-do/by-audience/revenue-4-10m" class="info-box" aria-label="">
+							<span class="info-tag">By Audience</span>
+							<h3>$4M–$10M Revenue</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={fb.src} alt="" role="presentation" >
+						  </a>
+						</section>
+				</article>
+				<article class="content-container">
+					<div class="section-title">
+						<h3>Solutions by Use Case</h3>
+						<p>Power your entire go-to-market process with Applied Thought. Our platform supports key use-cases for growing businesses, enabling you to scale faster.</p>
+					</div>
+					<section class="info-grid fancy-grid grid-two-up" style="padding-top: 12px;">
+						<!-- Box 1 -->
+						<a href="/what-we-do/by-audience/deep-market-research" class="info-box" aria-label="">
+						  <span class="info-tag">By Use Case</span>
+						  <h3>Deep Market Research</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={travel.src} alt="" role="presentation" >
+						</a>
+					  
+						<!-- Box 2 -->
+						<a href="/what-we-do/by-audience/growing-sales-pipeline" class="info-box" aria-label="">
+						  <span class="info-tag">By Use Case</span>
+						  <h3>Growing Sales Pipeline</h3>
+						  <span class="read-more">Explore what we can do</span>
+						  <img src={hospitality.src} alt="" role="presentation" >
+						</a>
+			
+						<!-- Box 3 -->
+						<a href="/what-we-do/by-audience/reengaging-existing-customers" class="info-box" aria-label="">
+							<span class="info-tag">By Use Case</span>
+							<h3>Re-engaging Existing Customers</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={healthcare.src} alt="" role="presentation" >
+						  </a>
+			
+						  <!-- Box 4 -->
+						<a href="/what-we-do/by-audience/testing-new-markets" class="info-box" aria-label="">
+							<span class="info-tag">By Use Case</span>
+							<h3>Testing New Markets</h3>
+							<span class="read-more">Explore what we can do</span>
+							<img src={fb.src} alt="" role="presentation" >
+						  </a>
+						</section>
+				</article>
+				<section class="final-cta"> 
+					<article class="main-content cta-container"> 
+						<h3>See what’s possible for your business</h3> 
+						<p>Learn how Applied Thought can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+						<Button label="" href="/book-demo" target="_blank" variant='secondary'> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </a> 
+					</article> 
+				</section>
 		</section>
 	</main>
 	<Footer />

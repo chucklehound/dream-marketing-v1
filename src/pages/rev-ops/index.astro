@@ -4,6 +4,11 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import dots from '/src/img/dots.svg';
+
+import listExample from '/src/img/list-example.png';
+import TabComponent from '../../components/TabComponent.astro';
+
 ---
 
 <Layout title="ADD TITLE">
@@ -11,14 +16,24 @@ import Footer from '../../components/Footer.astro';
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
-				<h1 class="page-title">Page title</h1>
-				<span>Subtitle</span>
+				<h1 class="page-title">Great <span>messages</span> love great <span>data.</span></h1>
+				<span>Applied Thought loves data, and whether you're using our industry-leading research tools, or connecting to your own CRM, your sales team can unlock its potential.</span>
+			</section>
+			<section class="header-image">
+				<object data={dots.src} />
 			</section>
 		</div>
 	</header>
 	<main>
+		<section class="main-content promo-image">
+			<article class="content-container">
+				<img src={listExample.src} alt="An example list created in Applied Thought showing Series A companies in the UK. The list is populated with lots of data">
+			</article>
+		</section>
 		<section class="main-content">
-				
+			<article class="content-container">
+				<TabComponent />
+			</article>
 		</section>
 	</main>
 	<Footer />

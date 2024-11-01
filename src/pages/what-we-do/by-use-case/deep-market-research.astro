@@ -4,6 +4,8 @@ import Layout from '../../../layouts/Layout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+import tears from '/src/img/tears.svg';
+
 ---
 
 <Layout title="ADD TITLE">
@@ -11,8 +13,11 @@ import Footer from '../../../components/Footer.astro';
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
-				<h1 class="page-title">Page title</h1>
+				<h1 class="page-title">Deep Market Research</h1>
 				<span>Subtitle</span>
+			</section>
+			<section class="header-image">
+				<object data={tears.src} />
 			</section>
 		</div>
 	</header>
