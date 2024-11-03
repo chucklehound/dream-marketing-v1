@@ -382,7 +382,8 @@ nav {
     position: absolute;
     top: 68px;
     left: auto;
-    right: 8px;
+    right: 16px;
+    
     bottom: 0;
     height: calc(100vh - 78px);
     overflow: auto;
@@ -444,10 +445,6 @@ nav {
 @media (max-width: 1000px) {
   .navbar .dropdown .dropdown-menu {
     display: none;
-  }
-
-  .navigation.dropdown-open .dropdown-menu {
-    display: block;
   }
 
   .navbar .dropdown-menu.show {
