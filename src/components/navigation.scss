@@ -154,7 +154,6 @@ nav {
 }
   
   .navbar .dropdown-menu {
-    display: none;
     position: absolute;
     top: 100%;
     width: 100vw;
@@ -162,8 +161,11 @@ nav {
     background-color: $color-plus-white;
     border-radius: 0;
     list-style: none;
-    padding: 12px 32px;
+    padding: 0;
+    opacity: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: max-height .4s ease;
+    max-height: 0;
 
     .dropdown-inner {
       max-width: 1152px;
@@ -171,7 +173,7 @@ nav {
       margin: auto;
       display: flex;
       flex-direction: row;
-      gap: 32px;
+      gap: 32px;    
 
       ul {
         display: flex;
@@ -242,6 +244,9 @@ nav {
 
     &.show {
       display: block;
+      max-height: 500px;
+      padding: 12px 32px;
+      opacity: 1;
     }
 
     @media (max-width: 1170px) {
@@ -504,7 +509,6 @@ nav {
 
 .navbar .dropdown-menu {
   background-color: white;  // Use white background when open
-  animation: grow .4s $cubic-timing 1;
   overflow: hidden;
 }
 

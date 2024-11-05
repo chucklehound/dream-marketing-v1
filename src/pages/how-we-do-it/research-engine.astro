@@ -4,15 +4,20 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import cogs from '/src/img/cogs.svg';
+
 ---
 
-<Layout title="ADD TITLE">
+<Layout title="Applied Thought - Research Engine">
 	<Navigation />
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
-				<h1 class="page-title">Page title</h1>
-				<span>Subtitle</span>
+				<h1 class="page-title">Get deep data about your target companies with <span>Research Engine.</span></h1>
+				<span>Like HAL-9000 but with a better personality. Need to know what the CEO is writing about? Where they've got offices? Or a recent fundraising round? Our research engine is built to make you an instant expert.</span>
+			</section>
+			<section class="header-image">
+				<object data={cogs.src} />
 			</section>
 		</div>
 	</header>
