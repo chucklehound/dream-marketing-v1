@@ -10,6 +10,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &.cta-footer {
+      padding-top: 192px;
+      margin-top: -128px;
+  }
     
     .footer-container {
       display: flex;

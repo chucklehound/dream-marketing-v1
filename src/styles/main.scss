@@ -424,6 +424,10 @@ main {
         width: 100%;
         margin: auto;
         padding: 48px 0;
+
+        h4 {
+            margin-bottom: 16px;
+        }
     }
 }
 
@@ -468,6 +472,7 @@ main {
     align-items: flex-start;
     padding: 24px 24px 32px;
     min-height: 256px;
+    min-width: 320px;
     border-radius: 24px;
     flex: 1 0 0;
     color: $color-text-black;
@@ -475,8 +480,9 @@ main {
     transition: background-color .3s $cubic-timing;
     text-align: left;
 
-    @media (min-width: 768px) {
-        min-height: 320px;
+    @media (min-width: 1152px) {
+        min-height: 288px;
+        min-width: auto;
     }
   
     h3 {
@@ -819,7 +825,8 @@ section[aria-label="Trust metrics"] {
 .final-cta {
     padding: 24px 0 64px;
     width: 100%;
-    margin: auto;
+    margin: auto 16px;
+    width: calc(100% - 32px);
     z-index: 3;
     position: relative;
 
@@ -829,7 +836,7 @@ section[aria-label="Trust metrics"] {
 
     .cta-container {
         background: $color-primary-orange;
-        max-width: 1318px;
+        max-width: 1280px;
         padding: 48px 32px;
         border-radius: 32px;
         text-align: center;
@@ -856,7 +863,126 @@ section[aria-label="Trust metrics"] {
         }
 
         @media (min-width: 800px) {
-            padding: 96px 64px;
+            padding: 64px;
+        }
+    }
+}
+
+.chip-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+
+    li {
+        @include heading6;
+
+        flex: 1 45%;
+        display: flex;
+        justify-content: stretch;
+        align-items: stretch;
+        border-radius: 12px;
+        background: white;
+        text-align: center;
+        overflow: hidden;
+        min-height: 192px;
+        border: 1px solid rgba($color-text-black, .2);
+        transition: border .2s $cubic-timing;
+        backface-visibility: hidden;
+        
+        @media (min-width: 800px) {
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        &:hover {
+            border: 1px solid rgba($color-text-black, .6);
+        }
+
+        span {
+            padding: 32px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+            letter-spacing: -0.2px;
+            flex: 1;
+            backface-visibility: hidden;
+            cursor: default;
+
+            svg {
+                backface-visibility: hidden;
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        &:nth-of-type(5n + 1) {
+            span {
+                background: rgba($color-green, .2);
+
+                svg, svg path {
+                    fill: $color-green !important;
+                }
+            }
+        }
+
+        &:nth-of-type(5n + 2) {
+            span {
+                background: rgba($color-blue, .2);
+
+                svg, svg path {
+                    fill: $color-blue !important;
+                }
+            }
+        }
+
+        &:nth-of-type(5n + 3) {
+            span {
+                background: rgba($color-primary-orange, .2);
+
+                svg, svg path {
+                    fill: $color-primary-orange !important;
+                }
+            }
+        }
+
+        &:nth-of-type(5n + 4) {
+            span {
+                background: rgba(#f0c808, .15);
+
+                svg, svg path {
+                    fill: #f0c808 !important;
+                }
+            }
+        }
+
+        &:nth-of-type(5n + 5) {
+            span {
+                background: rgba($color-dark-blue, .2);
+
+                svg, svg path {
+                    fill: $color-dark-blue !important;
+                }
+            }
+        }
+
+        &:last-of-type {
+            span {
+                background: transparent;
+
+                svg, svg path {
+                    fill: $color-primary-orange !important;
+                }
+            }
+        }
+        
+
+        @media (min-width: 960px) {
+            flex: 1 23%;
         }
     }
 }
@@ -874,12 +1000,14 @@ section[aria-label="Trust metrics"] {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
+        border-radius: 12px;
+        position: relative;
 
         @media (max-width: 801px) {
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid $color-grays-lighter;
+            background: rgba($color-primary-orange,.15);
             gap: 48px;
         }
     }
@@ -892,48 +1020,57 @@ section[aria-label="Trust metrics"] {
         align-self: stretch;
         border-radius: 12px 12px 0px 0px;
 
+        @media (min-width: 800px) {
+            &:after {
+                content: '';
+                display: block;
+                width: 70%;
+                height: 120%;
+                position: absolute;
+                background: rgba($color-primary-orange,.15);
+                right: 0;
+                border-radius: 12px;
+                top: -10%;
+                z-index: 0;
+            }
+        }
+
         @media (max-width: 801px) {
             gap: 0;
         }
 
         .tool-card, .tool-image {
             flex: 1;
+            position: relative;
+            z-index: 2;
         }
 
         .tool-card {
             display: flex;
-            padding: 24px;
+            padding: 40px 24px;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             gap: 8px;
             flex: 1 0 0;
-            border-radius: 0 12px 12px 0;
-            border: 1px solid rgba(92, 104, 128, 0.45);
-            border-left: 0;
-            background: var(--Plus-White, #FFFEFC);
-            box-shadow: 2px 2px 1px 0px rgba(92, 104, 128, 0.10);
+            border-radius: 8px;
+            border: 1px solid rgba($color-text-black, .2);
+            background:  #fff;
+
+            p {
+                
+                @media (min-width: 801px) {
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+            }
+            
 
             @media (max-width: 801px) {
                 border-radius: 12px;
                 border: 1px solid rgba(92, 104, 128, 0.45);
             }
 
-            h3 {
-                color: $color-wallstreet-black;
-                font-size: 32px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 40px; /* 125% */
-                letter-spacing: -0.32px;
-
-                @media (max-width: 801px) {
-                    font-size: 24px;
-                    line-height: 32px;
-
-                    br { display: none; }
-                }
-            }
 
             h4 {
                 font-size: 20px;
@@ -952,7 +1089,7 @@ section[aria-label="Trust metrics"] {
 
         .tool-image {
             display: flex;
-            padding: 24px;
+            padding: 12px;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -962,7 +1099,7 @@ section[aria-label="Trust metrics"] {
 
 
             img {
-                max-width: 480px;
+                max-width: 520px;
                 width: 100%;
             }
         }
@@ -970,14 +1107,12 @@ section[aria-label="Trust metrics"] {
         @media (min-width: 800px) {
             flex-direction: row;
             border-radius: 0px 12px 12px 0px;
-            background: $color-plus-white linear-gradient(90deg, rgba(92, 104, 128, 0.00) 40%, rgba(92, 104, 128, 0.10) 100%);
 
             .tool-content {
                 max-width: 560px;
             }
 
             .tool-card {
-                align-items: flex-end;
                 padding: 64px 32px;
             }
 
@@ -1043,6 +1178,10 @@ section[aria-label="Trust metrics"] {
             }
         }
     }
+}
+
+.content-center {
+    text-align: center;
 }
 
 .content-text {
@@ -1301,23 +1440,7 @@ section[aria-label="Trust metrics"] {
     }
 }
 
-footer {
-    padding: 24px;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    color: $color-primary-orange;
-    justify-content: center;
 
-    a {
-        color: $color-wallstreet-black;
-    }
-
-    small {
-        text-align: center;
-    }
-}
 
 .brand-partner.content-list {
     padding: 0 64px;
