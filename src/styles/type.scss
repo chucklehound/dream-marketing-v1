@@ -40,7 +40,7 @@
     font-size: 48px;
     line-height: 58px;
     letter-spacing: -1.75px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'SpaceGrotesk', sans-serif;
   }
   
@@ -48,7 +48,7 @@
     font-size: 40px;
     line-height: 48px;
     letter-spacing: -1.2px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'SpaceGrotesk', sans-serif;
   }
 
@@ -107,4 +107,5 @@
     @include body;
 
     margin-bottom: 0.8em;
+    color: $color-performa-black;
   }

@@ -4,22 +4,74 @@ import Layout from '../../../layouts/Layout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+import introImage1 from '/src/img/promo-hotel-target.png';
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+
+
+import UseCaseBlock from '../../../components/UseCaseBlock.astro';
+
+import Button from '../../../components/Button.astro';
+
 ---
 
-<Layout title="ADD TITLE">
+<Layout title="Dream, AI Agents that drive stockists growth">
 	<Navigation />
 	<header class="hero-home">
 		<div class="hero-elements main-content">
-			<section class="header-text">
-				<h1 class="page-title">Page title</h1>
-				<span>Subtitle</span>
+			<section class="header-text solo-header">
+				<h1 class="page-title">AI Agents that drive <span>stockists growth</span></h1>
+				<span>Your business runs on stockists growth. Find out how Dream can help you reach more hotels, faster.</span>
+				<Button 	
+					label="Get started with Dream"
+					href="/book-demo" 
+					target="_blank"
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
 			</section>
 		</div>
 	</header>
 	<main>
-		<section class="main-content">
-				
+		<section class="main-content content-row">
+				<article class="tools-section content-container">
+					<h2 class="section-heading">Introducing Dream, for F&B companies</h2>
+
+					<div class="tools-grid">
+						<div class="tool-container">
+						  <div class="tool-card">
+							<div class="tool-content">
+							  <p>AI agents specifically for F&B companies, who sell to stockists, that want to 10x growth.</p>		
+							  <p>Don't get held back by poor vertical specific data & having to hire new headcount. Unlock your growth with powerful, precise tools. Book your demo today</p>					
+						</div>
+						  </div>
+						  <div class="tool-image">
+							<img src={introImage1.src} alt="Illustration of AI-powered SDR">
+						  </div>
+						</div>
+					  </div>
+				</article>
+		</section>
+		<section class="main-content content-row"> 
+			<article class="stats-box"> 
+			<h2>That means…</h2> 
+			<ul class="stats-items"> 
+				<li><span class="number">1.</span><p>Account Enrichment</p><span>Giving you the tools to build target lists & then run deep research to identify buying signals & key data.</span> </li>
+				<li><span class="number">2.</span><p>Prospect Enrichment</p><span>Enabling you to find the right person, at the right hotel/group - along with their contact details.</span> </li>
+				<li><span class="number">3.</span><p>Personalised Engagement</p><span>Generate hyper personalised outreach to each person and also handling replies & scheduling.</span> </li>
+			</ul> 
+			</article> 
+		</section>
+		<section class="main-content use-cases content-row">
+            <UseCaseBlock state="state4" />
+			<UseCaseBlock state="state3" />
+            <UseCaseBlock state="state5" />
 		</section>
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 </Layout>

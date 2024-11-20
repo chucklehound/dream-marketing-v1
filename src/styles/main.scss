@@ -17,7 +17,7 @@ $cubic-timing: cubic-bezier(0.86,0,0.07,1);
   }
 
   ::selection {
-    background: $color-primary-orange;
+    background: $color-dream-yellow;
     color: $color-text-black;
     background-clip: initial;
     -webkit-background-clip: initial;
@@ -66,9 +66,9 @@ $cubic-timing: cubic-bezier(0.86,0,0.07,1);
 
 
 body {
-    background: #F9F7F2;
+    background: $color-plus-white;
     font-family: 'SplineSans', sans-serif;
-    color: $color-text-black;
+    color: $color-wallstreet-black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -82,6 +82,11 @@ $spacing: 8px;
 @keyframes appear {
     0% { opacity: 0; transform: translate(0, -12px) }
     100% { opacity: 1; transform: translate(0,0) }
+}
+
+@keyframes highlightGrow {
+    0% { width: 0; }
+    100% { width: 100%; }
 }
 
 header {
@@ -189,10 +194,32 @@ header {
         align-items: center;
         text-align: center;
         gap: 24px;
-        animation: appear 1s cubic-bezier(0.86,0,0.07,1) 1;
 
         &.solo-header {
             text-align: center;
+
+            &:after {
+                content: '';
+                width: 100%;
+                height: 200vh;
+                position: absolute;
+                top: -70vh;
+                left: 0%;
+                z-index: 0;
+                opacity: .95;
+                pointer-events: none;
+                z-index: -1;
+                display: block;
+                background: url('/src/img/circles.svg') no-repeat 50%;
+                background-size: 1536px;
+        
+                @media (max-width: 1000px) {
+                    background-size: 768px;
+                    height: 768px;
+                    top: -200px;
+                
+                }
+            }
 
             & > * {
                 text-align: center;
@@ -216,9 +243,24 @@ header {
                 @include heading3;
                 font-style: normal;
                 position: relative;
-                color: #FF4C00;
+                color: $color-wallstreet-black;
                 line-height: 48px;
                 letter-spacing: -0.1rem;
+                text-wrap: nowrap;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    background: $color-dream-yellow;
+                    height: 40px;
+                    width: 0;
+                    animation: highlightGrow 1s ease 1 forwards;
+                    animation-delay: .7s;
+                    top: 28px;
+                    left: 4px;
+                    z-index: -1;
+                }
             }
 
             @media (min-width: 1152px) {
@@ -288,6 +330,7 @@ header {
   }
 
   #rotating-text {
+    opacity: 0;
     transition: opacity 0.5s ease-in-out; /* Smooth fade in/out */
   }
   
@@ -319,7 +362,7 @@ main {
                 margin-bottom: 0;
                 margin-top: auto;
                 border-radius: 12px 12px 0 0;
-                box-shadow: 0 12px 1px 8px rgba($color-text-black, .1);
+                box-shadow: 0 12px 1px 8px rgba($color-wallstreet-black, .1);
             }
         }
 
@@ -329,9 +372,9 @@ main {
             right: -16px;
             padding: 64px 24px;
             width: 100vw;
-            background: $color-primary-orange;
+            background: $color-dream-yellow;
             overflow: hidden;
-            color: $color-background-beige;
+            color: $color-plus-white;
 
             @media (min-width: 1024px) {
                 padding: 96px 32px;
@@ -387,7 +430,7 @@ main {
             }
 
             p {
-                color: $color-background-beige;
+                color: $color-plus-white;
                 font-size: 18px;
                 line-height: 24px;
                 margin-bottom: 0;
@@ -398,7 +441,7 @@ main {
             }
 
             &.promo-blue {
-                background: $color-blue;
+                background: $color-dream-yellow;
             }
 
             &.promo-dark-blue {
@@ -406,7 +449,7 @@ main {
             }
 
             &.promo-green {
-                background: $color-green;
+                background: $color-light-green;
             }
 
             &.promo-black {
@@ -477,7 +520,8 @@ main {
     flex: 1 0 0;
     color: $color-text-black;
     text-decoration: none;
-    transition: background-color .3s $cubic-timing;
+    transition: background-color .3s ease;
+    border: 1px solid transparent;
     text-align: left;
 
     @media (min-width: 1152px) {
@@ -486,7 +530,7 @@ main {
     }
   
     h3 {
-        color: $color-background-beige;
+        color: $color-wallstreet-black;
         font-size: 28px;
         font-style: normal;
         font-weight: 700;
@@ -497,11 +541,18 @@ main {
     }
   
     .read-more {
-        color: $color-background-beige;
+        color: $color-wallstreet-black;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
         line-height: 22px; /* 137.5% */
+        display: flex;
+        gap: 12px;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
     }
   
     .info-tag {
@@ -512,8 +563,8 @@ main {
         gap: 10px;
         
         border-radius: 32px;
-        border: 1px solid $color-background-beige;
-        color: $color-background-beige;
+        border: 1px solid $color-wallstreet-black;
+        color: $color-wallstreet-black;
         font-family: "SpaceGrotesk", sans-serif;
         font-size: 14px;
         font-style: normal;
@@ -524,27 +575,24 @@ main {
 
      /* Apply alternating colors using nth-child */
         &:nth-child(4n+1) {
-            background-color: $color-primary-orange;
-            background-image: linear-gradient(rgba($color-primary-orange,.6), rgba($color-primary-orange,.6));
+            background-color: $color-light-red;
         }
         
         &:nth-child(4n+2) {
-            background-color: $color-dark-blue;
-            background-image: linear-gradient(rgba($color-dark-blue,.6), rgba($color-dark-blue,.6));
+            background-color: $color-light-blue;
         }
         
         &:nth-child(4n+3) {
-            background-color: $color-blue;
-            background-image: linear-gradient(rgba($color-blue,.6), rgba($color-blue,.6));
+            background-color: $color-light-green;
         }
         
         &:nth-child(4n+4) {
-            background-color: $color-green;
-            background-image: linear-gradient(rgba($color-green,.6), rgba($color-green,.6));
+            background-color: $color-dream-yellow;
         }
   
     &:hover {
-        background-color: $color-text-black;
+        background-color: $color-plus-white;
+        border: 1px solid rgba($color-wallstreet-black, .55);
     }
   }
 
@@ -600,7 +648,7 @@ section[aria-label="Trust metrics"] {
         letter-spacing: -0.48px;
         
         span {
-            color: $color-primary-orange;
+            color: $color-light-blue;
             font-size: 128px;
             font-style: normal;
             font-weight: 700;
@@ -656,14 +704,14 @@ section[aria-label="Trust metrics"] {
   .trust-box:nth-of-type(3n+2) {
 
     h2 span {
-        color: $color-dark-blue;
+        color: $color-light-green;
     }
   }
   
   .trust-box:nth-of-type(3n+3) {
 
     h2 span {
-        color: $color-blue;
+        color: $color-light-red;
     }
   }
   
@@ -717,6 +765,15 @@ section[aria-label="Trust metrics"] {
             overflow: hidden;
             position: relative;
 
+            .info-tag {
+                color: $color-plus-white;
+                border-color: $color-plus-white;
+            }
+
+            span {
+                color: $color-plus-white;
+            }
+
             @media (min-width: 1152px) {
                 h3 {
                     font-size: 40px;
@@ -737,9 +794,10 @@ section[aria-label="Trust metrics"] {
                 mix-blend-mode: multiply;
                 max-width: 100%;
                 max-height: 100%;
+                min-height: 100%;
                 width: 100%;
                 z-index: 1;
-                opacity: 50%;
+                opacity: 0.4;
                 top: 0;
                 left: 0;
                 bottom: 0;
@@ -782,27 +840,23 @@ section[aria-label="Trust metrics"] {
   
     /* Alternate background colors with nth-child */
     &:nth-child(4n+1) {
-      background-color: $color-primary-orange;
-      background-image: linear-gradient(rgba($color-primary-orange, 0.6), rgba($color-primary-orange, 0.6));
+        background-color: $color-light-red;
     }
   
     &:nth-child(4n+2) {
       background-color: $color-dark-blue;
-      background-image: linear-gradient(rgba($color-dark-blue, 0.6), rgba($color-dark-blue, 0.6));
     }
   
     &:nth-child(4n+3) {
-      background-color: $color-blue;
-      background-image: linear-gradient(rgba($color-blue, 0.6), rgba($color-blue, 0.6));
+      background-color: $color-light-green;
     }
   
     &:nth-child(4n+4) {
-      background-color: $color-green;
-      background-image: linear-gradient(rgba($color-green, 0.6), rgba($color-green, 0.6));
+      background-color: $color-pomona-black;
     }
   
     &:hover {
-      background-color: $color-text-black;
+      background-color: rgba($color-wallstreet-black, .6);
     }
   }
 
@@ -835,7 +889,7 @@ section[aria-label="Trust metrics"] {
     }
 
     .cta-container {
-        background: $color-primary-orange;
+        background: $color-dream-yellow;
         max-width: 1280px;
         padding: 48px 32px;
         border-radius: 32px;
@@ -845,7 +899,7 @@ section[aria-label="Trust metrics"] {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        color: $color-text-black;
+        color: $color-wallstreet-black;
 
         h3 {
             font-size: 36px;
@@ -883,23 +937,31 @@ section[aria-label="Trust metrics"] {
         display: flex;
         justify-content: stretch;
         align-items: stretch;
-        border-radius: 12px;
-        background: white;
+        border-radius: 24px;
+        background: $color-plus-white;
         text-align: center;
         overflow: hidden;
         min-height: 192px;
-        border: 1px solid rgba($color-text-black, .2);
-        transition: border .2s $cubic-timing;
-        backface-visibility: hidden;
+        border: 1px solid rgba(92, 104, 128, 0.25);
+        background: #fff linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, #FFFEFC 100%);
+
+        transition: transform .2s cubic-bezier(0.86,0,0.07,1), border .2s cubic-bezier(0.86,0,0.07,1), box-shadow .2s cubic-bezier(0.86,0,0.07,1);
+
+        &:hover {
+            transform: scale(1.05);
+            border: 1px solid rgba($color-wallstreet-black, .6);
+            box-shadow: 0px 8px 16px 0px rgba(6, 22, 54, 0.10), 0px 2px 4px 0px rgba(0, 13, 38, 0.20);
+
+            span {
+                background-color: white !important;
+            }
+        }
         
         @media (min-width: 800px) {
             font-size: 18px;
             line-height: 24px;
         }
 
-        &:hover {
-            border: 1px solid rgba($color-text-black, .6);
-        }
 
         span {
             padding: 32px 12px;
@@ -912,60 +974,63 @@ section[aria-label="Trust metrics"] {
             flex: 1;
             backface-visibility: hidden;
             cursor: default;
+            font-family: 'SplineSans', sans-serif;
+            font-weight: 400;
+            transition: background-color .2s ease;
 
             svg {
                 backface-visibility: hidden;
-                width: 32px;
-                height: 32px;
+                width: 52px;
+                height: 52px;
             }
         }
 
         &:nth-of-type(5n + 1) {
             span {
-                background: rgba($color-green, .2);
+                background: rgba($color-light-green, .1);
 
                 svg, svg path {
-                    fill: $color-green !important;
+                    fill: $color-light-green !important;
                 }
             }
         }
 
         &:nth-of-type(5n + 2) {
             span {
-                background: rgba($color-blue, .2);
+                background: rgba($color-light-blue, .1);
 
                 svg, svg path {
-                    fill: $color-blue !important;
+                    fill: $color-light-blue !important;
                 }
             }
         }
 
         &:nth-of-type(5n + 3) {
             span {
-                background: rgba($color-primary-orange, .2);
+                background: rgba($color-light-red, .1);
 
                 svg, svg path {
-                    fill: $color-primary-orange !important;
+                    fill: $color-light-red !important;
                 }
             }
         }
 
         &:nth-of-type(5n + 4) {
             span {
-                background: rgba(#f0c808, .15);
+                background: rgba(#AC70FF, .1);
 
                 svg, svg path {
-                    fill: #f0c808 !important;
+                    fill: #AC70FF !important;
                 }
             }
         }
 
         &:nth-of-type(5n + 5) {
             span {
-                background: rgba($color-dark-blue, .2);
+                background: rgba($color-dream-yellow, .2);
 
                 svg, svg path {
-                    fill: $color-dark-blue !important;
+                    fill: rgba($color-wallstreet-black, .6) !important;
                 }
             }
         }
@@ -975,7 +1040,7 @@ section[aria-label="Trust metrics"] {
                 background: transparent;
 
                 svg, svg path {
-                    fill: $color-primary-orange !important;
+                    fill: $color-dark-blue !important;
                 }
             }
         }
@@ -1006,8 +1071,8 @@ section[aria-label="Trust metrics"] {
         @media (max-width: 801px) {
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid $color-grays-lighter;
-            background: rgba($color-primary-orange,.15);
+            border: 1px solid rgba($color-wallstreet-black, .1);
+            background: rgba($color-light-blue,.15);
             gap: 48px;
         }
     }
@@ -1018,7 +1083,7 @@ section[aria-label="Trust metrics"] {
         flex-direction: column-reverse;
         gap: 8px;
         align-self: stretch;
-        border-radius: 12px 12px 0px 0px;
+        border-radius: 12px;
 
         @media (min-width: 800px) {
             &:after {
@@ -1027,8 +1092,8 @@ section[aria-label="Trust metrics"] {
                 width: 70%;
                 height: 120%;
                 position: absolute;
-                background: rgba($color-primary-orange,.15);
-                right: 0;
+                background: rgba($color-light-blue,.15);
+                right: 10px;
                 border-radius: 12px;
                 top: -10%;
                 z-index: 0;
@@ -1053,8 +1118,8 @@ section[aria-label="Trust metrics"] {
             justify-content: center;
             gap: 8px;
             flex: 1 0 0;
-            border-radius: 8px;
-            border: 1px solid rgba($color-text-black, .2);
+            border-radius: 16px;
+            box-shadow: 0 12px 12px rgba($color-wallstreet-black, .15);
             background:  #fff;
 
             p {
@@ -1068,14 +1133,22 @@ section[aria-label="Trust metrics"] {
 
             @media (max-width: 801px) {
                 border-radius: 12px;
-                border: 1px solid rgba(92, 104, 128, 0.45);
+                border: 1px solid rgba(92, 104, 128, 0.15);
             }
 
 
-            h4 {
-                font-size: 20px;
-                line-height: 24px;
+            h3 {
+                font-size: 32px;
+                line-height: 40px;
+                letter-spacing: -0.6px;
+                font-weight: 700;
                 margin-bottom: 8px;
+
+                @media (min-width: 801px) {
+                    font-size: 44px;
+                    line-height: 48px;
+                    letter-spacing: -2px;
+                }
             }
         }
 
@@ -1120,9 +1193,6 @@ section[aria-label="Trust metrics"] {
                 flex-direction: row-reverse;
 
                 .tool-card {
-                    border-radius: 12px 0 0 12px;
-                    border-right: 0;
-                    border-left: 1px solid rgba(92, 104, 128, 0.45);
                     align-items: flex-start;
                 }
             }
@@ -1231,11 +1301,13 @@ section[aria-label="Trust metrics"] {
 
     li {
         display: flex;
-        padding: 32px 0px 36px 0px;
+        padding: 32px 24px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         flex: 1 0 0;
+        cursor: default;
+        text-align: center;
 
         border-radius: 24px;
         border: 1px solid rgba(92, 104, 128, 0.25);
@@ -1251,11 +1323,12 @@ section[aria-label="Trust metrics"] {
 
         p {
             color: $color-performa-black;
-            font-size: 20px;
+            font-family: 'SpaceGrotesk', sans-serif;
+            font-size: 24px;
             font-style: normal;
-            font-weight: 400;
-            line-height: 24px; /* 120% */
-            letter-spacing: -0.1px;
+            font-weight: 700;
+            line-height: 32px; /* 120% */
+            letter-spacing: -0.7px;
             cursor: default;
         }
         
@@ -1326,7 +1399,7 @@ section[aria-label="Trust metrics"] {
     
 
     .contrast-item {
-        background: $color-primary-orange;
+        background: $color-light-blue;
         flex: 1;
         display: flex;
         flex-direction: column;

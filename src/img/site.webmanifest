@@ -1,5 +1,5 @@
 {
-  "name": "Applied Thought",
+  "name": "Dream",
   "short_name": "",
   "icons": [
     {
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#FF4C00",
-  "background_color": "#FF4C00",
+  "theme_color": "#FFD601",
+  "background_color": "#FFD601",
   "display": "standalone"
 }

@@ -1,0 +1,69 @@
+---
+import carousel1 from '/src/img/carousel-1.png';
+import carousel2 from '/src/img/carousel-2.png';
+import carousel3 from '/src/img/carousel-3.png';
+import carousel4 from '/src/img/carousel-4.png';
+
+import './TabComponent.scss';
+
+---
+  
+  <div class="tabs-container">
+    <div class="tabs">
+      <div class="tab-content active" data-tab="1">
+        <h1>AI-powered research, unlimited answers</h1>
+        <p>Create the ultimate authority on your target companies. Our research tools let you build deep research libraries that go beyond basic data. </p>
+        <p>Our research agents work just like a human, using context to understand the questions you’re asking and how to frame their responses. Your data is clean, useful, and immediately usable. </p>
+      </div>
+      <div class="tab-content" data-tab="2">
+        <h1>Connected to the way you work</h1>
+        <p>Easily connect your CRM, then setup rules to define how to push and pull prospect data. You’re in control of your information, with custom rules at a company and campaign level.</p>
+        <p>Data not in a CRM? No problem! Import information from CSVs, or scan your past conversations to extract and enrich prospects.</p>
+      </div>
+      <div class="tab-content" data-tab="3">
+        <h1>Turbocharge your sales team’s output</h1>
+        <p>Say goodbye to simple templates, and hello to individually personalised messaging. The data you gather directly drives high-quality messages. Setup your lists and research, and your sales team automatically has access to all your information when crafting messages. </p>
+        <p>Use Sales Triggers to define not just what’s in a message, but when it’s sent. Meaning your team is sending the right message at the right time.</p>
+      </div>
+      <div class="tab-content" data-tab="4">
+        <h1>Automate your entire GTM process</h1>
+        <p>Isn’t it time computers did the difficult work? Dream lets you set and forget; defining your sources, targets and then sitting back whilst our AI-platform makes you look good. </p>
+        <p>Stay in control over sourcing, prospecting, and messaging with approvals. Or use agent-approval to only escalate when human intervention is needed.</p>
+      </div>
+    </div>
+    <div class="content-images">
+      <div class="images">
+        <img src={carousel1.src} alt="Image 1" class="tab-image tab1 active" data-tab="1">
+        <img src={carousel2.src} alt="Image 2" class="tab-image tab2" data-tab="2">
+        <img src={carousel3.src} alt="Image 3" class="tab-image tab3" data-tab="3">
+        <img src={carousel4.src} alt="Image 4" class="tab-image tab4" data-tab="4">
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabContents = document.querySelectorAll<HTMLElement>('.tab-content');
+      const tabImages = document.querySelectorAll<HTMLElement>('.tab-image');
+  
+      tabContents.forEach(content => {
+        content.addEventListener('click', () => {
+          const tabId = content.getAttribute('data-tab');
+  
+          // Remove active class from all tab contents
+          tabContents.forEach(cnt => cnt.classList.remove('active'));
+          content.classList.add('active');
+  
+          // Hide all images
+          tabImages.forEach(img => img.classList.remove('active'));
+  
+          // Show active image
+          document.querySelector<HTMLElement>(`.tab-image[data-tab="${tabId}"]`)?.classList.add('active');
+        });
+      });
+  
+      // Set the first tab content as active initially
+      tabContents[0].click();
+    });
+  </script>
+  

@@ -5,16 +5,27 @@ import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
-import arrowRightDark from "/src/img/arrow-right-dark.svg";
 import arrowRightLight from "/src/img/arrow-right-white.svg";
+import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
+import arrowRightDark from '/src/img/arrow-right-dark.svg';
 
-import rotate from '/src/img/rotato.svg';
+import HeroImage from '../components/HeroImage.astro';
 
 import trust1 from '/src/img/data.png';
 import trust2 from '/src/img/chats.png';
 import trust3 from '/src/img/infinity.png';
 
 import quoteGw from '/src/img/givewheel-logo.png';
+
+import TabComponent from '../components/TabComponent.astro';
+
+import introImage1 from '/src/img/intro-img-1.png';
+import introImage2 from '/src/img/intro-img-2.png';
+import introImage3 from '/src/img/intro-img-3.png';
+
+import introIcon1 from '/src/img/intro-icon-1.svg';
+import introIcon2 from '/src/img/intro-icon-2.svg';
+import introIcon3 from '/src/img/intro-icon-3.svg';
 
 ---
 
@@ -31,7 +42,7 @@ import quoteGw from '/src/img/givewheel-logo.png';
 					label="Book your meeting"
 					href="/book-meeting" 
 					target="_blank"
-				><img src={arrowRightDark.src} role="presentation" /></Button>
+				><img src={arrowRightYellow.src} role="presentation" /></Button>
 				<Button 	
 					label="What we’ve made possible"
 					href="/use-cases" 
@@ -41,7 +52,7 @@ import quoteGw from '/src/img/givewheel-logo.png';
 				</div>
 			</section>
 			<section class="header-image">
-				<object data={rotate.src} />
+				<HeroImage />
 			</section>
 		</div>
 	</header>
@@ -50,35 +61,94 @@ import quoteGw from '/src/img/givewheel-logo.png';
 			<div class="info-container">
 			  
 			  <!-- Box 1 -->
-			  <a href="/what-we-do" class="info-box info-box-orange" aria-label="What impact can Applied Thought have for you?">
+			  <a href="/what-we-do" class="info-box info-box-orange" aria-label="What impact can Dream have for you?">
 				<span class="info-tag">What we do</span>
-				<h3>What impact can Applied Thought have for you?</h3>
-				<span class="read-more">Read more</span>
+				<h3>What impact can Dream have for you?</h3>
+				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
 			  </a>
 		  
 			  <!-- Box 2 -->
-			  <a href="#" class="info-box info-box-darkblue" aria-label="How does Applied Thought deliver better results?">
+			  <a href="#" class="info-box info-box-darkblue" aria-label="How does Dream deliver better results?">
 				<span class="info-tag">How we do it</span>
-				<h3>How does Applied Thought deliver better results?</h3>
-				<span class="read-more">Read more</span>
+				<h3>How does Dream deliver better results?</h3>
+				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
 			  </a>
 		  
 			  <!-- Box 3 -->
-			  <a href="#" class="info-box info-box-blue" aria-label="Launching a campaign in 40+ languages?">
-				<span class="info-tag">For Rev-ops</span>
-				<h3>Launching a campaign in 40+ languages</h3>
-				<span class="read-more">Read more</span>
+			  <a href="#" class="info-box info-box-blue" aria-label="How to reach 1,000 local cafes in 24 hours">
+				<span class="info-tag">For F&B</span>
+				<h3>How to reach 1,000 local cafes in 24 hours</h3>
+				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
 			  </a>
 		  
 			  <!-- Box 4 -->
-			  <a href="#" class="info-box info-box-green" aria-label="Leveraging powerful lists for Revenue Ops?">
-				<span class="info-tag">About us</span>
-				<h3>Leveraging powerful lists for Revenue Ops</h3>
-				<span class="read-more">Read more</span>
+			  <a href="#" class="info-box info-box-green" aria-label="Message hotels in 40+ languages">
+				<span class="info-tag">For Travel</span>
+				<h3>Message hotels in 40+ languages</h3>
+				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
 			  </a>
 			  
 			</div>
 		  </section>
+
+		  <section class="main-content content-list">
+			<article class="tools-section content-container">
+				<div class="tools-grid">
+					<!-- First row -->
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<div class="tool-icon">
+									<img src={introIcon1.src} role="presentation">
+								</div>
+								<h3 class="tool-title">Dream is your 24/7 <br />AI-powered sales team</h3>
+								<p class="tool-description">Reach more prospects, faster. Without scaling your sales team. Dream lets you sell more starting today.</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={introImage1.src} alt="Illustration of AI-powered SDR">
+						</div>
+					</div>
+			
+					<!-- Second row -->
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<div class="tool-icon">
+									<img src={introIcon2.src} role="presentation">
+								</div>
+								<h3 class="tool-title">Tailored messaging, <br />sent at the right time</h3>
+								<p class="tool-description">Dream’s AI learns all about your prospects, crafting individual emails to each one. You set the timing, so each message lands exactly when needed.</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={introImage2.src} alt="Illustration of tailored messaging">
+						</div>
+					</div>
+			
+					<!-- Third row -->
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<div class="tool-icon">
+									<img src={introIcon3.src} role="presentation">
+								</div>
+								<h3 class="tool-title">All you have to do is<br /> take the call</h3>
+								<p class="tool-description">Your sales agents can handle outbound, replies, and booking meetings. Choose to manually approve messages, or let Dream handle it all autonomously.</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={introImage3.src} alt="Illustration of call handling">
+						</div>
+					</div>
+				</div>
+			</article>
+	</section>
+	<section class="main-content content-row"> 
+		<h2 class="section-heading">From prospect to pitch, Dream can handle it all</h2>
+		<TabComponent />
+	</section>
+
 		  <section aria-label="Trust metrics">
 			<div class="trust-box">
 			  <div class="trust-image-container" aria-hidden="true"><img src={trust1.src} alt=""></div>
@@ -101,102 +171,17 @@ import quoteGw from '/src/img/givewheel-logo.png';
 			  </div>
 			</div>
 		  </section>
-		  <section class="info-grid">
-			<!-- Box 1 -->
-			<a href="#" class="info-box" aria-label="What impact can Applied Thought have for you?">
-			  <span class="info-tag">Tag text</span>
-			  <h3>What impact can Applied Thought have for you?</h3>
-			  <span class="read-more">Read more</span>
-			</a>
-		  
-			<!-- Box 2 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-			  <span class="info-tag">Tag text</span>
-			  <h3>Maximizing your business potential</h3>
-			  <span class="read-more">Read more</span>
-			</a>
-
-			<!-- Box 3 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 4 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 5 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 6 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 7 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 8 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			  <!-- Box 9 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			   <!-- Box 10 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			   <!-- Box 11 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-
-			   <!-- Box 12 -->
-			<a href="#" class="info-box" aria-label="Maximizing your business potential">
-				<span class="info-tag">Tag text</span>
-				<h3>Maximizing your business potential</h3>
-				<span class="read-more">Read more</span>
-			  </a>
-		  
-		  </section>
+		
 		  <section class="customer-quote main-content"> 
 			<article class="quote-body"> 
-				<blockquote> <p>“Before Applied Thought, creating and sending personalized outreach took forever. Each email required hours of research and manual writing.</p> <p>Applied Thought changed everything. It pulls in detailed prospect data, creating truly bespoke emails that hit the mark every time. It’s seamless—no more digging for info or second-guessing the message.</p> <p>Now, our outreach feels authentic, the responses are meaningful, and the best part? It’s incredibly easy to use.”</p> <cite> <span>Charlie Hart, Co-founder at Givewheel</span> <img src={quoteGw.src} alt="The logo for Givewheel"> </cite> 
+				<blockquote> <p>“Before Dream, creating and sending personalized outreach took forever. Each email required hours of research and manual writing.</p> <p>Dream changed everything. It pulls in detailed prospect data, creating truly bespoke emails that hit the mark every time. It’s seamless—no more digging for info or second-guessing the message.</p> <p>Now, our outreach feels authentic, the responses are meaningful, and the best part? It’s incredibly easy to use.”</p> <cite> <span>Charlie Hart, Co-founder at Givewheel</span> <img src={quoteGw.src} alt="The logo for Givewheel"> </cite> 
 				</blockquote> 
 			</article> 
 		</section>
 		  <section class="final-cta"> 
 			<article class="main-content cta-container"> 
 				<h3>See what’s possible for your business</h3> 
-				<p>Learn how Applied Thought can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+				<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
 				<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
 			</article> 
 		</section>
