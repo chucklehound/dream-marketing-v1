@@ -23,7 +23,7 @@ import arrowRightLight from '/src/img/arrow-right-white.svg';
 		<div class="hero-elements main-content">
 			<section class="header-text">
 				<h1 class="page-title">Powering your <span>growth</span> from search to close</h1>
-				<span>Everything you need to find, research, and message targets. All powered by cutting-edge AI.</span>
+				<span>Everything you need, so you can find, research, and message targets. All powered by cutting-edge AI.</span>
 			</section>
 			<section class="header-image">
 				<object data={tears.src} />
@@ -31,7 +31,7 @@ import arrowRightLight from '/src/img/arrow-right-white.svg';
 		</div>
 	</header>
 	<main>
-		<section class="main-content promo-bg promo-blue">
+		<section class="main-content promo-bg promo-red">
 			<article class="content-container">
 				<div class="text-container">
 					<h2>Research engine</h2>
@@ -99,13 +99,14 @@ import arrowRightLight from '/src/img/arrow-right-white.svg';
 				</div>
 			</article>
 		</section>
-		<section class="final-cta"> 
-			<article class="main-content cta-container"> 
-				<h3>See what’s possible for your business</h3> 
-				<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
-				<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
-			</article> 
-		</section>
+		
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 </Layout>

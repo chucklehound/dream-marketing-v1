@@ -4,22 +4,58 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import Lists from '/src/img/lists.svg';
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+
+
+import listBuilding from '/src/img/list-building.png';
+
+import Button from '../../components/Button.astro';
+
 ---
 
-<Layout title="ADD TITLE">
+<Layout title="Dream - List Building">
 	<Navigation />
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
-				<h1 class="page-title">Find the right <span>company</span> & <br>the right <span>person</span>.</h1>
-				<span>Subtitle</span>
+				<h1 class="page-title">List building <span>tailored</span> to your world.</h1>
+				<span>Build and explore accurate target lists that go beyond simple searches. Use our industry specific searches to uncover hidden opportunities, and add deep research to learn about them.</span>
+			</section>
+			<section class="header-image">
+				<object style="border-radius: 50%;" data={Lists.src} />
 			</section>
 		</div>
 	</header>
 	<main>
 		<section class="main-content">
-				
-		</section>
+			<article class="content-container">
+				<h4>Explore your whole world, and build deep, targeted lists</h4>
+				<div class="tools-section">
+					<div class="tools-grid">
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-content"> 
+									<p>Getting actionable data for your industry is vital. But until now you've been reliant on inconsistent off-the-shelf information or manual processes.</p> 
+									<p>Our research engine is built to understand your industry. By creating custom models you get relevant, contextual data that you can start using right away.</p>
+									<p>Your customer data changes, and that's why we've built the research engine to generate buying signals as well as data. Connect your research to an outbound campaign and send the right message at the right time.</p>
+								</div> 
+							</div>
+							<div class="tool-image">
+								<img src={listBuilding.src} alt="An illustration of two research questions over a table of results" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+	</section>
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 </Layout>

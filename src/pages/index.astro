@@ -39,7 +39,7 @@ import introIcon3 from '/src/img/intro-icon-3.svg';
 					</h1>
 				<div class="actions">
 					<Button 	
-					label="Book your meeting"
+					label="Book a demo"
 					href="/book-meeting" 
 					target="_blank"
 				><img src={arrowRightYellow.src} role="presentation" /></Button>
@@ -144,9 +144,13 @@ import introIcon3 from '/src/img/intro-icon-3.svg';
 				</div>
 			</article>
 	</section>
-	<section class="main-content content-row"> 
-		<h2 class="section-heading">From prospect to pitch, Dream can handle it all</h2>
-		<TabComponent />
+	<section class="main-content">
+		<article class="content-container">
+			<h2 class="section-heading">From prospect to pitch, Dream can handle it all</h2>
+			<br><br>
+			<TabComponent />
+			
+		</article> 
 	</section>
 
 		  <section aria-label="Trust metrics">
@@ -178,15 +182,16 @@ import introIcon3 from '/src/img/intro-icon-3.svg';
 				</blockquote> 
 			</article> 
 		</section>
-		  <section class="final-cta"> 
-			<article class="main-content cta-container"> 
-				<h3>See what’s possible for your business</h3> 
-				<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
-				<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
-			</article> 
-		</section>
+		 
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 
 	<script>
 		// Function to animate numbers

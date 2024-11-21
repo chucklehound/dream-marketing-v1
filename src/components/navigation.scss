@@ -14,6 +14,10 @@
     background: $color-plus-white;
     transition: background-color .2s ease;
 
+    @media (max-width: 800px) {
+      padding-top: 16px;
+    }
+
     &.dropdown-open {
       background: white;
     }
@@ -32,6 +36,11 @@
       max-height: 32px;
       height: auto;
       width: 150px;
+
+      @media (max-width: 600px) {
+        max-height: 28px;
+        width: 130px;
+      }
     }
 }
 
@@ -114,22 +123,19 @@ nav {
         }
       }
 
-      &.login-button, &.mobile-demo-button {
-        color: $color-wallstreet-black;
+      &.login-button, &.mobile-demo-button, &.button {
         text-wrap: nowrap;
-        border-radius: 4px;
         text-decoration: none;
         font-weight: 500;
         padding: 12px 20px;
         transition: background-color .2s ease, box-shadow .2s ease;
 
-        &:hover {
-          background-color: rgba(0,0,0,.15);
-          box-shadow: inset 0 0 0 1px rgba($color-wallstreet-black, .5);
-        }
-
         @media (max-width: 1170px) {
           order: 3;
+        }
+
+        @media (max-width: 500px) {
+          font-size: 13px;
         }
       }
 
@@ -238,6 +244,13 @@ nav {
         text-align: left;
         margin-bottom: 8px;
         color: $color-wallstreet-black;
+        
+        @media (max-width: 1170px) {
+          margin: 12px 0 4px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid $color-gray-light;
+          width: 100%;
+        }
       }
     }
 
@@ -246,6 +259,11 @@ nav {
       max-height: 500px;
       padding: 12px 32px;
       opacity: 1;
+
+      @media (max-width: 1170px) {
+        padding: 24px 8px;
+        margin: 0;
+      }
     }
 
     @media (max-width: 1170px) {
@@ -284,14 +302,20 @@ nav {
     a {
       display: block;
       text-shadow: none;
-      padding: 8px 12px 8px 8px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 400;
       text-align: left;
       width: 100%;
-      color: $color-wallstreet-black;
+      color: $color-performa-black;
       display: flex;
       align-items: center;
       gap: 12px;
       transition: background .2s ease;
+
+      @media (max-width: 1170px) {
+        padding: 12px 0;
+      }
 
       &:hover {
         background: rgba($color-wallstreet-black, .25);
@@ -413,6 +437,11 @@ nav {
     box-shadow: none;
     border: none;
 
+    @media (max-width: 1170px) {
+      padding-bottom: 12px;
+      border-bottom: 1px solid $color-pomona-black;
+    }
+
     li {
       &:not(:last-of-type) {
         border-color: rgba($color-plus-white, .2);
@@ -477,7 +506,7 @@ nav {
 }
 
 @media (min-width: 1171px) {
-  .mobile-login-button, .mobile-demo-button {
+  .mobile-login-button {
     display: none;
   }
 
