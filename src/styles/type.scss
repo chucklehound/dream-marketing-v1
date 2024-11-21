@@ -55,9 +55,9 @@
   @mixin heading5 {
     font-weight: 600;
     font-family: 'SpaceGrotesk', sans-serif;
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: 0.2px;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.8px;
   }
 
   @mixin heading6 {

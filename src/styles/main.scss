@@ -2,6 +2,10 @@
 
 $cubic-timing: cubic-bezier(0.86,0,0.07,1);
 
+@view-transition {
+    navigation: auto;
+  }
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -1076,6 +1080,10 @@ section[aria-label="Trust metrics"] {
     flex-direction: column;
     gap: 48px;
     padding-top: 64px;
+
+    @media (max-width: 801px) {
+        padding-top: 24px;
+    }
 
     .tools-grid {
         display: flex;
@@ -2293,5 +2301,63 @@ section[aria-label="Trust metrics"] {
     @media (max-width: 1000px) {
         .calendly-inline-widget {
             height: 1200px !important;
+        }
+    }
+
+    .feature-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+
+        @media (min-width: 1024px) {
+            gap: 20px;
+        }
+
+
+        li {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+
+            @media (min-width: 1024px) {
+                flex: 1 45%;
+
+                font-size: 18px;
+                line-height: 26px;
+            }
+
+            &:before {
+                content: '';
+                display: block;
+                position: relative;
+                width: 24px;
+                height: 24px;
+                min-width: 24px;
+                min-height: 24px;
+                background: transparent url('/src/img/tick-green.svg') no-repeat center;
+                background-size: 24px;
+            }
+        }
+    }
+
+    .content-pair {
+        display: flex;
+        gap: 32px;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: center;
+
+        .text-content, .image-content {
+            flex: 1 50%;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            flex-direction: row;
         }
     }

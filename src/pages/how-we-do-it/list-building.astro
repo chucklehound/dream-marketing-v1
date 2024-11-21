@@ -9,8 +9,11 @@ import arrowRightLight from '/src/img/arrow-right-white.svg';
 
 
 import listBuilding from '/src/img/list-building.png';
+import searchExample from '/src/img/list-example-search.png';
 
 import Button from '../../components/Button.astro';
+
+import quoteGw from '/src/img/givewheel-logo.png';
 
 ---
 
@@ -36,9 +39,9 @@ import Button from '../../components/Button.astro';
 						<div class="tool-container">
 							<div class="tool-card">
 								<div class="tool-content"> 
-									<p>Getting actionable data for your industry is vital. But until now you've been reliant on inconsistent off-the-shelf information or manual processes.</p> 
-									<p>Our research engine is built to understand your industry. By creating custom models you get relevant, contextual data that you can start using right away.</p>
-									<p>Your customer data changes, and that's why we've built the research engine to generate buying signals as well as data. Connect your research to an outbound campaign and send the right message at the right time.</p>
+									<p>Dream’s sourcing agents uses advanced search techniques tailored to your industry, to find more companies, faster.</p> 
+									<p>Search by criteria like company size and location, or go deeper and use our specialised search types like hiring, announcements, or for specific businesses.</p> 
+									<p>Enhance your lists with research to easily reach the right companies.</p>
 								</div> 
 							</div>
 							<div class="tool-image">
@@ -48,7 +51,31 @@ import Button from '../../components/Button.astro';
 					</div>
 				</div>
 			</article>
-	</section>
+		</section>
+		<section class="main-content">
+			<article class="content-container">
+				<h4>Unlock your audience with powerful features</h4>
+				<div class="content-pair">
+					<ul class="feature-list text-content">
+						<li>Easily build lists in seconds. Our easy-to-use tools get you searching straight away.</li>
+						<li>Create regular sourcing schedules and constantly bring in new companies.</li>
+						<li>Use criteria searches to pull in data from over 70M companies with deep filtering.</li>
+						<li>Find local businesses easily, and pull in data including Google Reviews, Business Type, and more.</li>
+						<li>Search for hotels, and hotel groups. Instantly see average ADRs, group types, and classification.</li>
+						<li>Dig deep into your lists with custom research, letting you drive targeted campaigns from one location.</li>
+					</ul>
+					<div class="image-content">
+						<img src={searchExample.src} alt="An example of different search types for hotels and F&B">
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="customer-quote main-content"> 
+			<article class="quote-body"> 
+				<blockquote> <p>“Before Dream, creating and sending personalized outreach took forever. Each email required hours of research and manual writing.</p> <p>Dream changed everything. It pulls in detailed prospect data, creating truly bespoke emails that hit the mark every time. It’s seamless—no more digging for info or second-guessing the message.</p> <p>Now, our outreach feels authentic, the responses are meaningful, and the best part? It’s incredibly easy to use.”</p> <cite> <span>Charlie Hart, Co-founder at Givewheel</span> <img src={quoteGw.src} alt="The logo for Givewheel"> </cite> 
+				</blockquote> 
+			</article> 
+		</section>
 	</main>
 	<section class="final-cta"> 
 		<article class="main-content cta-container"> 

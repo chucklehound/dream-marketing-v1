@@ -6,10 +6,10 @@
     0% { opacity: 0.6; }
     15% { opacity: 0.6; }
     20% { transform: scale(0.7); opacity: 1; fill: #0D0400; }
-    30% { transform: scale(1.15); fill: #FF4C00; }
-    33% { transform: scale(0.9); fill: #FF4C00; }
-    40%, 60% { transform: scale(1); fill: #FF4C00; }
-    70% { transform: scale(0.7); opacity: 1; fill: #FF4C00; }
+    30% { transform: scale(1.15); fill: #FFD601; }
+    33% { transform: scale(0.9); fill: #FFD601; }
+    40%, 60% { transform: scale(1); fill: #FFD601; }
+    70% { transform: scale(0.7); opacity: 1; fill: #FFD601; }
     80% { transform: scale(1.15); fill: #0D0400; }
     83% { transform: scale(0.9); fill: #0D0400; }
     90%, 100% { transform: scale(1); fill: #0D0400; opacity: 0.6; }
@@ -19,9 +19,9 @@
     0% { fill: rgba(13,4,0,.6); }
     10% { fill: rgba(13,4,0,.6); }
     20% { fill: #0D0400; }
-    30% { fill: #FF4C00; }
-    40%, 60% { fill: #FF4C00; }
-    70% {  fill: #FF4C00; }
+    30% { fill: #FFD601; }
+    40%, 60% { fill: #FFD601; }
+    70% {  fill: #FFD601; }
     80% { fill: #0D0400; }
     90%, 100% { fill: rgba(13,4,0,.6); }
 }

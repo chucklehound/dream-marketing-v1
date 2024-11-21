@@ -35,11 +35,11 @@
     svg.logo {
       max-height: 32px;
       height: auto;
-      width: 150px;
+      width: 128px;
 
       @media (max-width: 600px) {
         max-height: 28px;
-        width: 130px;
+        width: 112px;
       }
     }
 }
