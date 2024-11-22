@@ -94,88 +94,60 @@ $spacing: 8px;
 }
 
 @keyframes slide-bg-left {
-    0% {
-        background-position: 0 0;
-      }
-      8.33% {
-        background-position: -16.67% 0;
-      }
-      16.67% {
-        background-position: -33.33% 0;
-      }
-      25% {
-        background-position: -50% 0;
-      }
-      33.33% {
-        background-position: -66.67% 0;
-      }
-      41.67% {
-        background-position: -83.33% 0;
-      }
-      50% {
-        background-position: -100% 0;
-      }
-      58.33% {
-        background-position: -116.67% 0;
-      }
-      66.67% {
-        background-position: -133.33% 0;
-      }
-      75% {
-        background-position: -150% 0;
-      }
-      83.33% {
-        background-position: -166.67% 0;
-      }
-      91.67% {
-        background-position: -183.33% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
-      }
+    0% { background-position: 0 0; }
+  4.17% { background-position: -8.33% 0; }
+  8.33% { background-position: -16.67% 0; }
+  12.5% { background-position: -25% 0; }
+  16.67% { background-position: -33.33% 0; }
+  20.83% { background-position: -41.67% 0; }
+  25% { background-position: -50% 0; }
+  29.17% { background-position: -58.33% 0; }
+  33.33% { background-position: -66.67% 0; }
+  37.5% { background-position: -75% 0; }
+  41.67% { background-position: -83.33% 0; }
+  45.83% { background-position: -91.67% 0; }
+  50% { background-position: -100% 0; }
+  54.17% { background-position: -108.33% 0; }
+  58.33% { background-position: -116.67% 0; }
+  62.5% { background-position: -125% 0; }
+  66.67% { background-position: -133.33% 0; }
+  70.83% { background-position: -141.67% 0; }
+  75% { background-position: -150% 0; }
+  79.17% { background-position: -158.33% 0; }
+  83.33% { background-position: -166.67% 0; }
+  87.5% { background-position: -175% 0; }
+  91.67% { background-position: -183.33% 0; }
+  95.83% { background-position: -191.67% 0; }
+  100% { background-position: -200% 0; }
+}
 
-      @keyframes slide-bg-right {
-        0% {
-          background-position: 0 0;
-        }
-        8.33% {
-          background-position: 16.67% 0;
-        }
-        16.67% {
-          background-position: 33.33% 0;
-        }
-        25% {
-          background-position: 50% 0;
-        }
-        33.33% {
-          background-position: 66.67% 0;
-        }
-        41.67% {
-          background-position: 83.33% 0;
-        }
-        50% {
-          background-position: 100% 0;
-        }
-        58.33% {
-          background-position: 116.67% 0;
-        }
-        66.67% {
-          background-position: 133.33% 0;
-        }
-        75% {
-          background-position: 150% 0;
-        }
-        83.33% {
-          background-position: 166.67% 0;
-        }
-        91.67% {
-          background-position: 183.33% 0;
-        }
-        100% {
-          background-position: 200% 0;
-        }
-      }
+@keyframes slide-bg-right {
+    0% { background-position: 0 0; }
+    4.17% { background-position: 8.33% 0; }
+    8.33% { background-position: 16.67% 0; }
+    12.5% { background-position: 25% 0; }
+    16.67% { background-position: 33.33% 0; }
+    20.83% { background-position: 41.67% 0; }
+    25% { background-position: 50% 0; }
+    29.17% { background-position: 58.33% 0; }
+    33.33% { background-position: 66.67% 0; }
+    37.5% { background-position: 75% 0; }
+    41.67% { background-position: 83.33% 0; }
+    45.83% { background-position: 91.67% 0; }
+    50% { background-position: 100% 0; }
+    54.17% { background-position: 108.33% 0; }
+    58.33% { background-position: 116.67% 0; }
+    62.5% { background-position: 125% 0; }
+    66.67% { background-position: 133.33% 0; }
+    70.83% { background-position: 141.67% 0; }
+    75% { background-position: 150% 0; }
+    79.17% { background-position: 158.33% 0; }
+    83.33% { background-position: 166.67% 0; }
+    87.5% { background-position: 175% 0; }
+    91.67% { background-position: 183.33% 0; }
+    95.83% { background-position: 191.67% 0; }
+    100% { background-position: 200% 0; }
+}
       
 
 header {
@@ -236,8 +208,8 @@ header {
                 min-height: 320px;
 
                 @media (max-width: 600px) {
-                    max-height: 240px;
-                    min-height: 240px;
+                    max-height: 220px;
+                    min-height: 220px;
                 }
             }
 
@@ -261,7 +233,7 @@ header {
                     height: 150px;
                     background: url('/src/img/block-2a.png') repeat-x top left;
                     background-size: cover;
-                    animation: slide-bg-right 30s $cubic-timing infinite; 
+                    animation: slide-bg-right 60s $cubic-timing infinite; 
                     animation-delay: 0.5s;
                 }
 
@@ -272,11 +244,11 @@ header {
                 }
 
                 @media (max-width: 600px) { 
-                    height: 240px;
-                    min-height: 240px;
+                    height: 220px;
+                    min-height: 220px;
 
                     .first-row, .second-row {
-                        height: 116px;
+                        height: 96px;
                     }
                 }
             }
@@ -442,7 +414,6 @@ header {
 
             @media (max-width: 700px) {
                 a {
-                    font-size: 14px;
                     padding: 12px 20px;
                 }
             }
@@ -1474,6 +1445,11 @@ section[aria-label="Trust metrics"] {
     gap: 48px;
     padding-left: 24px;
     padding-right: 24px;
+
+    @media (max-width: 1152px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
     .section-title {
         text-align: center;
