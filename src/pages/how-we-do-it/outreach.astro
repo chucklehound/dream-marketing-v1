@@ -4,6 +4,13 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import Leaf from '/src/img/leaf.svg';
+
+import Button from '../../components/Button.astro';
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+
+import OutreachSample from '/src/img/outreach-langs.png';
+
 ---
 
 <Layout title="Dream - Outreach">
@@ -11,15 +18,44 @@ import Footer from '../../components/Footer.astro';
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text">
+				<small class="tag">How we do it / Outreach</small>
 				<h1 class="page-title">The best message you <span>(n)ever</span> wrote</h1>
-				<span>Subtitle</span>
+				<span>Getting the perfect message right takes research, thought, and time. Dream's outreach tools help you land the perfect, tailored message, in 40 languages, every time.</span>
+			</section>
+			<section class="header-image">
+				<object data={Leaf.src} />
 			</section>
 		</div>
 	</header>
 	<main>
 		<section class="main-content">
-				
-		</section>
+			<article class="content-container">
+				<h4>Meet (or beat) your best performing SDR reply rates</h4>
+				<div class="tools-section">
+					<div class="tools-grid">
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-content"> 
+									<p>The core of a good campaign is your message. What it says, when it arrives, and who it reaches. Dream uses deeper personalisation to match every message to its recipient, automatically creating tailored outreach for every prospect.</p> 
+									<p>Prefer to write your own messages? Easily add templates, and Dream can intelligently pull variables like company and prospect name in without complex template management.</p>
+									<p>Setup custom sales profiles, and you can do outreach in over 40 languages. Dream's AI can send smart replies to questions and book your meetings, so you just need to take the call.</p>
+								</div> 
+							</div>
+							<div class="tool-image">
+								<img src={OutreachSample.src} alt="An illustration of two research questions over a table of results" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+	</section>
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 </Layout>

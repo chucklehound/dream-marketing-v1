@@ -25,7 +25,7 @@
         
     </style>
 
-    <circle cx="250" cy="250" r="60" fill="#FF4C00"/>
+    <circle cx="250" cy="250" r="60" fill="#FFD601"/>
     <g id="group">
         <rect x="0" y="0" fill="none" width="500" height="500" />
         

@@ -93,6 +93,91 @@ $spacing: 8px;
     100% { width: 100%; }
 }
 
+@keyframes slide-bg-left {
+    0% {
+        background-position: 0 0;
+      }
+      8.33% {
+        background-position: -16.67% 0;
+      }
+      16.67% {
+        background-position: -33.33% 0;
+      }
+      25% {
+        background-position: -50% 0;
+      }
+      33.33% {
+        background-position: -66.67% 0;
+      }
+      41.67% {
+        background-position: -83.33% 0;
+      }
+      50% {
+        background-position: -100% 0;
+      }
+      58.33% {
+        background-position: -116.67% 0;
+      }
+      66.67% {
+        background-position: -133.33% 0;
+      }
+      75% {
+        background-position: -150% 0;
+      }
+      83.33% {
+        background-position: -166.67% 0;
+      }
+      91.67% {
+        background-position: -183.33% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+      }
+
+      @keyframes slide-bg-right {
+        0% {
+          background-position: 0 0;
+        }
+        8.33% {
+          background-position: 16.67% 0;
+        }
+        16.67% {
+          background-position: 33.33% 0;
+        }
+        25% {
+          background-position: 50% 0;
+        }
+        33.33% {
+          background-position: 66.67% 0;
+        }
+        41.67% {
+          background-position: 83.33% 0;
+        }
+        50% {
+          background-position: 100% 0;
+        }
+        58.33% {
+          background-position: 116.67% 0;
+        }
+        66.67% {
+          background-position: 133.33% 0;
+        }
+        75% {
+          background-position: 150% 0;
+        }
+        83.33% {
+          background-position: 166.67% 0;
+        }
+        91.67% {
+          background-position: 183.33% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+      
+
 header {
     display: flex;
     flex-direction: column;
@@ -147,7 +232,53 @@ header {
             max-height: calc(50vw - 12px);
 
             &.home-hero {
-                max-height: 240px;
+                max-height: 320px;
+                min-height: 320px;
+
+                @media (max-width: 600px) {
+                    max-height: 240px;
+                    min-height: 240px;
+                }
+            }
+
+            .tick-hero {
+                --container-width: 100%; /* You can set this based on the actual container width */
+                width: var(--container-width);
+                height: 320px; 
+                min-height: 320px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 12px;
+
+                @media (min-width: 1024px) {
+                    border-left: 1px solid rgba($color-wallstreet-black, .4);
+                    border-right: 1px solid rgba($color-wallstreet-black, .4);
+                }
+
+                .first-row, .second-row {
+                    width: 100%;
+                    height: 150px;
+                    background: url('/src/img/block-2a.png') repeat-x top left;
+                    background-size: cover;
+                    animation: slide-bg-right 30s $cubic-timing infinite; 
+                    animation-delay: 0.5s;
+                }
+
+                .second-row {
+                    background: url('/src/img/block-2b.png') repeat-x top left;
+                    background-size: cover;
+                    animation-name: slide-bg-left;
+                }
+
+                @media (max-width: 600px) { 
+                    height: 240px;
+                    min-height: 240px;
+
+                    .first-row, .second-row {
+                        height: 116px;
+                    }
+                }
             }
 
             object {
@@ -155,7 +286,6 @@ header {
             }
             
             @media (min-width: 550px) {
-                max-height: 250px;
 
                 object {
                     width: 500px;
@@ -209,7 +339,9 @@ header {
         gap: 24px;
 
         @media (max-width: 1152px) {
-            // order: 1;
+            br {
+                display: none;
+            }
         }
         
 
@@ -569,6 +701,10 @@ main {
     border: 1px solid transparent;
     text-align: left;
 
+    @media (max-width: 500px) {
+        min-width: 200px;
+    }
+
     @media (min-width: 1152px) {
         min-height: 288px;
         min-width: auto;
@@ -809,6 +945,10 @@ section[aria-label="Trust metrics"] {
             min-width: 320px;
             overflow: hidden;
             position: relative;
+
+            @media (max-width: 500px) {
+                min-width: 200px;
+            }
 
             .info-tag {
                 color: $color-plus-white;
@@ -1940,8 +2080,11 @@ section[aria-label="Trust metrics"] {
     .content-grid-item:nth-of-type(4) { grid-area: 2 / 2 / 3 / 3; }
 
     .tag {
-        background-color: $color-wallstreet-black;
-        color: $color-grays-lighter;
+        background-color: $color-grays-light;
+        color: $color-wallstreet-black;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-family: 'SpaceGrotesk', sans-serif;
         border-radius: 24px;
         font-size: 14px;
         line-height: 20px;

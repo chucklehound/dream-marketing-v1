@@ -15,8 +15,8 @@
     height: 100%;
     background-image: var(--bg);
     background-size: cover;
-animation: slide-bg-left 8s ease infinite; 
-    animation-delay: 1s;
+animation: slide-bg-left 10s ease infinite; 
+    animation-delay: 0.5s;
   }
   
   .animated-bg.second {
