@@ -27,6 +27,8 @@ import introIcon1 from '/src/img/intro-icon-1.svg';
 import introIcon2 from '/src/img/intro-icon-2.svg';
 import introIcon3 from '/src/img/intro-icon-3.svg';
 
+import tickHero from '/src/img/tick-hero.svg?raw';
+
 ---
 
 <Layout title="Research-led AI that makes anything possible">
@@ -51,8 +53,8 @@ import introIcon3 from '/src/img/intro-icon-3.svg';
 				></Button>
 				</div>
 			</section>
-			<section class="header-image">
-				<HeroImage />
+			<section class="header-image home-hero">
+				<Fragment set:html={tickHero} />
 			</section>
 		</div>
 	</header>

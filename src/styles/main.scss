@@ -102,7 +102,7 @@ header {
     gap: 32px;
     position: relative;
     z-index: 1;
-    padding: 32px 16px;
+    padding: 24px 16px 32px;
     min-height: 400px;
 
     @media (min-width: 960px) {
@@ -132,6 +132,10 @@ header {
         max-width: 1366px;
         z-index: 2;
 
+        @media (max-width: 800px) {
+            gap: 16px;
+        }
+
         .header-image {
             max-height: 360px;
             position: relative;
@@ -140,7 +144,11 @@ header {
             align-items: flex-start;
             z-index: 3;
             overflow: hidden;
-            max-height: calc(50vw - 32px);
+            max-height: calc(50vw - 12px);
+
+            &.home-hero {
+                max-height: 240px;
+            }
 
             object {
                 width: 100%;
@@ -201,7 +209,7 @@ header {
         gap: 24px;
 
         @media (max-width: 1152px) {
-            order: 1;
+            // order: 1;
         }
         
 
