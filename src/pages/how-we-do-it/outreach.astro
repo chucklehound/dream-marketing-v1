@@ -10,6 +10,10 @@ import Button from '../../components/Button.astro';
 import arrowRightLight from '/src/img/arrow-right-white.svg';
 
 import OutreachSample from '/src/img/outreach-langs.png';
+import messaging from '/src/img/messaging.png';
+import quoteGw from '/src/img/givewheel-logo.png';
+
+
 
 ---
 
@@ -19,7 +23,7 @@ import OutreachSample from '/src/img/outreach-langs.png';
 		<div class="hero-elements main-content">
 			<section class="header-text">
 				<small class="tag">How we do it / Outreach</small>
-				<h1 class="page-title">The best message you <span>(n)ever</span> wrote</h1>
+				<h1 class="page-title">The <span>best message</span> you (n)ever wrote</h1>
 				<span>Getting the perfect message right takes research, thought, and time. Dream's outreach tools help you land the perfect, tailored message, in 40 languages, every time.</span>
 			</section>
 			<section class="header-image">
@@ -48,6 +52,30 @@ import OutreachSample from '/src/img/outreach-langs.png';
 					</div>
 				</div>
 			</article>
+	</section>
+	<section class="main-content">
+		<article class="content-container">
+			<h4>Unlock your audience with powerful features</h4>
+			<div class="content-pair">
+				<ul class="feature-list text-content">
+					<li>Easily build lists in seconds. Our easy-to-use tools get you searching straight away.</li>
+					<li>Create regular sourcing schedules and constantly bring in new companies.</li>
+					<li>Use criteria searches to pull in data from over 70M companies with deep filtering.</li>
+					<li>Find local businesses easily, and pull in data including Google Reviews, Business Type, and more.</li>
+					<li>Search for hotels, and hotel groups. Instantly see average ADRs, group types, and classification.</li>
+					<li>Dig deep into your lists with custom research, letting you drive targeted campaigns from one location.</li>
+				</ul>
+				<div class="image-content">
+					<img src={messaging.src} alt="An example of different search types for hotels and F&B">
+				</div>
+			</div>
+		</article>
+	</section>
+	<section class="customer-quote main-content"> 
+		<article class="quote-body"> 
+			<blockquote> <p>“Before Dream, creating and sending personalized outreach took forever. Each email required hours of research and manual writing.</p> <p>Dream changed everything. It pulls in detailed prospect data, creating truly bespoke emails that hit the mark every time. It’s seamless—no more digging for info or second-guessing the message.</p> <p>Now, our outreach feels authentic, the responses are meaningful, and the best part? It’s incredibly easy to use.”</p> <cite> <span>Charlie Hart, Co-founder at Givewheel</span> <img src={quoteGw.src} alt="The logo for Givewheel"> </cite> 
+			</blockquote> 
+		</article> 
 	</section>
 	</main>
 	<section class="final-cta"> 
