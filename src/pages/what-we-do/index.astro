@@ -102,14 +102,35 @@ import hospitality from '/src/img/industry-hospitality.jpg';
 						  </a>
 						</section>
 				</article>
-				<section class="final-cta"> 
-					<article class="main-content cta-container"> 
-						<h3>See what’s possible for your business</h3> 
-						<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
-						<Button label="" href="/book-meeting" target="_blank" variant='reverse'> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </a> 
-					</article> 
-				</section>
+					<article class="content-container">
+						<div class="section-title">
+							<h3>How we do it</h3>
+							<p>Harness cutting-edge AI tech for your business. Learn more about the power behind Dream.</p>
+						</div>
+						<section class="info-grid fancy-grid" style="padding-top: 12px;">
+							<!-- Box 1 -->
+							<a href="/how-we-do-it/" class="info-box" aria-label="">
+							  <span class="info-tag">How we do it</span>
+							  <h3>Learn more about the technology behind Dream and why it's different</h3>
+							  <span class="read-more">Explore how we do it</span>
+							</a>
+						  
+							<!-- Box 2 -->
+							<a href="/how-we-do-it/research-engine" class="info-box" aria-label="">
+							  <span class="info-tag">Research Engine</span>
+							  <h3>The research tools of your dreams. See how Research Engine brings you answers</h3>
+							  <span class="read-more">Explore how we do it</span>
+							</a>
+						</section>
+					</article>
 		</section>
 	</main>
-	<Footer />
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
 </Layout>

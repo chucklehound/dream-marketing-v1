@@ -4,6 +4,7 @@ $cubic-timing: cubic-bezier(0.86,0,0.07,1);
 
 @view-transition {
     navigation: auto;
+    types: slide, forwards;
   }
 
 /*
