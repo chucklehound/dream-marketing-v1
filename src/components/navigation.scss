@@ -168,7 +168,7 @@ nav {
     padding: 0;
     opacity: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: max-height .4s ease;
+    transition: max-height .8s ease;
     max-height: 0;
 
     .dropdown-inner {
@@ -256,7 +256,7 @@ nav {
 
     &.show {
       display: block;
-      max-height: 500px;
+      max-height: 900px;
       padding: 12px 32px;
       opacity: 1;
 

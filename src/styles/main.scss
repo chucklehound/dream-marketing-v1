@@ -545,7 +545,7 @@ main {
                 }
 
                 @media (max-width: 1024px) {
-                    flex-direction: column-reverse;
+                    flex-direction: column;
                     gap: 24px;
                 }
             }
@@ -647,6 +647,16 @@ main {
     }
 }
 
+.title {
+    width: 100%;
+}
+
+p.subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+    margin-top: 8px;
+}
 
 
 .section-title {
