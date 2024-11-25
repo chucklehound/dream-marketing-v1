@@ -175,7 +175,6 @@ header {
             height: 32px;
         }
     }
-    
 
     @media (min-width: 768px) {
         min-height: 60vh;
@@ -184,7 +183,7 @@ header {
 
     .hero-elements {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 32px;
         padding: $spacing 0;
         max-width: 1366px;
@@ -192,6 +191,7 @@ header {
 
         @media (max-width: 800px) {
             gap: 16px;
+
         }
 
         .header-image {
@@ -340,6 +340,10 @@ header {
                 display: block;
                 background: url('/src/img/circles.svg') no-repeat 50%;
                 background-size: 1536px;
+
+                @media (max-width: 700px) {
+                    background-image: url('/src/img/circles-thicker.svg');
+                }
         
                 @media (max-width: 1000px) {
                     background-size: 768px;
@@ -480,11 +484,11 @@ main {
     flex-direction: column;
     position: relative;
     z-index: 2;
-    gap: 48px;
+    gap: 32px;
     padding: 0 16px;
 
     @media (min-width: 1024px) {
-        gap: 84px;
+        gap: 52px;
     }
 
     section {
@@ -500,7 +504,7 @@ main {
             right: -16px;
             padding: 32px 32px 0;
             width: 100vw;
-            background: rgba($color-blue, 0.6);
+            background: rgba($color-light-red, 0.6);
             overflow: hidden;
 
             article {
@@ -533,7 +537,12 @@ main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-direction: column;
                 gap: 64px;
+
+                h2 {
+                   width: 100%;
+                }
 
                 @media (max-width: 1024px) {
                     flex-direction: column-reverse;
@@ -589,6 +598,10 @@ main {
                 }
             }
 
+            &.promo-clear {
+                background: transparent;
+            }
+
             &.promo-blue {
                 background: $color-dream-yellow;
             }
@@ -606,11 +619,17 @@ main {
             }
 
             &.promo-black {
-                background: $color-text-black;
+                background: $color-wallstreet-black radial-gradient(rgba($color-text-black,1) 50%, rgba($color-performa-black,1)) center no-repeat;
                 color: $color-plus-white;
 
                 p {
                     color: $color-plus-white;
+                }
+
+                svg, svg path {
+                    fill: $color-dream-yellow;
+                    width: 64px;
+                    height: 64px;
                 }
             }
         }
@@ -1516,6 +1535,17 @@ section[aria-label="Trust metrics"] {
             letter-spacing: -0.7px;
             cursor: default;
         }
+
+        svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: auto;
+            margin-top: 0;
+            
+            path {
+                fill: $color-light-blue;
+            }
+        }
         
         .number {
             font-size: 96px;
@@ -2072,7 +2102,7 @@ section[aria-label="Trust metrics"] {
         text-transform: uppercase;
         font-family: 'SpaceGrotesk', sans-serif;
         border-radius: 24px;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 20px;
         font-weight: 500;
         padding: 4px 12px;
@@ -2087,11 +2117,11 @@ section[aria-label="Trust metrics"] {
         display: flex;
         flex-direction: column;
         gap: 72px;
-        max-width: 1366px;
+        max-width: 1280px;
         margin: auto;
 
         @media (min-width: 768px) {
-            padding: 0 24px;
+            padding: 0;
         }
 
         .sequence-item {
@@ -2187,6 +2217,10 @@ section[aria-label="Trust metrics"] {
                     padding: 80px 32px 80px 44px;
                     flex: 1 50%;
                     margin: auto;
+
+                    .button {
+                        display: inline-flex;
+                    }
                 }
 
                 .sequence-img {
@@ -2463,7 +2497,12 @@ section[aria-label="Trust metrics"] {
         flex-wrap: wrap;
         gap: 16px;
         margin: 0;
-        padding: 0;
+        padding: 24px 0 0;
+
+        &.no-wrap-list {
+            flex-wrap: nowrap;
+            flex-direction: column;
+        }
 
         @media (min-width: 1024px) {
             gap: 20px;
@@ -2513,5 +2552,46 @@ section[aria-label="Trust metrics"] {
 
         @media (min-width: 1024px) {
             flex-direction: row;
+        }
+    }
+
+    .text-feature {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .text-feature-items {
+            display: flex;
+            list-style: none;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 0;
+            padding: 0;
+            gap: 24px;
+
+            @media (max-width: 1024px) {
+                flex-direction: column;
+            }
+
+            > li {
+                padding: 24px;
+                border-radius: 16px;
+                border: 1px solid $color-gray-lighter;  
+                flex: 1;
+                background: white;
+                display: flex;
+                justify-content: flex-start;
+            align-items: flex-start;
+                gap: 16px;
+                flex-direction: column;
+
+                p {
+                    margin: 0;
+                }
+
+                p, ul, span {
+                    color: $color-performa-black;
+                }
+            }
         }
     }
