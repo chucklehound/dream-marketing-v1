@@ -27,6 +27,28 @@
                 line-height: 40px;
                 }
             }
+            ul, ol {
+                
+                &:not(:last-of-type) {
+                    padding-bottom: 12px;
+                }
+                
+                li:not(:last-of-type) {
+                    margin-bottom: 12px;
+                }
+            }
+
+            h6 {
+                margin-bottom: 12px;
+            }
+
+            @media (min-width: 1152px) {
+                p, ol, ul {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: $color-performa-black;
+                }
+            }
         }
 
         .tool-title {
