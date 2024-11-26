@@ -10,13 +10,24 @@ import arrowRightLight from "/src/img/arrow-right-white.svg";
 
 import caseStudy from "/src/img/officely-case.webp";
 
-import chipIcon1 from '/src/img/icons/funding-round.svg?raw';
-import chipIcon2 from '/src/img/icons/open-roles.svg?raw';
+import chipIcon1 from '/src/img/icons/target.svg?raw';
+import chipIcon2 from '/src/img/icons/product-languages.svg?raw';
 import chipIcon3 from '/src/img/icons/key-customers.svg?raw';
 
 import '/src/components/useCaseBlock.scss';
 
 import FAQ from "../../../components/FAQ.astro";
+
+import ResultsPattern from '/src/img/results-pattern-dark.png';
+
+import ScalingCosts from '/src/img/scaling-costs.png';
+
+import researchEngine from '/src/img/research-engine.png';
+import messaging from '/src/img/messaging.png';
+import introImage5 from '/src/img/use-presale.png';
+
+
+
 
 ---
 
@@ -93,7 +104,7 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 						</div>
 						<div class="tool-image">
-							<img src="" alt="Illustration of AI-powered SDR" />
+							<img src={ScalingCosts.src} alt="A simple graph showing headcount scaling with growth." />
 						</div>
 					</div>
 				</div>
@@ -123,8 +134,8 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 							<div class="tool-image">
 								<img
-									src=""
-									alt="Illustration of AI-powered SDR"
+									src={researchEngine.src}
+									alt="An example of research questions and results."
 								/>
 							</div>
 						</div>
@@ -141,8 +152,8 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 							<div class="tool-image">
 								<img
-									src=""
-									alt="Illustration of AI-powered SDR"
+									src={messaging.src}
+									alt="Datapoints being pulled in to fully personalise a message."
 								/>
 							</div>
 						</div>
@@ -159,7 +170,7 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 							<div class="tool-image">
 								<img
-									src=""
+									src={introImage5.src}
 									alt="Illustration of AI-powered SDR"
 								/>
 							</div>
@@ -168,30 +179,29 @@ import FAQ from "../../../components/FAQ.astro";
 				</div>
 			</article>
 		</section>
+		
 		<section class="main-content content-row">
 			<article class="stats-box">
-				<h2>Measurable Results for SaaS Businesses</h2>
-				<br>
-				<h5>With Dream, users can expect:</h5>
+				<h2>Key Features</h2>
 				<ul class="stats-items">
 					<li>
 						<Fragment set:html={chipIcon1} />
-						<p>3x Increase in <br>Top-of-Funnel Activity</p>
-						<span>Reach more qualified prospects daily.</span
+						<p>Advanced Buying Signal Detection</p>
+						<span>Tracks complex signals like financial announcements or expansion news, enabling timely outreach.</span
 						>
 					</li>
 					<li>
 						<Fragment set:html={chipIcon2} />
-						<p>Higher Lead <br>Qualification Rates</p>
+						<p>Hyper-Personalized Messaging</p>
 							<span
-							>Boost the percentage of leads passing initial screening.</span
+							>Adapts communication to unique triggers, ensuring relevance and engagement.</span
 						>
 					</li>
 					<li>
 						<Fragment set:html={chipIcon3} />
-						<p>Reduced <br>Headcount Costs</p>
+						<p>True Sales Agent Functionality</p>
 						<span
-							>Scale outreach without adding expensive SDR headcount.</span
+							>Goes beyond sending emails — Dream can reply, book meetings, and continuously refine targeting.</span
 						>
 					</li>
 				</ul>
@@ -200,31 +210,34 @@ import FAQ from "../../../components/FAQ.astro";
 		
 		<section class="main-content promo-bg promo-black">
 			<article class="content-container">
-				<h2>Key Features</h2>
+				<div class="title">
+					<h2>Measurable Results for SaaS Businesses</h2>
+					<h5>With Dream, users can expect:</h5>
+				</div>
 				<div class="content-pair">
 					<ul class="feature-list text-content no-wrap-list">
 						<li>
 							<p>
-								<strong>Advanced Buying Signal Detection.</strong>
-								Tracks complex signals like financial announcements or expansion news, enabling timely outreach.
+								<strong>3x Increase in Top-of-Funnel Activity</strong>
+								Reach more qualified prospects daily
 							</p>
 						</li>
 						<li>
 							<p>
-								<strong>Hyper-Personalized Messaging.</strong> 
-								Adapts communication to unique triggers, ensuring relevance and engagement.
+								<strong>Higher Lead Qualification Rates</strong> 
+								Boost the percentage of leads passing initial screening
 							</p>
 						</li>
 						<li>
 							<p>
-								<strong>True Sales Agent Functionality.</strong> 
-								Goes beyond sending emails — Dream can reply, book meetings, and continuously refine targeting.
+								<strong>Reduced Headcount Costs</strong> 
+								Scale outreach without adding expensive SDR headcount
 							</p>
 						</li>
 					</ul>
 					<div class="image-content">
 						<img
-							src=""
+							src={ResultsPattern.src}
 							alt="An example of different search types for hotels and F&B"
 						/>
 					</div>

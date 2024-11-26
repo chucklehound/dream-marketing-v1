@@ -538,7 +538,7 @@ main {
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                gap: 64px;
+                gap: 32px;
 
                 h2 {
                    width: 100%;
@@ -547,6 +547,18 @@ main {
                 @media (max-width: 1024px) {
                     flex-direction: column;
                     gap: 24px;
+
+                    
+                }
+
+            }
+            &.promo-row {
+                article {
+                    flex-direction: column-reverse;
+
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                    }
                 }
             }
 
@@ -1341,8 +1353,8 @@ section[aria-label="Trust metrics"] {
 
 
             h3 {
-                font-size: 32px;
-                line-height: 40px;
+                font-size: 28px;
+                line-height: 32px;
                 letter-spacing: -0.6px;
                 font-weight: 700;
                 margin-bottom: 8px;
@@ -1409,7 +1421,7 @@ section[aria-label="Trust metrics"] {
     width: 100%;
     margin: auto;
 
-    h2 {
+    h2, * > h2 {
         @media (max-width: 900px) {
             @include heading4;
         }
@@ -1478,7 +1490,7 @@ section[aria-label="Trust metrics"] {
 }
 
 .content-row {
-    max-width: 1216px;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -2454,7 +2466,7 @@ section[aria-label="Trust metrics"] {
         display: flex;
         flex-direction: column;
         gap: 0;
-        max-width: 1216px;
+        max-width: 1280px;
 
         h2 {
             margin-bottom: 24px;

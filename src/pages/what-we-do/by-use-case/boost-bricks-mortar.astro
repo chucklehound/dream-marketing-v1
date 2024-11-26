@@ -10,6 +10,17 @@ import arrowRightLight from "/src/img/arrow-right-white.svg";
 import keyCustomer from "/src/img/icons/key-customers.svg?raw";
 
 import caseStudy from '/src/img/mockingbird-case.webp';
+
+import challengeTarget from '/src/img/challenge-target.png';
+import challengeSolution from '/src/img/challenge-solution.png';
+
+import Target from '/src/img/icons/market-focus.svg?raw';
+import CostEffective from '/src/img/icons/hotel-adr.svg?raw';
+import PersonalOutreach from '/src/img/icons/ceo-statements.svg?raw';
+
+import ResultsPattern from '/src/img/results-pattern-light.png';
+
+
 ---
 
 <Layout
@@ -55,7 +66,7 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 							</div>
 						</div>
 						<div class="tool-image">
-							<img src="" alt="Illustration of AI-powered SDR" />
+							<img src={challengeTarget.src} alt="Icons representing different business types arranged around a target." />
 						</div>
 					</div><div class="tool-container">
 						<div class="tool-card">
@@ -74,7 +85,7 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 							</div>
 						</div>
 						<div class="tool-image">
-							<img src="" alt="Illustration of AI-powered SDR" />
+							<img src={challengeSolution.src} alt="A nice ordered list of companies that can be targeted" />
 						</div>
 					</div>
 				</div>
@@ -85,6 +96,7 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 				<h2>Why Dream?</h2>
 				<ul class="stats-items">
 					<li>
+						<Fragment set:html={Target} />
 						<p>Unmatched <br />Vertical Reach</p><span
 							>Dream's AI identifies and reaches offline
 							businesses with precision, enabling you to penetrate
@@ -93,6 +105,7 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 						>
 					</li>
 					<li>
+						<Fragment set:html={PersonalOutreach} />
 						<p>Personalized Outreach <br />at Scale</p><span
 							>Dream researches each lead and sends
 							hyper-personalized messages, mimicking the
@@ -100,6 +113,7 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 						>
 					</li>
 					<li>
+						<Fragment set:html={CostEffective} />
 						<p>Cost-Effective Sales Automation</p><span
 							>With Dream, you can replace expensive SDR teams,
 							significantly reducing costs while increasing
@@ -141,8 +155,8 @@ import caseStudy from '/src/img/mockingbird-case.webp';
 					</ul>
 					<div class="image-content">
 						<img
-							src=""
-							alt="An example of different search types for hotels and F&B"
+							src={ResultsPattern.src}
+							alt="An abstract pattern representing results."
 						/>
 					</div>
 				</div>

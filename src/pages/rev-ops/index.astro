@@ -11,6 +11,8 @@ import listExample from '/src/img/list-example.png';
 import Button from '../../components/Button.astro';
 import arrowRightLight from '/src/img/arrow-right-white.svg';
 
+import UseCaseBlock from '../../components/UseCaseBlock.astro';
+
 ---
 
 <Layout title="Dream - For Rev-Ops">
@@ -32,8 +34,11 @@ import arrowRightLight from '/src/img/arrow-right-white.svg';
 				<img src={listExample.src} alt="An example list created in Dream showing Series A companies in the UK. The list is populated with lots of data">
 			</article>
 		</section>
-		<section class="main-content">
+		<section>
 			<article class="content-container">
+				<UseCaseBlock state="state1" />
+				<UseCaseBlock state="state3" />
+				<UseCaseBlock state="state5" />
 			</article>
 		</section>
 	</main>

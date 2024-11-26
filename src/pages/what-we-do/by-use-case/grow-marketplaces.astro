@@ -4,9 +4,19 @@ import Layout from '../../../layouts/Layout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+import Button from "../../../components/Button.astro";
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+
 import '/src/components/useCaseBlock.scss';
 
 import FAQ from "../../../components/FAQ.astro";
+
+import ResultsPattern from '/src/img/results-pattern-dark.png';
+
+import ProspectingExample from '/src/img/prospecting.png';
+import challengeSolution from '/src/img/challenge-target.png';
+import challengeGrowing from '/src/img/intro-img-1.png';
+import postGrowth from '/src/img/use-target.png';
 
 
 ---
@@ -51,7 +61,7 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 						</div>
 						<div class="tool-image">
-							<img src="" alt="Illustration of AI-powered SDR" />
+							<img src={challengeGrowing.src} alt="AI powered prospecting example, show prospects and reasons why they're suited." />
 						</div>
 					</div>
 				</div>
@@ -64,8 +74,9 @@ import FAQ from "../../../components/FAQ.astro";
 						<div class="tool-container">
 							<div class="tool-card">
 								<div class="tool-content">
+									<small class="tag">What can Dream do?</small>
                                     <h3 class="tool-title">
-                                        Consistent, Predictable Revenue Growth
+                                        Consistent, Predictable <br>Revenue Growth
                                     </h3>
                                     <div class="tool-description">
                                         <h6>Primary Audience</h6>
@@ -85,14 +96,15 @@ import FAQ from "../../../components/FAQ.astro";
                             </div>
 							<div class="tool-image">
 								<img
-									src=""
-									alt="Illustration of AI-powered SDR"
+									src={postGrowth.src}
+									alt="An illustration showing being able to target key companies and individuals"
 								/>
 							</div>
 						</div>
 						<div class="tool-container">
 							<div class="tool-card">
 								<div class="tool-content">
+									<small class="tag">What can Dream do?</small>
 									<h3 class="tool-title">
 										What Makes Dream Unique?
 									</h3>
@@ -112,16 +124,17 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 							<div class="tool-image">
 								<img
-									src=""
-									alt="Illustration of AI-powered SDR"
+									src={challengeSolution.src}
+									alt="An example list of businesses being targeted"
 								/>
 							</div>
 						</div>
 						<div class="tool-container">
 							<div class="tool-card">
 								<div class="tool-content">
+									<small class="tag">What can Dream do?</small>
 									<h3 class="tool-title">
-										Features That Drive Marketplace Growth
+										Features That Drive <br>Marketplace Growth
 									</h3>
 									<ul>
 										<li>
@@ -146,9 +159,7 @@ import FAQ from "../../../components/FAQ.astro";
 							</div>
 							<div class="tool-image">
 								<img
-									src=""
-									alt="Illustration of AI-powered SDR"
-								/>
+								src={ProspectingExample.src} alt="AI powered prospecting example, show prospects and reasons why they're suited." />
 							</div>
 						</div>
 					</div>
@@ -159,7 +170,7 @@ import FAQ from "../../../components/FAQ.astro";
 			<article class="content-container">
 				<div class="title">
 					<h2>Measurable Results</h2>
-				<p class="subtitle">Marketplaces leveraging Dream see:</p>
+				<h5 class="subtitle">Marketplaces leveraging Dream see:</h5>
 				</div>
 				<div class="content-pair">
 					<ul class="feature-list text-content no-wrap-list">
@@ -184,8 +195,8 @@ import FAQ from "../../../components/FAQ.astro";
 					</ul>
 					<div class="image-content">
 						<img
-							src=""
-							alt="An example of different search types for hotels and F&B"
+							src={ResultsPattern.src}
+							alt="An abstract pattern of icons representing results."
 						/>
 					</div>
 				</div>
@@ -225,5 +236,27 @@ import FAQ from "../../../components/FAQ.astro";
 			</article>
 		</section>
 	</main>
-	<Footer />
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>See what’s possible for your business</h3>
+			<p>
+				Learn how Dream can 10X your growth. Book your personal meeting
+				to explore our solutions.
+			</p>
+			<Button
+				variant="reverse"
+				href="/book-meeting"
+				target="_blank"
+				label=""
+			>
+				Book your meeting <img
+					src={arrowRightLight.src}
+					role="presentation"
+					alt=""
+					loading="lazy"
+				/>
+			</Button>
+		</article>
+	</section>
+	<Footer variant="beside-cta" />
 </Layout>
