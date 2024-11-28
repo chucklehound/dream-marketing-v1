@@ -1,282 +1,379 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-import Button from '../components/Button.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import Button from "../components/Button.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 import arrowRightLight from "/src/img/arrow-right-white.svg";
-import arrowRightYellow from '/src/img/arrow-right-yellow.svg';
-import arrowRightDark from '/src/img/arrow-right-dark.svg';
+import arrowRightYellow from "/src/img/arrow-right-yellow.svg";
+import arrowRightDark from "/src/img/arrow-right-dark.svg";
 
-import trust1 from '/src/img/data.png';
-import trust2 from '/src/img/chats.png';
-import trust3 from '/src/img/infinity.png';
+import trust1 from "/src/img/data.png";
+import trust2 from "/src/img/chats.png";
+import trust3 from "/src/img/infinity.png";
 
-import quoteGw from '/src/img/givewheel-logo.png';
+import quoteGw from "/src/img/givewheel-logo.png";
 
-import TabComponent from '../components/TabComponent.astro';
+import TabComponent from "../components/TabComponent.astro";
 
-import introImage1 from '/src/img/intro-img-1.png';
-import introImage2 from '/src/img/intro-img-2.png';
-import introImage3 from '/src/img/use-presale.png';
+import introImage1 from "/src/img/intro-img-1.png";
+import introImage2 from "/src/img/intro-img-2.png";
+import introImage3 from "/src/img/use-presale.png";
 
-import introIcon1 from '/src/img/intro-icon-1.svg';
-import introIcon2 from '/src/img/intro-icon-2.svg';
-import introIcon3 from '/src/img/intro-icon-3.svg';
-
-
+import introIcon1 from "/src/img/intro-icon-1.svg";
+import introIcon2 from "/src/img/intro-icon-2.svg";
+import introIcon3 from "/src/img/intro-icon-3.svg";
 ---
 
 <Layout title="Research-led AI that makes anything possible">
-	<Navigation />
-	<header class="hero-home">
-		<div class="hero-elements main-content">
-			<section class="header-text">
-				<h1 class="page-title">Research-led AI <br>that helps<br>
-					<span id="rotating-text">build marketplaces</span>
-					</h1>
-				<div class="actions">
-					<Button 	
-					label="Book a demo"
-					href="/book-meeting" 
-					target="_blank"
-				><img src={arrowRightYellow.src} role="presentation" /></Button>
-				<Button 	
-					label="What we’ve made possible"
-					href="/what-we-do" 
-					target=""
-					variant='secondary'
-				></Button>
-				</div>
-			</section>
-			<section class="header-image home-hero">
-				<div class="tick-hero" role="presentation">
-					<div class="first-row"></div>
-					<div class="second-row"></div>
-				</div>
-			</section>
-		</div>
-	</header>
-	<main>
-		<section aria-label="Information boxes">
-			<div class="info-container">
-			  
-			  <!-- Box 1 -->
-			  <a href="/what-we-do" class="info-box info-box-orange" aria-label="What impact can Dream have for you?">
-				<span class="info-tag">What we do</span>
-				<h3>What impact can Dream have for you?</h3>
-				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
-			  </a>
-		  
-			  <!-- Box 2 -->
-			  <a href="/how-we-do-it" class="info-box info-box-darkblue" aria-label="How does Dream deliver better results?">
-				<span class="info-tag">How we do it</span>
-				<h3>How does Dream deliver better results?</h3>
-				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
-			  </a>
-		  
-			  <!-- Box 3 -->
-			  <a href="/what-we-do/by-industry/f-and-b" class="info-box info-box-blue" aria-label="How to reach 1,000 local cafes in 24 hours">
-				<span class="info-tag">For F&B</span>
-				<h3>How to reach 1,000 local cafes in 24 hours</h3>
-				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
-			  </a>
-		  
-			  <!-- Box 4 -->
-			  <a href="/what-we-do/by-industry/travel" class="info-box info-box-green" aria-label="Message hotels in 40+ languages">
-				<span class="info-tag">For Travel</span>
-				<h3>Message hotels in 40+ languages</h3>
-				<span class="read-more">Read more<img src={arrowRightDark.src} role="presentation"></span>
-			  </a>
-			  
-			</div>
-		  </section>
+  <Navigation />
+  <header class="hero-home">
+    <div class="hero-elements main-content">
+      <section class="header-text">
+        <h1 class="page-title">
+          AI sales agents <br />built to grow<br />
+          <span id="rotating-text">difficult markets</span>
+        </h1>
+        <div class="actions">
+          <Button label="Book a demo" href="/book-meeting" target="_blank"
+            ><img src={arrowRightYellow.src} role="presentation" /></Button
+          >
+          <Button
+            label="What we’ve made possible"
+            href="/what-we-do"
+            target=""
+            variant="secondary"
+          />
+        </div>
+      </section>
+      <section class="header-image home-hero">
+        <div class="tick-hero" role="presentation">
+          <div class="first-row"></div>
+          <div class="second-row"></div>
+        </div>
+      </section>
+    </div>
+  </header>
+  <main>
+    <section aria-label="Information boxes">
+      <div class="info-container">
+        <!-- Box 1 -->
+        <a
+          href="/what-we-do"
+          class="info-box info-box-orange"
+          aria-label="What impact can Dream have for you?"
+        >
+          <span class="info-tag">What we do</span>
+          <h3>What impact can Dream have for you?</h3>
+          <span class="read-more"
+            >Read more<img src={arrowRightDark.src} role="presentation" /></span
+          >
+        </a>
 
-		  <section class="main-content content-list">
-			<article class="tools-section content-container">
-				<div class="tools-grid">
-					<!-- First row -->
-					<div class="tool-container">
-						<div class="tool-card">
-							<div class="tool-content">
-								<div class="tool-icon">
-									<img src={introIcon1.src} role="presentation">
-								</div>
-								<h3 class="tool-title">Dream is your 24/7 <br />AI-powered sales team</h3>
-								<p class="tool-description">Reach more prospects, faster. Without scaling your sales team. Dream lets you sell more starting today.</p>
-							</div>
-						</div>
-						<div class="tool-image">
-							<img src={introImage1.src} alt="Illustration of AI-powered SDR">
-						</div>
-					</div>
-			
-					<!-- Second row -->
-					<div class="tool-container">
-						<div class="tool-card">
-							<div class="tool-content">
-								<div class="tool-icon">
-									<img src={introIcon2.src} role="presentation">
-								</div>
-								<h3 class="tool-title">Tailored messaging, <br />sent at the right time</h3>
-								<p class="tool-description">Dream’s AI learns all about your prospects, crafting individual emails to each one. You set the timing, so each message lands exactly when needed.</p>
-							</div>
-						</div>
-						<div class="tool-image">
-							<img src={introImage2.src} alt="Illustration of tailored messaging">
-						</div>
-					</div>
-			
-					<!-- Third row -->
-					<div class="tool-container">
-						<div class="tool-card">
-							<div class="tool-content">
-								<div class="tool-icon">
-									<img src={introIcon3.src} role="presentation">
-								</div>
-								<h3 class="tool-title">All you have to do is<br /> take the call</h3>
-								<p class="tool-description">Your sales agents can handle outbound, replies, and booking meetings. Choose to manually approve messages, or let Dream handle it all autonomously.</p>
-							</div>
-						</div>
-						<div class="tool-image">
-							<img src={introImage3.src} alt="Illustration of call handling">
-						</div>
-					</div>
-				</div>
-			</article>
-	</section>
-	<section class="main-content">
-		<article class="content-container">
-			<h2 class="section-heading">From prospect to pitch, Dream can handle it all</h2>
-			<br><br>
-			<TabComponent />
-			
-		</article> 
-	</section>
+        <!-- Box 2 -->
+        <a
+          href="/how-we-do-it"
+          class="info-box info-box-darkblue"
+          aria-label="How does Dream deliver better results?"
+        >
+          <span class="info-tag">How we do it</span>
+          <h3>How does Dream deliver better results?</h3>
+          <span class="read-more"
+            >Read more<img src={arrowRightDark.src} role="presentation" /></span
+          >
+        </a>
 
-		  <section aria-label="Trust metrics">
-			<div class="trust-box">
-			  <div class="trust-image-container" aria-hidden="true"><img src={trust1.src} alt=""></div>
-			  <div class="trust-content">
-				<h2><span class="number" data-end="114042">114,042</span> intelligence calls per customer campaign</h2>
-			  </div>
-			</div>
-		  
-			<div class="trust-box">
-			  <div class="trust-image-container" aria-hidden="true"><img src={trust2.src} alt=""></div>
-			  <div class="trust-content">
-				<h2><span class="number" data-end="983">983</span> points of research per conversation</h2>
-			  </div>
-			</div>
-		  
-			<div class="trust-box">
-			  <div class="trust-image-container" aria-hidden="true"><img src={trust3.src} alt=""></div>
-			  <div class="trust-content">
-				<h2><span class="number">Infinite</span> scalability</h2>
-			  </div>
-			</div>
-		  </section>
-		
-		  <section class="customer-quote main-content"> 
-			<article class="quote-body"> 
-				<blockquote> <p>“Before Dream, creating and sending personalized outreach took forever. Each email required hours of research and manual writing.</p> <p>Dream changed everything. It pulls in detailed prospect data, creating truly bespoke emails that hit the mark every time. It’s seamless—no more digging for info or second-guessing the message.</p> <p>Now, our outreach feels authentic, the responses are meaningful, and the best part? It’s incredibly easy to use.”</p> <cite> <span>Charlie Hart, Co-founder at Givewheel</span> <img src={quoteGw.src} alt="The logo for Givewheel"> </cite> 
-				</blockquote> 
-			</article> 
-		</section>
-		 
-	</main>
-	<section class="final-cta"> 
-		<article class="main-content cta-container"> 
-			<h3>See what’s possible for your business</h3> 
-			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
-			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
-		</article> 
-	</section>
-	<Footer variant="beside-cta"/>
+        <!-- Box 3 -->
+        <a
+          href="/what-we-do/by-industry/f-and-b"
+          class="info-box info-box-blue"
+          aria-label="How to reach 1,000 local cafes in 24 hours"
+        >
+          <span class="info-tag">For F&B</span>
+          <h3>How to reach 1,000 local cafes in 24 hours</h3>
+          <span class="read-more"
+            >Read more<img src={arrowRightDark.src} role="presentation" /></span
+          >
+        </a>
 
-	<script>
-		// Function to animate numbers
-function animateNumbers(element: HTMLElement, start: number, end: number, duration: number) {
-  let startTime: number | null = null;
+        <!-- Box 4 -->
+        <a
+          href="/what-we-do/by-industry/travel"
+          class="info-box info-box-green"
+          aria-label="Message hotels in 40+ languages"
+        >
+          <span class="info-tag">For Travel</span>
+          <h3>Message hotels in 40+ languages</h3>
+          <span class="read-more"
+            >Read more<img src={arrowRightDark.src} role="presentation" /></span
+          >
+        </a>
+      </div>
+    </section>
 
-  function step(timestamp: number) {
-    if (!startTime) startTime = timestamp;
-    const progress = timestamp - startTime;
-    const current = Math.min(Math.floor(start + (end - start) * (progress / duration)), end);
-    element.innerText = current.toLocaleString(); // Update the number
-    if (current < end) {
+    <section class="main-content content-list">
+      <article class="tools-section content-container">
+        <div class="tools-grid">
+          <!-- First row -->
+          <div class="tool-container">
+            <div class="tool-card">
+              <div class="tool-content">
+                <div class="tool-icon">
+                  <img src={introIcon1.src} role="presentation" />
+                </div>
+                <h3 class="tool-title">
+                  Dream is your 24/7 <br />AI-powered sales team
+                </h3>
+                <p class="tool-description">
+                  Reach more prospects, faster. Without scaling your sales team.
+                  Dream lets you sell more starting today.
+                </p>
+              </div>
+            </div>
+            <div class="tool-image">
+              <img src={introImage1.src} alt="Illustration of AI-powered SDR" />
+            </div>
+          </div>
+
+          <!-- Second row -->
+          <div class="tool-container">
+            <div class="tool-card">
+              <div class="tool-content">
+                <div class="tool-icon">
+                  <img src={introIcon2.src} role="presentation" />
+                </div>
+                <h3 class="tool-title">
+                  Tailored messaging, <br />sent at the right time
+                </h3>
+                <p class="tool-description">
+                  Dream’s AI learns all about your prospects, crafting
+                  individual emails to each one. You set the timing, so each
+                  message lands exactly when needed.
+                </p>
+              </div>
+            </div>
+            <div class="tool-image">
+              <img
+                src={introImage2.src}
+                alt="Illustration of tailored messaging"
+              />
+            </div>
+          </div>
+
+          <!-- Third row -->
+          <div class="tool-container">
+            <div class="tool-card">
+              <div class="tool-content">
+                <div class="tool-icon">
+                  <img src={introIcon3.src} role="presentation" />
+                </div>
+                <h3 class="tool-title">
+                  All you have to do is<br /> take the call
+                </h3>
+                <p class="tool-description">
+                  Your sales agents can handle outbound, replies, and booking
+                  meetings. Choose to manually approve messages, or let Dream
+                  handle it all autonomously.
+                </p>
+              </div>
+            </div>
+            <div class="tool-image">
+              <img src={introImage3.src} alt="Illustration of call handling" />
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="main-content">
+      <article class="content-container">
+        <h2 class="section-heading">
+          From prospect to pitch, Dream can handle it all
+        </h2>
+        <br /><br />
+        <TabComponent />
+      </article>
+    </section>
+
+    <section aria-label="Trust metrics">
+      <div class="trust-box">
+        <div class="trust-image-container" aria-hidden="true">
+          <img src={trust1.src} alt="" />
+        </div>
+        <div class="trust-content">
+          <h2>
+            <span class="number" data-end="114042">114,042</span> intelligence calls
+            per customer campaign
+          </h2>
+        </div>
+      </div>
+
+      <div class="trust-box">
+        <div class="trust-image-container" aria-hidden="true">
+          <img src={trust2.src} alt="" />
+        </div>
+        <div class="trust-content">
+          <h2>
+            <span class="number" data-end="983">983</span> points of research per
+            conversation
+          </h2>
+        </div>
+      </div>
+
+      <div class="trust-box">
+        <div class="trust-image-container" aria-hidden="true">
+          <img src={trust3.src} alt="" />
+        </div>
+        <div class="trust-content">
+          <h2><span class="number">Infinite</span> scalability</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="customer-quote main-content">
+      <article class="quote-body">
+        <blockquote>
+          <p>
+            “Before Dream, creating and sending personalized outreach took
+            forever. Each email required hours of research and manual writing.
+          </p>
+          <p>
+            Dream changed everything. It pulls in detailed prospect data,
+            creating truly bespoke emails that hit the mark every time. It’s
+            seamless—no more digging for info or second-guessing the message.
+          </p>
+          <p>
+            Now, our outreach feels authentic, the responses are meaningful, and
+            the best part? It’s incredibly easy to use.”
+          </p>
+          <cite>
+            <span>Charlie Hart, Co-founder at Givewheel</span>
+            <img src={quoteGw.src} alt="The logo for Givewheel" />
+          </cite>
+        </blockquote>
+      </article>
+    </section>
+  </main>
+  <section class="final-cta">
+    <article class="main-content cta-container">
+      <h3>See what’s possible for your business</h3>
+      <p>
+        Learn how Dream can 10X your growth. Book your personal meeting to
+        explore our solutions.
+      </p>
+      <Button variant="reverse" href="/book-meeting" target="_blank" label="">
+        Book your meeting <img
+          src={arrowRightLight.src}
+          role="presentation"
+          alt=""
+          loading="lazy"
+        />
+      </Button>
+    </article>
+  </section>
+  <Footer variant="beside-cta" />
+
+  <script>
+    // Function to animate numbers
+    function animateNumbers(
+      element: HTMLElement,
+      start: number,
+      end: number,
+      duration: number
+    ) {
+      let startTime: number | null = null;
+
+      function step(timestamp: number) {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const current = Math.min(
+          Math.floor(start + (end - start) * (progress / duration)),
+          end
+        );
+        element.innerText = current.toLocaleString(); // Update the number
+        if (current < end) {
+          window.requestAnimationFrame(step);
+        }
+      }
+
       window.requestAnimationFrame(step);
     }
-  }
 
-  window.requestAnimationFrame(step);
-}
+    // Intersection Observer to trigger animations
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const numberElement = entry.target.querySelector(
+              ".number"
+            ) as HTMLElement; // Cast to HTMLElement
 
-// Intersection Observer to trigger animations
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const numberElement = entry.target.querySelector(".number") as HTMLElement; // Cast to HTMLElement
+            if (numberElement) {
+              // Check if numberElement is not null
+              const isInfinite = numberElement.innerText === "Infinite";
 
-      if (numberElement) { // Check if numberElement is not null
-        const isInfinite = numberElement.innerText === "Infinite";
+              if (isInfinite) {
+                // Directly set innerText to "Infinite" without animation
+                numberElement.innerText = "Infinite";
+                // Optionally, apply a CSS class for the fade-in effect
+                numberElement.classList.add("fade-in"); // Ensure you have this CSS class for fading in
+              } else {
+                const endNumber = parseInt(
+                  numberElement.getAttribute("data-end") || "0",
+                  10
+                );
+                animateNumbers(numberElement, 0, endNumber, 1000); // Duration is 2000ms
+              }
 
-        if (isInfinite) {
-          // Directly set innerText to "Infinite" without animation
-          numberElement.innerText = "Infinite"; 
-          // Optionally, apply a CSS class for the fade-in effect
-          numberElement.classList.add('fade-in'); // Ensure you have this CSS class for fading in
-        } else {
-          const endNumber = parseInt(numberElement.getAttribute("data-end") || "0", 10);
-          animateNumbers(numberElement, 0, endNumber, 1000); // Duration is 2000ms
-        }
-
-        // Add 'in-view' class to trigger CSS animations
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target); // Stop observing once the animation is triggered
+              // Add 'in-view' class to trigger CSS animations
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target); // Stop observing once the animation is triggered
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the element is visible
       }
-    }
-  });
-}, {
-  threshold: 0.5, // Trigger when 50% of the element is visible
-});
+    );
 
-// Apply observer to all trust boxes
-document.querySelectorAll(".trust-box").forEach((box) => {
-  observer.observe(box);
-});
+    // Apply observer to all trust boxes
+    document.querySelectorAll(".trust-box").forEach((box) => {
+      observer.observe(box);
+    });
 
+    document.addEventListener("DOMContentLoaded", () => {
+      const rotatingTextElement = document.getElementById("rotating-text");
+      const texts = [
+        "difficult markets",
+        "FMCG companies",
+        "travel companies",
+        "challenger brands",
+        "B2B marketplaces",
+      ];
+      let index = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const rotatingTextElement = document.getElementById('rotating-text');
-  const texts = ["build marketplaces", "automate growth", "launch new markets", "re-engage prospects", "increase conversion"];
-  let index = 0;
+      function rotateText() {
+        // Fade out
+        rotatingTextElement.style.opacity = "0";
 
-  function rotateText() {
-    // Fade out
-    rotatingTextElement.style.opacity = '0';
+        setTimeout(() => {
+          // Change text after fade out
+          rotatingTextElement.textContent = texts[index];
 
-    setTimeout(() => {
-      // Change text after fade out
-      rotatingTextElement.textContent = texts[index];
-      
-      // Fade in
-      rotatingTextElement.style.opacity = '1';
+          // Fade in
+          rotatingTextElement.style.opacity = "1";
 
-      // Move to next index, looping back to the start
-      index = (index + 1) % texts.length;
-    }, 500);  // Adjust timing for fade-out before changing text
+          // Move to next index, looping back to the start
+          index = (index + 1) % texts.length;
+        }, 500); // Adjust timing for fade-out before changing text
 
-    // Repeat after 4 seconds
-    setTimeout(rotateText, 4000);
-  }
+        // Repeat after 4 seconds
+        setTimeout(rotateText, 4000);
+      }
 
-  // Start the rotation
-  rotateText();
-});
-
-
-
-	</script>
+      // Start the rotation
+      rotateText();
+    });
+  </script>
 </Layout>
