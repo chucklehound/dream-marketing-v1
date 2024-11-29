@@ -189,6 +189,10 @@ header {
         max-width: 1366px;
         z-index: 2;
 
+        &.reverse-content {
+            flex-direction: column-reverse;
+        }
+
         @media (max-width: 800px) {
             gap: 16px;
 
@@ -315,12 +319,6 @@ header {
         align-items: flex-start;
         text-align: left;
         gap: 24px;
-
-        @media (max-width: 1152px) {
-            br {
-                display: none;
-            }
-        }
         
 
         &.solo-header {
@@ -1284,7 +1282,7 @@ section[aria-label="Trust metrics"] {
             overflow: hidden;
             border: 1px solid rgba($color-wallstreet-black, .1);
             background: rgba($color-light-blue,.15);
-            gap: 48px;
+            gap: 16px;
         }
     }
 
