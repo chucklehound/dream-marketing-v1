@@ -1,19 +1,21 @@
 {
-    "name": "Dream",
-    "short_name": "Dream",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#ffd601",
-    "background_color": "#ffd601",
-    "display": "standalone"
+  "name": "Dream",
+  "short_name": "Dream",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#FFD601",
+  "background_color": "#FFD601",
+  "display": "standalone"
 }

@@ -1,3 +1,21 @@
+/* NEW PALETTE */
+$color-primary-orange: #FF4C00;
+$color-text-black: #0D0400;
+$color-black-tint-medium: #2A1E17; // Medium tint of black
+$color-black-tint-light: #5B4D46; // Light tint of black
+$color-background-beige: #F9F7F2;
+$color-dark-blue-at: #002147;
+$color-blue: #1577EA;
+$color-green: #097F4B;
+
+/* Generated Grayscale */
+$color-gray-dark: #3B3836;
+$color-gray-medium: #88827F;
+$color-gray-light: #C9C5C3;
+$color-gray-lighter: #E4E2E1;
+$color-gray-lightest: #F3F2F1;
+
+/* OLD PALETTE */
 $color-wallstreet-black: #000d26;
 $color-performa-black: #152647;
 $color-pomona-black: #5C6880;
@@ -18,28 +36,3 @@ $color-grays-medium: #838b9b;
 $color-grays-light: #c1c5cd;
 $color-grays-lighter: #e6e8eb;
 $color-grays-lightest: #f3f3f5;
-
-@mixin effect-style-modal-shadow() {
-	box-shadow: 0px 8px 16px #061636, 0px 2px 4px #000d26;
-}
-
-@mixin headline-text-gradient {
-	background: var(--Website-Text-Gradient, linear-gradient(92deg, #000D26 13%, #5C6880 84%));
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
-$gray-lightest: #F3F3F5;
-
-$brand-main: $color-wallstreet-black;
-$brand-background: rgb(255, 214, 1);
-$brand-background-light: rgba($color-lisa-yellow, 0.25);
-$brand-actions: $color-wallstreet-black;
-$brand-actions-dark: darken($brand-actions,20%);
-
-$brand-titles: $brand-main;
-$brand-body: #061636;
-
-$brand-text: $brand-main;
-$brand-text-light: #FFFEFA;

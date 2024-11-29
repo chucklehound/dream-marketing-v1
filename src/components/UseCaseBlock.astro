@@ -7,16 +7,18 @@ export interface Props {
 const { state } = Astro.props;
 
 // Import images directly in the component
-import introImage1 from '/src/img/use-target.png';
+import introImage1 from '/src/img/prospecting.png';
 import introImage2 from '/src/img/use-agents.png';
 import introImage3 from '/src/img/use-research.png';
 import introImage4 from '/src/img/use-language.png';
 import introImage5 from '/src/img/use-presale.png';
 
+import './useCaseBlock.scss';
+
 // The text states with HTML content and image references
 const textStates = {
   "state1": `
-    <div class="tools-grid">
+    <div class="tools-grid use-cases-element">
       <h2 class="section-heading">Know who to target</h2>
       <div class="tool-container">
         <div class="tool-card">
@@ -35,7 +37,7 @@ const textStates = {
       </div>
     </div>`,
   "state2": `
-    <div class="tools-grid">
+    <div class="tools-grid use-cases-element">
       <h2 class="section-heading">Deploy new sales agents instantly</h2>
       <div class="tool-container">
         <div class="tool-card">
@@ -54,7 +56,7 @@ const textStates = {
       </div>
     </div>`,
   "state3": `
-    <div class="tools-grid">
+    <div class="tools-grid use-cases-element">
       <h2 class="section-heading">Hyper-personalise every email</h2>
       <div class="tool-container">
         <div class="tool-card">
@@ -73,7 +75,7 @@ const textStates = {
       </div>
     </div>`,
   "state4": `
-    <div class="tools-grid">
+    <div class="tools-grid use-cases-element">
       <h2 class="section-heading">Sell in 40+ languages</h2>
       <div class="tool-container">
         <div class="tool-card">
@@ -88,7 +90,7 @@ const textStates = {
       </div>
     </div>`,
   "state5": `
-    <div class="tools-grid">
+    <div class="tools-grid use-cases-element">
       <h2 class="section-heading">Automate your pre-call engagement & admin</h2>
       <div class="tool-container">
         <div class="tool-card">

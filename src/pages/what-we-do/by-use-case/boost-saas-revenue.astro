@@ -1,0 +1,384 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+
+import Button from "../../../components/Button.astro";
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+
+
+import caseStudy from "/src/img/officely-case.webp";
+
+import chipIcon1 from '/src/img/icons/target.svg?raw';
+import chipIcon2 from '/src/img/icons/product-languages.svg?raw';
+import chipIcon3 from '/src/img/icons/key-customers.svg?raw';
+
+import '/src/components/useCaseBlock.scss';
+
+import FAQ from "../../../components/FAQ.astro";
+
+import ResultsPattern from '/src/img/results-pattern-dark.png';
+
+import ScalingCosts from '/src/img/scaling-costs.png';
+
+import researchEngine from '/src/img/research-engine.png';
+import messaging from '/src/img/messaging.png';
+import introImage5 from '/src/img/use-presale.png';
+
+
+
+
+---
+
+<Layout title="Dream - What We Do / Boost SaaS Revenue">
+	<Navigation />
+	<header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text solo-header">
+				<small class="tag">What we do / Use Cases</small>
+				<h1 class="page-title">
+					Boost <span>SaaS Revenue</span> Without Expanding Your Team.
+				</h1>
+				<span>Unlock Predictable Growth for Your SaaS Business.</span>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content promo-bg promo-clear">
+			<article class="content-container">
+				<div class="text-container">
+					<p>
+						Scaling revenue in SaaS businesses often comes with
+						hefty costs—especially in sales and marketing. With
+						30-40% of revenue typically spent on these functions,
+						growing your team to drive sales can be prohibitively
+						expensive. Dream, an AI-powered sales agent, changes the
+						game by enabling SaaS companies to boost their pipeline
+						and revenue without the need to hire more SDRs.
+					</p>
+					<p>
+						By automating outbound sales, tracking critical buying
+						signals, and delivering hyper-personalized messaging,
+						Dream helps you scale smarter, not harder.
+					</p>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="tools-section content-container">
+				<div class="tools-grid">
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<h3>The SaaS Scaling Challenge</h3>
+								<p>
+									For SaaS companies, revenue growth has
+									traditionally been tied to headcount growth.
+									This model presents several challenges:
+								</p>
+								<ul>
+									<li>
+										<strong>High Costs</strong>: Hiring and
+										training sales teams takes time and
+										resources, with many SDRs
+										underperforming or failing probation.
+									</li>
+									<li>
+										<strong>Limited Scalability</strong>:
+										Without expensive tools and dedicated
+										RevOps teams, scaling outreach remains
+										difficult.
+									</li>
+									<li>
+										<strong>Missed Opportunities</strong>:
+										Traditional sales tools rely on basic
+										LinkedIn searches, missing key buying
+										signals and potential leads.
+									</li>
+								</ul>
+								<p>
+									The result? Growth becomes unpredictable,
+									slow, and costly.
+								</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={ScalingCosts.src} alt="A simple graph showing headcount scaling with growth." />
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content use-cases content-row">
+			<article class="tools-section">
+				<div>
+					<div class="tools-grid use-cases-element">
+						<h2 class="section-heading">Key Features That Drive SaaS Growth</h2>
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-content">
+									<h3 class="tool-title">
+										<small class="tag">Feature 1.</small>
+										Advanced Buying Signal Tracking
+									</h3>
+									<p class="tool-description">
+										Dream’s research engine monitors company announcements, financial results, and other triggers in real-time. For instance:
+									</p>
+									<ul>
+										<li>Target Office Managers when new office openings are announced.</li>
+										<li>Engage Procurement leaders when quarterly financials suggest budget expansion.</li>
+									</ul>
+									<p>By continuously identifying and acting on these signals, Dream eliminates guesswork and ensures every message is timely and relevant.</p>
+								</div>
+							</div>
+							<div class="tool-image">
+								<img
+									src={researchEngine.src}
+									alt="An example of research questions and results."
+								/>
+							</div>
+						</div>
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-content">
+									<h3 class="tool-title">
+										<small class="tag">Feature 2.</small>
+										Hyper-Personalized Messaging
+									</h3>
+									<p class="tool-description">
+										Gone are the days of generic email blasts. Dream crafts tailored messages for each lead, using data like job roles, company size, and specific buying signals to drive engagement.</p>
+								</div>
+							</div>
+							<div class="tool-image">
+								<img
+									src={messaging.src}
+									alt="Datapoints being pulled in to fully personalise a message."
+								/>
+							</div>
+						</div>
+						<div class="tool-container">
+							<div class="tool-card">
+								<div class="tool-content">
+									<h3 class="tool-title">
+										<small class="tag">Feature 3.</small>
+										Consistent, Predictable Revenue Growth
+									</h3>
+									<p class="tool-description">
+										Dream’s AI delivers results you can count on, driving top-of-funnel activity and improving lead qualification rates without needing a team of SDRs.</p>
+								</div>
+							</div>
+							<div class="tool-image">
+								<img
+									src={introImage5.src}
+									alt="Illustration of AI-powered SDR"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		
+		<section class="main-content content-row">
+			<article class="stats-box">
+				<h2>Key Features</h2>
+				<ul class="stats-items">
+					<li>
+						<Fragment set:html={chipIcon1} />
+						<p>Advanced Buying Signal Detection</p>
+						<span>Tracks complex signals like financial announcements or expansion news, enabling timely outreach.</span
+						>
+					</li>
+					<li>
+						<Fragment set:html={chipIcon2} />
+						<p>Hyper-Personalized Messaging</p>
+							<span
+							>Adapts communication to unique triggers, ensuring relevance and engagement.</span
+						>
+					</li>
+					<li>
+						<Fragment set:html={chipIcon3} />
+						<p>True Sales Agent Functionality</p>
+						<span
+							>Goes beyond sending emails — Dream can reply, book meetings, and continuously refine targeting.</span
+						>
+					</li>
+				</ul>
+			</article>
+		</section>
+		
+		<section class="main-content promo-bg promo-black">
+			<article class="content-container">
+				<div class="title">
+					<h2>Measurable Results for SaaS Businesses</h2>
+					<h5>With Dream, users can expect:</h5>
+				</div>
+				<div class="content-pair">
+					<ul class="feature-list text-content no-wrap-list">
+						<li>
+							<p>
+								<strong>3x Increase in Top-of-Funnel Activity</strong>
+								Reach more qualified prospects daily
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Higher Lead Qualification Rates</strong> 
+								Boost the percentage of leads passing initial screening
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Reduced Headcount Costs</strong> 
+								Scale outreach without adding expensive SDR headcount
+							</p>
+						</li>
+					</ul>
+					<div class="image-content">
+						<img
+							src={ResultsPattern.src}
+							alt="An example of different search types for hotels and F&B"
+						/>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="content-container">
+				<div class="text-feature">
+					<h2>Why Dream Beats the Competition</h2>
+					<ul class="text-feature-items">
+						<li>
+							<small class="tag">Reason 1.</small>
+							<h5>Better Than Traditional Tools <br>(Apollo, Reply.io)</h5>
+							<p>Unlike basic sales platforms, Dream doesn’t require RevOps or sales teams to manually build and manage campaigns. Dream’s agents can:</p>
+							<ul>
+								<li>Automatically track nuanced buying signals like financial reports or market expansions.</li>
+								<li>Craft trigger-based campaigns that target unique opportunities, not just job titles.</li>
+							</ul>
+						</li>
+						<li>
+							<small class="tag">Reason 2.</small>
+							<h5>Smarter Than Other AI SDRs <br>(11x, Regie)</h5>
+							<p>Dream outshines AI competitors by offering:</p>
+							<ul>
+								<li>Flexible prospecting based on your unique guidance.</li>
+								<li>Customizable targeting, beyond simple industry or job role categories.</li>
+								<li>Superior tracking of non-LinkedIn signals for niche audiences.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="content-container">
+				<h2>FAQs</h2>
+				<br>
+				<FAQ summary="How does Dream track buying signals?">
+                    Dream’s embedded research engine uses AI to monitor the web for relevant signals, such as financial announcements, company expansions, or hiring updates. This ensures outreach is timely and aligned with real-world events.
+                </FAQ>
+                <FAQ summary="Can Dream integrate with my existing CRM or sales stack?">
+                    Yes! Dream integrates seamlessly with popular CRM platforms like Salesforce, HubSpot, and Pipedrive, ensuring that all data flows directly into your existing systems.
+                </FAQ>
+                <FAQ summary="What types of SaaS companies benefit most from Dream?">
+                    Dream works best for B2B SaaS companies targeting businesses with unique buying signals or hard-to-reach audiences. Examples include companies selling to Procurement, Marketing, or Operations leaders.
+                </FAQ>
+                <FAQ summary="Can Dream handle multiple campaigns at once?">
+                    Absolutely. Dream can manage several campaigns simultaneously, each tailored to different target audiences or triggers. For example, one campaign can focus on financial signals, while another targets industry-specific events.
+                </FAQ>
+                <FAQ summary="Is there a minimum company size to benefit from Dream?">
+                    No! Dream is ideal for both small startups looking to scale sales efficiently and larger SaaS companies seeking to optimize their outbound strategies.
+                </FAQ>
+				<FAQ summary="Does Dream replace sales teams completely?">
+                    Dream doesn’t replace your sales team—it enhances their efficiency. It automates prospecting, outreach, and meeting scheduling, freeing your team to focus on closing deals.
+                </FAQ>
+				<FAQ summary="How does Dream ensure compliance with email outreach regulations?">
+                    Dream adheres to GDPR, CAN-SPAM, and other relevant laws by personalizing messages, avoiding spam-like behavior, and providing opt-out mechanisms.
+                </FAQ>
+				<FAQ summary="Can Dream operate outside of LinkedIn?">
+                    Yes! Dream excels at targeting companies and individuals who aren’t active on LinkedIn, using web-based signals and proprietary research to find and engage prospects.
+                </FAQ>
+                <FAQ summary="What kind of results can I expect with Dream?">
+                    Most companies see a 3x increase in top-of-funnel activity and significant improvements in lead qualification rates within the first few months.
+                </FAQ>
+                <FAQ summary="How customizable is Dream’s messaging?">
+                    Dream’s AI personalizes messaging at scale, tailoring each email based on job role, company size, industry, and buying signals, ensuring relevance and resonance.
+                </FAQ>
+                <FAQ summary="How does Dream differ from Apollo and Reply.io?">
+                    Dream is a sales agent, not just a tool. While platforms like Apollo require manual input and focus on basic personalization, Dream tracks complex buying signals and adapts campaigns dynamically.
+                </FAQ>
+				<FAQ summary="What kind of support does Dream offer during setup?">
+                    Our team works closely with your sales leaders to customize and optimize the setup process. We provide ongoing support to ensure Dream aligns with your goals.
+                </FAQ>
+				<FAQ summary="Can Dream target specific industries or regions?">
+                    Yes! Dream can be configured to focus on specific industries, regions, or even company sizes, tailoring its outreach to your precise needs.
+                </FAQ>
+			</article>
+		</section>
+		
+		<section class="content-list main-content">
+			<article class="sequence-section">
+				<div class="sequence-item">
+					<div class="sequence-title">
+						<div class="sequence-content">
+							<div class="sequence-text">
+								<small class="tag">Case Study</small>
+								<h3>Real-World Success: Officely</h3>
+								<br />
+								<p>
+									Officely, a SaaS company targeting Office Managers during office expansions, struggled to track buying signals and engage leads. With Dream, they now reach thousands of prospects precisely when those prospects are considering purchasing. The result? A significant boost in performance.
+								</p>
+								<br />
+								<Button
+									variant="primary"
+									href="/book-meeting"
+									target="_blank"
+									label=""
+								>
+									Join Officely in expanding sales today <img
+										src={arrowRightLight.src}
+										role="presentation"
+										alt=""
+										loading="lazy"
+									/>
+								</Button>
+							</div>
+							<div class="sequence-img">
+								<img
+									src={caseStudy.src}
+									alt="People sat around a table in an office"
+									role="presentation"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>See what’s possible for your business</h3>
+			<p>
+				Learn how Dream can 10X your growth. Book your personal meeting
+				to explore our solutions.
+			</p>
+			<Button
+				variant="reverse"
+				href="/book-meeting"
+				target="_blank"
+				label=""
+			>
+				Book your meeting <img
+					src={arrowRightLight.src}
+					role="presentation"
+					alt=""
+					loading="lazy"
+				/>
+			</Button>
+		</article>
+	</section>
+	<Footer variant="beside-cta" />
+</Layout>

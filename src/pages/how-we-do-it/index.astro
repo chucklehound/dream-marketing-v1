@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Button from '../../components/Button.astro';
+
+import tears from '/src/img/tears.svg';
+import researchEngine from '/src/img/research-engine.png';
+import listBuilding from '/src/img/list-building.png';
+import prospecting from '/src/img/prospecting.png';
+import messaging from '/src/img/messaging.png';
+
+
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+
+---
+
+<Layout title="Dream - How We Do It">
+	<Navigation />
+	<header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text">
+				<h1 class="page-title">Powering your <span>growth</span> from search to close</h1>
+				<span>Everything you need, so you can find, research, and message targets. All powered by cutting-edge AI.</span>
+			</section>
+			<section class="header-image">
+				<object data={tears.src} />
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content promo-bg promo-red promo-row">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Research engine</h2>
+					<p>We've built our research engine to bring you deep data about your target companies.</p>
+					<p>Need to know what the CEO is writing about? Where they've got offices? Or a recent fundraising round?</p>
+					<p>All your research is available across the platform, turning your data into tangible results.</p>
+					<Button label="Learn more about our Research Engine" href="/how-we-do-it/research-engine" target='_blank' variant='reverse' />
+				</div>
+				<div class="image-container">
+					<img src={researchEngine.src} alt="An illustration of two research questions over a table of results" />
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-dark-blue promo-row">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>List Building</h2>
+					<p>Our sourcing agents uses advanced search techniques to find more companies, faster.</p> 
+					<p>Search by criteria like company size and location, or use one of our bespoke searches like recent hiring, hotels, and announcements.</p> 
+					<p>Import your own lists, or connect your CRM to automate target ingestion, then use research to enrich your data.</p>
+					<Button label="Learn more about List Building" href="/how-we-do-it/list-building" target='_blank' variant='reverse' />
+				</div>
+				<div class="image-container">
+					<img src={listBuilding.src} alt="An illustration of two research questions over a table of results" />
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-green promo-row">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Prospecting</h2>
+					<p>Landing a new customer means speaking to the right person. We built our prospecting tools so they understand who is most relevant to your campaign.</p>
+					<p>Setup traditional searches, or let your agent know who you're looking for. Use search sequences to make sure you never miss a prospect. Set up multiple search sources in one pass, and we'll use your context to rank them.</p>
+					<Button label="Learn more about Prospecting" href="/how-we-do-it/prospecting" target='_blank' variant='reverse' />
+				</div>
+				<div class="image-container">
+					<img src={prospecting.src} alt="An illustration of two research questions over a table of results" />
+				</div>
+			</article>
+		</section>
+		
+		<section class="main-content promo-bg promo-orange promo-row">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Intelligent Outreach</h2>
+					<p>Send the perfect message, every time. Our sales agents can craft individually personalised outreach in over 40 languages.</p>
+					<p>Define outreach sequences including scheduled follow-ups, and use your datapoints to bring in relevant information. Message and reply approvals let you stay in control, or simply automate your outreach and sit back.</p>
+					<p>Your agents can handle it all; from customer questions, forwarding, through to juggling your calendar to find the right time.</p>
+					<Button label="Learn more about Outreach" href="/how-we-do-it/outreach" target='_blank' variant='reverse' />
+				</div>
+				<div class="image-container">
+					<img src={messaging.src} alt="An illustration of two research questions over a table of results" />
+				</div>
+			</article>
+		</section>
+		<section class="main-content">
+			<article class="content-container">
+				<div class="section-title">
+					<h3>What we do</h3>
+					<p>From F&B to Travel and everything in between. See how we can support your industry or use-case.</p>
+				</div>
+				<section class="info-grid fancy-grid" style="padding-top: 12px;">
+					<!-- Box 1 -->
+					<a href="/what-we-do/by-industry/travel" class="info-box" aria-label="">
+					  <span class="info-tag">By Industry</span>
+					  <h3>See how we're helping travel companies reach more hotels, in more markets</h3>
+					  <span class="read-more">Explore what we can do</span>
+					</a>
+				  
+					<!-- Box 2 -->
+					<a href="/what-we-do/by-use-case/test-new-markets" class="info-box" aria-label="">
+					  <span class="info-tag">By Use Case</span>
+					  <h3>See how you can test new markets in minutes</h3>
+					  <span class="read-more">Explore what we can do</span>
+					</a>
+				</section>
+			</article>
+		</section>
+	</main>
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
+</Layout>

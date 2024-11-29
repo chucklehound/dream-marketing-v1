@@ -1,0 +1,225 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+import Button from "../../../components/Button.astro";
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+
+import FAQ from '../../../components/FAQ.astro';
+
+import introImage4 from '/src/img/carousel-2.png';
+import ScalingCosts from '/src/img/scaling-costs.png';
+
+import ResultsPattern from '/src/img/results-pattern-dark.png';
+
+
+---
+
+<Layout title="Dream - What We Do / Testing New Markets">
+	<Navigation />
+	<header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text solo-header">
+				<small class="tag">What we do / Use Cases</small>
+				<h1 class="page-title">Testing New Markets with Dream: Spin Up <span>Sales Teams Anywhere</span></h1>
+				<span>Dream enables you to introduce new markets to your outbound sales in a matter of hours. No need to hire sales people that cover all the desired languages - now you can kick-start new market penetration when you want.</span>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content promo-bg promo-clear">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Discover New Market Potential Without the Overhead</h2>
+					<p>
+						For SaaS businesses and marketplaces, testing a new market is often a daunting process. Traditionally, expanding into a new region requires hiring a General Manager (GM) and building a sales team, even before knowing if the effort will succeed. The cost, time, and resources involved make testing new markets a significant risk.
+					</p>
+					<p>
+						Dream changes the equation. With Dream’s AI-powered sales agents, companies can quickly and cost-effectively test new markets by deploying virtual sales teams. You can evaluate demand, test outbound techniques, and adapt buying triggers to new regions—without the need to hire full-time staff.
+					</p>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="tools-section content-container">
+				<div class="tools-grid">
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<h3>The Challenge of Testing New Markets</h3>
+								<p>
+									Expanding into a new market comes with significant challenges:
+								</p>								
+								<ul>
+									<li>
+										<strong>High Upfront Costs</strong>
+										<p>Hiring a GM, sales reps, and supporting staff before seeing ROI.</p>
+									</li>
+									<li>
+										<strong>Unknown Market Dynamics</strong>
+										<p>Determining whether existing outbound strategies and buying triggers will translate to a new geography.</p>
+									</li>
+									<li>
+										<strong>Long Lead Times</strong>
+										<p>Setting up a team, training them, and waiting for results delays critical business decisions.</p>
+									</li>
+								</ul>
+								<p>Without an efficient way to test new markets, businesses risk overcommitting resources or missing out on potential opportunities.</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={ScalingCosts.src} alt="Illustration of AI-powered SDR" />
+						</div>
+					</div>
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<h3>How Dream Solves the Problem</h3>
+								<p>
+									Dream allows businesses to quickly assess the potential of new markets by spinning up AI-powered sales agents. These virtual agents can:
+								</p>								
+								<ul>
+									<li>
+										<p>Execute outbound campaigns targeting a new region.</p>
+									</li>
+									<li>
+										<p>Use proven buying triggers from your primary market to evaluate effectiveness abroad.</p>
+									</li>
+									<li>
+										<p>Scale outreach efforts without hiring a local team.</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img style="height: 100%; width: 100%; max-width: 420px;" src={introImage4.src} alt="An illustration showing message sends in multiple languages" />
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="content-container">
+				<div class="text-feature">
+					<h2>Who Benefits Most from This Solution?</h2>
+					<ul class="text-feature-items">
+						<li>
+							<small class="tag">Who benefits?</small>
+							<h5>Ideal Users</h5>
+							<ul>
+								<li>SaaS companies exploring international markets.</li>
+								<li>Marketplaces looking to expand supply and demand networks across regions.</li>
+								<li>Growth leads or operations managers tasked with evaluating market potential.</li>
+							</ul>
+						</li>
+						<li>
+							<small class="tag">Who benefits?</small>
+							<h5>Best Use Cases</h5>
+							<ul>
+								<li>Testing the effectiveness of outbound campaigns in new geographies.</li>
+								<li>Identifying which buying triggers resonate with local prospects.</li>
+								<li>Evaluating market demand for your product or service without committing to full-scale expansion.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-black">
+			<article class="content-container">
+				<div class="title">
+					<h2>Measurable Results for Market Expansion</h2>
+				<p class="subtitle">Companies using Dream to test new markets experience:</p>
+				</div>
+				<div class="content-pair">
+					<ul class="feature-list text-content no-wrap-list">
+						<li>
+							<p>
+								<strong>Faster Insights</strong>
+								Evaluate market potential within weeks instead of months.
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Lower Costs</strong> 
+								Save on hiring and operational expenses by using AI sales agents.
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Improved Decision Making</strong> 
+								Data-driven results help you decide whether to expand further or pivot strategies.
+							</p>
+						</li>
+					</ul>
+					<div class="image-content">
+						<img
+							src={ResultsPattern.src}
+							alt="An example of different search types for hotels and F&B"
+						/>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row"> 
+			<article class="stats-box"> 
+				<h2>Simple and Fast Implementation</h2> 
+				<p class="subtitle">Getting started is easy:</p>
+				<ul class="stats-items"> 
+					<li><span class="number">1.</span><p>Define Goals</p><span>Work with Dream to identify the region and target audience.</span></li>
+					<li><span class="number">2.</span><p>Deploy Sales Agents</p><span>Launch campaigns with tailored buying triggers.</span></li>
+					<li><span class="number">3.</span><p>Analyze Results</p><span>Use Dream’s insights to make informed decisions about market potential.</span></li>
+				</ul> 
+			</article> 
+		</section>
+		<section class="main-content content-row">
+			<article class="content-container">
+				<h2>FAQs</h2>
+				<br>
+				<FAQ summary="How quickly can I start testing a new market with Dream?">
+                    Dream can spin up sales agents and campaigns in as little as one week, making it ideal for rapid market evaluation.
+                </FAQ>
+                <FAQ summary="Can Dream adapt to different languages and cultures?">
+                    Yes! Dream’s agents can be tailored to operate in local languages and adapt messaging to fit regional norms.
+                </FAQ>
+                <FAQ summary="What results can I expect?">
+                    You’ll gain actionable insights into market potential, including lead conversion rates, interest levels, and the effectiveness of buying triggers.
+                </FAQ>
+                <FAQ summary="Does Dream require a local sales team to be effective?">
+                    No. Dream operates independently, allowing you to test markets without any local hires.
+                </FAQ>
+                <FAQ summary="How does Dream ensure campaigns are relevant in new regions?">
+                    Dream’s AI uses proven buying triggers from your primary market while adapting messaging to local conditions.
+                </FAQ>
+				<FAQ summary="What’s the ROI for using Dream in market tests?">
+                    Companies often save tens of thousands of dollars in hiring costs and months of lead time while gaining actionable data to guide expansion strategies.
+                </FAQ>
+			</article>
+		</section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>See what’s possible for your business</h3>
+			<p>
+				Learn how Dream can 10X your growth. Book your personal meeting
+				to explore our solutions.
+			</p>
+			<Button
+				variant="reverse"
+				href="/book-meeting"
+				target="_blank"
+				label=""
+			>
+				Book your meeting <img
+					src={arrowRightLight.src}
+					role="presentation"
+					alt=""
+					loading="lazy"
+				/>
+			</Button>
+		</article>
+	</section>
+	<Footer variant="beside-cta" />
+</Layout>

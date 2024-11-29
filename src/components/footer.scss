@@ -1,7 +1,7 @@
 @import '../styles/main.scss';
 
 .footer {
-    background: $color-wallstreet-black radial-gradient(rgba($color-wallstreet-black,1) 50%, rgba($color-pomona-black,.3)) center no-repeat;
+    background: $color-wallstreet-black radial-gradient(rgba($color-text-black,1) 50%, rgba($color-performa-black,1)) center no-repeat;
     background-size: cover;
     color: $color-plus-white;
     padding: 64px 24px 32px;
@@ -10,6 +10,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &.cta-footer {
+      padding-top: 192px;
+      margin-top: -128px;
+  }
     
     .footer-container {
       display: flex;
@@ -68,6 +73,7 @@
 
       svg {
         height: 32px;
+        max-height: 32px;
         width: auto;
         margin-bottom: 12px;
       }

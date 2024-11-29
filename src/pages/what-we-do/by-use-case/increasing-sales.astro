@@ -1,0 +1,135 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+import messaging from "/src/img/messaging.png";
+import Button from "../../../components/Button.astro";
+import listBuilding from "/src/img/list-building.png";
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+---
+
+<Layout title="Dream - What We Do / Increasing Sales">
+  <Navigation />
+  <header class="hero-home">
+    <div class="hero-elements main-content">
+      <section class="header-text solo-header">
+        <h1 class="page-title">
+          Boost revenue through infinite sales firepower.
+        </h1>
+        <span
+          >Dream gives you a sales team that increases your capacity in three
+          areas, without hiring.</span
+        >
+      </section>
+    </div>
+  </header>
+  <main>
+    <section class="main-content content-row">
+      <article class="stats-box">
+        <ul class="stats-items">
+          <li>
+            <span class="number">1.</span><p>Outbound Sales</p><span
+              >Dream gives you an infinite number of trained AI sales agents to
+              address your target market.</span
+            >
+          </li>
+          <li>
+            <span class="number">2.</span><p>Inbound Qualification</p><span
+              >For businesses that have a high volume of inbound, Dream's agents
+              clean and qualify that pipeline.</span
+            >
+          </li>
+          <li>
+            <span class="number">3.</span><p>Customer Re-Engagement</p><span
+              >Dream re-engages existing customers at the right time to
+              discourge churn and encourage repeat purchases.</span
+            >
+          </li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-content">
+      <article class="content-container">
+        <h4>Sales leaders use Dream to drive outbound lead generation</h4>
+        <div class="content-pair">
+          <div class="text-content">
+            <p class="secondary-description">
+              Sales hires are expensive and many companies leverage SDRs and
+              other frontline sales professionals to send outbound
+              communications to potential customers.
+            </p>
+            <p class="secondary-description">
+              With Dream, companies that want to grow through outbound sales
+              <b>no-longer need to do this by adding headcount.</b>
+            </p>
+            <ul class="feature-list">
+              <li>
+                Sales agents are customized to track unique buying signals.
+              </li>
+              <li>
+                Agents can be avatars of real employees or fictional profiles
+                suited to a market.
+              </li>
+              <li>
+                Setup specific campaign goals (e.g. book a meeting, send a
+                sample) for agents to follow.
+              </li>
+              <li>
+                Agents use email and LinkedIn to outreach, reply to and book
+                meetings with prospects.
+              </li>
+              <li>
+                Full CRM integration allows you to operate agents alongside
+                humans.
+              </li>
+              <li>
+                Agents can find prospects themselves based on guidance or use an
+                existing target list.
+              </li>
+            </ul>
+          </div>
+          <div class="image-content">
+            <img
+              src={messaging.src}
+              alt="An example of different search types for hotels and F&B"
+            />
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="main-content promo-bg promo-dark-blue">
+      <article class="content-container">
+        <div class="text-container">
+          <h2>Case Study:<br /> Swoop Funding</h2>
+          <p>
+            Swoop help small businesses around the world find the right finance
+            providers. They work with accountants and CPAs to make this happen.
+          </p>
+          <p>
+            Before Dream, outbound was impossible to manage with their target
+            customer being difficult to find.
+          </p>
+          <p>
+            Dream allowed Swoop to partner their expert team of Account
+            Executives with AI Sales Agents in multiple geographies, increasing
+            their top-of-funnel overnight.
+          </p>
+          <Button
+            label="Join Swoop in growing outbound meetings"
+            href="/book-meeting"
+            target="_blank"
+            variant="reverse"
+          />
+        </div>
+        <div class="image-container">
+          <img
+            src={listBuilding.src}
+            alt="An illustration of two research questions over a table of results"
+          />
+        </div>
+      </article>
+    </section>
+  </main>
+  <Footer />
+</Layout>

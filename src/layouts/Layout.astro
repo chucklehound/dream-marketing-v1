@@ -6,8 +6,8 @@ interface Props {
 const { title } = Astro.props;
 
 import appleIcon from "/src/img/apple-touch-icon.png"
-import favicon32 from "/src/img/favicon-32x32.png";
-import favicon16 from "/src/img/favicon-16x16.png";
+import favicon48 from "/src/img/favicon-48x48.png";
+import favicon96 from "/src/img/favicon-96x96.png";
 import webManifest from "/src/img/site.webmanifest";
 import safariTab from "/src/img/safari-pinned-tab.svg";
 
@@ -17,15 +17,15 @@ import safariTab from "/src/img/safari-pinned-tab.svg";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Dream, your 24/7 AI SDR" />
+		<meta name="description" content="Dream - Research-led AI that makes anything possible" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="apple-touch-icon" sizes="180x180" href={appleIcon.src}>
-		<link rel="icon" type="image/png" sizes="32x32" href={favicon32.src}>
-		<link rel="icon" type="image/png" sizes="16x16" href={favicon16.src}>
+		<link rel="icon" type="image/png" sizes="48x48" href={favicon48.src}>
+		<link rel="icon" type="image/png" sizes="96x96" href={favicon96.src}>
 		<link rel="manifest" href={webManifest}>
-		<link rel="mask-icon" href={safariTab.src} color="#ffd601">
-		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffd601">
+		<link rel="mask-icon" href={safariTab.src} color="#FFD601">
+		<meta name="msapplication-TileColor" content="#FFD601">
+		<meta name="theme-color" content="#FFD601">
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 

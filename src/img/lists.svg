@@ -1,0 +1,68 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<style>
+    @keyframes rotateTick {
+         0% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(180deg);
+        }
+        50% {
+            transform: rotate(180deg); /* Pause */
+        }
+        75% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(360deg); /* Pause */
+        }
+    }
+
+    @keyframes rotateBar {
+        0%, 5% {
+            transform: translateX(0);
+        }
+        20%, 35% {
+            transform: translateX(-130px);
+        }
+        45%, 55% {
+            transform: translateX(0);
+        }
+        70%, 85% {
+            transform: translateX(130px);
+        }
+        95%, 100% {
+            transform: translateX(0);
+        }
+    }
+
+    .circ1, .circ2 {
+        animation: rotateTick 3s ease-in-out infinite;
+        transform-box: fill-box;
+        transform-origin: left center;
+    }
+
+    .circ3, .circ4 {
+        animation-direction: reverse;
+    }
+
+    #search {
+        animation: rotateBar 3s ease infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+
+    .circ2 {
+        transform-origin: right center;
+    }
+</style>
+
+<rect x="250" width="250" height="500" fill="#000D26"/>
+<path class="circ1" d="M250 455C363.218 455 455 363.218 455 250C455 136.782 363.218 45 250 45V455Z" fill="#FFD601"/>
+<rect width="250" height="500" fill="#FFD601"/>
+<g id="search">
+    <circle cx="250" cy="250" r="50" fill="white"/>
+</g>
+<path class="circ2" d="M250 45C136.782 45 45 136.782 45 250C45 363.218 136.782 455 250 455L250 45Z" fill="#000D26"/>
+</svg>

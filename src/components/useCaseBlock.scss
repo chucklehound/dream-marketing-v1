@@ -1,0 +1,66 @@
+@import '/src/styles/colours.scss';
+
+.use-cases-element {
+
+    .tool-container {
+        box-shadow: inset 0 0 0 1px rgba($color-wallstreet-black, .1);
+        border-radius: 16px;
+        background: rgba($color-light-green, .4);
+
+        &:after {
+            display: none;
+        }
+
+        .tool-card {
+            border: 1px solid rgba($color-wallstreet-black, .2)  !important;
+        }
+
+        .tool-content {
+
+            h3 {
+                font-size: 24px;
+                line-height: 32px;
+                letter-spacing: -1px;
+
+                @media (min-width: 800px) {
+                    font-size: 32px;
+                line-height: 40px;
+                }
+            }
+            ul, ol {
+                
+                &:not(:last-of-type) {
+                    padding-bottom: 12px;
+                }
+                
+                li:not(:last-of-type) {
+                    margin-bottom: 12px;
+                }
+            }
+
+            h6 {
+                margin-bottom: 12px;
+            }
+
+            @media (min-width: 1152px) {
+                p, ol, ul {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: $color-performa-black;
+                }
+            }
+        }
+
+        .tool-title {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .tool-image {
+            border: none !important;
+        }
+    }
+}

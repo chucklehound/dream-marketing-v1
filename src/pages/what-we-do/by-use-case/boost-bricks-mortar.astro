@@ -1,0 +1,244 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+
+import Button from "../../../components/Button.astro";
+import arrowRightLight from "/src/img/arrow-right-white.svg";
+
+import keyCustomer from "/src/img/icons/key-customers.svg?raw";
+
+import caseStudy from '/src/img/mockingbird-case.webp';
+
+import challengeTarget from '/src/img/challenge-target.png';
+import challengeSolution from '/src/img/challenge-solution.png';
+
+import Target from '/src/img/icons/market-focus.svg?raw';
+import CostEffective from '/src/img/icons/hotel-adr.svg?raw';
+import PersonalOutreach from '/src/img/icons/ceo-statements.svg?raw';
+
+import ResultsPattern from '/src/img/results-pattern-light.png';
+
+
+---
+
+<Layout
+	title="Dream - What We Do / Boosting Sales to Bricks & Mortar Companies"
+>
+	<Navigation />
+	<header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text solo-header">
+				<small class="tag">What we do / Use Cases</small>
+				<h1 class="page-title">
+					Boosting Sales to <span>Bricks-and-Mortar</span> Companies with
+					Dream's AI Sales Agent
+				</h1>
+				<span
+					>Unlock unprecedented sales growth in the offline world with
+					Dream, the AI-powered sales agent designed for companies
+					targeting bricks-and-mortar businesses. Whether you're in
+					FMCG, F&B, or tech, Dream empowers you to reach more
+					customers, faster.</span
+				>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content content-row">
+			<article class="tools-section content-container">
+				<div class="tools-grid">
+					<div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<h3>The Challenge</h3>
+								<p>
+									Traditional online sales tools fall short
+									for companies without a robust LinkedIn
+									presence, making it difficult for those
+									aiming to sell to physical stores like
+									cafes, retail shops, or medical practices.
+									Traditionally, these companies had to rely
+									on expanding their sales teams to drive
+									growth, but Dream changes the game.
+								</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={challengeTarget.src} alt="Icons representing different business types arranged around a target." />
+						</div>
+					</div><div class="tool-container">
+						<div class="tool-card">
+							<div class="tool-content">
+								<h3>The Solution</h3>
+								<p>
+									Dream is an AI sales agent that finds and
+									engages sales targets using the internet and
+									LinkedIn, conducts deep research into those
+									targets, and performs timely, personalized
+									outreach. It's perfect for businesses
+									selling to bricks-and-mortar companies,
+									offering a cost-effective and scalable
+									alternative to traditional sales teams.
+								</p>
+							</div>
+						</div>
+						<div class="tool-image">
+							<img src={challengeSolution.src} alt="A nice ordered list of companies that can be targeted" />
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="stats-box">
+				<h2>Why Dream?</h2>
+				<ul class="stats-items">
+					<li>
+						<Fragment set:html={Target} />
+						<p>Unmatched <br />Vertical Reach</p><span
+							>Dream's AI identifies and reaches offline
+							businesses with precision, enabling you to penetrate
+							markets like food & beverage outlets, independent
+							cafes, and retail stores.</span
+						>
+					</li>
+					<li>
+						<Fragment set:html={PersonalOutreach} />
+						<p>Personalized Outreach <br />at Scale</p><span
+							>Dream researches each lead and sends
+							hyper-personalized messages, mimicking the
+							engagement quality of a dedicated sales team.</span
+						>
+					</li>
+					<li>
+						<Fragment set:html={CostEffective} />
+						<p>Cost-Effective Sales Automation</p><span
+							>With Dream, you can replace expensive SDR teams,
+							significantly reducing costs while increasing
+							outbound capacity.</span
+						>
+					</li>
+				</ul>
+			</article>
+		</section>
+		<section class="main-content content-row">
+			<article class="content-container">
+				<h2>Results With Dream</h2>
+				<p>
+					Companies targeting bricks-and-mortar businesses have seen
+					transformative results:
+				</p>
+				<div class="content-pair">
+					<ul class="feature-list text-content no-wrap-list">
+						<li>
+							<p>
+								<strong>Faster Time to Market:</strong> Reach hundreds
+								of new prospects daily without expanding your sales
+								team.
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Increased Conversion Rates:</strong> Personalized
+								outreach drives meaningful conversations with the
+								right decision-makers.
+							</p>
+						</li>
+						<li>
+							<p>
+								<strong>Efficient Scaling:</strong> Achieve better
+								ROI compared to traditional sales methods.
+							</p>
+						</li>
+					</ul>
+					<div class="image-content">
+						<img
+							src={ResultsPattern.src}
+							alt="An abstract pattern representing results."
+						/>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-black">
+			<article class="content-container">
+				<div class="text-container">
+					<Fragment set:html={keyCustomer} />
+					<h2>Who's This For?</h2>
+					<p>
+						Dream is ideal for sales, growth, and marketing
+						leaders—or company founders—seeking to grow their
+						offline business footprint. If you're selling B2B
+						services or products to companies without a strong
+						digital presence, Dream can transform your approach.
+					</p>
+				</div>
+			</article>
+		</section>
+		<section class="content-list main-content">
+			<article class="sequence-section">
+				<div class="sequence-item">
+					<div class="sequence-title">
+						<div class="sequence-content">
+							<div class="sequence-text">
+								<small class="tag">Case Study</small>
+								<h3>Mockingbird Raw Press</h3>
+								<br>
+								<p>Mockingbird wanted to grow their Out-of-Home business by expanding sales within their network of existing distributors and wholesalers and direct-to-retail.								</p>
+								<p>Before Dream, they didn’t have the sales capacity to run a strong outbound campaign and so had to rely on traditional growth methods.								</p>
+								<p>With Dream, Mockingbird has seen incredible growth of their Out-of-Home funnel in both the UK and Ireland.								</p>
+								<br>
+								<Button
+								variant="primary"
+								href="/book-meeting"
+								target="_blank"
+								label=""
+							>
+							Join Mockingbird in expanding sales today <img
+									src={arrowRightLight.src}
+									role="presentation"
+									alt=""
+									loading="lazy"
+								/>
+							</Button>
+								
+							</div>
+							<div class="sequence-img">
+								<img
+									src={caseStudy.src}
+									alt="An image of a Mockingbird Raw Press smoothie"
+									role="presentation"
+								/>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</article>
+		</section>
+	</main>
+	<section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>See what’s possible for your business</h3>
+			<p>
+				Learn how Dream can 10X your growth. Book your personal meeting
+				to explore our solutions.
+			</p>
+			<Button
+				variant="reverse"
+				href="/book-meeting"
+				target="_blank"
+				label=""
+			>
+				Book your meeting <img
+					src={arrowRightLight.src}
+					role="presentation"
+					alt=""
+					loading="lazy"
+				/>
+			</Button>
+		</article>
+	</section>
+	<Footer variant="beside-cta" />
+</Layout>

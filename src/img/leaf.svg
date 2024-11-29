@@ -1,0 +1,66 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes rotate {
+            100% { transform: rotate(1turn); }
+        }
+
+        @keyframes wave {
+            50% { transform: translateY(150px) rotate(0.5turn); }
+        }
+
+        g#group {
+            animation: rotate 12s linear infinite;
+            transform-origin: 250px 250px; /* Center the entire group */
+        }
+
+        g path {
+            transform-origin: 50% center;
+            animation: wave 4s ease-in-out infinite;
+            transform-box: fill-box;
+        }
+
+        rect {
+            opacity: 0;
+        }
+        
+    </style>
+
+    <circle cx="250" cy="250" r="60" fill="#FFD601"/>
+    <g id="group">
+        <rect x="0" y="0" fill="none" width="500" height="500" />
+        
+        <g class="g1" transform="rotate(0, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.851 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(45, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.852 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(90, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.851 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(135, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.852 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(180, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.851 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(225, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.852 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(270, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.851 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+        <g class="g1" transform="rotate(315, 250, 250) scale(0.775)">
+            <rect x="190" width="120" height="240" fill="#D9D9D9"/>
+            <path d="M250 240C285.318 224.852 310 190.255 310 150C310 109.745 285.318 75.1485 250 60C214.682 75.1485 190 109.745 190 150C190 190.255 214.682 224.851 250 240Z" fill="#0D0400"/>
+        </g>
+    </g>
+
+</svg>
