@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+
+// Fetch all posts from the 'posts' collection
+const posts = await getCollection('posts');
+
+// Sort posts by date (newest first)
+const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Dream - All posts">
+  <h1>All Posts</h1>
+
+  <ul>
+    {sortedPosts.map(post => (
+      <li>
+        <a href={`/posts/${post.slug}`}>
+          <h2>{post.data.title}</h2>
+          <p>{post.data.description}</p>
+          <time>{new Date(post.data.date).toLocaleDateString()}</time>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Layout>

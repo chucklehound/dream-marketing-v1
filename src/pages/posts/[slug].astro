@@ -1,0 +1,33 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+import Layout from '../../layouts/Layout.astro';
+
+// Generate paths for all blog posts
+export async function getStaticPaths() {
+  const posts = await getCollection('posts'); // Fetch all posts in the "posts" collection
+  return posts.map((post) => ({
+    params: { slug: post.slug }, // Use the slug as the dynamic route
+  }));
+}
+
+// Fetch the specific blog post by its slug
+const post = await getEntryBySlug('posts', Astro.params.slug);
+
+if (!post) {
+  throw new Error(`Post not found for slug: ${Astro.params.slug}`);
+}
+---
+
+<Layout title={post.data.title}>
+  <article>
+    <header>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <time>{new Date(post.data.date).toLocaleDateString()}</time>
+    </header>
+
+    <!-- Render Markdown content -->
+    <div class="post-body" set:html={post.body} />
+  </article>
+</Layout>
