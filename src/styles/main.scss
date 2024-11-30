@@ -2616,6 +2616,67 @@ section[aria-label="Trust metrics"] {
         }
     }
 
+    // All posts page //
+
+    .post-list {
+        padding-top: 0;
+    }
+
+    .all-posts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @media (min-width: 1024px) {
+            gap: 52px;
+        }
+
+        li {
+            min-width: 320px;
+            flex: 1 30%;
+            margin: 0;
+            padding: 0;
+            
+            a {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                text-decoration: none;
+                color: $color-wallstreet-black;
+
+                span {
+                    display: flex;
+                    gap: 8px;
+                }
+
+                h4 {
+                    margin: 0;
+                    font-size: 32px;
+                    line-height: 40px;
+                    transition: color .2s ease;
+                }
+
+                &:hover {
+                    h4 {
+                        color: $color-pomona-black;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            img {
+                max-height: 240px;
+                border-radius: 12px;
+                width: 100%;
+                object-fit: cover;
+                object-position: top center;
+            }
+        }
+    }
+
     // Post styles //
 
     .post-content {
@@ -2701,11 +2762,11 @@ section[aria-label="Trust metrics"] {
             margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
             padding: 24px 0;
 
             @media (min-width: 1024px) {
-                gap: 16px;
+                gap: 12px;
                 padding: 32px 0;
             }
 
@@ -2749,6 +2810,10 @@ section[aria-label="Trust metrics"] {
 
             a {
                 color: $color-dark-blue;
+            }
+
+            ul {
+                margin-top: 8px;
             }
 
             p, li {

@@ -5,6 +5,8 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 
+import arrowRightDark from '/src/img/arrow-right-dark.svg?raw';
+
 
 // Fetch all posts from the 'posts' collection
 const posts = await getCollection('posts');
@@ -15,19 +17,32 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
 
 <Layout title="Dream - All posts">
   <Navigation />
+  <header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text solo-header">
+				<h1 class="page-title">Growth hub</h1>
+        <p>Our knowledge base for growing your business.</p>
+			</section>
+		</div>
+	</header>
+  <main>
 
-  <h1>All Posts</h1>
-
-  <ul>
-    {sortedPosts.map(post => (
-      <li>
-        <a href={`/posts/${post.slug}`}>
-          <h2>{post.data.postTitle}</h2>
-          <p>{post.data.seoMetaDescription}</p>
-          <time>{new Date(post.data.datePublished).toLocaleDateString()}</time>
-        </a>
-      </li>
-    ))}
-  </ul>
+    <section class="post-list">
+      <article class="content-container">
+        <ul class="all-posts">
+          {sortedPosts.map(post => (
+            <li>
+              <a href={`/posts/${post.slug}`}>
+                <img src={post.data.featuredImage.src} />
+                <h4>{post.data.postTitle}</h4>
+                <p>{post.data.seoMetaDescription}</p>
+                <span>Read more <Fragment set:html={arrowRightDark} /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </section>
+  </main>
   <Footer />
 </Layout>
