@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.6",
+    "@rodneylab/picpack": "^0.1.1",
     "astro": "^4.11.5",
     "sharp": "^0.33.4"
   },
