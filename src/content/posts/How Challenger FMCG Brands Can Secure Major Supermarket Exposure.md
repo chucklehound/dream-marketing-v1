@@ -3,7 +3,7 @@ postTitle: "How Challenger FMCG Brands Can Secure Major Supermarket Exposure"
 datePublished: 2024-11-29
 lastUpdated: 2024-11-29
 seoMetaDescription: "Breaking into the major supermarket scene is a key milestone for challenger FMCG brands. We'll show you how Dream can help you."
-featuredImage: "/src/img/posts/challenger-brands.png"
+featuredImage: "/src/img/posts/supermarket-shelf.jpg"
 featuredImageAlt: ""
 categories: ["F&B", "How To"]
 tags: ["F&B", "How To"]
