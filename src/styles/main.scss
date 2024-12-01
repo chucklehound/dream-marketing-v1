@@ -324,6 +324,16 @@ header {
         &.solo-header {
             text-align: center;
 
+            svg {
+                width: 64px;
+                height: 64px;
+                margin-bottom: -8px;
+                
+                path {
+                    fill: $color-light-blue;
+                }
+            }
+
             &:after {
                 content: '';
                 width: 100%;

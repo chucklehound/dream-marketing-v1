@@ -7,6 +7,8 @@ import Footer from "../../components/Footer.astro";
 
 import arrowRightDark from '/src/img/arrow-right-dark.svg?raw';
 
+import iconGrowth from '/src/img/growth.svg?raw';
+
 
 // Fetch all posts from the 'posts' collection
 const posts = await getCollection('posts');
@@ -20,6 +22,7 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
   <header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text solo-header">
+        <Fragment set:html={iconGrowth} />
 				<h1 class="page-title">Growth hub</h1>
         <p>Our knowledge base for growing your business.</p>
 			</section>
