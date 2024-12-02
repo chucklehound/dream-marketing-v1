@@ -330,7 +330,7 @@ header {
                 margin-bottom: -8px;
                 
                 path {
-                    fill: $color-light-blue;
+                    stroke: $color-light-blue;
                 }
             }
 
@@ -2642,6 +2642,10 @@ section[aria-label="Trust metrics"] {
 
         @media (min-width: 1024px) {
             gap: 52px;
+
+            li {
+                max-width: 392px;
+            }
         }
 
         li {
