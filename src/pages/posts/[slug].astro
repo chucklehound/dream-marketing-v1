@@ -66,6 +66,14 @@ const { Content } = await render();
 
 
 <Layout title={post.data.postTitle}>
+
+    <head slot="pageSeo">
+      <meta property="og:title" content={post.data.postTitle} />
+      <meta property="og:description" content={post.data.seoMetaDescription} />
+      <meta property="og:image" content={post.data.featuredImage.src} />
+      <meta property="og:type" content="article" />
+    </head>
+
     <Navigation />
     <main> 
         <section class="post-content">
