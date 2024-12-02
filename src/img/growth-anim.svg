@@ -7,7 +7,7 @@
     }
 
     @keyframes fadeIn {
-        0% { opacity: 0; }
+        0%, 30% { opacity: 0; }
         100% { opacity: 1; }
     }
 
@@ -39,7 +39,7 @@
     }
 
     .base {
-        animation: fadeIn .5s ease 1 forwards;
+        animation: fadeIn 1s ease 1 forwards;
         opacity: 0;
     }
 </style>
