@@ -1,0 +1,111 @@
+---
+import { getCollection, getEntryBySlug  } from 'astro:content';
+
+import type { CollectionEntry } from "astro:content";
+
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+import arrowleftLight from '/src/img/arrow-left-white.svg?raw';
+
+
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map(
+    ({
+      data: {
+        featuredImage,
+        featuredImageAlt,
+        postTitle,
+        seoMetaDescription,
+      },
+      render,
+      slug,
+    }) => {
+      return {
+        params: { slug },
+        props: {
+          featuredImage,
+          featuredImageAlt,
+          seoMetaDescription,
+          render,
+          postTitle,
+        },
+      };
+    },
+  );
+}
+
+type PostCollection = CollectionEntry<"posts">;
+type Props = Pick<
+  PostCollection["data"],
+  | "featuredImage"
+  | "featuredImageAlt"
+  | "seoMetaDescription"
+  | "postTitle"
+> &
+  Pick<PostCollection, "render">;
+
+const { slug } = Astro.params;
+const {
+  featuredImage,
+  featuredImageAlt,
+  seoMetaDescription: metadescription,
+  render,
+  postTitle: title,
+}: Props = Astro.props;
+
+const post = await getEntryBySlug('posts', slug);
+const { Content } = await render();
+
+---
+
+
+<Layout title={post.data.postTitle}>
+    <Navigation />
+    <main> 
+        <section class="post-content">
+            <div class="post-header">
+                <img src={post.data.featuredImage.src} />
+                <a href="/posts" data-transition="page"><Fragment set:html={arrowleftLight} /><span>View all posts</span></a>
+                <h1>{post.data.postTitle}</h1>
+                <small>{new Date(post.data.datePublished).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}</small>
+                <p>{post.data.seoMetaDescription}</p>
+            </div>
+            <article>
+                <Content />
+              </article>
+        </section>
+    </main>
+    <section class="final-cta">
+		<article class="main-content cta-container">
+			<h3>See what’s possible for your business</h3>
+			<p>
+				Learn how Dream can 10X your growth. Book your personal meeting
+				to explore our solutions.
+			</p>
+			<Button
+				variant="reverse"
+				href="/book-meeting"
+				target="_blank"
+				label=""
+			>
+				Book your meeting <img
+					src={arrowRightLight.src}
+					role="presentation"
+					alt=""
+					loading="lazy"
+				/>
+			</Button>
+		</article>
+	</section>
+	<Footer variant="beside-cta" />
+</Layout>
