@@ -11,6 +11,12 @@ import favicon96 from "/src/img/favicon-96x96.png";
 import webManifest from "/src/img/site.webmanifest";
 import safariTab from "/src/img/safari-pinned-tab.svg";
 
+import ogUrl from '/src/img/web-app-manifest-512x512.png'
+
+const currentPath = Astro.url.pathname;
+const baseUrl = 'https://usedream.ai';
+const fullUrl = `${baseUrl}${currentPath}`;
+
 ---
 
 <!doctype html>
@@ -28,6 +34,9 @@ import safariTab from "/src/img/safari-pinned-tab.svg";
 		<meta name="theme-color" content="#FFD601">
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<meta name="og:url" content={fullUrl} />
+		<meta property="og:logo" content={ogUrl.src} />
 
 		<slot name="postSeo" />
 
