@@ -190,7 +190,9 @@ header {
         z-index: 2;
 
         &.reverse-content {
-            flex-direction: column-reverse;
+            @media (max-width: 1024px) {
+                flex-direction: column-reverse;
+            }
         }
 
         @media (max-width: 800px) {
@@ -267,7 +269,8 @@ header {
                 width: 100%;
             }
             
-            @media (min-width: 550px) {
+            @media (min-width: 1024px) {
+                min-width: 500px;
 
                 object {
                     width: 500px;
