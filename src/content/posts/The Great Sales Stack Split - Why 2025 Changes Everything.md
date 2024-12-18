@@ -2,7 +2,7 @@
 postTitle: "The Great Sales Stack Split: Why 2025 Changes Everything"
 datePublished: 2024-12-17
 lastUpdated: 2024-12-17
-seoMetaDescription: "The average Series B startup spends $125,000 yearly on sales automation. And for what? Declining response rates and saturated inboxes. But something's changing, find out what."
+seoMetaDescription: "The average Series B startup spends over $100K yearly on sales automation. And for what? Declining response rates and saturated inboxes. But something's changing, find out what."
 featuredImage: "/src/img/posts/cliff-items.jpg"
 featuredImageAlt: ""
 categories: ["SaaS", "Sales Tooling"]
@@ -10,7 +10,7 @@ tags: ["SaaS", "Sales Tooling"]
 draft: ""
 ---
 
-In 2024, the average Series B startup spent $125,000 per year on sales automation tools. They deployed Apollo or Outreach, integrated it with LinkedIn Sales Navigator, and hired SDRs to personalize messages at scale. It was expensive, generic, and increasingly ineffective.
+In 2024, the average Series B startup spent over $100k on sales automation tools. They deployed Apollo or Outreach, integrated it with LinkedIn Sales Navigator, and "hired" AI SDRs to personalize messages at scale. It was expensive, generic, and increasingly ineffective.
 
 But something remarkable is happening. At Dream, our FMCG customers are achieving 23% response rates from cold outreach \- numbers that would have been unthinkable just twelve months ago. These aren't tech companies either; they're challenger brands reaching out to retailers, hotels, and distributors that rarely appear on LinkedIn.
 
@@ -61,4 +61,3 @@ The future of sales automation isn't about sending more emails or surface-level 
 For businesses still relying on generic sales automation tools, 2025 will be decisive. The question isn't whether to adopt vertical-specific AI, but which solution best fits your industry's unique needs.
 
 The age of generic sales automation is ending. The era of intelligent, industry-specific AI is beginning.
-
