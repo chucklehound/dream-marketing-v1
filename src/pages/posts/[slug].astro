@@ -1,14 +1,9 @@
 ---
-import { getCollection, getEntryBySlug  } from 'astro:content';
-
+import { getCollection, getEntry } from 'astro:content';
 import PostSeo from '../../components/postSeo.astro';
-
-import type { CollectionEntry } from "astro:content";
-
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 import Layout from '../../layouts/Layout.astro';
-
 import Button from '../../components/Button.astro';
 import arrowRightLight from '/src/img/arrow-right-white.svg';
 import arrowleftLight from '/src/img/arrow-left-white.svg?raw';
@@ -23,7 +18,6 @@ export async function getStaticPaths() {
         postTitle,
         seoMetaDescription,
       },
-      render,
       slug,
     }) => {
       return {
@@ -32,7 +26,6 @@ export async function getStaticPaths() {
           featuredImage,
           featuredImageAlt,
           seoMetaDescription,
-          render,
           postTitle,
         },
       };
@@ -55,18 +48,25 @@ const {
   featuredImage,
   featuredImageAlt,
   seoMetaDescription: metadescription,
-  render,
   postTitle: title,
 }: Props = Astro.props;
 
-const post = await getEntryBySlug('posts', slug);
-const { Content } = await render();
+const post = await getEntry('posts', slug);
+const { Content, headings } = await post.render();
 
+// Clean headings by adding ID attributes
+const cleanHeadings = headings.map(heading => {
+  const id = heading.text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')  // Remove special characters
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/^-+|-+$/g, '');    // Remove leading/trailing hyphens
+
+  return { ...heading, id };
+});
 ---
 
-
 <Layout title={post.data.postTitle}>
-
     <PostSeo slot="postSeo">
       <meta property="og:title" content={post.data.postTitle} />
       <meta property="og:description" content={post.data.seoMetaDescription} />
@@ -74,9 +74,8 @@ const { Content } = await render();
       <meta property="og:type" content="article" />
     </PostSeo>
 
-      
     <Navigation />
-    <main> 
+    <main>
         <section class="post-content">
             <div class="post-header">
                 <img src={post.data.featuredImage.src} />
@@ -86,35 +85,49 @@ const { Content } = await render();
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
-                  })}</small>
+                })}</small>
                 <p>{post.data.seoMetaDescription}</p>
             </div>
             <article>
-                <Content />
-              </article>
+                {cleanHeadings.length > 0 && (
+                  <nav class="toc">
+                    <ul>
+                      {cleanHeadings.map(({ level, text, id }) => (
+                        <li>
+                          <a href={`#${id}`}>{text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                )}
+                
+                <div class="article-content-container">
+                  <Content />
+                </div>
+            </article>
         </section>
     </main>
     <section class="final-cta">
-		<article class="main-content cta-container">
-			<h3>See what’s possible for your business</h3>
-			<p>
-				Learn how Dream can 10X your growth. Book your personal meeting
-				to explore our solutions.
-			</p>
-			<Button
-				variant="reverse"
-				href="/book-meeting"
-				target="_blank"
-				label=""
-			>
-				Book your meeting <img
-					src={arrowRightLight.src}
-					role="presentation"
-					alt=""
-					loading="lazy"
-				/>
-			</Button>
-		</article>
-	</section>
-	<Footer variant="beside-cta" />
+        <article class="main-content cta-container">
+            <h3>See what’s possible for your business</h3>
+            <p>
+                Learn how Dream can 10X your growth. Book your personal meeting
+                to explore our solutions.
+            </p>
+            <Button
+                variant="reverse"
+                href="/book-meeting"
+                target="_blank"
+                label=""
+            >
+                Book your meeting <img
+                    src={arrowRightLight.src}
+                    role="presentation"
+                    alt=""
+                    loading="lazy"
+                />
+            </Button>
+        </article>
+    </section>
+    <Footer variant="beside-cta" />
 </Layout>
