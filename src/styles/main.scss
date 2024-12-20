@@ -2845,5 +2845,27 @@ section[aria-label="Trust metrics"] {
                     margin-bottom: 20px;
                 }
             }
+
+            table {
+                border: 1px solid rgba($color-wallstreet-black, .15);
+                border-collapse: collapse;
+
+                th {
+                    background-color: $color-lisa-yellow;
+                }
+
+                tr {
+
+                    td, th {
+                        text-align: left;
+                        padding: 8px;
+                        border: 1px solid rgba($color-wallstreet-black, .15);
+                    }
+
+                    &:nth-of-type(2n) td {
+                        background: rgba($color-wallstreet-black, .1);
+                    }
+                }
+            }
         }
     }
