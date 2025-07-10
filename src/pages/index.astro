@@ -5,351 +5,202 @@ import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
-import arrowRightLight from "/src/img/arrow-right-white.svg";
-import arrowRightYellow from "/src/img/arrow-right-yellow.svg";
-import arrowRightDark from "/src/img/arrow-right-dark.svg";
+import chats1 from '/src/img/home-chats.png';
+import chats2 from '/src/img/home-chats-2.png';
+import chats3 from '/src/img/home-chats-3.png';
 
-import trust1 from "/src/img/data.png";
-import trust2 from "/src/img/chats.png";
-import trust3 from "/src/img/infinity.png";
+import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
+import dreamie2 from '/src/img/hero-dreamies/dreamie-2.png';
+import dreamie3 from '/src/img/hero-dreamies/dreamie-3.png';
+import dreamie4 from '/src/img/hero-dreamies/dreamie-4.png';
+import dreamie5 from '/src/img/hero-dreamies/dreamie-5.png';
+import dreamie6 from '/src/img/hero-dreamies/dreamie-6.png';
+import dreamie7 from '/src/img/hero-dreamies/dreamie-7.png';
+import dreamie8 from '/src/img/hero-dreamies/dreamie-8.png';
+import dreamie9 from '/src/img/hero-dreamies/dreamie-9.png';
+import dreamie10 from '/src/img/hero-dreamies/dreamie-10.png';
+import dreamie11 from '/src/img/hero-dreamies/dreamie-11.png';
+import dreamie12 from '/src/img/hero-dreamies/dreamie-12.png';
+import dreamie13 from '/src/img/hero-dreamies/dreamie-13.png';
+import dreamie14 from '/src/img/hero-dreamies/dreamie-14.png';
+import dreamie15 from '/src/img/hero-dreamies/dreamie-15.png';
+import dreamie16 from '/src/img/hero-dreamies/dreamie-16.png';
+import dreamie17 from '/src/img/hero-dreamies/dreamie-17.png';
+import dreamie18 from '/src/img/hero-dreamies/dreamie-18.png';
+import dreamie19 from '/src/img/hero-dreamies/dreamie-19.png';
+import dreamie20 from '/src/img/hero-dreamies/dreamie-20.png';
+import dreamie21 from '/src/img/hero-dreamies/dreamie-21.png';
+import dreamie22 from '/src/img/hero-dreamies/dreamie-22.png';
+import dreamie23 from '/src/img/hero-dreamies/dreamie-23.png';
+import dreamie24 from '/src/img/hero-dreamies/dreamie-24.png';
+import dreamie25 from '/src/img/hero-dreamies/dreamie-25.png';
 
-import quoteGw from "/src/img/givewheel-logo.png";
+const names = [
+  'Chris', 'Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Jamie', 'Riley', 'Avery', 'Drew',
+  'Sam', 'Robin', 'Cameron', 'Skyler', 'Quinn', 'Jesse', 'Harper', 'Reese', 'Parker', 'Rowan',
+  'Blake', 'Devon', 'Elliot', 'Hayden', 'Sage'
+];
+const roles = ['Sales', 'Business', 'Marketing', 'Design', 'Finance'];
+const images = [
+  { src: dreamie1, title: `${names[0]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
+  { src: dreamie2, title: `${names[1]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
+  { src: dreamie3, title: `${names[2]}'s ${roles[2]} Manager`, body: "I automate their emails" },
+  { src: dreamie4, title: `${names[3]}'s ${roles[3]} Manager`, body: "I design their graphics" },
+  { src: dreamie5, title: `${names[4]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
+  { src: dreamie6, title: `${names[5]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
+  { src: dreamie7, title: `${names[6]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
+  { src: dreamie8, title: `${names[7]}'s ${roles[2]} Manager`, body: "I automate their emails" },
+  { src: dreamie9, title: `${names[8]}'s ${roles[3]} Manager`, body: "I design their graphics" },
+  { src: dreamie10, title: `${names[9]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
+  { src: dreamie11, title: `${names[10]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
+  { src: dreamie12, title: `${names[11]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
+  { src: dreamie13, title: `${names[12]}'s ${roles[2]} Manager`, body: "I automate their emails" },
+  { src: dreamie14, title: `${names[13]}'s ${roles[3]} Manager`, body: "I design their graphics" },
+  { src: dreamie15, title: `${names[14]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
+  { src: dreamie16, title: `${names[15]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
+  { src: dreamie17, title: `${names[16]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
+  { src: dreamie18, title: `${names[17]}'s ${roles[2]} Manager`, body: "I automate their emails" },
+  { src: dreamie19, title: `${names[18]}'s ${roles[3]} Manager`, body: "I design their graphics" },
+  { src: dreamie20, title: `${names[19]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
+  { src: dreamie21, title: `${names[20]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
+  { src: dreamie22, title: `${names[21]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
+  { src: dreamie23, title: `${names[22]}'s ${roles[2]} Manager`, body: "I automate their emails" },
+  { src: dreamie24, title: `${names[23]}'s ${roles[3]} Manager`, body: "I design their graphics" },
+  { src: dreamie25, title: `${names[24]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
+];
 
-import TabComponent from "../components/TabComponent.astro";
+import Carousel from '../components/Carousel.astro';
 
-import introImage1 from "/src/img/intro-img-1.png";
-import introImage2 from "/src/img/intro-img-2.png";
-import introImage3 from "/src/img/use-presale.png";
-
-import introIcon1 from "/src/img/intro-icon-1.svg";
-import introIcon2 from "/src/img/intro-icon-2.svg";
-import introIcon3 from "/src/img/intro-icon-3.svg";
+const contentBlocks = [
+  {
+    image: '/images/card3.jpg',
+    title: 'Just started? Let your Business Manager guide you through all the first steps.',
+    subtitle: 'Find out more about your',
+    ctaText: 'Business Manager',
+    ctaUrl: '/page1',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Need to reach 1,000 new customers in 24 hours? Call your Sales Manager.',
+    subtitle: 'Find out more about your',
+    ctaText: 'Sales Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  // Add more blocks as needed
+];
 ---
 
-<Layout title="AI sales agents that grow marketplaces">
+<Layout title="AI employees that help your business grow">
   <Navigation />
   <header class="hero-home">
     <div class="hero-elements main-content">
       <section class="header-text">
         <h1 class="page-title">
-          AI sales agents <br />built to grow<br />
+          AI employees that help you
           <span id="rotating-text">difficult markets</span>
         </h1>
         <div class="actions">
-          <Button label="Book a demo" href="/book-meeting" target="_blank"
-            ><img src={arrowRightYellow.src} role="presentation" /></Button
+          <Button label="Get started for free" href="/book-meeting" target="_blank" size="medium"
+            ></Button
           >
           <Button
-            label="What we’ve made possible"
+            label="Meet the Dreamies"
             href="/what-we-do"
             target=""
             variant="secondary"
+            size="medium"
           />
         </div>
       </section>
       <section class="header-image home-hero">
-        <div class="tick-hero" role="presentation">
-          <div class="first-row"></div>
-          <div class="second-row"></div>
+        <div class="ticker-window">
+          <div class="ticker-wrapper">
+            <div class="ticker-track" id="ticker-track">
+              {images.concat(images).map((entry, i) => (
+                <img
+                  src={entry.src.src}
+                  alt={`dreamie-${(i % images.length) + 1}`}
+                  class="ticker-img"
+                  data-title={entry.title}
+                  data-body={entry.body}
+                />
+              ))}
+          </div>
+        </div>
+        <div id="message-box" class="message-box">
+          <div id="message-title" class="message-title"></div>
+          <div id="message-body" class="message-body"></div>
+        </div>
         </div>
       </section>
     </div>
   </header>
   <main>
-    <section aria-label="Information boxes">
-      <div class="info-container">
-        <!-- Box 1 -->
-        <a
-          href="/what-we-do"
-          class="info-box info-box-orange"
-          aria-label="What impact can Dream have for you?"
-        >
-          <span class="info-tag">What we do</span>
-          <h3>What impact can Dream have for you?</h3>
-          <span class="read-more"
-            >Read more<img src={arrowRightDark.src} role="presentation" /></span
-          >
-        </a>
-
-        <!-- Box 2 -->
-        <a
-          href="/how-we-do-it"
-          class="info-box info-box-darkblue"
-          aria-label="How does Dream deliver better results?"
-        >
-          <span class="info-tag">How we do it</span>
-          <h3>How does Dream deliver better results?</h3>
-          <span class="read-more"
-            >Read more<img src={arrowRightDark.src} role="presentation" /></span
-          >
-        </a>
-
-        <!-- Box 3 -->
-        <a
-          href="/what-we-do/by-industry/f-and-b"
-          class="info-box info-box-blue"
-          aria-label="How to reach 1,000 local cafes in 24 hours"
-        >
-          <span class="info-tag">For F&B</span>
-          <h3>How to reach 1,000 local cafes in 24 hours</h3>
-          <span class="read-more"
-            >Read more<img src={arrowRightDark.src} role="presentation" /></span
-          >
-        </a>
-
-        <!-- Box 4 -->
-        <a
-          href="/what-we-do/by-industry/travel"
-          class="info-box info-box-green"
-          aria-label="Message hotels in 40+ languages"
-        >
-          <span class="info-tag">For Travel</span>
-          <h3>Message hotels in 40+ languages</h3>
-          <span class="read-more"
-            >Read more<img src={arrowRightDark.src} role="presentation" /></span
-          >
-        </a>
-      </div>
+    <section class="main-content">
+      <article class="content-container full-width">
+        <div class="content-title">
+          <h2>Run your business <br/>like you're <span class="highlight-title">texting a friend</span></h2>
+          <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
+        </div>
+        <Carousel items={contentBlocks} />
+      </article>
     </section>
-
-    <section class="main-content content-list">
-      <article class="tools-section content-container">
-        <div class="tools-grid">
-          <!-- First row -->
-          <div class="tool-container">
-            <div class="tool-card">
-              <div class="tool-content">
-                <div class="tool-icon">
-                  <img src={introIcon1.src} role="presentation" />
-                </div>
-                <h3 class="tool-title">
-                  Dream is your 24/7 <br />AI-powered sales team
-                </h3>
-                <p class="tool-description">
-                  Reach more prospects, faster. Without scaling your sales team.
-                  Dream lets you sell more starting today.
-                </p>
-              </div>
-            </div>
-            <div class="tool-image">
-              <img src={introImage1.src} alt="Illustration of AI-powered SDR" />
-            </div>
-          </div>
-
-          <!-- Second row -->
-          <div class="tool-container">
-            <div class="tool-card">
-              <div class="tool-content">
-                <div class="tool-icon">
-                  <img src={introIcon2.src} role="presentation" />
-                </div>
-                <h3 class="tool-title">
-                  Tailored messaging, <br />sent at the right time
-                </h3>
-                <p class="tool-description">
-                  Dream’s AI learns all about your prospects, crafting
-                  individual emails to each one. You set the timing, so each
-                  message lands exactly when needed.
-                </p>
-              </div>
-            </div>
-            <div class="tool-image">
-              <img
-                src={introImage2.src}
-                alt="Illustration of tailored messaging"
-              />
-            </div>
-          </div>
-
-          <!-- Third row -->
-          <div class="tool-container">
-            <div class="tool-card">
-              <div class="tool-content">
-                <div class="tool-icon">
-                  <img src={introIcon3.src} role="presentation" />
-                </div>
-                <h3 class="tool-title">
-                  All you have to do is<br /> take the call
-                </h3>
-                <p class="tool-description">
-                  Your sales agents can handle outbound, replies, and booking
-                  meetings. Choose to manually approve messages, or let Dream
-                  handle it all autonomously.
-                </p>
-              </div>
-            </div>
-            <div class="tool-image">
-              <img src={introImage3.src} alt="Illustration of call handling" />
-            </div>
+    <section class="main-content">
+      <article class="full-width-contrast promo-home">
+        <div class="content-container">
+          <div class="content-title">
+            <h2>Dream is your 24/7 <br/><span class="highlight-title">AI powered</span> workforce</h2>
+            <p>The employees that you need to reach your business goals, <br/>working for you every hour of every day.</p>
           </div>
         </div>
       </article>
     </section>
     <section class="main-content">
       <article class="content-container">
-        <h2 class="section-heading">
-          From prospect to pitch, Dream can handle it all
-        </h2>
-        <br /><br />
-        <TabComponent />
-      </article>
-    </section>
-
-    <section aria-label="Trust metrics">
-      <div class="trust-box">
-        <div class="trust-image-container" aria-hidden="true">
-          <img src={trust1.src} alt="" />
+        <div class="breakout rotating-chats">
+          <div class="block" style={`background-image: url(${chats1.src});`}></div>
+          <div class="block" style={`background-image: url(${chats2.src});`}></div>
+          <div class="block" style={`background-image: url(${chats3.src});`}></div>
         </div>
-        <div class="trust-content">
-          <h2>
-            <span class="number" data-end="114042">114,042</span> intelligence calls
-            per customer campaign
-          </h2>
+        <div class="content-title">
+          <h2>Built to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
+          <p>Your AI employees are tailored for your business - they learn what you do, how you speak & how you work. </p>
         </div>
-      </div>
-
-      <div class="trust-box">
-        <div class="trust-image-container" aria-hidden="true">
-          <img src={trust2.src} alt="" />
-        </div>
-        <div class="trust-content">
-          <h2>
-            <span class="number" data-end="983">983</span> points of research per
-            conversation
-          </h2>
-        </div>
-      </div>
-
-      <div class="trust-box">
-        <div class="trust-image-container" aria-hidden="true">
-          <img src={trust3.src} alt="" />
-        </div>
-        <div class="trust-content">
-          <h2><span class="number">Infinite</span> scalability</h2>
-        </div>
-      </div>
-    </section>
-
-    <section class="customer-quote main-content">
-      <article class="quote-body">
-        <blockquote>
-          <p>
-            “Before Dream, creating and sending personalized outreach took
-            forever. Each email required hours of research and manual writing.
-          </p>
-          <p>
-            Dream changed everything. It pulls in detailed prospect data,
-            creating truly bespoke emails that hit the mark every time. It’s
-            seamless—no more digging for info or second-guessing the message.
-          </p>
-          <p>
-            Now, our outreach feels authentic, the responses are meaningful, and
-            the best part? It’s incredibly easy to use.”
-          </p>
-          <cite>
-            <span>Charlie Hart, Co-founder at Givewheel</span>
-            <img src={quoteGw.src} alt="The logo for Givewheel" />
-          </cite>
-        </blockquote>
       </article>
     </section>
   </main>
-  <section class="final-cta">
-    <article class="main-content cta-container">
-      <h3>See what’s possible for your business</h3>
-      <p>
-        Learn how Dream can 10X your growth. Book your personal meeting to
-        explore our solutions.
-      </p>
-      <Button variant="reverse" href="/book-meeting" target="_blank" label="">
-        Book your meeting <img
-          src={arrowRightLight.src}
-          role="presentation"
-          alt=""
-          loading="lazy"
-        />
-      </Button>
-    </article>
-  </section>
-  <Footer variant="beside-cta" />
+    
+  <Footer />
 
   <script>
-    // Function to animate numbers
-    function animateNumbers(
-      element: HTMLElement,
-      start: number,
-      end: number,
-      duration: number
-    ) {
-      let startTime: number | null = null;
-
-      function step(timestamp: number) {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const current = Math.min(
-          Math.floor(start + (end - start) * (progress / duration)),
-          end
-        );
-        element.innerText = current.toLocaleString(); // Update the number
-        if (current < end) {
-          window.requestAnimationFrame(step);
-        }
-      }
-
-      window.requestAnimationFrame(step);
-    }
-
-    // Intersection Observer to trigger animations
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const numberElement = entry.target.querySelector(
-              ".number"
-            ) as HTMLElement; // Cast to HTMLElement
-
-            if (numberElement) {
-              // Check if numberElement is not null
-              const isInfinite = numberElement.innerText === "Infinite";
-
-              if (isInfinite) {
-                // Directly set innerText to "Infinite" without animation
-                numberElement.innerText = "Infinite";
-                // Optionally, apply a CSS class for the fade-in effect
-                numberElement.classList.add("fade-in"); // Ensure you have this CSS class for fading in
-              } else {
-                const endNumber = parseInt(
-                  numberElement.getAttribute("data-end") || "0",
-                  10
-                );
-                animateNumbers(numberElement, 0, endNumber, 1000); // Duration is 2000ms
-              }
-
-              // Add 'in-view' class to trigger CSS animations
-              entry.target.classList.add("in-view");
-              observer.unobserve(entry.target); // Stop observing once the animation is triggered
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the element is visible
-      }
-    );
-
-    // Apply observer to all trust boxes
-    document.querySelectorAll(".trust-box").forEach((box) => {
-      observer.observe(box);
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
       const rotatingTextElement = document.getElementById("rotating-text");
       const texts = [
-        "difficult markets",
-        "FMCG companies",
-        "travel companies",
-        "challenger brands",
-        "B2B marketplaces",
+        "start a business",
+        "enter new markets",
+        "save an hour every day",
+        "handle more customers",
       ];
       let index = 0;
 
@@ -376,4 +227,106 @@ import introIcon3 from "/src/img/intro-icon-3.svg";
       rotateText();
     });
   </script>
+
+<script type="module">
+  const target = document.querySelector('.promo-home');
+
+  const observer = new IntersectionObserver(
+    ([entry], observer) => {
+      if (entry.isIntersecting) {
+        target.classList.add('visible');
+        observer.unobserve(target); // 🔥 Stop observing after first trigger
+      }
+    },
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.4
+    }
+  );
+
+  if (target) observer.observe(target);
+</script>
+
+<script type="module">
+  const track = document.getElementById("ticker-track");
+  const images = track.querySelectorAll(".ticker-img");
+  const messageBox = document.getElementById("message-box");
+  const titleEl = document.getElementById("message-title");
+  const bodyEl = document.getElementById("message-body");
+
+  const imageWidth = 267.5; // fixed
+  const gap = 32;
+  const step = imageWidth + gap;
+  const originalImagesCount = images.length / 2; // because images are doubled for seamless scroll
+
+  let currentIndex = 0;
+  let intervalId = null;
+
+  function scrollTo(index, animate = true) {
+    const shift = index * step + imageWidth / 2 - window.innerWidth / 2;
+    track.style.transition = animate ? "transform 0.3s cubic-bezier(.77,0,.18,1)" : "none";
+    track.style.transform = `translateX(-${shift}px)`;
+  }
+
+  function showMessage(index) {
+    // Always use the original set for messages
+    const img = images[index % originalImagesCount];
+    if (!img) return;
+    titleEl.textContent = img.dataset.title;
+    bodyEl.textContent = img.dataset.body;
+    messageBox.style.display = "flex";
+    messageBox.style.opacity = "1";
+  }
+
+  function tick() {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+      // Instantly reset to start for seamless loop
+      track.style.transition = "none";
+      currentIndex = 0;
+      scrollTo(currentIndex, false);
+      // Force reflow to apply the non-animated transform
+      void track.offsetWidth;
+    }
+    // Animate to the next image
+    scrollTo(currentIndex, true);
+    showMessage(currentIndex);
+  }
+
+  // Wait for all images to load before starting ticker and messages
+  document.addEventListener("DOMContentLoaded", () => {
+    messageBox.style.display = "none";
+    let loaded = 0;
+    const allImages = Array.from(images);
+    function tryStart() {
+      if (loaded === allImages.length) {
+        messageBox.style.display = "flex";
+        scrollTo(currentIndex, false);
+        showMessage(currentIndex);
+        intervalId = setInterval(tick, 3000);
+      }
+    }
+    allImages.forEach(img => {
+      if (img.complete) {
+        loaded++;
+        tryStart();
+      } else {
+        img.addEventListener("load", () => {
+          loaded++;
+          tryStart();
+        });
+        img.addEventListener("error", () => {
+          loaded++;
+          tryStart();
+        });
+      }
+    });
+    // In case all images are already loaded
+    tryStart();
+  });
+</script>
+
+
+
 </Layout>

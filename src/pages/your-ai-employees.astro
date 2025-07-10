@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Button from "../components/Button.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+
+import holibobDreamie from '/src/img/animated-dreamies/holibob.mp4';
+import curatorsDreamie from '/src/img/animated-dreamies/curators.mp4';
+import jdiDreamie from '/src/img/animated-dreamies/jdi-1.mp4';
+import edmundsDreamie from '/src/img/animated-dreamies/edmunds.mp4';
+
+
+import Carousel from '../components/Carousel.astro';
+
+const contentBlocks = [
+  {
+    image: '/images/card3.jpg',
+    title: 'Just started? Let your Business Manager guide you through all the first steps.',
+    subtitle: 'Find out more about your',
+    ctaText: 'Business Manager',
+    ctaUrl: '/page1',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Need to reach 1,000 new customers in 24 hours? Call your Sales Manager.',
+    subtitle: 'Find out more about your',
+    ctaText: 'Sales Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  {
+    image: '/images/card2.jpg',
+    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
+    subtitle: 'Find out more about your',
+    ctaText: 'Marketing Manager',
+    ctaUrl: '/page2',
+  },
+  // Add more blocks as needed
+];
+---
+
+<Layout title="AI employees that help your business grow">
+  <Navigation />
+  <header class="hero-home">
+    <div class="hero-elements main-content">
+      <section class="header-text content-title">
+        <h1 class="page-title">
+            Unlock your team of <span class="highlight-title">instant experts</span>. Instantly.
+        </h1>
+        <p>No more drawn out hiring, add an expert team mate in an instant. <br/>Choose from a team of Dreamies, ready to take your business to the next level.</p>
+      </section>
+      <section class="header-image home-hero">
+        <!-- <img src={placeholderHero.src} style="" /> -->
+        <div class="video-wrapper">
+          <video autoplay
+          muted
+          playsinline
+          loop width="300" height="440">
+            <source src={holibobDreamie} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> 
+        </div>
+        <div class="video-wrapper">
+          <video autoplay
+          muted
+          playsinline
+          loop width="300" height="440">
+            <source src={curatorsDreamie} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> 
+        </div>
+        <div class="video-wrapper">
+          <video autoplay
+          muted
+          playsinline
+          loop width="300" height="440">
+            <source src={jdiDreamie} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> 
+        </div>
+        <div class="video-wrapper">
+          <video autoplay
+          muted
+          playsinline
+          loop width="300" height="440">
+            <source src={edmundsDreamie} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video> 
+        </div>
+      </section>
+    </div>
+  </header>
+  <main>
+    <section class="main-content">
+      <article class="content-container full-width">
+        <div class="content-title">
+          <h2>Run your business <br/>like you're <span class="highlight-title">texting a friend</span></h2>
+          <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+    
+  <Footer />
+
+
+
+</Layout>

@@ -1,12 +1,42 @@
-/* NEW PALETTE */
-$color-primary-orange: #FF4C00;
-$color-text-black: #0D0400;
-$color-black-tint-medium: #2A1E17; // Medium tint of black
-$color-black-tint-light: #5B4D46; // Light tint of black
-$color-background-beige: #F9F7F2;
-$color-dark-blue-at: #002147;
-$color-blue: #1577EA;
-$color-green: #097F4B;
+/* New Brand Values */
+
+$wallstreet-black:     #000d26;
+$performa-black:       #374562;
+
+$medusa-blue:          #255a8e;
+$sawtooth-blue:        #489fd9;
+$mystic-blue:          #97d5fc;
+
+$sage-green:           #139685;
+$lime-green:           #4DB7A9;
+$graphite-green:       #0B5B50;
+
+$cherry-red:           #ee4266;
+$strawberry-red:       #F26D89;
+$ruby-red:             #A01D3E;
+
+$dream-yellow:         #ffd601;
+$sunflower-yellow:     #FFEB66;
+$honeycrisp-yellow:    #B39B00;
+
+$quadra-grey:          #ebe9e4;
+$plus-white:           #fffefc;
+$classic-yellow:       #f7f2ed;
+
+$medium-grey: #838b9b;
+$light-grey: #c1c5cd;
+$lighter-grey: #e6e8eb;
+$lightest-grey: #f3f3f5;
+
+$white: #ffffff;
+$black: #000000;
+
+@mixin highlightTitle {
+    background: linear-gradient(90deg, #489FD9 0%, #FFD601 105%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 /* Generated Grayscale */
 $color-gray-dark: #3B3836;
@@ -16,17 +46,17 @@ $color-gray-lighter: #E4E2E1;
 $color-gray-lightest: #F3F2F1;
 
 /* OLD PALETTE */
-$color-wallstreet-black: #000d26;
-$color-performa-black: #152647;
-$color-pomona-black: #5C6880;
-$color-plus-white: #fffefa;
-$color-lisa-yellow: #f0eddc;
-$color-dream-yellow: #ffd601;
-$color-dark-blue: #086788;
-$color-light-blue: #07a0c3;
-$color-dark-red: #931f1d;
-$color-light-red: #f67e7d;
-$color-light-green: #64b6ac;
+$color-wallstreet-black: $wallstreet-black;
+$color-performa-black: $performa-black;
+$color-pomona-black: $color-gray-medium;
+$color-plus-white: $plus-white;
+$color-lisa-yellow: $classic-yellow;
+$color-dream-yellow: $dream-yellow;
+$color-dark-blue: $medusa-blue;
+$color-light-blue: $sawtooth-blue;
+$color-dark-red: $ruby-red;
+$color-light-red: $strawberry-red;
+$color-light-green: $lime-green;
 
 $color-list-builder-gradient: linear-gradient(to bottom, #07a0c3 0%,#59e0ff 100%);
 $color-analyst-gradient: linear-gradient(to bottom, #f67e7d 0%,#ffa6a6 100%);
@@ -36,3 +66,13 @@ $color-grays-medium: #838b9b;
 $color-grays-light: #c1c5cd;
 $color-grays-lighter: #e6e8eb;
 $color-grays-lightest: #f3f3f5;
+
+/* NEW PALETTE */
+$color-primary-orange: #FF4C00;
+$color-text-black: $color-wallstreet-black;
+$color-black-tint-medium: #2A1E17; // Medium tint of black
+$color-black-tint-light: #5B4D46; // Light tint of black
+$color-background-beige: #F9F7F2;
+$color-dark-blue-at: #002147;
+$color-blue: #1577EA;
+$color-green: #097F4B;

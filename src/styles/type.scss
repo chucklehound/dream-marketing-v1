@@ -1,111 +1,105 @@
 @import './colours.scss';
 
 @font-face {
-    font-family: "SplineSans";
-    src: url("/src/styles/fonts/SplineSans-VariableFont_wght.woff2") format("woff2-variations");
+    font-family: "Geist";
+    src: url("/src/styles/fonts/Geist-VariableFont_wght.woff2") format("woff2-variations");
     font-weight: 300 700;
-  }
+}
 
-  @font-face {
-    font-family: "SpaceGrotesk";
-    src: url("/src/styles/fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2-variations");
-    font-weight: 300 700;
-  }
-
-  @mixin pageHeading {
+@mixin pageHeading {
     font-size: 84px;
     line-height: 96px;
     letter-spacing: -2.5px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
 
-  @mixin heading1 {
+@mixin heading1 {
     font-size: 68px;
     line-height: 72px;
     letter-spacing: -2.5px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
 
-  @mixin heading2 {
+@mixin heading2 {
     font-size: 56px;
     line-height: 64px;
     letter-spacing: -2px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
 
-  @mixin heading3 {
+@mixin heading3 {
     font-size: 48px;
     line-height: 58px;
     letter-spacing: -1.75px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
-  
-  @mixin heading4 {
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
+
+@mixin heading4 {
     font-size: 40px;
     line-height: 48px;
     letter-spacing: -1.2px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
 
-  @mixin heading5 {
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
+@mixin heading5 {
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
     font-size: 28px;
     line-height: 32px;
     letter-spacing: -0.8px;
-  }
+}
 
-  @mixin heading6 {
+@mixin heading6 {
     font-size: 18px;
     line-height: 22px;
     letter-spacing: -0.6px;
-    font-weight: 700;
-    font-family: 'SpaceGrotesk', sans-serif;
-  }
+    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+}
 
-  @mixin body {
+@mixin body {
     font-size: 16px;
     line-height: 22px;
     font-weight: 400;
     color: $color-text-black;
-  }
+}
 
-  .page-title {
+.page-title {
     @include pageHeading();
-  }
+}
 
-  h1, .h1 {
+h1, .h1 {
     @include heading1;
-  }
+}
 
-  h2, .h2 {
+h2, .h2 {
     @include heading2;
-  }
+}
 
-  h3, .h3 {
+h3, .h3 {
     @include heading3;
-  }
+}
 
-  h4, .h4 {
+h4, .h4 {
     @include heading4;
-  }
+}
 
-  h5, .h5 {
+h5, .h5 {
     @include heading5;
-  }
+}
 
-  h6, .h6 {
+h6, .h6 {
     @include heading6;
-  }
+}
 
-  p, .p {
+p, .p {
     @include body;
 
     margin-bottom: 0.8em;
     color: $color-performa-black;
-  }
+}

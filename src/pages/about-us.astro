@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+import arrowRightLight from '/src/img/arrow-right-white.svg';
+
+import Button from '../components/Button.astro';
+
+---
+
+<Layout title="Dream - About us">
+	<Navigation />
+	<header class="hero-home">
+		<div class="hero-elements main-content">
+			<section class="header-text solo-header">
+				<h1 class="page-title">We’re bringing the promise of AI-powered <span>growth</span> to everyone</h1>
+			</section>
+		</div>
+	</header>
+	<main>
+		<section class="main-content promo-bg promo-blue">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Built for growing businesses</h2>
+					<p>The world is changing, and your business needs to leverage AI to grow faster than ever before.</p>
+					<p>Dream brings you the promise of AI-powered growth without compromising on the things that matter most to you.</p>
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-green">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Powerful, easy to use, for everyone</h2>
+					<p>We've created a platform that's tailored to the needs of your business. From travel to fundraising our customers are seeing measurable success.</p>
+					<p>You'll unlock access to cutting-edge technology, without needing a PhD to use it (although we do have one in our team).</p>
+				</div>
+			</article>
+		</section>
+		<section class="main-content promo-bg promo-dark-blue">
+			<article class="content-container">
+				<div class="text-container">
+					<h2>Built by a team that's done this before</h2>
+					<p>We built Dream because doing outreach at scale is hard, and it shouldn't be.</p>
+					<p>Delivering consistent results, exploring new markets, and growing your sales team takes time.</p>
+					<p>We'll help you to grow your sales without growing your headcount.</p>
+				</div>
+			</article>
+		</section>
+		
+		</section>
+	</main>
+	<section class="final-cta"> 
+		<article class="main-content cta-container"> 
+			<h3>See what’s possible for your business</h3> 
+			<p>Learn how Dream can 10X your growth. Book your personal meeting to explore our solutions.</p> 
+			<Button variant="reverse" href="/book-meeting" target="_blank" label=""> Book your meeting <img src={arrowRightLight.src} role="presentation" alt="" loading="lazy"> </Button> 
+		</article> 
+	</section>
+	<Footer variant="beside-cta"/>
+</Layout>

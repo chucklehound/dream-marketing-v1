@@ -7,6 +7,7 @@ const { onClose } = Astro.props;
 
 import "../components/navigation.scss";
 import HamburgerIcon from "/src/img/nav.svg?raw";
+import Dreamies from '/src/img/dreamies.png';
 
 import Logo from "../components/Logo.astro";
 
@@ -26,92 +27,10 @@ import angledArrowDR from "/src/img/angled-arrow-down-right.svg";
       ><Logo /><span class="visually-hidden">Return home</span></a
     >
     <ul class="navbar">
-      <li class="dropdown">
-        <a class="dropdown-toggle">What We Do</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-inner">
-            <h4>
-              <a href="/what-we-do/"
-                >What we do<img
-                  src={angledArrowDR.src}
-                  alt=""
-                  role="presentation"
-                /></a>
-            </h4>
-            <ul>
-              <li><h5>By Industry</h5></li>
-              <li><a href="/what-we-do/by-industry/travel">For Travel</a></li>
-              <li><a href="/what-we-do/by-industry/f-and-b">For FMCG</a></li>
-              <li>
-                <a href="/what-we-do/by-use-case/boost-saas-revenue"
-                  >For Technology Companies</a>
-              </li>
-            </ul>
-            <ul>
-              <li><h5>By Use Case</h5></li>
-              <li><a href="/what-we-do/by-use-case/boost-bricks-mortar">Boost Sales to Bricks & Mortar</a></li>
-              <li><a href="/what-we-do/by-use-case/boost-saas-revenue">Boost SaaS Revenue</a></li>
-              <li><a href="/what-we-do/by-use-case/grow-marketplaces">Grow Marketplaces</a></li>
-              <li><a href="/what-we-do/by-use-case/test-new-markets">Test New Markets</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle">How We Do It</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-inner">
-            <h4>
-              <a href="/how-we-do-it/"
-                >How we do it<img
-                  src={angledArrowDR.src}
-                  alt=""
-                  role="presentation"
-                /></a>
-            </h4>
-            <ul>
-              <li><a href="/how-we-do-it/research-engine">Research Engine</a></li>
-              <li><a href="/how-we-do-it/list-building">List Building</a></li>
-              <li><a href="/how-we-do-it/prospecting">Prospecting</a></li>
-              <li><a href="/how-we-do-it/outreach">Outreach</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-          <a href="/rev-ops/">For Rev-Ops</a>
-      </li> -->
-      <!-- <li class="dropdown">
-            <a class="dropdown-toggle">For RevOps</a>
-            <div class="dropdown-menu">
-              <div class="dropdown-inner"><h4><a href="/rev-ops/">For Rev-Ops<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
-                <ul>
-                  <li><a href="/how-we-do-it/f-and-b">All Documentation</a></li>
-                  <li><a href="/how-we-do-it/research-engine">Popular Documentation</a></li>
-                  <li><a href="/how-we-do-it/list-building">New market testing</a></li>
-                  <li><a href="/how-we-do-it/healthcare">Building Research Points</a></li>
-                  <li><a href="/how-we-do-it/fmcg">Setting up Account Management Team</a></li>
-                </ul>
-              </div>
-            </div>
-        </li> -->
-      <li><a href="/rev-ops">For Rev-Ops</a></li>
-      <!-- <li><a href="/resources/customer-stories">Customer Stories</a></li> -->
-      <li><a href="/posts">Growth Hub</a></li>
-      <li><a href="/resources/about-us">About Us</a></li>
-      <!-- <li class="dropdown">
-          <a class="dropdown-toggle">Resources</a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner"><h4><a href="/resources/">Resources<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
-              <ul>
-                <li><a href="/resources/about-us">About Us</a></li>
-                <li><a href="/resources/customer-stories">Customer Stories</a></li>
-                <li><a href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
-                <li><a href="/resources/savings-calculator">Savings Calculator</a></li>
-              </ul>
-            </div>
-          </div>
-        </li> -->
+      <li><a class="hero-nav" href="/your-ai-employees"><span><img src={Dreamies.src} alt="" />Your AI employees</span></a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/community">Community</a></li>
+      <li><a href="/about-us">About Us</a></li>
       <li>
         <div class="mobile-login-button">
           <Button
@@ -124,17 +43,18 @@ import angledArrowDR from "/src/img/angled-arrow-down-right.svg";
       </li>
     </ul>
     <!-- Always visible login button -->
-    <div class="desktop-login">
+    <div class="main-actions">
       <Button
         href="https://app.usedream.ai"
         target="_blank"
         variant="secondary"
+        size="small"
         label="">Log in</Button>
-    </div>
-    <div class="mobile-demo-button">
-      <Button href="/book-meeting" target="_blank" variant="primary" label=""
-        >Book a demo</Button
-      >
+        <div class="mobile-demo-button">
+          <Button href="/book-meeting" target="_blank" variant="primary" size="small" label=""
+            >Get started for free</Button
+          >
+        </div>
     </div>
   </nav>
 </div>

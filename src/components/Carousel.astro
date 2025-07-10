@@ -1,0 +1,89 @@
+---
+// Props: Array of content blocks
+const { items = [] } = Astro.props;
+
+import './Carousel.scss';
+
+import Button from './Button.astro';
+import arrowRight from '/src/img/new-arrow-right.svg?raw';
+import arrowLeft from '/src/img/new-arrow-left.svg?raw';
+
+---
+
+<div class="carousel">
+  <div class="carousel__track-wrapper">
+    <div class="carousel__track" id="carousel-track">
+      {items.map((item, index) => (
+        <div class="carousel__card" key={index}>
+          <div class="carousel__image">
+  <img src={item.image} alt={item.title} />
+</div>
+          <div class="carousel__content">
+            <h3 class="carousel__title">{item.title}</h3>
+            <div class="carousel__footer">
+                <p class="carousel__subtitle">{item.subtitle}</p>
+                <Button
+                    label={item.ctaText}
+                    href={item.ctaUrl}
+                    target="_self"
+                    size="medium"
+                    variant="secondary"
+                />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <button class="carousel__nav carousel__nav--left is-hidden" id="carousel-left">
+    <Fragment set:html={arrowLeft} />
+    <span class="visually-hidden">Scroll left</span>
+  </button>
+
+  <button class="carousel__nav carousel__nav--right" id="carousel-right">
+    <Fragment set:html={arrowRight} />
+    <span class="visually-hidden">Scroll right</span>
+  </button>
+
+  <script type="module">
+    const track = document.getElementById("carousel-track");
+const btnLeft = document.getElementById("carousel-left");
+const btnRight = document.getElementById("carousel-right");
+
+function getScrollAmount() {
+  const card = track.querySelector(".carousel__card");
+  return card ? card.offsetWidth + 16 : 300; // add gap (16px), fallback to 300px
+}
+
+function updateButtons() {
+  const scrollLeft = track.scrollLeft;
+  const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+  const atStart = scrollLeft <= 2;
+  const atEnd = scrollLeft >= maxScrollLeft - 2;
+
+  btnLeft.classList.toggle("is-hidden", atStart);
+  btnRight.classList.toggle("is-hidden", atEnd);
+}
+
+// Scroll by one card
+btnLeft.addEventListener("click", () => {
+  const amount = getScrollAmount();
+  track.scrollBy({ left: -amount, behavior: "smooth" });
+});
+
+btnRight.addEventListener("click", () => {
+  const amount = getScrollAmount();
+  track.scrollBy({ left: amount, behavior: "smooth" });
+});
+
+track.addEventListener("scroll", updateButtons);
+window.addEventListener("resize", updateButtons);
+window.addEventListener("load", () => {
+  updateButtons();
+  setTimeout(updateButtons, 100);
+});
+
+  </script>
+</div>

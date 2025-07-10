@@ -11,7 +11,9 @@
     top: 0;
     z-index: 99;
     padding: 8px 16px 0;
-    background: $color-plus-white;
+    background: rgba($plus-white, .5);
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 -8px 12px 0 rgba($plus-white, .6), inset 0 -1px 1px 0 rgba($plus-white, .5), inset 0 20px 12px 0 rgba($plus-white, .2);
     transition: background-color .2s ease;
 
     @media (max-width: 800px) {
@@ -29,7 +31,6 @@
     a.logo-nav {
       padding: 0;
       margin-left: 0;
-     margin-right: auto;
     }
 
     svg.logo {
@@ -44,8 +45,6 @@
     }
 }
 
-
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -54,8 +53,7 @@ nav {
     z-index: 2;
     width: 100%;
     display: flex;
-    box-shadow: 0 1px 0 rgba($color-wallstreet-black, .5);
-    padding: 0 0 12px;
+    padding: 0 0 16px;
 
     @media (max-width: 1170px) {
       gap: 16px;
@@ -79,24 +77,97 @@ nav {
 
     a {
       color: $color-wallstreet-black;
-      font-family: 'SplineSans', sans-serif;
+      font-family: 'Geist', sans-serif;
       position: relative;
       text-align: center;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
       line-height: 20px; /* 142.857% */
-      padding: 12px 16px;
+      padding: 8px 16px;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 32px;
+      background: $classic-yellow;
       cursor: pointer;
-      transition: box-shadow .3s ease, text-shadow .4s ease;
-      box-shadow: inset 0 0 12px 1px transparent, inset 0 0 8px 2px transparent;
+      transition: box-shadow .3s ease;
+
+      &.hero-nav {
+        position: relative;
+        z-index: 1;
+        padding-left: 12px;
+        
+
+        img {
+          max-height: 20px;
+          transition: transform .3s ease;
+        }
+
+        span {
+          z-index: 3;
+          position: relative;
+          display: flex;
+          gap: 8px;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 36px;
+          border-radius: 24px;
+          background: $classic-yellow;
+          z-index: 0;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: -1px;
+          right: -1px;
+          top: -1px;
+          height: 38px;
+          border-radius: 24px;
+          background: linear-gradient(90deg, $dream-yellow, $sawtooth-blue, $dream-yellow, $sawtooth-blue, $dream-yellow);
+          background-size: 300%;
+          z-index: -1;
+          transition: opacity 0.2s;
+          opacity: 1;
+          background-position: 0 0;
+          transition: background-position 1s ease;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.2);
+          }
+
+          &::after {
+            background-position: 200% 0;
+          }
+        }
+      }
+    
+      
+
+      &.logo-nav {
+        background: transparent;
+        border-radius: 0;
+        margin-right: 64px;
+
+        &:hover {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
 
       &.logo {
         padding: 0;
         margin-left: 0;
         margin-right: auto;
+        height: 32px;
+        
 
         &:hover {
           box-shadow: none;
@@ -125,10 +196,6 @@ nav {
 
       &.login-button, &.mobile-demo-button, &.button {
         text-wrap: nowrap;
-        text-decoration: none;
-        font-weight: 500;
-        padding: 12px 20px;
-        transition: background-color .2s ease, box-shadow .2s ease;
 
         @media (max-width: 1170px) {
           order: 3;
@@ -141,7 +208,7 @@ nav {
 
       @media (min-width: 1000px) {
         &:hover {
-            box-shadow: inset 0 0 0 32px rgba($color-wallstreet-black, .2), inset 0 0 4px 1px rgba($color-dream-yellow, .05);
+          box-shadow: $box-shadow-md;
         }
       }
 
@@ -208,7 +275,7 @@ nav {
         a {
           font-size: 32px;
           font-style: normal;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 40px; /* 125% */
           letter-spacing: -0.48px;
           color: $color-wallstreet-black;
@@ -217,7 +284,7 @@ nav {
           align-items: center;
           gap: 12px;
           padding: 0;
-          font-family: 'SpaceGrotesk', sans-serif;
+          font-family: 'Geist', sans-serif;
 
           img {
             width: 28px;
@@ -238,7 +305,7 @@ nav {
       h5 {
         font-size: 18px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 20px; /* 111.111% */
         letter-spacing: -0.36px;
         text-align: left;
@@ -304,7 +371,7 @@ nav {
       text-shadow: none;
       padding: 12px 16px;
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 600;
       text-align: left;
       width: 100%;
       color: $color-performa-black;
@@ -384,6 +451,10 @@ nav {
   border: 0;
 }
 
+.main-actions {
+  display: flex;
+  gap: 12px;
+}
 
 /* Media query for small screens */
 @media (max-width: 1170px) {

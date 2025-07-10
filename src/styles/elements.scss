@@ -1,0 +1,171 @@
+@import './colours.scss';
+@import './type.scss';
+
+@mixin dreamButtonPrimarySmall {
+    background: transparent;
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 32px;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: $wallstreet-black;
+    box-shadow: $box-shadow-sm;
+    color: $plus-white;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+
+    &:hover {
+        box-shadow: $box-shadow-md;
+        background: $performa-black;
+    }
+}
+
+@mixin dreamButtonSecondarySmall {
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 32px;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid $light-grey;
+    background: $plus-white;
+    box-shadow: $box-shadow-sm;
+    color: $wallstreet-black;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+
+    &:hover {
+        box-shadow: $box-shadow-md;
+        background: $quadra-grey;
+    }
+}
+
+@mixin dreamButtonPrimaryMedium {
+    background: transparent;
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 44px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: $wallstreet-black;
+    box-shadow: $box-shadow-sm;
+    color: $plus-white;
+    font-weight: 500;
+    white-space: nowrap;   
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+
+    &:hover {
+        box-shadow: $box-shadow-md;
+        background: $performa-black;
+    }
+}
+
+@mixin dreamButtonSecondaryMedium {
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 44px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid $light-grey;
+    background: $plus-white;
+    box-shadow: $box-shadow-sm;
+    color: $wallstreet-black;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+    
+    &:hover {
+        box-shadow: $box-shadow-md; 
+        background: $quadra-grey;
+    }
+}
+
+@mixin dreamButtonPrimaryLarge {
+    background: transparent;
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 52px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: $wallstreet-black;
+    box-shadow: $box-shadow-sm;
+    color: $plus-white;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+
+    &:hover {
+        box-shadow: $box-shadow-md;
+        background: $performa-black;
+    }
+}
+
+@mixin dreamButtonSecondaryLarge {
+    font-family: 'Geist', sans-serif;
+    display: flex;
+    height: 52px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid $light-grey;
+    background: $plus-white;
+    box-shadow: $box-shadow-sm;
+    color: $wallstreet-black;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+    
+    &:hover {
+        box-shadow: $box-shadow-md; 
+        background: $quadra-grey;
+    }
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, $dream-yellow 0%, $sawtooth-blue 100%);
+  z-index: -1;
+  transition: opacity 0.2s;
+  opacity: 1;
+}

@@ -1,0 +1,40 @@
+<svg width="1875" height="1253" viewBox="0 0 1875 1253" xmlns="http://www.w3.org/2000/svg" class="gradient-container">
+  <style>
+    .gradient {
+      transform-box: fill-box;
+      transform-origin: center left;
+      transform: scale(0);
+      animation: grow 1.2s cubic-bezier(0,0.1,0.5,0.1) forwards;
+    }
+
+    @keyframes grow {
+      to {
+        transform: scale(1);
+      }
+    }
+  </style>
+
+  <defs>
+    <!-- Define the path as a luminance mask -->
+    <mask id="path-mask" maskUnits="userSpaceOnUse">
+      <path d="M18 1060C18 1165.49 103.514 1251 209 1251H1890.5V1253H209C102.409 1253 16 1166.59 16 1060V664C16.671 664 17.3378 663.981 18 663.945V1060ZM16.0312 610.063C16.6203 610.063 17.0941 610.542 17.1357 611.13C17.6579 618.527 23.5676 624.437 30.9648 624.959C31.5523 625.001 32.0312 625.475 32.0312 626.063C32.0312 626.652 31.5523 627.126 30.9648 627.168C23.5678 627.69 17.6581 633.599 17.1357 640.996C17.0943 641.584 16.6203 642.063 16.0312 642.063C15.4421 642.063 14.9682 641.584 14.9268 640.996C14.4044 633.599 8.49468 627.69 1.09766 627.168C0.510214 627.126 0.0312886 626.652 0.03125 626.063C0.03125 625.475 0.510195 625.001 1.09766 624.959C8.49484 624.437 14.4046 618.527 14.9268 611.13C14.9684 610.542 15.4422 610.063 16.0312 610.063ZM1890.5 2H209C103.514 2 18 87.5136 18 193V590.054C17.3378 590.018 16.671 590 16 590V193C16 86.409 102.409 0 209 0H1890.5V2Z"
+
+            fill="white"/>
+    </mask>
+
+    <!-- Radial gradient for the background -->
+    <radialGradient id="paint0_radial_2440_18406" cx="0" cy="0" r="1"
+                    gradientUnits="userSpaceOnUse"
+                    gradientTransform="translate(0 627) scale(1810 2707.78)">
+      <stop stop-color="#FFD601"/>
+      <stop offset="0.4" stop-color="#97D5FC"/>
+      <stop offset="0.8" stop-color="#000D26" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Rectangle that gets masked by the path and animated -->
+  <g id="inner" mask="url(#path-mask)">
+    <rect class="gradient" x="0" y="0" width="1875" height="1253"
+        fill="url(#paint0_radial_2440_18406)"  />
+  </g>
+</svg>
