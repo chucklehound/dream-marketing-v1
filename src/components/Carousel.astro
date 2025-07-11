@@ -16,7 +16,7 @@ import arrowLeft from '/src/img/new-arrow-left.svg?raw';
       {items.map((item, index) => (
         <div class="carousel__card" key={index}>
           <div class="carousel__image">
-  <img src={item.image} alt={item.title} />
+  <img src={item.image.src} alt={item.title} />
 </div>
           <div class="carousel__content">
             <h3 class="carousel__title">{item.title}</h3>

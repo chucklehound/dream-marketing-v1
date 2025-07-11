@@ -9,6 +9,15 @@ import chats1 from '/src/img/home-chats.png';
 import chats2 from '/src/img/home-chats-2.png';
 import chats3 from '/src/img/home-chats-3.png';
 
+import card1 from '/src/img/card-1.png';
+import card2 from '/src/img/card-2.png';
+import card3 from '/src/img/card-3.png';
+
+import quoteLogo from '/src/img/givewheel-logo.png';
+
+import ctaDreamies from '/src/img/end-cta-guys.png';
+
+// Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
 import dreamie2 from '/src/img/hero-dreamies/dreamie-2.png';
 import dreamie3 from '/src/img/hero-dreamies/dreamie-3.png';
@@ -35,73 +44,50 @@ import dreamie23 from '/src/img/hero-dreamies/dreamie-23.png';
 import dreamie24 from '/src/img/hero-dreamies/dreamie-24.png';
 import dreamie25 from '/src/img/hero-dreamies/dreamie-25.png';
 
-const names = [
-  'Chris', 'Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Jamie', 'Riley', 'Avery', 'Drew',
-  'Sam', 'Robin', 'Cameron', 'Skyler', 'Quinn', 'Jesse', 'Harper', 'Reese', 'Parker', 'Rowan',
-  'Blake', 'Devon', 'Elliot', 'Hayden', 'Sage'
+const dreamieImages = [
+  dreamie1, dreamie2, dreamie3, dreamie4, dreamie5,
+  dreamie6, dreamie7, dreamie8, dreamie9, dreamie10,
+  dreamie11, dreamie12, dreamie13, dreamie14, dreamie15,
+  dreamie16, dreamie17, dreamie18, dreamie19, dreamie20,
+  dreamie21, dreamie22, dreamie23, dreamie24, dreamie25
 ];
-const roles = ['Sales', 'Business', 'Marketing', 'Design', 'Finance'];
-const images = [
-  { src: dreamie1, title: `${names[0]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
-  { src: dreamie2, title: `${names[1]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
-  { src: dreamie3, title: `${names[2]}'s ${roles[2]} Manager`, body: "I automate their emails" },
-  { src: dreamie4, title: `${names[3]}'s ${roles[3]} Manager`, body: "I design their graphics" },
-  { src: dreamie5, title: `${names[4]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
-  { src: dreamie6, title: `${names[5]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
-  { src: dreamie7, title: `${names[6]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
-  { src: dreamie8, title: `${names[7]}'s ${roles[2]} Manager`, body: "I automate their emails" },
-  { src: dreamie9, title: `${names[8]}'s ${roles[3]} Manager`, body: "I design their graphics" },
-  { src: dreamie10, title: `${names[9]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
-  { src: dreamie11, title: `${names[10]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
-  { src: dreamie12, title: `${names[11]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
-  { src: dreamie13, title: `${names[12]}'s ${roles[2]} Manager`, body: "I automate their emails" },
-  { src: dreamie14, title: `${names[13]}'s ${roles[3]} Manager`, body: "I design their graphics" },
-  { src: dreamie15, title: `${names[14]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
-  { src: dreamie16, title: `${names[15]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
-  { src: dreamie17, title: `${names[16]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
-  { src: dreamie18, title: `${names[17]}'s ${roles[2]} Manager`, body: "I automate their emails" },
-  { src: dreamie19, title: `${names[18]}'s ${roles[3]} Manager`, body: "I design their graphics" },
-  { src: dreamie20, title: `${names[19]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
-  { src: dreamie21, title: `${names[20]}'s ${roles[0]} Manager`, body: "I schedule their meetings" },
-  { src: dreamie22, title: `${names[21]}'s ${roles[1]} Manager`, body: "I write their newsletters" },
-  { src: dreamie23, title: `${names[22]}'s ${roles[2]} Manager`, body: "I automate their emails" },
-  { src: dreamie24, title: `${names[23]}'s ${roles[3]} Manager`, body: "I design their graphics" },
-  { src: dreamie25, title: `${names[24]}'s ${roles[4]} Manager`, body: "I manage their budgets" },
-];
+
+// Just return an array of src strings now
+const images = dreamieImages.map((img) => img.src);
 
 import Carousel from '../components/Carousel.astro';
 
 const contentBlocks = [
   {
-    image: '/images/card3.jpg',
+    image: card1,
     title: 'Just started? Let your Business Manager guide you through all the first steps.',
     subtitle: 'Find out more about your',
     ctaText: 'Business Manager',
     ctaUrl: '/page1',
   },
   {
-    image: '/images/card2.jpg',
+    image: card2,
     title: 'Need to reach 1,000 new customers in 24 hours? Call your Sales Manager.',
     subtitle: 'Find out more about your',
     ctaText: 'Sales Manager',
     ctaUrl: '/page2',
   },
   {
-    image: '/images/card2.jpg',
+    image: card2,
     title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
     subtitle: 'Find out more about your',
     ctaText: 'Marketing Manager',
     ctaUrl: '/page2',
   },
   {
-    image: '/images/card2.jpg',
+    image: card3,
     title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
     subtitle: 'Find out more about your',
     ctaText: 'Marketing Manager',
     ctaUrl: '/page2',
   },
   {
-    image: '/images/card2.jpg',
+    image: card2,
     title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
     subtitle: 'Find out more about your',
     ctaText: 'Marketing Manager',
@@ -122,8 +108,7 @@ const contentBlocks = [
         </h1>
         <div class="actions">
           <Button label="Get started for free" href="/book-meeting" target="_blank" size="medium"
-            ></Button
-          >
+            ></Button>
           <Button
             label="Meet the Dreamies"
             href="/what-we-do"
@@ -135,23 +120,14 @@ const contentBlocks = [
       </section>
       <section class="header-image home-hero">
         <div class="ticker-window">
-          <div class="ticker-wrapper">
-            <div class="ticker-track" id="ticker-track">
-              {images.concat(images).map((entry, i) => (
-                <img
-                  src={entry.src.src}
-                  alt={`dreamie-${(i % images.length) + 1}`}
-                  class="ticker-img"
-                  data-title={entry.title}
-                  data-body={entry.body}
-                />
-              ))}
+          <div class="ticker-track">
+            {images.map((src, i) => (
+              <img class="ticker-img" src={src} alt={`Dreamie ${i + 1}`} />
+            ))}
+            {images.map((src, i) => (
+              <img class="ticker-img" src={src} alt={`Dreamie clone ${i + 1}`} />
+            ))}
           </div>
-        </div>
-        <div id="message-box" class="message-box">
-          <div id="message-title" class="message-title"></div>
-          <div id="message-body" class="message-body"></div>
-        </div>
         </div>
       </section>
     </div>
@@ -189,9 +165,34 @@ const contentBlocks = [
         </div>
       </article>
     </section>
-  </main>
+    <section class="customer-quote main-content"> 
+      <article class="quote-body"> 
+        <div class="content-title">
+          <h2>AI built for <span class="highlight-title">everyone</span></h2>
+        </div>
+        <blockquote>
+          <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
+
+      <cite> 
+        <span>Charlie Hart, Co-founder at Givewheel</span> 
+        <img src={quoteLogo.src} alt="The logo for Givewheel"> 
+      </cite> 
+    </blockquote> 
+  </article> 
+</section>
+<section class="final-cta"> 
+  <article class="main-content cta-container"> 
+    <img src={ctaDreamies.src} alt="The 5 Dreamies of Dream - Business, Sales, Marketing, Finance, and Design" />
+    <div class="content-title">
+      <h2><span class="highlight-title">Grow your business </span><br/>with Dream</h2>
+    </div>
+    <Button label="Get started for free" href="/book-meeting" target="_blank" size="medium"
+            ></Button> 
+          </article> 
+    </section>
+</main>
     
-  <Footer />
+<Footer />
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -229,6 +230,49 @@ const contentBlocks = [
   </script>
 
 <script type="module">
+  const ticker = document.getElementById('ticker');
+const allImageData = Array.from(ticker.querySelectorAll('img')).map(img => img.dataset.src);
+
+let currentIndex = 0;
+const cardWidth = 270;
+const gap = 16;
+const scrollAmount = cardWidth + gap;
+
+function startSmoothTicker() {
+  const interval = 3000;
+  const scrollDuration = 400;
+
+  tick(); // start immediately
+  setInterval(tick, interval);
+
+  function tick() {
+    ticker.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+    setTimeout(() => {
+      // Get first image
+      const first = ticker.firstElementChild;
+
+      // Clone it and place it at the end
+      const clone = first.cloneNode(true);
+      currentIndex = (currentIndex + 1) % allImageData.length;
+      const nextIndex = (currentIndex + ticker.children.length - 1) % allImageData.length;
+      clone.src = allImageData[nextIndex];
+
+      // Append the clone, then remove the original
+      ticker.appendChild(clone);
+      ticker.removeChild(first);
+
+      // No scrollLeft reset needed here — scroll stays visually stable
+    }, scrollDuration);
+  }
+}
+
+window.addEventListener('load', startSmoothTicker);
+</script>
+
+
+
+<script type="module">
   const target = document.querySelector('.promo-home');
 
   const observer = new IntersectionObserver(
@@ -247,86 +291,6 @@ const contentBlocks = [
 
   if (target) observer.observe(target);
 </script>
-
-<script type="module">
-  const track = document.getElementById("ticker-track");
-  const images = track.querySelectorAll(".ticker-img");
-  const messageBox = document.getElementById("message-box");
-  const titleEl = document.getElementById("message-title");
-  const bodyEl = document.getElementById("message-body");
-
-  const imageWidth = 267.5; // fixed
-  const gap = 32;
-  const step = imageWidth + gap;
-  const originalImagesCount = images.length / 2; // because images are doubled for seamless scroll
-
-  let currentIndex = 0;
-  let intervalId = null;
-
-  function scrollTo(index, animate = true) {
-    const shift = index * step + imageWidth / 2 - window.innerWidth / 2;
-    track.style.transition = animate ? "transform 0.3s cubic-bezier(.77,0,.18,1)" : "none";
-    track.style.transform = `translateX(-${shift}px)`;
-  }
-
-  function showMessage(index) {
-    // Always use the original set for messages
-    const img = images[index % originalImagesCount];
-    if (!img) return;
-    titleEl.textContent = img.dataset.title;
-    bodyEl.textContent = img.dataset.body;
-    messageBox.style.display = "flex";
-    messageBox.style.opacity = "1";
-  }
-
-  function tick() {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-      // Instantly reset to start for seamless loop
-      track.style.transition = "none";
-      currentIndex = 0;
-      scrollTo(currentIndex, false);
-      // Force reflow to apply the non-animated transform
-      void track.offsetWidth;
-    }
-    // Animate to the next image
-    scrollTo(currentIndex, true);
-    showMessage(currentIndex);
-  }
-
-  // Wait for all images to load before starting ticker and messages
-  document.addEventListener("DOMContentLoaded", () => {
-    messageBox.style.display = "none";
-    let loaded = 0;
-    const allImages = Array.from(images);
-    function tryStart() {
-      if (loaded === allImages.length) {
-        messageBox.style.display = "flex";
-        scrollTo(currentIndex, false);
-        showMessage(currentIndex);
-        intervalId = setInterval(tick, 3000);
-      }
-    }
-    allImages.forEach(img => {
-      if (img.complete) {
-        loaded++;
-        tryStart();
-      } else {
-        img.addEventListener("load", () => {
-          loaded++;
-          tryStart();
-        });
-        img.addEventListener("error", () => {
-          loaded++;
-          tryStart();
-        });
-      }
-    });
-    // In case all images are already loaded
-    tryStart();
-  });
-</script>
-
 
 
 </Layout>
