@@ -47,9 +47,9 @@
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
     
     @media (max-width: 600px) {
-        width: 300px;
+        width: 80vw;
         padding: 16px;
-        min-width: 300px;
+        min-width: 330px;
     }
 
     &:hover {
@@ -69,7 +69,7 @@
       background: $lightest-grey;
 
       @media (max-width: 600px) {
-        height: 172px;
+        height: 180px;
       }
 
       img {

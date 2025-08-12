@@ -529,8 +529,8 @@ header {
             letter-spacing: -0.1rem;
 
             span {
-                font-size: 36px;
-                line-height: 44px;
+                font-size: 40px;
+                line-height: 48px;
                 font-weight: 600;
                 font-style: normal;
                 position: relative;
@@ -540,6 +540,7 @@ header {
 
                 @media (max-width: 900px) {
                     display: block;
+                    min-height: 96px;
                 }
             }
 
@@ -664,10 +665,10 @@ main {
     }
 
     section {
-        padding: 64px 0;
+        padding: 32px 0;
 
-        @media (max-width: 900px) {
-            padding: 32px 0;
+        @media (min-width: 700px) {
+            padding: 64px 0;
         }
 
         &.promo-image {
@@ -877,6 +878,10 @@ main {
         margin: auto;
         padding: 48px 0;
 
+        @media (max-width: 700px) {
+            padding: 48px 16px;
+        }
+
         &.full-width {
             max-width: 100vw;
             overflow: hidden;
@@ -889,7 +894,6 @@ main {
 }
 
 .breakout {
-    position: relative;
 
     &.rotating-chats {
         min-height: 288px;
@@ -908,23 +912,24 @@ main {
         }
 
         .block {
-            width: 180vw;
+            width: 100vw;
             background-repeat: repeat-x;
             backface-visibility: hidden;
             
             height: 102px;
             background-size: 2584px;
-            left: -70vw;
+            left: 0;
             right: 0;
+            top: 64px;
             animation: scrollBg 24s linear infinite;
 
             &:nth-of-type(2) {
-                top: 84px;
+                top: 150px;
                 animation-direction: reverse;
             }
 
             &:nth-of-type(3) {
-                top: 168px;
+                top: 232px;
                 animation-duration: 40s;
             }
         }
@@ -1682,9 +1687,7 @@ section[aria-label="Trust metrics"] {
     margin: auto;
 
     &.contain-on-mobile {
-        @media (max-width: 700px) {
-            overflow: hidden;
-        }
+        position: relative;
     }
 
     h2 {
