@@ -106,6 +106,8 @@ nav {
           z-index: 3;
           position: relative;
           display: flex;
+          justify-content: center;
+          align-items: center;
           gap: 8px;
         }
 
@@ -404,21 +406,20 @@ nav {
   border: none;
   cursor: pointer;
   display: none; /* Hidden on larger viewports */
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 13, 38, 0.1);
   border-radius: 8px;
   order: 2;
   margin-left: 8px;
   margin-right: 0;
 
   @media (max-width: 500px) {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
 
     svg {
       width: 20px;
@@ -476,24 +477,23 @@ nav {
     gap: 12px;
     justify-content: stretch;
     align-items: stretch;
-    background-color: white;
     border-radius: 12px;
     position: absolute;
     top: 68px;
     left: auto;
     right: 16px;
-    
-    bottom: 0;
-    height: calc(100vh - 78px);
+    height: auto;
     overflow: auto;
     max-width: 480px;
     width: calc(100% - 32px);
     transform-origin: top right;
     box-shadow: 0px 8px 16px 0px rgba(6, 22, 54, 0.10), 0px 2px 4px 0px rgba(0, 13, 38, 0.20);
+    backdrop-filter: blur(12px);
+    background-color: rgba($color-plus-white, .95);
 
     a {
       width: 100%;
-      text-align: left;
+      text-align: center;
       font-size: 16px;
     }
   }
@@ -603,16 +603,10 @@ nav {
 }
 
 .navigation.open {
-  background-color: white;
 }
 
 .navbar .dropdown-menu {
-  background-color: white;  // Use white background when open
   overflow: hidden;
-}
-
-.navbar.open .dropdown-menu {
-  background-color: white;
 }
 
 .page-content {
