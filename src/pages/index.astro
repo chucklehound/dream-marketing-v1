@@ -151,9 +151,28 @@ const contentBlocks = [
   </header>
   <main>
     <section class="main-content">
-      <article class="content-container full-width-contrast">
-        <div class="content-title">
-          <h2>Hire your team as easily as <span class="highlight-title">saying ‘hello...’</span></h2>
+      <article class="full-width-contrast promo-home promo-phone">
+        <div class="content-container">
+          <div class="content-title">
+            <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+            <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+            <div class="actions">
+              <Button
+            label="Call your PA"
+            href="/what-we-do"
+            target=""
+            variant="secondary"
+            size="medium"
+          />
+          <Button
+            label="Message on WhatsApp"
+            href="/what-we-do"
+            target=""
+            variant="secondary"
+            size="medium"
+          />
+            </div>
+          </div>
         </div>
       </article>
     </section>
@@ -167,7 +186,7 @@ const contentBlocks = [
       </article>
     </section>
     <section class="main-content">
-      <article class="full-width-contrast promo-home">
+      <article class="full-width-contrast promo-home promo-human">
         <div class="content-container">
           <div class="content-title">
             <h2>Dream is your 24/7 <br/><span class="highlight-title">AI powered</span> workforce</h2>
@@ -257,7 +276,7 @@ const contentBlocks = [
 
 
 <script type="module">
-  const target = document.querySelector('.promo-home');
+  const target = document.querySelector('.promo-human');
 
   const observer = new IntersectionObserver(
     ([entry], observer) => {
