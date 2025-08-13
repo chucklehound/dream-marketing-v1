@@ -849,6 +849,10 @@ main {
                 background: #010C1E url('../src/img/hero-shop-girl.jpg') no-repeat calc(50% + 9vw) center;
                 background-size: contain;
 
+                @media (max-width: 1150px) {
+                    background-position: top center;
+                }
+
                 .content-container {
                     &:before {
                         content: '';
@@ -869,6 +873,19 @@ main {
                             display: none !important;
                         }
                     }
+                }
+            }
+
+            @media (max-width: 1100px) {
+                &.promo-human, &.promo-phone {
+                    background-size: auto 500px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                &.promo-human, &.promo-phone {
+                    background-size: auto 400px;
+                    min-height: 600px;
                 }
             }
 
