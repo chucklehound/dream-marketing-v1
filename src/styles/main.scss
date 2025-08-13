@@ -843,7 +843,7 @@ main {
             }
 
             &.promo-phone {
-                background: #000d26 url('../src/img/promo-phone-guy.jpg') no-repeat calc(50% + 15vw) center;
+                background: #000d26 url('/src/img/promo-phone-guy.jpg') no-repeat calc(50% + 15vw) center;
                 background-size: contain;
 
                 @media (max-width: 1150px) {
@@ -884,7 +884,7 @@ main {
             }
             
             &.promo-human {
-                background: #010C1E url('../src/img/hero-shop-girl.jpg') no-repeat calc(50% + 9vw) center;
+                background: #010C1E url('/src/img/hero-shop-girl.jpg') no-repeat calc(50% + 9vw) center;
                 background-size: contain;
 
                 @media (max-width: 1150px) {
@@ -901,7 +901,7 @@ main {
                         top: 0;
                         height: 100%;
                         width: 100%;
-                        background: url('../src/img/overlay-ping.svg') no-repeat 20px center;
+                        background: url('/src/img/overlay-ping.svg') no-repeat 20px center;
                         background-size: contain;
                         z-index: 3;
                         transition: opacity .3s ease;
@@ -2371,7 +2371,7 @@ section[aria-label="Trust metrics"] {
             display: block;
             width: 24px;
             height: 24px;
-            background: url('../img/angled-arrow.svg') no-repeat 50%;
+            background: url('/src/img/angled-arrow.svg') no-repeat 50%;
             background-size: cover;
             transition: transform .2s ease;
         }
