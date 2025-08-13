@@ -13,6 +13,12 @@ import tablePA from '/src/img/pa-table-dreamie.png';
 
 import checkIcon from '/src/img/check.svg';
 
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
 
 ---
 
@@ -26,7 +32,7 @@ import checkIcon from '/src/img/check.svg';
 			</section>
 		</div>
 	</header>
-	<main>
+	<main class="pinch-bottom">
 		<section class="main-content pricing-table">
 			<article class="content-container">
 				<h3>Try your AI employees today</h3>
@@ -225,7 +231,7 @@ import checkIcon from '/src/img/check.svg';
 							<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
 						  </tr>
 						  <tr>
-							<td>And more...</td>
+							<td><a class="more-link" href="/your-ai-employees">And more...</a></td>
 							<td colspan="3"></td>
 						  </tr>
 						</tbody>
@@ -265,17 +271,17 @@ import checkIcon from '/src/img/check.svg';
 							<td>Run your email outreach</td>
 							<td>
 							  <span class="price-detail">
-								Price per contact: Free<br />Limit: 50/month
+								<span>Price per contact:</span> Free<br /><span>Limit:</span> 50/month
 							  </span>
 							</td>
 							<td>
 							  <span class="price-detail">
-								Price per contact: £0.25<br />Limit: 1000/month
+								<span>Price per contact:</span> £0.25<br /><span>Limit</span>: 1000/month
 							  </span>
 							</td>
 							<td>
 							  <span class="price-detail">
-								Price per contact: £0.20<br />Limit: 5000/month
+								<span>Price per contact:</span> £0.20<br /><span>Limit</span>: 5000/month
 							  </span>
 							</td>
 						  </tr>
@@ -298,7 +304,7 @@ import checkIcon from '/src/img/check.svg';
 							<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
 						  </tr>
 						  <tr>
-							<td>And more...</td>
+							<td><a class="more-link" href="/your-ai-employees">And more...</a></td>
 							<td colspan="3"></td>
 						  </tr>
 						</tbody>
@@ -309,6 +315,124 @@ import checkIcon from '/src/img/check.svg';
 				  
 			</article>
 		</section>
+		<section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+			<article class="content-container">
+			  <h3 id="new-employees-heading">New employees onboarding soon</h3>
+		  
+			  <ul class="employee-card-grid" role="list">
+				<!-- Finance Manager -->
+				<li class="employee-card">
+				  <article class="card">
+					<div class="card-header">
+					  <figure class="card-figure">
+						<img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+					  </figure>
+		  
+					  <p class="card-badge" aria-label="Starting soon">
+						<span aria-hidden="true">Starting soon</span>
+					  </p>
+		  
+					  <h3 class="card-title">
+						Meet your <span class="card-title-accent">Finance</span> Manager
+					  </h3>
+					</div>
+		  
+					<div class="card-body">
+					  <p>Your finance manager makes sure you spend all your time working, and not worrying about being paid for it. Just leave it to them to handle invoicing from beginning to end, including chasing up those late payers.</p>
+					  <p>Never get a financial surprise again. Expenses are as easy as uploading your receipt. Discover bespoke financial dashboards that lets you plan your growth effectively.</p>
+					</div>
+		  
+					<footer class="card-footer">
+					  <Button label="Sign up now" href="/sign-up" target="" variant="secondary" size="medium" />
+					</footer>
+				  </article>
+				</li>
+		  
+				<!-- Head of Marketing -->
+				<li class="employee-card">
+				  <article class="card">
+					<div class="card-header">
+					  <figure class="card-figure">
+						<img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+					  </figure>
+		  
+					  <p class="card-badge" aria-label="Starting soon">
+						<span aria-hidden="true">Starting soon</span>
+					  </p>
+		  
+					  <h3 class="card-title">
+						Meet your <span class="card-title-accent">Head of Marketing</span>
+					  </h3>
+					</div>
+		  
+					<div class="card-body">
+					  <p>Your job is starting an amazing business, for your Marketing Manager it’s telling the world. They’ll craft powerful content calendars for all your channels; creating compelling content, images, and videos.</p>
+					  <p>Don’t have a website? Don’t worry, your Marketing Manager can handle it all, creating a world-class website and SEO strategy.</p>
+					</div>
+		  
+					<footer class="card-footer">
+					  <Button label="Sign up now" href="/sign-up" target="" variant="secondary" size="medium" />
+					</footer>
+				  </article>
+				</li>
+		  
+				<!-- CS Manager -->
+				<li class="employee-card">
+				  <article class="card">
+					<div class="card-header">
+					  <figure class="card-figure">
+						<img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+					  </figure>
+		  
+					  <p class="card-badge" aria-label="Starting soon">
+						<span aria-hidden="true">Starting soon</span>
+					  </p>
+		  
+					  <h3 class="card-title">
+						Meet your <span class="card-title-accent">CS</span> Manager
+					  </h3>
+					</div>
+		  
+					<div class="card-body">
+					  <p>Your Customer Services Manager is the friendly voice and sharp mind behind every interaction. They’re there when customers have questions, need help, or just want to know they’ve been heard — turning each conversation into a reason to return.</p>
+					  <p>From first hello to final thank-you, they keep experiences smooth, personal, and memorable, making sure no customer slips through the cracks.</p>
+					</div>
+		  
+					<footer class="card-footer">
+					  <Button label="Sign up now" href="/sign-up" target="" variant="secondary" size="medium" />
+					</footer>
+				  </article>
+				</li>
+			  </ul>
+		  
+			</article>
+		  </section>
+		<section class="main-content">
+			<article class="full-width-contrast promo-home promo-phone">
+			  <div class="content-container">
+				<div class="content-title">
+				  <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+				  <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+				  <div class="actions">
+					<Button
+				  label="Call your PA"
+				  href="/what-we-do"
+				  target=""
+				  variant="secondary"
+				  size="medium"
+				><img src={phoneIcon.src}></Button>
+				<Button
+				  label="Message on WhatsApp"
+				  href="/what-we-do"
+				  target=""
+				  variant="secondary"
+				  size="medium"
+				><img src={whatsAppIcon.src}></Button>
+				  </div>
+				</div>
+			  </div>
+			</article>
+		  </section>
 	</main>
 	<Footer />
 </Layout>

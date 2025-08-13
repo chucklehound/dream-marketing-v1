@@ -24,6 +24,11 @@
     &.large.secondary {
         @include dreamButtonSecondaryLarge;
     }
+
+    &.discord-button {
+        flex-direction: row-reverse;
+        border-color: #5865F2 !important;
+    }
 }
 
 .button img {

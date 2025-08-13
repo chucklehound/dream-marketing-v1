@@ -7,7 +7,9 @@ import Footer from "../../components/Footer.astro";
 
 import arrowRightDark from '/src/img/arrow-right-dark.svg?raw';
 
-import iconGrowth from '/src/img/growth-anim.svg?raw';
+import Button from '../../components/Button.astro';
+
+import discordLogo from '/src/img/Discord-Symbol-Blurple 1.svg';
 
 
 // Fetch all posts from the 'posts' collection
@@ -19,12 +21,19 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
 
 <Layout title="Dream - All posts">
   <Navigation />
-  <header class="hero-home">
+  <header class="hero-home community-header">
 		<div class="hero-elements main-content">
-			<section class="header-text solo-header">
-        <Fragment set:html={iconGrowth} />
-				<h1 class="page-title">Growth hub</h1>
-        <p>Our knowledge base for growing your business.</p>
+			<section class="header-text">
+				<h1 class="page-title">Join the Dreamers</h1>
+        <p>Find out how people like you are growing with Dream.</p>
+        <Button
+        label="Join our community"
+        class="discord-button"
+        href="/what-we-do"
+        target=""
+        variant="secondary"
+        size="medium"
+      ><img src={discordLogo.src} alt="The Discord logo"></Button>
 			</section>
 		</div>
 	</header>
