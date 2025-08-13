@@ -159,6 +159,10 @@ nav {
         border-radius: 0;
         margin-right: 64px;
 
+        @media (max-width: 600px) {
+          margin-right: 8px;
+        }
+
         &:hover {
           background-color: transparent;
           box-shadow: none;
