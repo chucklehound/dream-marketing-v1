@@ -99,6 +99,15 @@ body {
         font-size: 20px;
         font-weight: 400;
         line-height: 24px;
+
+        @media (max-width: 960px) {
+            font-size: 16px;
+            line-height: 20px;
+
+            br {
+                display: none;
+            }
+        }
     }
 }
 
@@ -290,6 +299,21 @@ header {
                 &.ai-team {
                     max-height: 300px;
                     min-height: 300px;
+
+                    @media (max-width: 700px) {
+                        flex-direction: row-reverse;
+                        min-height: 260px;
+                        max-height: 260px;
+
+                        .video-wrapper video {
+                            left: 0;
+                            height: 300px;
+                        }
+
+                        .video-wrapper:last-of-type {
+                            display: none;
+                        }
+                    }
                 }
 
                 .ticker-window {
@@ -510,7 +534,9 @@ header {
                 color: $color-wallstreet-black;
                 letter-spacing: -0.1rem;
                 background-color: $color-dream-yellow;
+            }
 
+            #rotating-text {
                 @media (max-width: 900px) {
                     display: block;
                     min-height: 96px;
@@ -2258,6 +2284,7 @@ section[aria-label="Trust metrics"] {
     text-align: left;
     max-width: 960px;
     margin: auto;
+    padding: 0 24px;
 
     a {
         color: $color-wallstreet-black;
@@ -2270,6 +2297,10 @@ section[aria-label="Trust metrics"] {
 
     h2 {
         text-align: left;
+    }
+
+    h3 {
+        letter-spacing: 0;
     }
 
     ul {
@@ -2929,9 +2960,7 @@ section[aria-label="Trust metrics"] {
   display: none; /* Chrome, Safari, Opera */
 }
 
-.pricing-table {
-    padding: 0 16px;
-    
+.pricing-page {
     h3 {
         font-size: 32px;
         font-style: normal;
@@ -2949,6 +2978,10 @@ section[aria-label="Trust metrics"] {
             line-height: 32px;
         }
     }
+}
+
+.pricing-table {
+    padding: 0 16px;
 
     .pricing-grid {
         border-radius: 16px;
@@ -3083,148 +3116,167 @@ section[aria-label="Trust metrics"] {
             }
         }
     }
+}
 
-    .employee-comparison {
-        flex: 1;
+.price-table-outer {
+    @media (max-width: 1024px) {
         width: 100%;
-        padding: 32px 16px 0;
-        
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    }
+}
 
-        img {
-            max-height: 180px;
+.employee-comparison {
+    flex: 1;
+    width: 100%;
+    padding: 32px 16px 0;
+
+    @media (max-width: 1024px) {
+        min-width: 1024px;
+    }
+    
+
+    img {
+        max-height: 180px;
+    }
+
+    @media (min-width: 960px) {
+        .employee-colhead {
+            max-width: 320px;
+            width: 32%;
         }
+    }
 
-        @media (min-width: 960px) {
-            .employee-colhead {
-                max-width: 320px;
-                width: 32%;
+    @media (max-width: 959px) {
+        .employee-colhead {
+            max-width: 300px;
+            width: 30%
+        }
+    }
+
+    .employee-title {
+        color: $wallstreet-black;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 32px; /* 133.333% */
+        letter-spacing: -0.24px;
+        text-align: left;
+        display: block;
+    }
+
+    th {
+        vertical-align: bottom;
+        text-align: left;
+        border-bottom: 1px solid rgba($performa-black, .5);
+
+        &:nth-of-type(3) {
+            svg, path {
+                fill: $sawtooth-blue;
             }
         }
 
-        .employee-title {
-            color: $wallstreet-black;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 32px; /* 133.333% */
-            letter-spacing: -0.24px;
-            text-align: left;
-            display: block;
-        }
-
-        th {
-            vertical-align: bottom;
-            text-align: left;
-            border-bottom: 1px solid rgba($performa-black, .5);
-
-            &:nth-of-type(3) {
-                svg, path {
-                    fill: $sawtooth-blue;
-                }
-            }
-
-            &:nth-of-type(4)  {
-                svg, path {
-                    fill: $medusa-blue;
-                }
-            }
-        }
-
-        th, td {
-            padding: 12px;
-        }
-
-        tr:nth-of-type(2n) {
-            td {
-                background: $classic-yellow;
-            }
-        }
-
-        svg {
-            margin-bottom: 8px;
-        }
-
-        .plan-name {
-            display: block;
-            margin-bottom: 24px;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 22px; /* 122.222% */
-            letter-spacing: 0.18px;
-        }
-
-        a.button {
-            display: inline-flex;
-        }
-
-        a.more-link {
-            font-weight: 500;
-            color: $wallstreet-black;
-            text-decoration: none;
-        }
-
-        .price-detail {
-            span {
-                font-weight: 500;
+        &:nth-of-type(4)  {
+            svg, path {
+                fill: $medusa-blue;
             }
         }
     }
 
-    .employee-card-grid {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 16px;
-        margin-top: 32px;
-        padding: 24px 16px;
+    th, td {
+        padding: 12px;
+    }
 
-        @media (max-width: 1152px) {
-            flex-direction: column;
+    tr:nth-of-type(2n) {
+        td {
+            background: $classic-yellow;
         }
+    }
 
-        .employee-card {
-            padding: 32px;
-            flex: 1 30%;
-            border-radius: 24px;
-            background: linear-gradient(0deg, rgba(151, 213, 252, 0.50) 0%, rgba(151, 213, 252, 0.50) 100%), #F3F3F5;
+    svg {
+        margin-bottom: 8px;
+    }
+
+    .plan-name {
+        display: block;
+        margin-bottom: 24px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px; /* 122.222% */
+        letter-spacing: 0.18px;
+    }
+
+    a.button {
+        display: inline-flex;
+    }
+
+    a.more-link {
+        font-weight: 500;
+        color: $wallstreet-black;
+        text-decoration: none;
+    }
+
+    .price-detail {
+        span {
+            font-weight: 500;
+        }
+    }
+}
+
+.employee-card-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 24px 16px;
+
+    @media (max-width: 1152px) {
+        flex-direction: column;
+    }
+
+    .employee-card {
+        padding: 32px;
+        flex: 1 30%;
+        border-radius: 24px;
+        background: linear-gradient(0deg, rgba(151, 213, 252, 0.50) 0%, rgba(151, 213, 252, 0.50) 100%), #F3F3F5;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .card {
+            flex: 1;
             justify-content: flex-start;
             align-items: flex-start;
             display: flex;
             flex-direction: column;
             gap: 16px;
+        }
 
-            .card {
-                flex: 1;
-                justify-content: flex-start;
-                align-items: flex-start;
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
+        & * {
+            text-align: left;
+        }
 
-            & * {
-                text-align: left;
-            }
+        img {
+            max-height: 256px;
+        }
 
-            img {
-                max-height: 256px;
-            }
+        .card-badge {
+            padding: 4px 16px;
+            border-radius: 24px;
+            background: $dream-yellow;
+            box-shadow: inset 0 4px 4px rgba($plus-white, .7), inset 0 -4px 4px rgba($wallstreet-black, .1), 0 0 1px 1px rgba($wallstreet-black, .15);
+            font-weight: 600;
+            display: inline-block;
+        }
 
-            .card-badge {
-                padding: 4px 16px;
-                border-radius: 24px;
-                background: $dream-yellow;
-                box-shadow: inset 0 4px 4px rgba($plus-white, .7), inset 0 -4px 4px rgba($wallstreet-black, .1), 0 0 1px 1px rgba($wallstreet-black, .15);
-                font-weight: 600;
-                display: inline-block;
-            }
-
-            .card-footer {
-                margin-top: auto;
-                margin-bottom: 0;
-            }
+        .card-footer {
+            margin-top: auto;
+            margin-bottom: 0;
         }
     }
 }
