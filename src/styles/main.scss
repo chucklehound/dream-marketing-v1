@@ -2394,15 +2394,7 @@ section[aria-label="Trust metrics"] {
         background-color: transparent;
         border-radius: 8px;
 
-        &:after {
-            content: '';
-            display: block;
-            width: 24px;
-            height: 24px;
-            background: url('/src/img/angled-arrow.svg') no-repeat 50%;
-            background-size: cover;
-            transition: transform .2s ease;
-        }
+
 
         span {
             background: var(--Website-Text-Gradient, linear-gradient(92deg, #000D26 13.02%, #5C6880 84.33%));
