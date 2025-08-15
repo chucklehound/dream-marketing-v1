@@ -44,7 +44,7 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
         <ul class="all-posts">
           {sortedPosts.map(post => (
             <li>
-              <a href={`/posts/${post.slug}`} data-transition="page">
+              <a href={`/community/${post.slug}`} data-transition="page">
                 <img src={post.data.featuredImage.src} />
                 <h4>{post.data.postTitle}</h4>
                 <p>{post.data.seoMetaDescription}</p>

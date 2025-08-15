@@ -79,7 +79,7 @@ const cleanHeadings = headings.map(heading => {
         <section class="post-content">
             <div class="post-header">
                 <img src={post.data.featuredImage.src} />
-                <a href="/posts" data-transition="page"><Fragment set:html={arrowleftLight} /><span>View all posts</span></a>
+                <a href="/community" data-transition="page"><Fragment set:html={arrowleftLight} /><span>View all posts</span></a>
                 <h1>{post.data.postTitle}</h1>
                 <small>{new Date(post.data.datePublished).toLocaleDateString('en-US', {
                     year: 'numeric',
