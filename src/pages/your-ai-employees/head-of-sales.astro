@@ -1,0 +1,286 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+import Button from '../../components/Button.astro';
+
+import iconAward from '/src/img/award.svg';
+import iconAnnouncement from '/src/img/announcement.svg';
+import iconMessageAlert from '/src/img/message-alert-square.svg';
+
+import personalAssistant from '/src/img/personal-assistant.png';
+
+import smallHOS1 from '/src/img/hos-small-1.png';
+import smallHOS2 from '/src/img/hos-small-2.png';
+
+import arrowRight from '/src/img/new-arrow-right.svg';
+
+import seoPane1 from '/src/img/hos-1--phone.png';
+import seoPane2 from '/src/img/hos-2--whatsapp.png';
+
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
+import headOfSales from '/src/img/head-of-sales.png';
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
+
+---
+
+<Layout title="Meet your Head of Sales - Dream">
+	<Navigation />
+	<header class="hero-home solo-header">
+		<div class="hero-elements main-content">
+			<section class="header-text">
+        <figure class="dreamie-figure seo-header">
+          <img 
+            src={smallHOS1.src} 
+            alt="" 
+            class="dreamie-img" 
+            aria-hidden="true" 
+          />
+          <img 
+            src={headOfSales.src} 
+            alt="" 
+            class="dreamie-img" 
+            aria-hidden="true" 
+          />
+          <img 
+            src={smallHOS2.src} 
+            alt="" 
+            class="dreamie-img" 
+            aria-hidden="true" 
+          />
+        </figure>
+				<h1 class="page-title">Meet your Head of Sales</h1>
+				<span>Your sales manager has one mission, and that’s growing your business every day. They’ll draft outreach strategies, search high and low for new customers, then create the perfect message to reach those customers.</span>
+			</section>
+		</div>
+	</header>
+	<main class="pinch-footer">
+        <section class="main-content dreamie-module" aria-labelledby="dreamie-heading">
+            <article class="content-container">
+              <div class="dreamie-grid">
+                <!-- Image -->
+                
+          
+                <!-- Text content -->
+                <div class="dreamie-content">
+                  <h2 id="dreamie-heading">
+                    Your Head of Sales makes growing your business their personal mission.
+                  </h2>
+          
+                  <p>
+                    Your Sales Manager is here to win business, every day. They build and run targeted outreach, digging into every corner of your market to uncover customers worth having. Every lead is researched, every prospect understood, and every message sharpened to cut through the noise and get a reply.
+                  </p>
+                  <p>
+                    When interest sparks, they make sure it catches. Your Sales Manager handles the questions, keeps the conversation alive, and deals with all the admin that comes with turning a “maybe” into a “yes.” You skip the grind and step in when it counts — to seal the deal and take the win.
+                  </p>
+          
+                  <h3>Your Head of Sales is</h3>
+                  <ul class="dreamie-feature-list" role="list">
+                    <li class="dreamie-feature">
+                      <img src={iconAnnouncement.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Ready to grow your business with sales campaigns.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <img src={iconAward.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Always managing conversations to close the deal.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <img src={iconMessageAlert.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Keeping you up to date on closed deals or important information.</p>
+                    </li>
+                  </ul>
+          
+                  <Button 
+                    label="Hire your own Head of Sales" 
+                    href="/sign-up" 
+                    target="" 
+                    variant="primary" 
+                    size="large" 
+                    ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+                </div>
+              </div>
+            </article>
+          </section>
+          <section class="main-content">
+            <article class="content-container">
+              <div class="content-title">
+                <h2>Available <span class="highlight-title">anywhere, anytime.</span></h2>
+                <p>Dream works with the apps you use every day, so you can call or message to get jobs done.</p>
+              </div>
+            </article>
+            <div class="seo-panels">
+              <div class="panel">
+                <div class="panel-image">
+                  <img src={seoPane1.src} alt="A call on a phone coming from your Dream PA">
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Your Head of Sales is only a call away, letting you get updates and take action by just asking.</p>
+                    <Button
+                      label="Learn more"
+                      href="/"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-image">
+                  <img src={seoPane2.src} alt="A WhatsApp chat with your PA">
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Share documents, voice notes, or just get updates.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Chat with Dream where you chat with everyone. Manage your workload with voice notes, or just message.</p>
+                    <Button
+                      label="Learn more"
+                      href="/"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+            <article class="content-container">
+                <div class="content-title">
+                    <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+                  </div>
+          
+              <ul class="employee-card-grid compact-grid" role="list">
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <img src={personalAssistant.src} alt="" class="card-figure-img" aria-hidden="true" />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Ready to hire</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Personal Assistant
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Hire them now" href="/your-ai-employees/personal-assistant" target="" variant="primary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Finance Manager
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Get notified" href="/sign-up" target="" variant="secondary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- Head of Marketing -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Head of Marketing
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Get notified" href="/sign-up" target="" variant="secondary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- CS Manager -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Customer Service Manager
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Get notified" href="/sign-up" target="" variant="secondary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+              </ul>
+          
+            </article>
+          </section>
+
+          <section class="main-content">
+            <article class="full-width-contrast promo-home promo-phone">
+              <div class="content-container">
+                <div class="content-title">
+                  <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+                  <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+                  <div class="actions">
+                    <Button
+                  label="Call your PA"
+                  href="/what-we-do"
+                  target=""
+                  variant="secondary"
+                  size="medium"
+                ><img src={phoneIcon.src}></Button>
+                <Button
+                  label="Message on WhatsApp"
+                  href="/what-we-do"
+                  target=""
+                  variant="secondary"
+                  size="medium"
+                ><img src={whatsAppIcon.src}></Button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+	</main>
+	<Footer />
+</Layout>

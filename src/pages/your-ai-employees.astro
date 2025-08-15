@@ -11,46 +11,26 @@ import jdiDreamie from '/src/img/animated-dreamies/jdi-1.mp4';
 import edmundsDreamie from '/src/img/animated-dreamies/edmunds.mp4';
 
 
-import Carousel from '../components/Carousel.astro';
+import personalAssistant from '/src/img/personal-assistant.png';
+import headOfSales from '/src/img/head-of-sales.png';
 
-const contentBlocks = [
-  {
-    image: '/images/card3.jpg',
-    title: 'Just started? Let your Business Manager guide you through all the first steps.',
-    subtitle: 'Find out more about your',
-    ctaText: 'Business Manager',
-    ctaUrl: '/page1',
-  },
-  {
-    image: '/images/card2.jpg',
-    title: 'Need to reach 1,000 new customers in 24 hours? Call your Sales Manager.',
-    subtitle: 'Find out more about your',
-    ctaText: 'Sales Manager',
-    ctaUrl: '/page2',
-  },
-  {
-    image: '/images/card2.jpg',
-    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
-    subtitle: 'Find out more about your',
-    ctaText: 'Marketing Manager',
-    ctaUrl: '/page2',
-  },
-  {
-    image: '/images/card2.jpg',
-    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
-    subtitle: 'Find out more about your',
-    ctaText: 'Marketing Manager',
-    ctaUrl: '/page2',
-  },
-  {
-    image: '/images/card2.jpg',
-    title: 'Trying to automate your social media calendar? Your Marketing Manager makes it easy',
-    subtitle: 'Find out more about your',
-    ctaText: 'Marketing Manager',
-    ctaUrl: '/page2',
-  },
-  // Add more blocks as needed
-];
+import iconCalendar from '/src/img/calendar.svg';
+import iconPhone from '/src/img/phone.svg';
+import iconAttachment from '/src/img/attachment.svg';
+
+import iconAward from '/src/img/award.svg';
+import iconAnnouncement from '/src/img/announcement.svg';
+import iconMessageAlert from '/src/img/message-alert-square.svg';
+
+import arrowRight from '/src/img/new-arrow-right.svg';
+
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
+
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
 ---
 
 <Layout title="AI employees that help your business grow">
@@ -104,19 +84,229 @@ const contentBlocks = [
       </section>
     </div>
   </header>
-  <main>
-    <section class="main-content">
-      <article class="content-container full-width">
-        <div class="content-title">
-          <h2>Run your business <br/>like you're <span class="highlight-title">texting a friend</span></h2>
-          <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
-        </div>
-      </article>
-    </section>
+  <main class="pinch-footer">
+    <section class="main-content dreamie-module" aria-labelledby="dreamie-heading">
+        <article class="content-container">
+          <div class="dreamie-grid">
+            <!-- Image -->
+            <figure class="dreamie-figure">
+              <img 
+                src={personalAssistant.src} 
+                alt="" 
+                class="dreamie-img" 
+                aria-hidden="true" 
+              />
+            </figure>
+      
+            <!-- Text content -->
+            <div class="dreamie-content">
+              <h2 id="dreamie-heading">
+                Meet your <span class="highlight">Personal Assistant</span>
+              </h2>
+      
+              <p>
+                Armed with the expertise to run the day-to-day of your business. No email goes unanswered, no meeting unbooked. All your company admin just happens, from registration to confirmation statements.
+              </p>
+              <p>
+                Always on hand from WhatsApp and on the phone your Personal Assistant turns your requests into actions, keeping you on top of your workload like a boss.
+              </p>
+      
+              <h3>Your Personal Assistant is</h3>
+              <ul class="dreamie-feature-list" role="list">
+                <li class="dreamie-feature">
+                  <img src={iconCalendar.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
+                </li>
+                <li class="dreamie-feature">
+                  <img src={iconPhone.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Connected to you with phone and WhatsApp, so you can chat and get updates on the go.</p>
+                </li>
+                <li class="dreamie-feature">
+                  <img src={iconAttachment.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Ready to create, convert, and manage files, images and more.</p>
+                </li>
+              </ul>
+      
+              <Button 
+                label="Hire your own Personal Assistant" 
+                href="/sign-up" 
+                target="" 
+                variant="primary" 
+                size="large" 
+              ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="main-content dreamie-module" aria-labelledby="dreamie-heading">
+        <article class="content-container">
+          <div class="dreamie-grid">
+            <!-- Image -->
+            <figure class="dreamie-figure">
+              <img 
+                src={headOfSales.src} 
+                alt="" 
+                class="dreamie-img" 
+                aria-hidden="true" 
+              />
+            </figure>
+      
+            <!-- Text content -->
+            <div class="dreamie-content">
+              <h2 id="dreamie-heading">
+                Meet your Head of Sales
+              </h2>
+      
+              <p>
+                Your sales manager has one mission, and that’s growing your business every day. They’ll draft outreach strategies, search high and low for new customers, then create the perfect message to reach those customers.
+              </p>
+              <p>
+                They’ll answer customer questions, manage replies, and all the complex admin needed to get you new business. All you do is take the call.
+              </p>
+      
+              <h3>Your Head of Sales is</h3>
+              <ul class="dreamie-feature-list" role="list">
+                <li class="dreamie-feature">
+                  <img src={iconAnnouncement.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Ready to grow your business with sales campaigns.</p>
+                </li>
+                <li class="dreamie-feature">
+                  <img src={iconAward.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Always managing conversations to close the deal.</p>
+                </li>
+                <li class="dreamie-feature">
+                  <img src={iconMessageAlert.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <p>Keeping you up to date on closed deals or important information.</p>
+                </li>
+              </ul>
+      
+              <Button 
+                label="Hire your own Head of Sales" 
+                href="/sign-up" 
+                target="" 
+                variant="primary" 
+                size="large" 
+                ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+        <article class="content-container">
+          <h3 id="new-employees-heading" class="section-title">New employees onboarding soon</h3>
+      
+          <ul class="employee-card-grid" role="list">
+            <!-- Finance Manager -->
+            <li class="employee-card">
+              <article class="card">
+                <div class="card-header">
+                  <figure class="card-figure">
+                    <img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                  </figure>
+      
+                  <p class="card-badge" aria-label="Starting soon">
+                    <span aria-hidden="true">Starting soon</span>
+                  </p>
+      
+                  <h3 class="card-title">
+                    Meet your <span class="card-title-accent">Finance</span> Manager
+                  </h3>
+                </div>
+      
+                <div class="card-body">
+                  <p>Handles invoicing from start to finish, chases late payments, makes expenses as simple as uploading a receipt, and gives you clear dashboards to plan your growth.</p>
+                </div>
+      
+                <footer class="card-footer">
+                  <Button label="Get notified when they start" href="/sign-up" target="" variant="secondary" size="medium" />
+                </footer>
+              </article>
+            </li>
+      
+            <!-- Head of Marketing -->
+            <li class="employee-card">
+              <article class="card">
+                <div class="card-header">
+                  <figure class="card-figure">
+                    <img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+                  </figure>
+      
+                  <p class="card-badge" aria-label="Starting soon">
+                    <span aria-hidden="true">Starting soon</span>
+                  </p>
+      
+                  <h3 class="card-title">
+                    Meet your <span class="card-title-accent">Head of Marketing</span>
+                  </h3>
+                </div>
+      
+                <div class="card-body">
+                  <p>Spreads the word with tailored content calendars, compelling posts, and world-class websites — including SEO that gets you noticed.</p>
+                </div>
+      
+                <footer class="card-footer">
+                  <Button label="Get notified when they start" href="/sign-up" target="" variant="secondary" size="medium" />
+                </footer>
+              </article>
+            </li>
+      
+            <!-- CS Manager -->
+            <li class="employee-card">
+              <article class="card">
+                <div class="card-header">
+                  <figure class="card-figure">
+                    <img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                  </figure>
+      
+                  <p class="card-badge" aria-label="Starting soon">
+                    <span aria-hidden="true">Starting soon</span>
+                  </p>
+      
+                  <h3 class="card-title">
+                    Meet your <span class="card-title-accent">CS</span> Manager
+                  </h3>
+                </div>
+      
+                <div class="card-body">
+                  <p>Turns every interaction into a reason to return, keeping conversations smooth, personal, and memorable from first hello to final thank-you.</p>
+                </div>
+      
+                <footer class="card-footer">
+                  <Button label="Get notified when they start" href="/sign-up" target="" variant="secondary" size="medium" />
+                </footer>
+              </article>
+            </li>
+          </ul>
+      
+        </article>
+      </section>
+      <section class="main-content">
+        <article class="full-width-contrast promo-home promo-phone">
+          <div class="content-container">
+            <div class="content-title">
+              <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+              <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+              <div class="actions">
+                <Button
+              label="Call your PA"
+              href="/what-we-do"
+              target=""
+              variant="secondary"
+              size="medium"
+            ><img src={phoneIcon.src}></Button>
+            <Button
+              label="Message on WhatsApp"
+              href="/what-we-do"
+              target=""
+              variant="secondary"
+              size="medium"
+            ><img src={whatsAppIcon.src}></Button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
   </main>
-    
   <Footer />
-
-
-
 </Layout>

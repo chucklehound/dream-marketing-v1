@@ -8,6 +8,14 @@ const { variant = 'standard' } = Astro.props;
 import '../components/footer.scss';
 
 import Logo from './Logo.astro';
+
+import iconEmail from '/src/img/icon-email.svg?raw';
+import iconDiscord from '/src/img/icon-discord.svg?raw';
+import iconLinkedIn from '/src/img/icon-linkedin.svg?raw';
+import iconInstagram from '/src/img/icon-instagram.svg?raw';
+import iconTiktok from '/src/img/icon-tiktok.svg?raw';
+import iconYoutube from '/src/img/icon-youtube.svg?raw';
+
 ---
 
 {variant === 'standard' && (
@@ -16,37 +24,49 @@ import Logo from './Logo.astro';
             <div class="footer-bottom">
                 <Logo version="stacked" mode="mono" color="#ffffff"/>
                 <p>Your AI-powered employees that save you time</p>
+                <ul class="footer-social-links">
+                <li class="channel-item">
+						  <a href="https://discord.gg/UNYwC8Cu" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconDiscord} />
+							<span class="channel-label visually-hidden">Join us on Discord</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.linkedin.com/company/dream-ai-employees" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconLinkedIn} />
+							<span class="channel-label visually-hidden">Find us on LinkedIn</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.instagram.com/usedream.ai?igsh=OTBmanJiMXpyNDll&utm_source=qr" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconInstagram} />
+							<span class="channel-label visually-hidden">Find us on Instagram</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.youtube.com/@usedream-ai" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconYoutube} />
+							<span class="channel-label visually-hidden">Watch us on Youtube</span>
+						  </a>
+						</li>
+              </ul>
             </div>
             <div class="footer-section">
-              <h4>What We Do</h4>
+              <h4>Your AI Employees</h4>
               <ul>
-                <li><a href="/what-we-do/by-industry/travel">For Travel</a></li>
-                <li><a href="/what-we-do/by-industry/f-and-b">For Food & Beverage</a></li>
-                <li><a href="/what-we-do/by-use-case/boost-bricks-mortar">Boost Sales to Bricks & Mortar</a></li>
-              <li><a href="/what-we-do/by-use-case/boost-saas-revenue">Boost SaaS Revenue</a></li>
-              <li><a href="/what-we-do/by-use-case/grow-marketplaces">Grow Marketplaces</a></li>
-              <li><a href="/what-we-do/by-use-case/test-new-markets">Test New Markets</a></li>
+                <li><a href="/your-ai-employees/personal-assistant">Personal Assistant</a></li>
+                <li><a href="/your-ai-employees/head-of-sales">Head of Sales</a></li>
+                <li><a href="/your-ai-employees/head-of-marketing">Head of Marketing</a></li>
+                <li><a href="/your-ai-employees/finance-manager">Finance Manager</a></li>
+                <li><a href="/your-ai-employees/customer-services-manager">Customer Services Manager</a></li>
               </ul>
-          </div>
-          <div class="footer-section">
-              <h4>How We Do It</h4>
-              <ul>
-                <li><a href="/how-we-do-it/research-engine">Research Engine</a></li>
-              <li><a href="/how-we-do-it/list-building">List Building</a></li>
-              <li><a href="/how-we-do-it/prospecting">Prospecting</a></li>
-              <li><a href="/how-we-do-it/outreach">Outreach</a></li>
-              </ul>
-          </div>
-          
+          </div>   
           <div class="footer-section">
               <h4>Company</h4>
               <ul>
                 <li><a href="/resources/about-us">About Dream</a></li>
               <li><a href="/privacy">Privacy Policy</a></li>
               <li><a href="/terms-of-service">Terms of Service</a></li>
-              <li><a href="/versus/11x">Dream versus 11x</a></li>
-              <li><a href="/versus/clay">Dream versus Clay</a></li>
-              <li><a href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174" target="_blank">Careers</a></li>
               </ul>
           </div>
             
@@ -61,38 +81,50 @@ import Logo from './Logo.astro';
       <div class="footer-container">
           <div class="footer-bottom">
               <Logo version="stacked" mode="mono" color="#ffffff"/>
-              <p>Research-led AI that makes anything possible</p>
-          </div>
-          <div class="footer-section">
-              <h4>What We Do</h4>
-              <ul>
-                <li><a href="/what-we-do/by-industry/travel">For Travel</a></li>
-                <li><a href="/what-we-do/by-industry/f-and-b">For Food & Beverage</a></li>
-                <li><a href="/what-we-do/by-use-case/boost-bricks-mortar">Boost Sales to Bricks & Mortar</a></li>
-              <li><a href="/what-we-do/by-use-case/boost-saas-revenue">Boost SaaS Revenue</a></li>
-              <li><a href="/what-we-do/by-use-case/grow-marketplaces">Grow Marketplaces</a></li>
-              <li><a href="/what-we-do/by-use-case/test-new-markets">Test New Markets</a></li>
+              <p>Your AI-powered employees that save you time</p>
+              <ul class="footer-social-links">
+                <li class="channel-item">
+						  <a href="https://discord.gg/UNYwC8Cu" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconDiscord} />
+							<span class="channel-label visually-hidden">Join us on Discord</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.linkedin.com/company/dream-ai-employees" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconLinkedIn} />
+							<span class="channel-label visually-hidden">Find us on LinkedIn</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.instagram.com/usedream.ai?igsh=OTBmanJiMXpyNDll&utm_source=qr" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconInstagram} />
+							<span class="channel-label visually-hidden">Find us on Instagram</span>
+						  </a>
+						</li>
+						<li class="channel-item">
+						  <a href="https://www.youtube.com/@usedream-ai" class="channel-link" target="_blank" rel="noopener noreferrer">
+							<img src={iconYoutube.src} alt="" aria-hidden="true" class="channel-icon" />
+							<span class="channel-label visually-hidden">Watch us on Youtube</span>
+						  </a>
+						</li>
               </ul>
-          </div>
+            </div>
           <div class="footer-section">
-              <h4>How We Do It</h4>
+              <h4>Your AI Employees</h4>
               <ul>
-                <li><a href="/how-we-do-it/research-engine">Research Engine</a></li>
-                <li><a href="/how-we-do-it/list-building">List Building</a></li>
-                <li><a href="/how-we-do-it/prospecting">Prospecting</a></li>
-                <li><a href="/how-we-do-it/outreach">Outreach</a></li>
+                <li><a href="/your-ai-employees/personal-assistant">Personal Assistant</a></li>
+                <li><a href="/your-ai-employees/head-of-sales">Head of Sales</a></li>
+                <li><a href="/your-ai-employees/head-of-marketing">Head of Marketing</a></li>
+                <li><a href="/your-ai-employees/finance-manager">Finance Manager</a></li>
+                <li><a href="/your-ai-employees/customer-services-manager">Customer Services Manager</a></li>
               </ul>
-          </div>
-          
+          </div>   
           <div class="footer-section">
               <h4>Company</h4>
               <ul>
                 <li><a href="/resources/about-us">About Dream</a></li>
               <li><a href="/privacy">Privacy Policy</a></li>
               <li><a href="/terms-of-service">Terms of Service</a></li>
-              <li><a href="/versus/11x">Dream versus 11x</a></li>
-              <li><a href="/versus/clay">Dream versus Clay</a></li>
-              <li><a href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174" target="_blank">Careers</a></li>
               </ul>
           </div>
           

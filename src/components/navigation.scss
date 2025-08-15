@@ -56,7 +56,7 @@ nav {
     display: flex;
     padding: 0 0 16px;
 
-    @media (max-width: 1170px) {
+    @media (max-width: 1120px) {
       gap: 16px;
     }
 
@@ -180,7 +180,7 @@ nav {
           box-shadow: none;
         }
 
-          @media (max-width: 1170px) {
+          @media (max-width: 1120px) {
             margin-right: auto;
             margin-top: 2px;
         }
@@ -204,7 +204,7 @@ nav {
       &.login-button, &.mobile-demo-button, &.button {
         text-wrap: nowrap;
 
-        @media (max-width: 1170px) {
+        @media (max-width: 1120px) {
           order: 3;
         }
 
@@ -319,7 +319,7 @@ nav {
         margin-bottom: 8px;
         color: $color-wallstreet-black;
         
-        @media (max-width: 1170px) {
+        @media (max-width: 1120px) {
           margin: 12px 0 4px;
           padding-bottom: 8px;
           border-bottom: 1px solid $color-gray-light;
@@ -334,13 +334,13 @@ nav {
       padding: 12px 32px;
       opacity: 1;
 
-      @media (max-width: 1170px) {
+      @media (max-width: 1120px) {
         padding: 24px 8px;
         margin: 0;
       }
     }
 
-    @media (max-width: 1170px) {
+    @media (max-width: 1120px) {
       position: relative;
       width: auto;
       top: auto;
@@ -387,7 +387,7 @@ nav {
       gap: 12px;
       transition: background .2s ease;
 
-      @media (max-width: 1170px) {
+      @media (max-width: 1120px) {
         padding: 12px 0;
       }
 
@@ -461,14 +461,14 @@ nav {
   display: flex;
   gap: 12px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1120px) {
     margin-right: 4px;
     margin-left: auto;
   }
 }
 
 /* Media query for small screens */
-@media (max-width: 1170px) {
+@media (max-width: 1120px) {
   .navigation {
 
     nav {
@@ -518,7 +518,7 @@ nav {
     box-shadow: none;
     border: none;
 
-    @media (max-width: 1170px) {
+    @media (max-width: 1120px) {
       padding-bottom: 12px;
       border-bottom: 1px solid $color-pomona-black;
     }
@@ -566,7 +566,7 @@ nav {
   }
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 1120px) {
   .mobile-login-button, .mobile-demo-button {
     display: block;
     order: 3;
@@ -586,7 +586,7 @@ nav {
   }
 }
 
-@media (min-width: 1171px) {
+@media (min-width: 1121px) {
   .mobile-login-button {
     display: none;
   }

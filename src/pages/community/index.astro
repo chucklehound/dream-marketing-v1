@@ -19,7 +19,7 @@ const posts = await getCollection('posts');
 const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data.datePublished.getTime());
 ---
 
-<Layout title="Dream - All posts">
+<Layout title="Dream - Join the Dreamers in our community">
   <Navigation />
   <header class="hero-home community-header">
 		<div class="hero-elements main-content">
@@ -29,8 +29,8 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
         <Button
         label="Join our community"
         class="discord-button"
-        href="/what-we-do"
-        target=""
+        href="https://discord.gg/UNYwC8Cu"
+        target="_blank"
         variant="secondary"
         size="medium"
       ><img src={discordLogo.src} alt="The Discord logo"></Button>
