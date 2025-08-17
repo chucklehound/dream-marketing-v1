@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // Bubble styles by Dreamie type
 const typeStyles = {
-  "Executive Assistant": {
+  "Personal Assistant": {
     borderColor: "#3F7245",
     background: "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #3F7245"
   },
@@ -42,7 +42,7 @@ function getHeight(width) {
   return Math.round(width * 1024 / 685);
 }
 
-export default function DreamieShowcase({ images, messages, tickDelay = 3000 }) {
+export default function DreamieShowcase({ images, messages, tickDelay = 5000 }) {
   // SSR-safe: always start with 7
   const [visibleCount, setVisibleCount] = useState(7);
   const [mounted, setMounted] = useState(false);
@@ -105,7 +105,7 @@ export default function DreamieShowcase({ images, messages, tickDelay = 3000 }) 
         }
         setCenterIdx(next);
         setShowCenter(true);
-      }, 250); // fade-out duration
+      }, 350); // fade-out duration
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => setShowCenter(false), tickDelay);
@@ -208,8 +208,8 @@ export default function DreamieShowcase({ images, messages, tickDelay = 3000 }) 
                 display: "inline-block",
                 boxSizing: "border-box",
                 borderRadius: 24,
-                border: `1px solid ${typeStyles[messages[centerIdx]?.type || "Executive Assistant"].borderColor}`,
-                background: typeStyles[messages[centerIdx]?.type || "Executive Assistant"].background,
+                border: `1px solid ${typeStyles[messages[centerIdx]?.type || "Personal Assistant"].borderColor}`,
+                background: typeStyles[messages[centerIdx]?.type || "Personal Assistant"].background,
                 boxShadow: "0px 8px 16px 0px rgba(6,22,54,0.10), 0px 2px 4px 0px rgba(0,13,38,0.20)",
                 fontWeight: 700,
                 fontSize: "18px",
@@ -223,8 +223,8 @@ export default function DreamieShowcase({ images, messages, tickDelay = 3000 }) 
                 textAlign: "center",
                 boxSizing: "border-box",
                 borderRadius: 8,
-                border: `1px solid ${typeStyles[messages[centerIdx]?.type || "Executive Assistant"].borderColor}`,
-                background: typeStyles[messages[centerIdx]?.type || "Executive Assistant"].background,
+                border: `1px solid ${typeStyles[messages[centerIdx]?.type || "Personal Assistant"].borderColor}`,
+                background: typeStyles[messages[centerIdx]?.type || "Personal Assistant"].background,
                 boxShadow: "0px 8px 16px 0px rgba(6,22,54,0.10), 0px 2px 4px 0px rgba(0,13,38,0.20)",
                 fontWeight: 400,
                 fontSize: "22px",

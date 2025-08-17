@@ -278,6 +278,18 @@ header {
             max-height: 300px;
         }
 
+        img {
+            max-width: 100%;
+        }
+
+        figure {
+            width: 100%;
+            overflow: hidden;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
         & > * {
             text-align: center;
             margin-left: auto;
@@ -296,14 +308,14 @@ header {
                     z-index: 0;
                     max-height: 280px;
                     opacity: 0;
-                    animation: appearLeft .3s cubic-bezier(0.7, 0, 0.84, 0) 1 forwards;
+                    animation: appearLeft .8s cubic-bezier(0.7, 0, 0.84, 0) 1 forwards;
                 }
 
                 &:nth-of-type(3) {
                     z-index: 0;
                     max-height: 280px;
                     opacity: 0;
-                    animation: appearRight .3s cubic-bezier(0.7, 0, 0.84, 0) 1 forwards;
+                    animation: appearRight .8s cubic-bezier(0.7, 0, 0.84, 0) 1 forwards;
                 }
             }
     }
@@ -655,6 +667,8 @@ header {
 
         &.community-header {
             position: relative;
+            min-height: 600px;
+            overflow: hidden;
 
             &:after, &:before {
                 content: '';
@@ -662,7 +676,7 @@ header {
                 height: 600px;
                 top: 50%;
                 margin-top: -300px;
-                background: url('/src/img/community-header.png') no-repeat top right;
+                background: url('/src/img/community-header.jpg') no-repeat top right;
                 background-size: cover;
                 position: absolute;
                 left: 0;
@@ -685,6 +699,11 @@ header {
                 left: auto;
                 right: 0;
                 background-position: top left;
+                animation: appearLeft .3s ease 1 forwards;
+            }
+
+            &:before {
+                animation: appearRight .3s ease 1 forwards;
             }
         }
 
@@ -3238,7 +3257,7 @@ h3.section-title {
     display: flex;
     gap: 16px;
     margin-top: 32px;
-    padding: 24px 16px;
+    padding: 16px 0;
 
     @media (max-width: 1152px) {
         flex-direction: column;
@@ -3267,6 +3286,18 @@ h3.section-title {
                 font-size: 32px;
                 line-height: 40px;
                 letter-spacing: -0.7px;
+
+                @media (max-width: 1024px) {
+                    font-size: 24px;
+                    line-height: 28px;
+                }
+            }
+
+            p {
+                @media (max-width: 1024px) {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
             }
         }
 
@@ -3316,13 +3347,18 @@ h3.section-title {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        gap: 64px;
+        gap: 16px;
         padding: 24px;
         background: linear-gradient(45deg, rgba($lightest-grey, .2), rgba($sawtooth-blue, .1));
         border-radius: 16px;
 
+        @media (max-width: 1024px) {
+            flex-direction: column;
+        }
+
         @media (min-width: 1150px) {
             padding: 64px;
+            gap: 64px;
         }
 
         .dreamie-figure {
@@ -3330,6 +3366,11 @@ h3.section-title {
             img {
                 min-width: 300px;
                 height: auto;
+
+                @media (max-width: 1024px) {
+                    max-height: 240px;
+                    min-width: auto;
+                }
             }
         }
 
@@ -3348,6 +3389,11 @@ h3.section-title {
                 padding: 0;
                 margin: 0;
 
+                @media (max-width: 900px) {
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
                 li {
                     padding: 20px;
                     background: rgba($quadra-grey, .5);
@@ -3360,6 +3406,11 @@ h3.section-title {
                     p {
                         font-size: 16px;
                         line-height: 22px;
+
+                        @media (max-width: 1024px) {
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
                     }
 
                     img {
@@ -3381,6 +3432,11 @@ h3.section-title {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: left;
+
+            @media (max-width: 1024px) {
+                font-size: 24px;
+                line-height: 28px;
+            }
         }
 
         h3 {
@@ -3400,12 +3456,19 @@ h3.section-title {
             font-style: normal;
             font-weight: 400;
             line-height: 28px;
+
+            @media (max-width: 1024px) {
+                font-size: 14px;
+                line-height: 20px;
+            }
         }
     }
 
-    &:nth-of-type(2n) {
-        .dreamie-grid {
-            flex-direction: row-reverse;
+    @media (min-width: 1025px) {
+        &:nth-of-type(2n) {
+            .dreamie-grid {
+                flex-direction: row-reverse;
+            }
         }
     }
 }
@@ -3442,6 +3505,7 @@ h3.section-title {
     flex-wrap: wrap;
     gap: 24px;
     max-width: 1152px;
+    padding: 16px;
     margin: auto;
 
     .panel {
