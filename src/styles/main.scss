@@ -3819,3 +3819,63 @@ ul.all-posts {
         }
     }
 }
+
+.get-started-content {
+    padding-top: 0;
+
+    .content-container {
+        padding-top:  0;
+    }
+}
+
+.start-cards {
+    display: flex;
+    gap: 24px;
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+
+    .card-item {
+        background: radial-gradient($performa-black, $wallstreet-black);
+        background-size: 200% 200%;
+        background-position: bottom center;
+        padding: 32px;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-radius: 16px;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        h2 {
+            color: $plus-white;
+            @include heading3;
+            text-align: left;
+            margin-bottom: 0;
+
+            @media (max-width: 700px) {
+                @include heading4;
+            }
+        }
+
+        p {
+            color: $lighter-grey;
+        }
+
+        a.button {
+            border: 1px solid $light-grey;
+            background: $performa-black;
+            color: $plus-white;
+            margin-top: auto;
+            margin-bottom: 0;
+            transition: background-color .2s ease, border-color .2s ease;
+
+            &:hover {
+                background: $wallstreet-black;
+                border-color: $performa-black;
+            }
+        }
+    }
+}

@@ -5,6 +5,9 @@ import Button from '../components/Button.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
 import "../styles/main.scss";
 ---
 
@@ -14,11 +17,39 @@ import "../styles/main.scss";
 		<div class="hero-elements main-content">
 			<section class="header-text">
 				<h1 class="page-title">Get started with Dream</h1>
+				<p>It takes minutes to get started, choose an option below.</p>
 			</section>
 		</div>
 	</header>
 	<main>
-
+		<section class="get-started-content main-content">
+			<article class="content-container">
+				<div class="start-cards">
+					<div class="card-item">
+						<h2>Call to start</h2>
+						<p>Start a voice call with your Personal Assistant and they’ll talk you through creating your Dream account.</p>
+						<Button
+						label="Call your PA"
+						href="tel:+447476963324"
+						target=""
+						variant="secondary"
+						size="medium"
+						><img src={phoneIcon.src}></Button>
+					</div>
+					<div class="card-item">
+						<h2>WhatsApp to start</h2>
+						<p>Chat with your Personal Assistant on WhatsApp, and create your Dream account as easily as chatting.</p>
+						<Button
+						label="Message on WhatsApp"
+						href="https://wa.me/447911123456?text=Hi%20I%27m%20interested%20in%20Dream"
+						target=""
+						variant="secondary"
+						size="medium"
+						><img src={whatsAppIcon.src}></Button>
+					</div>
+				</div>
+			</article>
+		</section>
 	</main>
 	
     <Footer />
