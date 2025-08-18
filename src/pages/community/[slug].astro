@@ -5,7 +5,8 @@ import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 import Layout from '../../layouts/Layout.astro';
 import Button from '../../components/Button.astro';
-import arrowRightLight from '/src/img/arrow-right-white.svg';
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
 import arrowleftLight from '/src/img/arrow-left-white.svg?raw';
 
 export async function getStaticPaths() {
@@ -75,18 +76,22 @@ const cleanHeadings = headings.map(heading => {
     </PostSeo>
 
     <Navigation />
-    <main>
+    <main class="pinch-footer">
         <section class="post-content">
             <div class="post-header">
+              <a class="post-back-link" href="/community" data-transition="page"><Fragment set:html={arrowleftLight} /><span>View all posts</span></a>
+
                 <img src={post.data.featuredImage.src} />
-                <a href="/community" data-transition="page"><Fragment set:html={arrowleftLight} /><span>View all posts</span></a>
-                <h1>{post.data.postTitle}</h1>
-                <small>{new Date(post.data.datePublished).toLocaleDateString('en-US', {
+                <div class="post-details">
+                  <small>{new Date(post.data.datePublished).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                 })}</small>
+                <h1>{post.data.postTitle}</h1>
+                
                 <p>{post.data.seoMetaDescription}</p>
+                </div>
             </div>
             <article>
                 {cleanHeadings.length > 0 && (
@@ -106,28 +111,33 @@ const cleanHeadings = headings.map(heading => {
                 </div>
             </article>
         </section>
-    </main>
-    <section class="final-cta">
-        <article class="main-content cta-container">
-            <h3>See what’s possible for your business</h3>
-            <p>
-                Learn how Dream can 10X your growth. Book your personal meeting
-                to explore our solutions.
-            </p>
+        <section class="main-content">
+          <article class="full-width-contrast promo-home promo-phone">
+            <div class="content-container">
+            <div class="content-title">
+              <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+              <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+              <div class="actions">
+              <Button
+              label="Call your PA"
+              href="/what-we-do"
+              target=""
+              variant="secondary"
+              size="medium"
+            ><img src={phoneIcon.src}></Button>
             <Button
-                variant="reverse"
-                href="/get-started"
-                target="_blank"
-                label=""
-            >
-                Book your meeting <img
-                    src={arrowRightLight.src}
-                    role="presentation"
-                    alt=""
-                    loading="lazy"
-                />
-            </Button>
-        </article>
-    </section>
-    <Footer variant="beside-cta" />
+              label="Message on WhatsApp"
+              href="/what-we-do"
+              target=""
+              variant="secondary"
+              size="medium"
+            ><img src={whatsAppIcon.src}></Button>
+              </div>
+            </div>
+            </div>
+          </article>
+          </section>
+    </main>
+    
+    <Footer />
 </Layout>

@@ -5,7 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 
-import arrowRightDark from '/src/img/arrow-right-dark.svg?raw';
+import arrowRightDark from '/src/img/arrow-right-dark.svg';
 
 import Button from '../../components/Button.astro';
 
@@ -45,10 +45,14 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
           {sortedPosts.map(post => (
             <li>
               <a href={`/community/${post.slug}`} data-transition="page">
-                <img src={post.data.featuredImage.src} />
-                <h4>{post.data.postTitle}</h4>
-                <p>{post.data.seoMetaDescription}</p>
-                <span>Read more <Fragment set:html={arrowRightDark} /></span>
+                <div class="post-image">
+                  <img src={post.data.featuredImage.src} />
+                </div>
+                <div class="post-content">
+                  <h4>{post.data.postTitle}</h4>
+                  <p>{post.data.seoMetaDescription}</p>
+                  <span class="button secondary">Read more<img src={arrowRightDark.src} alt="An arrow" role="presentation"></span>
+                </div>
               </a>
             </li>
           ))}
