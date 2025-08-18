@@ -62,32 +62,40 @@ const dreamieImages = [
 const images = dreamieImages.map((img) => img.src);
 
 const messages = [
-{ name: "Chris", type: "Head of Marketing", text: "creating and managing social media content" },
-  { name: "Anna", type: "Head of Finance", text: "chasing up missing receipts and invoices" },
-  { name: "Sam", type: "Personal Assistant", text: "buying and sending thoughtful client gifts" },
-  { name: "Tina", type: "Head of Sales", text: "researching and building target company lists" },
-  { name: "Jordan", type: "Personal Assistant", text: "screening and prioritising incoming calls" },
-  { name: "Ben", type: "Head of Marketing", text: "overseeing the build of the company website" },
-  { name: "Charlie", type: "Head of Finance", text: "following up on missing financial documents" },
-  { name: "Philipp", type: "Personal Assistant", text: "extracting and organising receipts from emails" },
-  { name: "Alex", type: "Head of Sales", text: "testing and refining outreach campaigns" },
-  { name: "Nina", type: "Personal Assistant", text: "arranging travel for frequent business trips" },
-  { name: "Omar", type: "Head of Marketing", text: "selecting and preparing company lists for campaigns" },
-  { name: "Priya", type: "Head of Finance", text: "tracking down outstanding receipts and invoices" },
-  { name: "Liam", type: "Personal Assistant", text: "buying personalised appreciation gifts for clients" },
-  { name: "Sophia", type: "Head of Sales", text: "sending contracts out for signature" },
-  { name: "Ethan", type: "Personal Assistant", text: "managing incoming phone calls" },
-  { name: "Grace", type: "Head of Marketing", text: "coordinating an influencer marketing campaign" },
-  { name: "Hugo", type: "Head of Finance", text: "ensuring all receipts and invoices are accounted for" },
-  { name: "Isla", type: "Personal Assistant", text: "organising receipts and uploading them to accounts" },
-  { name: "Jack", type: "Head of Sales", text: "identifying upsell opportunities with current customers" },
-  { name: "Kara", type: "Personal Assistant", text: "booking complex travel itineraries" },
-  { name: "Leo", type: "Head of Marketing", text: "planning and creating social media posts" },
-  { name: "Maya", type: "Head of Finance", text: "following up on incomplete financial records" },
-  { name: "Noah", type: "Personal Assistant", text: "buying and delivering personalised thank-you gifts" },
-  { name: "Olivia", type: "Head of Sales", text: "working to reduce customer churn" },
-  { name: "Pablo", type: "Personal Assistant", text: "handling and directing phone enquiries" },
+  // cycle 1
+  { name: "Ben",     type: "Head of Marketing",  text: "overseeing the build of the company website" },   // start a business
+  { name: "Tina",    type: "Head of Sales",      text: "researching and building target company lists" }, // enter new markets
+  { name: "Ethan",   type: "Personal Assistant", text: "managing incoming phone calls" },                 // save an hour
+  { name: "Sophia",  type: "Head of Sales",      text: "sending contracts out for signature" },           // handle more customers
+  { name: "Anna",    type: "Head of Finance",    text: "chasing up missing receipts and invoices" },      // get paid on time
 
+  // cycle 2
+  { name: "Chris",   type: "Head of Marketing",  text: "creating and managing social media content" },
+  { name: "Alex",    type: "Head of Sales",      text: "testing and refining outreach campaigns" },
+  { name: "Nina",    type: "Personal Assistant", text: "arranging travel for frequent business trips" },
+  { name: "Pablo",   type: "Personal Assistant", text: "handling and directing phone enquiries" },
+  { name: "Charlie", type: "Head of Finance",    text: "following up on missing financial documents" },
+
+  // cycle 3
+  { name: "Leo",     type: "Head of Marketing",  text: "planning and creating social media posts" },
+  { name: "Omar",    type: "Head of Marketing",  text: "selecting and preparing company lists for campaigns" },
+  { name: "Kara",    type: "Personal Assistant", text: "booking complex travel itineraries" },
+  { name: "Sam",     type: "Personal Assistant", text: "following up quickly with every new enquiry" },   // tweaked
+  { name: "Priya",   type: "Head of Finance",    text: "tracking down outstanding receipts and invoices" },
+
+  // cycle 4
+  { name: "Grace",   type: "Head of Marketing",  text: "setting up your first ad campaign" },             // tweaked
+  { name: "Jack",    type: "Head of Sales",      text: "identifying prospects in adjacent markets" },
+  { name: "Philipp", type: "Personal Assistant", text: "extracting and organising receipts from emails" },
+  { name: "Liam",    type: "Personal Assistant", text: "managing onboarding paperwork for new customers" }, // tweaked
+  { name: "Hugo",    type: "Head of Finance",    text: "ensuring all receipts and invoices are accounted for" },
+
+  // cycle 5
+  { name: "Jordan",  type: "Personal Assistant", text: "organising your business calendar from day one" },  // tweaked
+  { name: "Olivia",  type: "Head of Sales",      text: "opening conversations in new regions" },
+  { name: "Isla",    type: "Personal Assistant", text: "organising receipts and uploading them to accounts" },
+  { name: "Noah",    type: "Personal Assistant", text: "keeping all customer conversations organised in one place" }, // tweaked
+  { name: "Maya",    type: "Head of Finance",    text: "following up on incomplete financial records" }
 ];
 
 import Carousel from '../components/Carousel.astro';
@@ -163,7 +171,7 @@ const contentBlocks = [
               <Button
             label="Call your PA"
             href="tel:+447476963324"
-            target=""
+            target="_blank"
             variant="secondary"
             size="medium"
           ><img src={phoneIcon.src}></Button>
@@ -240,7 +248,66 @@ const contentBlocks = [
     
 <Footer />
 
-  <script>
+<script>
+  (function startSharedTicker(period = 5000) {
+    if (window.__dreamTickerStarted) return;
+    window.__dreamTickerStarted = true;
+
+    // Fire an initial tick so everything aligns immediately
+    window.dispatchEvent(new CustomEvent("dream:tick"));
+
+    let expected = Date.now() + period;
+    function tick() {
+      window.dispatchEvent(new CustomEvent("dream:tick"));
+      const drift = Date.now() - expected;
+      expected += period;
+      setTimeout(tick, Math.max(0, period - drift));
+    }
+    setTimeout(tick, period);
+  })();
+</script>
+
+<style>
+  #rotating-text {
+    transition: opacity 0.4s; /* must match FADE in React */
+    opacity: 0;
+  }
+</style>
+
+<span id="rotating-text" aria-live="polite"></span>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("rotating-text");
+    const texts = [
+      "start a business",
+      "enter new markets",
+      "save an hour every day",
+      "handle more customers",
+      "get paid on time"
+    ];
+    let i = 0;
+    const FADE = 400; // ms
+
+    // Render first item immediately
+    el.textContent = texts[i];
+    el.style.opacity = "1";
+    i = (i + 1) % texts.length;
+
+    function advance() {
+      el.style.opacity = "0";
+      setTimeout(() => {
+        el.textContent = texts[i];
+        el.style.opacity = "1";
+        i = (i + 1) % texts.length;
+      }, FADE);
+    }
+
+    window.addEventListener("dream:tick", advance);
+  });
+</script>
+
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       const rotatingTextElement = document.getElementById("rotating-text");
       const texts = [
@@ -264,16 +331,16 @@ const contentBlocks = [
 
           // Move to next index, looping back to the start
           index = (index + 1) % texts.length;
-        }, 500); // Adjust timing for fade-out before changing text
+        }, 200); // Adjust timing for fade-out before changing text
 
-        // Repeat after 4 seconds
-        setTimeout(rotateText, 4000);
+        // Repeat after 5 seconds
+        setTimeout(rotateText, 5000);
       }
 
       // Start the rotation
       rotateText();
     });
-  </script>
+  </script> -->
 
 
 
