@@ -138,6 +138,11 @@ const contentBlocks = [
   <Navigation />
   <header class="hero-home">
     <div class="hero-elements main-content">
+      <section class="header-image home-hero">
+        <div class="ticker-window">
+          <DreamieCarousel images={images} messages={messages} client:load />
+        </div>
+      </section>
       <section class="header-text">
         <h1 class="page-title">
           AI employees that help you
@@ -153,11 +158,6 @@ const contentBlocks = [
             variant="secondary"
             size="medium"
           />
-        </div>
-      </section>
-      <section class="header-image home-hero">
-        <div class="ticker-window">
-          <DreamieCarousel images={images} messages={messages} client:load />
         </div>
       </section>
     </div>

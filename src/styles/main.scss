@@ -293,7 +293,6 @@ header {
 
         figure {
             width: 100%;
-            overflow: hidden;
             margin: auto;
             display: flex;
             justify-content: center;
@@ -331,8 +330,8 @@ header {
 
     .hero-elements {
         display: flex;
-        flex-direction: column-reverse;
         gap: 32px;
+        flex-direction: column;
         padding: $spacing 0;
         z-index: 2;
 
