@@ -18,6 +18,8 @@ import whatsAppIcon from '/src/img/whats-app-icon.svg';
 import phoneIcon from '/src/img/phone-call.svg';
 
 import quoteLogo from '/src/img/givewheel-logo.png';
+import quoteLogojdi from '/src/img/justdoughit-logo.png';
+import quoteLogohol from '/src/img/holibob-logo.png';
 
 import ctaDreamies from '/src/img/end-cta-guys.png';
 
@@ -190,7 +192,7 @@ const contentBlocks = [
     <section class="main-content">
       <article class="content-container full-width">
         <div class="content-title">
-          <h2>Run your business <br/>like you <span class="highlight-title">run your life</span></h2>
+          <h2>Running a business is hard. <br/>That's why <span class="highlight-title">we made Dream simple</span></h2>
           <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
         </div>
         <Carousel items={contentBlocks} />
@@ -224,16 +226,49 @@ const contentBlocks = [
         <div class="content-title">
           <h2>AI built for <span class="highlight-title">everyone</span></h2>
         </div>
-        <blockquote>
-          <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
-
-      <cite> 
-        <span>Charlie Hart, Co-founder at Givewheel</span> 
-        <img src={quoteLogo.src} alt="The logo for Givewheel"> 
-      </cite> 
-    </blockquote> 
-  </article> 
-</section>
+    
+        <!-- Only this viewport/track rotates -->
+        <div class="quote-viewport">
+          <div class="quote-track" role="group" aria-roledescription="carousel" aria-label="Customer quotes">
+    
+            <!-- Slide 1 -->
+            <div class="quote-slide">
+              <blockquote>
+                <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
+                <cite>
+                  <span>Charlie Hart, Co‑founder at Givewheel</span>
+                  <img src={quoteLogo.src} alt="The logo for Givewheel">
+                </cite>
+              </blockquote>
+            </div>
+    
+            <!-- Slide 2 -->
+            <div class="quote-slide">
+              <blockquote>
+                <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
+                <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
+                <img src={quoteLogojdi.src} alt="The logo for Just Dough It">
+              </blockquote>
+            </div>
+    
+            <!-- Slide 3 -->
+            <div class="quote-slide">
+              <blockquote>
+                <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
+                <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
+                <img src={quoteLogohol.src} alt="The logo for Holibob">
+              </blockquote>
+            </div>
+    
+          </div>
+        </div>
+    
+        <!-- Dots live INSIDE the box -->
+        <div class="quote-dots" aria-label="Slide pagination"></div>
+      </article> 
+    </section>
+    
+    
 <section class="final-cta"> 
   <article class="main-content cta-container"> 
     <img src={ctaDreamies.src} alt="The 5 Dreamies of Dream - Business, Sales, Marketing, Finance, and Design" />
@@ -250,8 +285,9 @@ const contentBlocks = [
 
 <script>
   (function startSharedTicker(period = 5000) {
-    if (window.__dreamTickerStarted) return;
-    window.__dreamTickerStarted = true;
+    const w = window as any; // cast to any to silence TS about custom props
+    if (w.__dreamTickerStarted) return;
+    w.__dreamTickerStarted = true;
 
     // Fire an initial tick so everything aligns immediately
     window.dispatchEvent(new CustomEvent("dream:tick"));
@@ -266,6 +302,7 @@ const contentBlocks = [
     setTimeout(tick, period);
   })();
 </script>
+
 
 <style>
   #rotating-text {
@@ -365,5 +402,135 @@ const contentBlocks = [
   if (target) observer.observe(target);
 </script>
 
-
+<script>
+  (function () {
+    const root = document.querySelector('.customer-quote .quote-body');
+    if (!root) return;
+  
+    const track = root.querySelector('.quote-track') as HTMLElement;
+    const slides = Array.from(root.querySelectorAll('.quote-slide')) as HTMLElement[];
+    const dotsWrap = root.querySelector('.quote-dots') as HTMLElement;
+  
+    // Build dots
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', `Go to quote ${i + 1}`);
+      b.addEventListener('click', () => {
+        goTo(i, true);
+        resetCycle();
+      });
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.querySelectorAll('button'));
+  
+    let idx = 0;
+    let autoMs = 6000;
+    let timer: number | null = null;
+    let programmaticScroll = false;
+  
+    function updateDots(i: number) {
+      dots.forEach((d, k) =>
+        d.setAttribute('aria-current', k === i ? 'true' : 'false')
+      );
+    }
+  
+    function goTo(i: number, smooth = true) {
+      idx = (i + slides.length) % slides.length;
+      programmaticScroll = true;
+      track.scrollTo({
+        left: slides[idx].offsetLeft,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+      updateDots(idx);
+    }
+  
+    // IntersectionObserver keeps idx in sync if user drags
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.intersectionRatio > 0.6) {
+            const n = slides.indexOf(e.target as HTMLElement);
+            if (n !== -1) {
+              idx = n;
+              updateDots(idx);
+            }
+          }
+        });
+      },
+      { root: track, threshold: [0.6] }
+    );
+    slides.forEach((s) => io.observe(s));
+  
+    // Autoplay with self-scheduling timeout
+    function scheduleNext() {
+      clearNext();
+      timer = window.setTimeout(() => {
+        goTo(idx + 1, true);
+        waitForScrollEnd().then(() => {
+          programmaticScroll = false;
+          scheduleNext();
+        });
+      }, autoMs);
+    }
+    function clearNext() {
+      if (timer) clearTimeout(timer);
+      timer = null;
+    }
+    function resetCycle() {
+      clearNext();
+      scheduleNext();
+    }
+  
+    // Wait until smooth scroll finishes before scheduling next tick
+    function waitForScrollEnd(): Promise<void> {
+      if ('onscrollend' in window) {
+        return new Promise((resolve) => {
+          const handler = () => {
+            track.removeEventListener('scrollend', handler);
+            resolve();
+          };
+          track.addEventListener('scrollend', handler, { once: true });
+        });
+      }
+      return new Promise((resolve) => {
+        let t: number;
+        const onScroll = () => {
+          if (!programmaticScroll) return;
+          clearTimeout(t);
+          t = window.setTimeout(() => {
+            track.removeEventListener('scroll', onScroll);
+            resolve();
+          }, 150);
+        };
+        track.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      });
+    }
+  
+    // User manual scroll: reset cycle after they stop
+    let manualDebounce: number;
+    track.addEventListener(
+      'scroll',
+      () => {
+        if (programmaticScroll) return;
+        clearNext();
+        clearTimeout(manualDebounce);
+        manualDebounce = window.setTimeout(() => {
+          scheduleNext();
+        }, 800);
+      },
+      { passive: true }
+    );
+  
+    // Init
+    goTo(0, false);
+    programmaticScroll = false;
+    scheduleNext();
+  })();
+  </script>
+  
+  
+  
+  
 </Layout>

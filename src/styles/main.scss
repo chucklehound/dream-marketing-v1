@@ -981,6 +981,10 @@ main {
             top: 64px;
             animation: scrollBg 24s linear infinite;
 
+            @media (max-width: 700px) {
+                animation-duration: 14s;
+            }
+
             &:nth-of-type(2) {
                 top: 150px;
                 animation-direction: reverse;
@@ -989,6 +993,10 @@ main {
             &:nth-of-type(3) {
                 top: 232px;
                 animation-duration: 40s;
+
+                @media (max-width: 700px) {
+                    animation-duration: 20s;
+                }
             }
         }
     }
@@ -2641,6 +2649,11 @@ section[aria-label="Trust metrics"] {
                     line-height: 28px;
                     margin-bottom: 12px;
                     color: $color-wallstreet-black;
+
+                    @media (max-width: 700px) {
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
                 }
 
                 cite {
@@ -3817,3 +3830,82 @@ ul.all-posts {
         }
     }
 }
+
+/* Keep your existing styles. These are just the carousel bits. */
+
+.customer-quote .quote-body { 
+    position: relative; 
+    padding: 64px 0; 
+    width: 100%; 
+
+    @media (max-width: 700px) {
+        padding: 32px 0;
+    }
+}
+.customer-quote .quote-viewport { overflow: hidden; width: 100%; }
+
+.customer-quote .quote-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.customer-quote .quote-track::-webkit-scrollbar { display: none; }
+
+.customer-quote .quote-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+
+    img {
+        max-height: 48px;
+        max-width: 240px;
+        margin: 12px auto 0;
+    }
+}
+
+/* Your existing typography for blockquote/cite can remain.
+   This just stabilises height so the dots don’t jump. */
+.customer-quote .quote-slide blockquote { margin: 0; min-height: 8lh; }
+
+.customer-quote .quote-dots {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1rem;              /* inside the box underneath the quote */
+}
+
+@keyframes backgroundGrow {
+    0% { background-position: 0 0; }
+    100% { background-position: 24px 0; }
+}
+
+.customer-quote .quote-dots button {
+  width: 12px; 
+  height: 12px; 
+  border-radius: 
+  999px; 
+  border: 0; 
+  padding: 0;
+  background: $plus-white; 
+  box-shadow: 0 0 0 1px $light-grey; 
+  cursor: pointer; 
+  background: linear-gradient(to right, $plus-white 0%, $plus-white 49.5%, rgba($wallstreet-black, .8) 49.5%, rgba($wallstreet-black, .8) 100%);
+  background-size: 200%;
+}
+.customer-quote .quote-dots button[aria-current="true"] {
+    animation: backgroundGrow 6.2s linear 1;
+    box-shadow: 0 0 0 1px rgba($wallstreet-black, .6);
+    width: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-quote .quote-track { scroll-behavior: auto; }
+}
+
+  
