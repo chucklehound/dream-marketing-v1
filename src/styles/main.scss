@@ -11,6 +11,8 @@ $box-shadow-lg: 0px 16px 24px 0px rgba($wallstreet-black, .18), 0px 2px 4px 0px 
     navigation: auto;
   }
 
+  [hidden] { display: none !important; }
+
 /*
   1. Use a more-intuitive box-sizing model.
 */

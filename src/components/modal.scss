@@ -2,8 +2,8 @@
 
 @keyframes appearModal {
     0% { transform: translateY(300px) scale(1); opacity: 0; }
-    60% { transform: translateY(-8px) scale(1,1.04); opacity: 1; }
-    70% { transform: translateY(2px) scale(1,0.98); opacity: 1; }
+    60% { transform: translateY(-1px) scale(1.01,1.03); opacity: 1; }
+    70% { transform: translateY(1px) scale(1,0.99); opacity: 1; }
     100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
@@ -117,6 +117,34 @@
                     background: $plus-white;
                 }
             }
+        }
+
+        .success-view {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            
+            h3 {
+                @include heading5;
+            }
+        }
+    }
+}
+
+.modal, #mailing-list-modal {
+    @media (max-width: 600px) {
+        width: 100%;
+        top: 20px;
+        margin: 0;
+        bottom: 0;
+        left: 20px;
+        right: 0;
+        padding: 20px;
+
+        .modal__header .modal__title h2 {
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: -0.06rem;
         }
     }
 }
