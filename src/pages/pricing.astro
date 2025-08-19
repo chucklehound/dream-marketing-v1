@@ -20,6 +20,8 @@ import financeManager from '/src/img/finance-manager.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
 import csManager from '/src/img/cs-manager.png';
 
+import Modal from '../components/Modal.astro';
+
 ---
 
 <Layout title="Dream Pricing - Priced for every business, open to any business">
@@ -344,7 +346,7 @@ import csManager from '/src/img/cs-manager.png';
 					</div>
 		  
 					<footer class="card-footer">
-					  <Button label="Get notified when they start" href="/get-started" target="" variant="secondary" size="medium" />
+						<button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified when they start</button>
 					</footer>
 				  </article>
 				</li>
@@ -371,7 +373,7 @@ import csManager from '/src/img/cs-manager.png';
 					</div>
 		  
 					<footer class="card-footer">
-					  <Button label="Get notified when they start" href="/get-started" target="" variant="secondary" size="medium" />
+						<button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified when they start</button>
 					</footer>
 				  </article>
 				</li>
@@ -398,7 +400,7 @@ import csManager from '/src/img/cs-manager.png';
 					</div>
 		  
 					<footer class="card-footer">
-					  <Button label="Get notified when they start" href="/get-started" target="" variant="secondary" size="medium" />
+						<button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified when they start</button>
 					</footer>
 				  </article>
 				</li>
@@ -434,4 +436,92 @@ import csManager from '/src/img/cs-manager.png';
 		  </section>
 	</main>
 	<Footer />
+
+	<Modal id="mailing-list-modal" closeLabel="Close">
+		<h2 slot="title">New team members are joining soon, find out when they start.</h2>
+		<p>We're getting new Dreamies ready to onboard, get an instant notification when they're ready to hire.</p>
+	  
+		<div class="modal-form">
+		  <form id="contactForm" class="webform" novalidate>
+			<!-- honeypot -->
+			<input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
+	  
+			<label>
+			  Name
+			  <input type="text" name="name" required />
+			</label>
+	  
+			<label>
+			  Email
+			  <input type="email" name="email" required />
+			</label>
+	  
+			<fieldset class="dreamie-radio-group">
+			  <legend>Which Dreamie are you most excited by?</legend>
+	  
+			  <div class="radio-option">
+				<input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+				<label for="finance">Finance Manager</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+				<label for="marketing">Head of Marketing</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+				<label for="cs">Customer Service Manager</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="other" name="dreamie" value="Other" />
+				<label for="other">Other</label>
+			  </div>
+			</fieldset>
+	  
+			<button type="submit" class="button secondary" id="submitBtn">Get updates</button>
+		  </form>
+	  
+		  <p id="formStatus" role="status" aria-live="polite"></p>
+	  
+		  <script is:inline>
+			(function () {
+			  const modal  = document.getElementById('mailing-list-modal');
+			  const form   = modal.querySelector('#contactForm');
+			  const btn    = modal.querySelector('#submitBtn');
+			  const status = modal.querySelector('#formStatus'); 
+	  
+			  const FORM_URL = 'https://script.google.com/macros/s/AKfycby-HTrO.../exec';
+	  
+			  form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				if (btn) btn.disabled = true;
+				if (status) status.textContent = 'Sending…';
+	  
+				// Send as x-www-form-urlencoded to avoid CORS preflight
+				const params = new URLSearchParams(new FormData(form));
+	  
+				try {
+				  const res = await fetch(FORM_URL, { method: 'POST', body: params });
+				  if (!res.ok) throw new Error('Bad response');
+	  
+				  if (status) status.textContent = 'Thanks — we received your message.';
+				  form.reset();
+	  
+				  // optional: close the modal on success after a short pause
+				  setTimeout(() => {
+					const dlg = modal.querySelector('dialog');
+					// if your Modal.astro renders the <dialog> internally, get it by id instead:
+					// const dlg = document.getElementById('mailing-list-modal');
+					if (dlg && dlg.open) dlg.close();
+				  }, 600);
+				} catch (err) {
+				  if (status) status.textContent = 'Network error. Please try again.';
+				} finally {
+				  if (btn) btn.disabled = false;
+				}
+			  });
+			})();
+		  </script>
+		</div>
+	  </Modal>
+	  
 </Layout>

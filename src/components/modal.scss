@@ -1,0 +1,126 @@
+@import '../styles/main.scss';
+
+@keyframes appearModal {
+    0% { transform: translateY(300px) scale(1); opacity: 0; }
+    60% { transform: translateY(-8px) scale(1,1.04); opacity: 1; }
+    70% { transform: translateY(2px) scale(1,0.98); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal {
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 10vh;
+    border-radius: 16px;
+    border: 1px solid $light-grey;
+    background: $plus-white;
+    box-shadow: 0 12px 24px 2px rgba($wallstreet-black,.12);
+    animation: appearModal .4s ease 1;
+    transform-origin: top center;
+
+    .modal__surface {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .modal__header {
+        height: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .modal__close {
+            appearance: none;
+            min-width: 32px;
+            min-height: 32px;
+            display: flex;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            transition: background .3s ease;
+            flex: 1;
+
+            &:hover {
+                background: $quadra-grey;
+            }
+        }
+
+        .modal__title h2 {
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+        }
+    }
+}
+
+#mailing-list-modal {
+    width: 600px;
+    margin-left: -300px;
+    padding: 32px;
+
+    .modal__header {
+        height: auto;
+        
+        .modal__title h2 {
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: -0.1rem;
+        }
+    }
+
+    .modal__surface {
+        .modal-form {
+            background: $classic-yellow;
+            border-radius: 8px;
+            padding: 24px;
+            
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+
+                label, fieldset legend {
+                    font-weight: 500;
+                    color: $wallstreet-black;
+                }
+
+                fieldset {
+                    appearance: none;
+                    border: none;
+                    padding: 0;
+
+                    .radio-option {
+                        display: flex;
+                        gap: 4px;
+                        justify-content: flex-start;
+                        align-items: center;
+
+                        label {
+                            font-weight: 400;
+                        }
+                    }
+                }
+
+                input {
+                    border: 1px solid $light-grey;
+                    border-radius: 6px;
+                    padding: 8px 16px;
+                    background: $plus-white;
+                }
+            }
+        }
+    }
+}
+
+::backdrop {
+    background: rgba($wallstreet-black,.6);
+}

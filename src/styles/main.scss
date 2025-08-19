@@ -2907,7 +2907,7 @@ section[aria-label="Trust metrics"] {
         font-weight: 600;
         line-height: 40px;
         letter-spacing: -0.32px;
-        background: linear-gradient(90deg, #000D26 0%, #489FD9 100%);
+        background: linear-gradient(270deg, #000D26 0%, #489FD9 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -2939,7 +2939,11 @@ h3.section-title {
 }
 
 .pricing-table {
-    padding: 0 16px;
+    padding: 0;
+
+    @media (min-width: 701px) {
+        padding: 0 16px;
+    }
 
     .pricing-grid {
         border-radius: 16px;
@@ -2958,10 +2962,10 @@ h3.section-title {
 
         h3 {
             color: $wallstreet-black;
-            font-size: 24px;
+            font-size: 32px;
             font-style: normal;
             font-weight: 600;
-            line-height: 28px; /* 116.667% */
+            line-height: 36px; /* 116.667% */
             letter-spacing: -0.24px;
             text-align: left;
         }
@@ -2990,7 +2994,7 @@ h3.section-title {
             }
 
             @media (min-width: 1024px) {
-                padding: 28px;
+                padding: 36px;
                 background: none;
             }
 
@@ -3010,7 +3014,7 @@ h3.section-title {
                 background: $plus-white;
                 border-radius: 12px;
                 border: 1px solid $sawtooth-blue;
-                box-shadow: 0 12px 24px 0 rgba($wallstreet-black, .1);
+                box-shadow: 0 12px 24px 0 rgba($wallstreet-black, .1), 0 8px 16px rgba($sawtooth-blue, .1);
             }
 
             .plan-header {

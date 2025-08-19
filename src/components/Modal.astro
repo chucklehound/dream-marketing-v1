@@ -1,0 +1,98 @@
+---
+/**
+ * Props
+ * - id: required, unique id for the dialog
+ * - closeLabel: optional, accessible label for the close button
+ * - titleId: optional, id for the modal's heading (auto if omitted)
+ */
+ const { id, closeLabel = 'Close', titleId = `${id}-title` } = Astro.props;
+
+ import '../components/modal.scss';
+
+ import closeIcon from '/src/img/close.svg';
+---
+
+<dialog id={id} aria-labelledby={titleId} aria-modal="true" class="modal">
+  <div class="modal__surface" role="document">
+    <div class="modal__header">
+      <!-- Title goes in the named slot so you control the heading level -->
+      <div id={titleId} class="modal__title">
+        <slot name="title">Modal title</slot>
+      </div>
+
+      <button type="button" class="modal__close" data-close-modal aria-label={closeLabel}>
+        <img src={closeIcon.src} role="presentation" alt=""><span class="visually-hidden">Close</span>
+      </button>
+    </div>
+
+    <div class="modal__body">
+      <slot />
+    </div>
+
+    <footer class="modal__footer">
+      <slot name="footer" />
+    </footer>
+  </div>
+</dialog>
+
+<script is:inline>
+  (() => {
+    // Open any modal via [data-open-modal="modal-id"]
+    const openers = document.querySelectorAll('[data-open-modal]');
+    const previousFocus = new Map(); // store the last focused element per dialog
+
+    function getDialog(id) {
+      const dlg = document.getElementById(id);
+      if (!(dlg instanceof HTMLDialogElement)) return null;
+      return dlg;
+    }
+
+    openers.forEach(opener => {
+      opener.addEventListener('click', (e) => {
+        const modalId = opener.getAttribute('data-open-modal');
+        const dlg = getDialog(modalId);
+        if (!dlg) return;
+
+        previousFocus.set(dlg, document.activeElement);
+        // Open as modal; supported in modern browsers
+        if (!dlg.open) dlg.showModal();
+
+        // Close when clicking the backdrop
+        dlg.addEventListener('click', (evt) => {
+          const rect = dlg.getBoundingClientRect();
+          const inDialog = (
+            evt.clientX >= rect.left &&
+            evt.clientX <= rect.right &&
+            evt.clientY >= rect.top &&
+            evt.clientY <= rect.bottom
+          );
+          if (!inDialog) dlg.close();
+        }, { once: true });
+
+        // Restore focus on close
+        const onClose = () => {
+          const last = previousFocus.get(dlg);
+          if (last && typeof last.focus === 'function') last.focus();
+          dlg.removeEventListener('close', onClose);
+        };
+        dlg.addEventListener('close', onClose);
+      });
+    });
+
+    // Close via any [data-close-modal] inside the dialog
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-close-modal]');
+      if (!btn) return;
+      const dlg = btn.closest('dialog');
+      if (dlg && dlg.open) dlg.close();
+    });
+
+    // Support ESC in case of non-<dialog> fallback
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const openDlg = document.querySelector('dialog[open]');
+        if (openDlg) openDlg.close();
+      }
+    });
+  })();
+</script>

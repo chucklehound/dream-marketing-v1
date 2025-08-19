@@ -6,9 +6,20 @@ interface Props {
     size: 'small' | 'medium' | 'large';
     variant?: 'primary' | 'secondary' | 'reverse';
     class?: string;
+    [key: string]: any;
 }
 
-const { label, href, target, variant = 'primary', size = 'small', class: extraClass = '', } = Astro.props;
+const {
+  label,
+  href,
+  target,
+  variant = 'primary',
+  size = 'medium',
+  iconLeft,
+  iconRight,
+  class: extraClass = '',
+  ...rest
+} = Astro.props;
 
 import '../components/button.scss';
 ---
@@ -18,6 +29,7 @@ import '../components/button.scss';
     class={`button${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
     href={href}
     target={target}
+    {...rest}
   >
     {label}
     <slot />
@@ -29,6 +41,7 @@ import '../components/button.scss';
     class={`button secondary${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
     href={href}
     target={target}
+    {...rest}
   >
     {label}
     <slot />
@@ -40,6 +53,7 @@ import '../components/button.scss';
     class={`button reverse${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
     href={href}
     target={target}
+    {...rest}
   >
     {label}
     <slot />
