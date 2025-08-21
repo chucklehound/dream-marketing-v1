@@ -469,7 +469,7 @@ header {
         }
         
         h1 {
-            max-width: 820px;
+            max-width: 900px;
             font-size: 40px;
             line-height: 48px;
             letter-spacing: -0.1rem;
@@ -509,6 +509,10 @@ header {
                     display: initial;
                 }
             }            
+        }
+
+        &.small-header {
+            padding-top: 32px;
         }
 
         &.small-header h1, &.small-header .highlight-title {
