@@ -150,7 +150,7 @@ export default function DreamieShowcase({ images, messages }) {
         alignItems: "flex-end",
         position: "relative",
         minHeight: 180,
-        padding: "2rem 0",
+        padding: "0",
       }}
     >
       {rowImages.map((src, i) => {
