@@ -91,6 +91,9 @@ body {
 }
 
 .content-title {
+    max-width: 960px;
+    margin: 0 auto;
+
     h2 {
         margin-bottom: 24px;
     }
@@ -462,10 +465,11 @@ header {
         justify-content: center;
         align-items: center;
         text-align: center;
-        gap: 12px;
+        gap: 20px;
 
         @media (max-width: 768px) {
             padding: 0 16px;
+            gap: 12px;
         }
         
         h1 {
@@ -756,6 +760,8 @@ main {
         background: $wallstreet-black;
 
         .content-title {
+            margin: 0;
+            
             h2 {
                 color: $plus-white;
             }
@@ -1712,6 +1718,17 @@ section[aria-label="Trust metrics"] {
 .main-content {
     width: 100%;
     margin: auto;
+
+    &.contrast-container {
+        background: $classic-yellow;
+
+        .highlight-title {
+            background: linear-gradient(90deg, #489FD9 0%, #000D26 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
 
     &.contain-on-mobile {
         position: relative;
@@ -3869,4 +3886,40 @@ ul.all-posts {
   .customer-quote .quote-track { scroll-behavior: auto; }
 }
 
-  
+table.how-works-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 840px;
+    margin: 32px auto 0;
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+    }
+
+    th {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px; /* 133.333% */
+        letter-spacing: -0.24px;
+        border-bottom: 1px solid $medium-grey;
+        color: $wallstreet-black;
+    }
+
+    td {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 125% */
+        letter-spacing: 0.16px;
+        padding: 24px 12px;
+        border-bottom: 1px solid $light-grey;
+        color: $performa-black;
+
+        &:nth-of-type(2n) {
+            font-weight: 500;
+            color: $wallstreet-black;
+        }
+    }
+}

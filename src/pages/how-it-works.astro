@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Button from '../components/Button.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
+import "../styles/main.scss";
+
+import howWorksHero from '/src/img/how-works-hero.png';
+
+import Carousel from '../components/Carousel.astro';
+
+import card1 from '/src/img/how-works-1.png';
+import card2 from '/src/img/how-works-2.png';
+import card3 from '/src/img/how-works-3.png';
+import card4 from '/src/img/how-works-4.png';
+
+const contentBlocks = [
+  {
+    image: card1,
+    title: 'No complicated apps to learn, starting is as simple as making a call.',
+    subtitle: 'It takes minutes',
+    ctaText: 'Get started now',
+    ctaUrl: '/get-started',
+  },
+  {
+    image: card2,
+    title: 'Make plans with a message, and leave your Dream team to handle the hard work.',
+    subtitle: 'It takes minutes',
+    ctaText: 'Get started now',
+    ctaUrl: '/get-started',
+  },
+  {
+    image: card3,
+    title: 'Grow your business without growing your workload. Your team handles the hard work, you take the call.',
+    subtitle: 'It takes minutes',
+    ctaText: 'Get started now',
+    ctaUrl: '/get-started',
+  },
+  {
+    image: card4,
+    title: 'Priced to get your business started, built to make it succeed.',
+    subtitle: 'It takes minutes',
+    ctaText: 'Get started now',
+    ctaUrl: '/get-started',
+  },
+];
+
+---
+
+<Layout title="Dream - How does it work?">
+    <Navigation />
+	<header class="hero-home solo-header">
+		<div class="hero-elements main-content">
+                <img 
+                  src={howWorksHero.src} 
+                  alt="" 
+                  class="dreamie-img" 
+                  aria-hidden="true" 
+                />
+			<section class="header-text content-title">
+				<h1 class="page-title">AI employees that put the <br/><span class="highlight-title">&lsquo;pro&rsquo; in proactive</span></h1>
+				<p>We built Dream’s employees to think and work like real people.<br/>
+                They make plans, and get on with work; sending you updates as the go.</p>
+			</section>
+		</div>
+	</header>
+	<main class="pinch-footer">
+		<section class="main-content contrast-container">
+			<article class="content-container">
+				<div class="content-title">
+                    <h2>You’ll get bored of saying <br/><span class="highlight-title">&ldquo;wow... did it just do that!&rdquo;</span></h2>
+                    <p>Dream isn’t another app to learn, it’s AI made for real people. <br/>
+                        We’ve taken the best parts of cutting-edge tech, and built it to be magical.</p>
+                  </div>
+                  <table class="how-works-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">AI tools</th>
+                        <th scope="col">vs</th>
+                        <th scope="col">Dream AI employees</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Need prompted to keep performing tasks.</td>
+                        <td></td>
+                        <td>Work on things by themselves and make decisions about next steps.</td>
+                      </tr>
+                      <tr>
+                        <td>Can’t talk to the outside world — they write the email, but you need to send it.</td>
+                        <td></td>
+                        <td>Fully connected, so they can research restaurants, shortlist, then call to book.</td>
+                      </tr>
+                      <tr>
+                        <td>Complicated apps to learn. If you’re not logged in you’ll miss something important.</td>
+                        <td></td>
+                        <td>Chat on WhatsApp, Phone, or on the app. Never miss an important update.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+			</article>
+		</section>
+        <section class="main-content">
+            <article class="content-container full-width">
+              <div class="content-title">
+                <h2>Smart employees, <br/>Meet <span class="highlight-title">powerful tools</span></h2>
+                <p>Dream’s AI employees use some of the most advanced technology on the planet, but we made them even better by giving them custom tools so they can work smarter and faster.</p>
+              </div>
+              <Carousel items={contentBlocks} />
+            </article>
+          </section>
+        <section class="main-content">
+			<article class="full-width-contrast promo-home promo-phone">
+			  <div class="content-container">
+				<div class="content-title">
+				  <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
+				  <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+				  <div class="actions">
+					<Button
+				  label="Call your PA"
+				  href="tel:+447476963324"
+				  target="_blank"
+				  variant="secondary"
+				  size="medium"
+				><img src={phoneIcon.src} role="presentation" alt=""></Button>
+				<Button
+				  label="Message on WhatsApp"
+				  href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
+				  target=""
+				  variant="secondary"
+				  size="medium"
+				><img src={whatsAppIcon.src} role="presentation" alt=""></Button>
+				  </div>
+				</div>
+			  </div>
+			</article>
+		  </section>
+	</main>
+	
+    <Footer />
+</Layout>
