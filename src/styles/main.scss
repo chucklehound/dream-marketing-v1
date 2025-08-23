@@ -339,7 +339,7 @@ header {
         padding: 0 0 $spacing*2;
         z-index: 2;
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
             gap: 16px;
         }
 
@@ -352,6 +352,12 @@ header {
             z-index: 3;
             overflow: hidden;
             max-height: calc(50vw - 12px);
+
+            @media (min-width: 601px) and (max-width: 960px) {
+                .hero-carousel-main {
+                    transform: scale(0.9);
+                }
+            }
 
             @media (max-width: 600px) {
                 .hero-carousel-main {
@@ -497,7 +503,7 @@ header {
                 }
             }
 
-            @media (min-width: 1152px) {
+            @media (min-width: 901px) {
                 @include heading1;
                 font-style: normal;
                 letter-spacing: -0.15rem;    
@@ -913,6 +919,10 @@ main {
         &.full-width {
             max-width: 100vw;
             overflow: hidden;
+
+            .content-title {
+                padding: 0 16px;
+            }
         }    
 
         h4 {
@@ -3484,7 +3494,6 @@ h3.section-title {
                 width: 100%;
                 max-height: 100%;
                 object-fit: cover;
-                image-rendering: -webkit-optimize-contrast;
                 object-position: 0 0;
             }
         }
@@ -3896,6 +3905,17 @@ table.how-works-table {
     max-width: 840px;
     margin: 32px auto 0;
 
+    thead {
+        position: sticky;
+        top: 68px;
+        background: $classic-yellow;
+        border-bottom: 1px solid rgba($wallstreet-black, .3);
+
+        @media (max-width: 700px) {
+            top: 64px;
+        } 
+    }
+
     th, td {
         padding: 12px;
         text-align: center;
@@ -3906,7 +3926,6 @@ table.how-works-table {
         font-weight: 600;
         line-height: 32px; /* 133.333% */
         letter-spacing: -0.24px;
-        border-bottom: 1px solid $medium-grey;
         color: $wallstreet-black;
     }
 
@@ -3923,6 +3942,18 @@ table.how-works-table {
         &:nth-of-type(2n) {
             font-weight: 500;
             color: $wallstreet-black;
+        }
+    }
+
+    @media (max-width: 800px) {
+        th {
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        td {
+            font-size: 14px;
+            line-height: 20px;
         }
     }
 }
