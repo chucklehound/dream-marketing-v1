@@ -184,7 +184,8 @@ export default function DreamieShowcase({ images, messages }) {
                 height={height}
                 style={{
                   borderRadius: 0,
-                  objectFit: "cover",
+                  objectFit: "contain",
+                  overflow: "visible",
                   opacity: showCenter ? 1 : 0,
                   transition: `opacity ${FADE}ms`,
                 }}

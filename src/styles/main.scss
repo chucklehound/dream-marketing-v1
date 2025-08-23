@@ -344,7 +344,7 @@ header {
         }
 
         .header-image {
-            max-height: 400px;
+            max-height: 440px;
             position: relative;
             display: flex;
             justify-content: center;
@@ -360,13 +360,13 @@ header {
             }
 
             &.home-hero {
-                max-height: 440px;
-                min-height: 440px;
+                max-height: 460px;
+                min-height: 460px;
                 position: relative;
 
                 &.ai-team {
-                    max-height: 300px;
-                    min-height: 300px;
+                    max-height: 240px;
+                    min-height: 240px;
 
                     @media (max-width: 700px) {
                         flex-direction: row-reverse;
@@ -390,6 +390,7 @@ header {
                     
                     @media (max-width: 600px) {
                         height: 240px;
+                        padding-top: 32px;
                     }
                 }
 
@@ -408,8 +409,8 @@ header {
                 }
 
                 @media (max-width: 600px) {
-                    max-height: 240px;
-                    min-height: 240px;
+                    max-height: 260px;
+                    min-height: 260px;
                 }
             }
 
@@ -904,7 +905,9 @@ main {
         padding: 48px 0;
 
         @media (max-width: 700px) {
-            padding: 48px 16px;
+            &:not(.full-width) {
+                padding: 48px 16px;
+            }
         }
 
         &.full-width {
