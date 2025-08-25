@@ -309,6 +309,10 @@ header {
         }
     }
 
+    &.text-header {
+        min-height: 320px;
+    }
+
     .seo-header {
         display: flex;
 
@@ -366,8 +370,8 @@ header {
             }
 
             &.home-hero {
-                max-height: 460px;
-                min-height: 460px;
+                max-height: 385px;
+                min-height: 385px;
                 position: relative;
 
                 &.ai-team {
@@ -392,6 +396,7 @@ header {
 
                 .ticker-window {
                     width: 100vw;
+                    transform: scale(0.8);
                     animation: fade-in .7s ease 1;
                     
                     @media (max-width: 600px) {
