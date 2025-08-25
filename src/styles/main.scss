@@ -261,6 +261,15 @@ header {
     padding: 24px 0 32px;
     min-height: 400px;
 
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin: 0 auto;
+    }
+
     @media (min-width: 960px) {
         padding-top: 64px;
         justify-content: center;
@@ -575,6 +584,21 @@ header {
     }
 
     &.hero-home {
+
+        &.index-hero {
+
+            @media (min-width: 1024px) {
+                .header-image, .actions {
+                    order: 2;
+                }
+    
+                .header-text {
+                    order: 1;
+                    position: relative;
+                    top: 16px;
+                }
+            }
+        }
 
         &.community-header {
             position: relative;
