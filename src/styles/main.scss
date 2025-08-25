@@ -366,6 +366,16 @@ header {
             overflow: hidden;
             max-height: calc(50vw - 12px);
 
+            .hero-carousel-main {
+                align-items: flex-end;
+            }
+
+            @media (min-width: 1024px) {
+                .hero-carousel-main {
+                    align-items: flex-start;
+                }
+            }
+
             @media (min-width: 601px) and (max-width: 960px) {
                 .hero-carousel-main {
                     transform: scale(0.9);
@@ -588,8 +598,12 @@ header {
         &.index-hero {
 
             @media (min-width: 1024px) {
-                .header-image, .actions {
+                .actions {
                     order: 2;
+                }
+
+                .header-image {
+                    order: 3;
                 }
     
                 .header-text {

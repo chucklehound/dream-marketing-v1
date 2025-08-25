@@ -147,7 +147,6 @@ export default function DreamieShowcase({ images, messages }) {
         width: "100vw",
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end",
         position: "relative",
         minHeight: 180,
         padding: "0",
