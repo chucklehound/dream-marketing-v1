@@ -371,8 +371,8 @@ header {
                 position: relative;
 
                 &.ai-team {
-                    max-height: 240px;
-                    min-height: 240px;
+                    max-height: 320px;
+                    min-height: 320px;
 
                     @media (max-width: 700px) {
                         flex-direction: row-reverse;
@@ -2246,6 +2246,7 @@ section[aria-label="Trust metrics"] {
 
     h2 {
         text-align: left;
+        @include heading3;
     }
 
     h3 {
