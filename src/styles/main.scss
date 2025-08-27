@@ -258,7 +258,7 @@ header {
     gap: 32px;
     position: relative;
     z-index: 1;
-    padding: 24px 0 32px;
+    padding: 12px 0 32px;
     min-height: 400px;
 
     .actions {
@@ -407,6 +407,14 @@ header {
                             height: 300px;
                         }
 
+                        .video-wrapper:nth-of-type(1) {
+                            right: 30px;
+                        }
+
+                        .video-wrapper:nth-of-type(3) {
+                            right: -30px;
+                        }
+
                         .video-wrapper:last-of-type {
                             display: none;
                         }
@@ -439,8 +447,8 @@ header {
                 }
 
                 @media (max-width: 600px) {
-                    max-height: 260px;
-                    min-height: 260px;
+                    max-height: 224px;
+                    min-height: 224px;
                 }
             }
 
@@ -668,6 +676,8 @@ header {
             width: 234px;
             height: 400px;
             overflow: hidden;
+            mix-blend-mode: multiply;
+            min-width: 160px;
 
             video {
                 position: relative;
@@ -3243,7 +3253,11 @@ h3.section-title {
     display: flex;
     gap: 16px;
     margin-top: 32px;
-    padding: 16px;
+    padding: 16px 0;
+
+    @media (min-width: 700px) {
+        padding: 16px;
+    }
 
     @media (max-width: 1152px) {
         flex-direction: column;
@@ -3491,8 +3505,12 @@ h3.section-title {
     flex-wrap: wrap;
     gap: 24px;
     max-width: 1152px;
-    padding: 16px;
+    padding: 16px 0;
     margin: auto;
+
+    @media (min-width: 700px) {
+        padding: 16px;
+    }
 
     .panel {
         padding: 24px;
