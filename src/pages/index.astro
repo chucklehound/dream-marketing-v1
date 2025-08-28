@@ -25,6 +25,8 @@ import ctaDreamies from '/src/img/end-cta-guys.png';
 
 import DreamieCarousel from '../components/DreamieCarousel.jsx';
 
+import HireGuyBlock from "../components/hireGuyBlock.astro";
+
 // Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
 import dreamie2 from '/src/img/hero-dreamies/dreamie-2.png';
@@ -163,32 +165,7 @@ const contentBlocks = [
     </div>
   </header>
   <main>
-    <section class="main-content">
-      <article class="full-width-contrast promo-home promo-phone">
-        <div class="content-container">
-          <div class="content-title">
-            <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
-            <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
-            <div class="actions">
-              <Button
-            label="Call your PA"
-            href="tel:+447476963324"
-            target="_blank"
-            variant="secondary"
-            size="medium"
-          ><img src={phoneIcon.src} role="presentation" alt=""></Button>
-          <Button
-            label="Message on WhatsApp"
-            href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-            target=""
-            variant="secondary"
-            size="medium"
-          ><img src={whatsAppIcon.src} role="presentation" alt=""></Button>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
+    <HireGuyBlock />
     <section class="main-content">
       <article class="content-container full-width">
         <div class="content-title">

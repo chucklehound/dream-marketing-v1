@@ -4019,3 +4019,11 @@ table.how-works-table {
         }
     }
 }
+
+/* Default: show mobile call, hide modal opener */
+.button.secondary.medium[data-mobile-call] { display: inline-flex; }
+.button.secondary.medium[data-open-modal="call-modal"] { display: none; }
+
+/* Desktop-like: swap when JS adds .desktoplike to <html> */
+html.desktoplike .button.secondary.medium[data-mobile-call] { display: none; }
+html.desktoplike .button.secondary.medium[data-open-modal="call-modal"] { display: inline-flex; }

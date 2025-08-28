@@ -36,6 +36,7 @@
             appearance: none;
             min-width: 32px;
             min-height: 32px;
+            max-width: 32px;
             display: flex;
             background: transparent;
             border: none;
@@ -151,4 +152,35 @@
 
 ::backdrop {
     background: rgba($wallstreet-black,.6);
+}
+
+#call-modal {
+    padding: 32px;
+
+    .modal__header {
+        height: auto;
+        
+        .modal__title h2 {
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: -0.1rem;
+            text-align: left;
+        }
+    }
+
+    .qr-modal__visual {
+        margin: 12px auto;
+        padding: 24px;
+        background: $dream-yellow;
+        border-radius: 12px;
+        border: 1px solid rgba($wallstreet-black,.12);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 256px;
+            height: 256px;
+        }
+    }
 }

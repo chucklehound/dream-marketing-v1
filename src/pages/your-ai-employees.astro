@@ -28,8 +28,7 @@ import financeManager from '/src/img/finance-manager.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
 import csManager from '/src/img/cs-manager.png';
 
-import whatsAppIcon from '/src/img/whats-app-icon.svg';
-import phoneIcon from '/src/img/phone-call.svg';
+import HireGuyBlock from "../components/hireGuyBlock.astro";
 
 import Modal from '../components/Modal.astro';
 
@@ -283,32 +282,7 @@ import Modal from '../components/Modal.astro';
       
         </article>
       </section>
-      <section class="main-content">
-        <article class="full-width-contrast promo-home promo-phone">
-          <div class="content-container">
-            <div class="content-title">
-              <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
-              <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
-              <div class="actions">
-                <Button
-              label="Call your PA"
-              href="tel:+447476963324"
-              target="_blank"
-              variant="secondary"
-              size="medium"
-            ><img src={phoneIcon.src} role="presentation" alt=""></Button>
-            <Button
-              label="Message on WhatsApp"
-              href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-              target=""
-              variant="secondary"
-              size="medium"
-            ><img src={whatsAppIcon.src} role="presentation" alt=""></Button>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
+      <HireGuyBlock />
   </main>
   <Footer />
 

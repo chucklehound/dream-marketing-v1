@@ -22,6 +22,8 @@ import iconTiktok from '/src/img/icon-tiktok.svg';
 import iconYoutube from '/src/img/icon-youtube.svg';
 
 import iconHelpChat from '/src/img/message-alert-circle.svg';
+
+import HireGuyBlock from '../components/hireGuyBlock.astro';
 ---
 
 <Layout title="Dream - About us">
@@ -91,32 +93,7 @@ import iconHelpChat from '/src/img/message-alert-circle.svg';
 			</article>
 		</section>
 		</section>
-		<section class="main-content">
-			<article class="full-width-contrast promo-home promo-phone">
-			  <div class="content-container">
-				<div class="content-title">
-				  <h2>Hire your team as easily as <br/><span class="highlight-title">saying ‘hello...’</span></h2>
-				  <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
-				  <div class="actions">
-					<Button
-				  label="Call your PA"
-				  href="tel:+447476963324"
-				  target="_blank"
-				  variant="secondary"
-				  size="medium"
-				><img src={phoneIcon.src} role="presentation" alt=""></Button>
-				<Button
-				  label="Message on WhatsApp"
-				  href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-				  target=""
-				  variant="secondary"
-				  size="medium"
-				><img src={whatsAppIcon.src} role="presentation" alt=""></Button>
-				  </div>
-				</div>
-			  </div>
-			</article>
-		  </section>
+		<HireGuyBlock />
 	</main>
 	
 	<Footer/>

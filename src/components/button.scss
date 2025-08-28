@@ -3,6 +3,8 @@
 @import '../styles/elements.scss';
 
 .button {
+    cursor: pointer;
+    
     @include dreamButtonPrimarySmall;
     
     &.secondary {
