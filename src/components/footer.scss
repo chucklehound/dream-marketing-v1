@@ -70,7 +70,11 @@
       font-size: 14px;
       text-align: left;
       color: $color-grays-lighter;
-      margin-right: 84px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 1;
 
       svg {
         height: 32px;

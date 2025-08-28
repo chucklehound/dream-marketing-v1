@@ -7,11 +7,12 @@ const { onClose } = Astro.props;
 
 import "../components/navigation.scss";
 import HamburgerIcon from "/src/img/nav.svg?raw";
-import Dreamies from '/src/img/dreamies.png';
 
 import Logo from "../components/Logo.astro";
 
 import Button from "../components/Button.astro";
+
+import Modal from '../components/Modal.astro';
 
 ---
 
@@ -26,38 +27,139 @@ import Button from "../components/Button.astro";
       ><Logo /><span class="visually-hidden">Return home</span></a
     >
     <ul class="navbar">
-      <li><a class="hero-nav" href="/your-ai-employees"><span><img src={Dreamies.src} alt="" />Your AI employees</span></a></li>
-      <li><a href="/pricing">Pricing</a></li>
-      <li><a href="/community">Community</a></li>
-      <li><a href="/about-us">About Us</a></li>
-      <li>
-        <div class="mobile-login-button">
-          <Button
-            href="https://chat.usedream.ai"
-            target="_blank"
-            variant="secondary"
-            label="">Log in</Button
-          >
-        </div>
-      </li>
     </ul>
     <!-- Always visible login button -->
     <div class="main-actions">
       <Button
-        href="https://chat.usedream.ai"
-        target="_blank"
+        target=""
         variant="secondary"
         size="small"
-        class="hide-on-mobile"
-        label="">Log in</Button>
-        <div class="mobile-demo-button">
-          <Button href="/get-started" target="_blank" variant="primary" size="small" label=""
-            >Get started</Button
-          >
-        </div>
+        data-open-modal="mailing-list-modal"
+        label="">Sign up for launch</Button>
     </div>
   </nav>
 </div>
+
+<Modal id="mailing-list-modal" closeLabel="Close">
+  <h2 slot="title">Hire your own Dreamies</h2>
+  <p>We're getting our Dreamies ready to onboard, get an instant notification when they're ready to hire.</p>
+
+  <div class="modal-form">
+    <!-- Form view -->
+    <form id="contactForm" class="webform" novalidate>
+      <!-- honeypot -->
+      <input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
+
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+
+      <fieldset class="dreamie-radio-group">
+        <legend>Which Dreamie are you most excited by?</legend>
+        <div class="radio-option">
+          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+          <label for="finance">Finance Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+          <label for="marketing">Head of Marketing</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+          <label for="cs">Customer Service Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="other" name="dreamie" value="Other" />
+          <label for="other">Other</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
+        Get updates
+      </button>
+
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <!-- Success view (hidden until success) -->
+    <div id="successView" class="success-view" hidden>
+      <h4 id="successHeading">Thanks — you're on the list</h4>
+      <p>While you’re here, you might enjoy these community articles</p>
+      <ul class="success-links">
+        <li><a href="/community/givewheel-case-study">GiveWheel Scales Corporate Fundraising With Dream</a></li>
+        <li><a href="/community/cold-email-templates-that-get-retail-buyers-to-stock-your-product">Cold Email Templates That Get Retail Buyers to Stock Your Product</a></li>
+      </ul>
+
+      <div class="success-actions">
+        <button type="button" class="button" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const FORM_URL = "https://submit-form.com/xjnEmLMC6"; // Formspark endpoint
+
+      const modal       = document.getElementById('mailing-list-modal');
+      const form        = modal.querySelector('#contactForm');
+      const btn         = modal.querySelector('#submitBtn');
+      const statusElm   = modal.querySelector('#formStatus');
+      const successView = modal.querySelector('#successView');
+
+      const setLoading = (loading) => {
+        if (!btn) return;
+        btn.disabled = loading;
+        btn.dataset.originalLabel ??= btn.textContent;
+        btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        statusElm.textContent = '';
+
+        try {
+          const res = await fetch(FORM_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          });
+
+          if (!res.ok) throw new Error('Bad response');
+
+          // Hide form, show success
+          form.hidden = true;
+          successView.hidden = false;
+
+          // Move focus to success heading for screen readers
+          const heading = successView.querySelector('#successHeading');
+          if (heading) {
+            // Make it programmatically focusable just for this jump
+            heading.setAttribute('tabindex', '-1');
+            heading.focus({ preventScroll: true });
+            // optional cleanup later
+            setTimeout(() => heading.removeAttribute('tabindex'), 100);
+          }
+        } catch (err) {
+          statusElm.textContent = 'Something went wrong. Please try again.';
+        } finally {
+          setLoading(false);
+          // Clear the form on success view to “blank it out”
+          if (!successView.hidden) form.reset();
+        }
+      });
+    })();
+  </script>
+</Modal>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {

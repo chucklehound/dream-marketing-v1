@@ -18,37 +18,12 @@ import qrImg from '/src/img/qr.png';
         <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
 
         <div class="actions">
-          <!-- Mobile: real tel link -->
-          <Button
-            label="Call your PA"
-            href="tel:+447476963324"
+            <Button
+            target=""
             variant="secondary"
             size="medium"
-            data-mobile-call
-          >
-            <img src={phoneIcon.src} role="presentation" alt="" />
-          </Button>
-
-          <!-- Desktop: opens static QR modal -->
-          <Button
-            as="button"
-            label="Call your PA"
-            variant="secondary"
-            size="medium"
-            data-open-modal="call-modal"
-          >
-            <img src={phoneIcon.src} role="presentation" alt="" />
-          </Button>
-
-          <!-- WhatsApp (always shown) -->
-          <Button
-            label="Message on WhatsApp"
-            href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-            variant="secondary"
-            size="medium"
-          >
-            <img src={whatsAppIcon.src} role="presentation" alt="" />
-          </Button>
+            data-open-modal="mailing-list-modal"
+            label="">Be the first to hire</Button>
         </div>
       </div>
     </div>

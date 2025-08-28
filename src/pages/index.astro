@@ -14,9 +14,6 @@ import card2 from '/src/img/carousel-2--whatsapp.png';
 import card3 from '/src/img/carousel-3--update.png';
 import card4 from '/src/img/carousel-4--success.png';
 
-import whatsAppIcon from '/src/img/whats-app-icon.svg';
-import phoneIcon from '/src/img/phone-call.svg';
-
 import quoteLogo from '/src/img/givewheel-logo.png';
 import quoteLogojdi from '/src/img/justdoughit-logo.png';
 import quoteLogohol from '/src/img/holibob-logo.png';
@@ -26,6 +23,8 @@ import ctaDreamies from '/src/img/end-cta-guys.png';
 import DreamieCarousel from '../components/DreamieCarousel.jsx';
 
 import HireGuyBlock from "../components/HireGuyBlock.astro";
+
+import Modal from "../components/Modal.astro";
 
 // Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
@@ -108,30 +107,26 @@ const contentBlocks = [
   {
     image: card1,
     title: 'No complicated apps to learn, starting is as simple as making a call.',
-    subtitle: 'Find out more about',
-    ctaText: 'Getting Started',
-    ctaUrl: '/get-started',
+    subtitle: 'Be the first to hire',
+    ctaText: 'Get notified',
   },
   {
     image: card2,
     title: 'Make plans with a message, and leave your Dream team to handle the hard work.',
-    subtitle: 'Find out more about',
-    ctaText: 'What Dreamies can do',
-    ctaUrl: '/your-ai-employees',
+    subtitle: 'Be the first to hire',
+    ctaText: 'Get notified',
   },
   {
     image: card3,
     title: 'Grow your business without growing your workload. Your team handles the hard work, you take the call.',
-    subtitle: 'Find out more about',
-    ctaText: 'Sales Campaigns',
-    ctaUrl: '/your-ai-employees/head-of-sales',
+    subtitle: 'Be the first to hire',
+    ctaText: 'Get notified',
   },
   {
     image: card4,
     title: 'Priced to get your business started, built to make it succeed.',
-    subtitle: 'Find out more about',
-    ctaText: 'Dream Pricing',
-    ctaUrl: '/pricing',
+    subtitle: 'Be the first to hire',
+    ctaText: 'Get notified',
   },
 ];
 ---
@@ -152,15 +147,12 @@ const contentBlocks = [
         </h1>
       </section>
       <div class="actions">
-        <Button label="Get started" href="/get-started" target="_blank" size="medium"
-          ></Button>
         <Button
-          label="Meet the Dreamies"
-          href="/your-ai-employees"
-          target=""
-          variant="secondary"
-          size="medium"
-        />
+        target=""
+        variant="primary"
+        size="large"
+        data-open-modal="mailing-list-modal"
+        label="">Be the first to hire</Button>
       </div>
     </div>
   </header>
@@ -252,13 +244,138 @@ const contentBlocks = [
     <div class="content-title">
       <h2><span class="highlight-title">Grow your business </span><br/>with Dream</h2>
     </div>
-    <Button label="Get started" href="/get-started" target="_blank" size="medium"
-            ></Button> 
+    <Button
+        target=""
+        variant="primary"
+        size="medium"
+        data-open-modal="mailing-list-modal"
+        label="">Be the first to hire</Button>
           </article> 
     </section>
 </main>
     
 <Footer />
+
+<Modal id="mailing-list-modal" closeLabel="Close">
+  <h2 slot="title">Hire your own Dreamies</h2>
+  <p>We're getting our Dreamies ready to onboard, get an instant notification when they're ready to hire.</p>
+
+  <div class="modal-form">
+    <!-- Form view -->
+    <form id="contactForm" class="webform" novalidate>
+      <!-- honeypot -->
+      <input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
+
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+
+      <fieldset class="dreamie-radio-group">
+        <legend>Which Dreamie are you most excited by?</legend>
+        <div class="radio-option">
+          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+          <label for="finance">Finance Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+          <label for="marketing">Head of Marketing</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+          <label for="cs">Customer Service Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="other" name="dreamie" value="Other" />
+          <label for="other">Other</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
+        Get updates
+      </button>
+
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <!-- Success view (hidden until success) -->
+    <div id="successView" class="success-view" hidden>
+      <h4 id="successHeading">Thanks — you're on the list</h4>
+      <p>While you’re here, you might enjoy these community articles</p>
+      <ul class="success-links">
+        <li><a href="/community/givewheel-case-study">GiveWheel Scales Corporate Fundraising With Dream</a></li>
+        <li><a href="/community/cold-email-templates-that-get-retail-buyers-to-stock-your-product">Cold Email Templates That Get Retail Buyers to Stock Your Product</a></li>
+      </ul>
+
+      <div class="success-actions">
+        <button type="button" class="button" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const FORM_URL = "https://submit-form.com/xjnEmLMC6"; // Formspark endpoint
+
+      const modal       = document.getElementById('mailing-list-modal');
+      const form        = modal.querySelector('#contactForm');
+      const btn         = modal.querySelector('#submitBtn');
+      const statusElm   = modal.querySelector('#formStatus');
+      const successView = modal.querySelector('#successView');
+
+      const setLoading = (loading) => {
+        if (!btn) return;
+        btn.disabled = loading;
+        btn.dataset.originalLabel ??= btn.textContent;
+        btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        statusElm.textContent = '';
+
+        try {
+          const res = await fetch(FORM_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          });
+
+          if (!res.ok) throw new Error('Bad response');
+
+          // Hide form, show success
+          form.hidden = true;
+          successView.hidden = false;
+
+          // Move focus to success heading for screen readers
+          const heading = successView.querySelector('#successHeading');
+          if (heading) {
+            // Make it programmatically focusable just for this jump
+            heading.setAttribute('tabindex', '-1');
+            heading.focus({ preventScroll: true });
+            // optional cleanup later
+            setTimeout(() => heading.removeAttribute('tabindex'), 100);
+          }
+        } catch (err) {
+          statusElm.textContent = 'Something went wrong. Please try again.';
+        } finally {
+          setLoading(false);
+          // Clear the form on success view to “blank it out”
+          if (!successView.hidden) form.reset();
+        }
+      });
+    })();
+  </script>
+</Modal>
 
 <script>
   (function startSharedTicker(period = 5000) {
