@@ -1,33 +1,61 @@
 ---
 interface Props {
-	label: string;
-	href: string;
-    target: string;
-    variant?: 'primary' | 'secondary' | 'reverse';
+	label?: string;
+	href?: string;
+  target?: string;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'secondary' | 'reverse';
+  class?: string;
+  [key: string]: any;
 }
 
-const { label, href, target, variant = 'primary' } = Astro.props;
+const {
+  label,
+  href,
+  target,
+  variant = 'primary',
+  size = 'medium',
+  iconLeft,
+  iconRight,
+  class: extraClass = '',
+  ...rest
+} = Astro.props;
 
 import '../components/button.scss';
 ---
 
 {variant === 'primary' && (
-    <a class="button" href={href} target={target}>
-        {label}
-        <slot />
-    </a>
+  <a
+    class={`button${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
+    href={href}
+    target={target}
+    {...rest}
+  >
+    {label}
+    <slot />
+  </a>
 )}
 
 {variant === 'secondary' && (
-    <a class="button secondary" href={href} target={target}>
-        {label}
-        <slot />
-    </a>
+  <a
+    class={`button secondary${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
+    href={href}
+    target={target}
+    {...rest}
+  >
+    {label}
+    <slot />
+  </a>
 )}
 
 {variant === 'reverse' && (
-    <a class="button reverse" href={href} target={target}>
-        {label}
-        <slot />
-    </a>
+  <a
+    class={`button reverse${size === 'medium' ? ' medium' : ''}${size === 'large' ? ' large' : ''} ${extraClass}`}
+    href={href}
+    target={target}
+    {...rest}
+  >
+    {label}
+    <slot />
+  </a>
 )}

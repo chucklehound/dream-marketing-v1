@@ -30,12 +30,13 @@
         margin-bottom: 20px;
         text-align: left;
         
-        h4 {
+        h6 {
           font-size: 16px;
           line-height: 22px;
           font-weight: 500;
           margin-bottom: 12px;
           color: $color-grays-lighter;
+          letter-spacing: -0.2px;
         }
   
         ul {
@@ -69,7 +70,11 @@
       font-size: 14px;
       text-align: left;
       color: $color-grays-lighter;
-      margin-right: 84px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 1;
 
       svg {
         height: 32px;
@@ -85,6 +90,36 @@
 
       @media (max-width: 1000px) {
         order: 4;
+      }
+    }
+
+    .footer-social-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 12px;
+      padding: 8px 0 0;
+      justify-content: flex-start;
+      align-items: center;
+      
+
+      a {
+        transition: background .2s ease;
+        display: inline-flex;
+        min-width: 32px;
+        min-height: 32px;
+        max-height: 32px;
+
+          &:hover {
+            background: rgba($plus-white, .1);
+          }
+
+        svg, path {
+          fill: $plus-white;
+          width: 32px;
+          height: 32px;
+        }
       }
     }
 

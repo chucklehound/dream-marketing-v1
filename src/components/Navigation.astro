@@ -12,210 +12,146 @@ import Logo from "../components/Logo.astro";
 
 import Button from "../components/Button.astro";
 
-import angledArrowDR from "/src/img/angled-arrow-down-right.svg";
+import Modal from '../components/Modal.astro';
+
 ---
 
 <div class="navigation">
   <nav>
-    <!-- Hamburger button for small screens -->
-    <button class="hamburger" aria-label="Toggle navigation">
-      <Fragment set:html={HamburgerIcon} />
-      <span class="visually-hidden">Toggle navigation</span>
-    </button>
     <a class="logo-nav" href="/"
       ><Logo /><span class="visually-hidden">Return home</span></a
     >
     <ul class="navbar">
-      <li class="dropdown">
-        <a class="dropdown-toggle">What We Do</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-inner">
-            <h4>
-              <a href="/what-we-do/"
-                >What we do<img
-                  src={angledArrowDR.src}
-                  alt=""
-                  role="presentation"
-                /></a>
-            </h4>
-            <ul>
-              <li><h5>By Industry</h5></li>
-              <li><a href="/what-we-do/by-industry/travel">For Travel</a></li>
-              <li><a href="/what-we-do/by-industry/f-and-b">For FMCG</a></li>
-              <li>
-                <a href="/what-we-do/by-use-case/boost-saas-revenue"
-                  >For Technology Companies</a>
-              </li>
-            </ul>
-            <ul>
-              <li><h5>By Use Case</h5></li>
-              <li><a href="/what-we-do/by-use-case/boost-bricks-mortar">Boost Sales to Bricks & Mortar</a></li>
-              <li><a href="/what-we-do/by-use-case/boost-saas-revenue">Boost SaaS Revenue</a></li>
-              <li><a href="/what-we-do/by-use-case/grow-marketplaces">Grow Marketplaces</a></li>
-              <li><a href="/what-we-do/by-use-case/test-new-markets">Test New Markets</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle">How We Do It</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-inner">
-            <h4>
-              <a href="/how-we-do-it/"
-                >How we do it<img
-                  src={angledArrowDR.src}
-                  alt=""
-                  role="presentation"
-                /></a>
-            </h4>
-            <ul>
-              <li><a href="/how-we-do-it/research-engine">Research Engine</a></li>
-              <li><a href="/how-we-do-it/list-building">List Building</a></li>
-              <li><a href="/how-we-do-it/prospecting">Prospecting</a></li>
-              <li><a href="/how-we-do-it/outreach">Outreach</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-          <a href="/rev-ops/">For Rev-Ops</a>
-      </li> -->
-      <!-- <li class="dropdown">
-            <a class="dropdown-toggle">For RevOps</a>
-            <div class="dropdown-menu">
-              <div class="dropdown-inner"><h4><a href="/rev-ops/">For Rev-Ops<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
-                <ul>
-                  <li><a href="/how-we-do-it/f-and-b">All Documentation</a></li>
-                  <li><a href="/how-we-do-it/research-engine">Popular Documentation</a></li>
-                  <li><a href="/how-we-do-it/list-building">New market testing</a></li>
-                  <li><a href="/how-we-do-it/healthcare">Building Research Points</a></li>
-                  <li><a href="/how-we-do-it/fmcg">Setting up Account Management Team</a></li>
-                </ul>
-              </div>
-            </div>
-        </li> -->
-      <li><a href="/rev-ops">For Rev-Ops</a></li>
-      <!-- <li><a href="/resources/customer-stories">Customer Stories</a></li> -->
-      <li><a href="/posts">Growth Hub</a></li>
-      <li><a href="/resources/about-us">About Us</a></li>
-      <!-- <li class="dropdown">
-          <a class="dropdown-toggle">Resources</a>
-          <div class="dropdown-menu">
-            <div class="dropdown-inner"><h4><a href="/resources/">Resources<img src={angledArrowDR.src} alt="" role="presentation"></a></h4>
-              <ul>
-                <li><a href="/resources/about-us">About Us</a></li>
-                <li><a href="/resources/customer-stories">Customer Stories</a></li>
-                <li><a href="https://prong-cold-847.notion.site/Dream-Open-Roles-a11b6cb094da4d2d806df30ea585e174">Careers</a></li>
-                <li><a href="/resources/savings-calculator">Savings Calculator</a></li>
-              </ul>
-            </div>
-          </div>
-        </li> -->
-      <li>
-        <div class="mobile-login-button">
-          <Button
-            href="https://app.usedream.ai"
-            target="_blank"
-            variant="secondary"
-            label="">Log in</Button
-          >
-        </div>
-      </li>
     </ul>
     <!-- Always visible login button -->
-    <div class="desktop-login">
+    <div class="main-actions">
       <Button
-        href="https://app.usedream.ai"
-        target="_blank"
+        target=""
         variant="secondary"
-        label="">Log in</Button>
-    </div>
-    <div class="mobile-demo-button">
-      <Button href="/book-meeting" target="_blank" variant="primary" label=""
-        >Book a demo</Button
-      >
+        size="small"
+        data-open-modal="mailing-list-modal"
+        label="">Sign up for launch</Button>
     </div>
   </nav>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".navbar");
-    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-    const navigation = document.querySelector(".navigation");
-    const body = document.body; // Select the body element
+<Modal id="mailing-list-modal" closeLabel="Close">
+  <h2 slot="title">Hire your own Dreamies</h2>
+  <p>We're getting our Dreamies ready to onboard, get an instant notification when they're ready to hire.</p>
 
-    // Hamburger menu toggle
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-      hamburger.classList.toggle("navOpen");
-    });
+  <div class="modal-form">
+    <!-- Form view -->
+    <form id="contactForm" class="webform" novalidate>
+      <!-- honeypot -->
+      <input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
 
-    // Function to check if any dropdown is open
-    function updateNavigationClass() {
-      const anyDropdownOpen = Array.from(dropdownToggles).some((toggle) =>
-        toggle.classList.contains("active")
-      );
-      if (anyDropdownOpen) {
-        navigation.classList.add("dropdown-open");
-        body.classList.add("dropdown-open"); // Add class to body
-      } else {
-        navigation.classList.remove("dropdown-open");
-        body.classList.remove("dropdown-open"); // Remove class from body
-      }
-    }
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
 
-    // Function to close all dropdowns
-    function closeAllDropdowns(excludeToggle = null) {
-      dropdownToggles.forEach((dropdownToggle) => {
-        if (dropdownToggle !== excludeToggle) {
-          // Exclude the currently clicked toggle
-          const dropdownMenu = dropdownToggle.nextElementSibling;
-          dropdownMenu.classList.remove("show");
-          dropdownToggle.classList.remove("active");
-        }
-      });
-    }
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
 
-    // Apply click behavior for dropdowns
-    dropdownToggles.forEach((dropdownToggle) => {
-      const dropdownMenu = dropdownToggle.nextElementSibling;
+      <fieldset class="dreamie-radio-group">
+        <legend>Which Dreamie are you most excited by?</legend>
+        <div class="radio-option">
+          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+          <label for="finance">Finance Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+          <label for="marketing">Head of Marketing</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+          <label for="cs">Customer Service Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="other" name="dreamie" value="Other" />
+          <label for="other">Other</label>
+        </div>
+      </fieldset>
 
-      // Toggle dropdown on click
-      dropdownToggle.addEventListener("click", (e) => {
+      <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
+        Get updates
+      </button>
+
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <!-- Success view (hidden until success) -->
+    <div id="successView" class="success-view" hidden>
+      <h4 id="successHeading">Thanks — you're on the list</h4>
+      <p>While you’re here, you might enjoy these community articles</p>
+      <ul class="success-links">
+        <li><a href="/community/givewheel-case-study">GiveWheel Scales Corporate Fundraising With Dream</a></li>
+        <li><a href="/community/cold-email-templates-that-get-retail-buyers-to-stock-your-product">Cold Email Templates That Get Retail Buyers to Stock Your Product</a></li>
+      </ul>
+
+      <div class="success-actions">
+        <button type="button" class="button" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const FORM_URL = "https://submit-form.com/xjnEmLMC6"; // Formspark endpoint
+
+      const modal       = document.getElementById('mailing-list-modal');
+      const form        = modal.querySelector('#contactForm');
+      const btn         = modal.querySelector('#submitBtn');
+      const statusElm   = modal.querySelector('#formStatus');
+      const successView = modal.querySelector('#successView');
+
+      const setLoading = (loading) => {
+        if (!btn) return;
+        btn.disabled = loading;
+        btn.dataset.originalLabel ??= btn.textContent;
+        btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
+      };
+
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        setLoading(true);
+        statusElm.textContent = '';
 
-        // If the clicked dropdown is already open, close it
-        if (dropdownToggle.classList.contains("active")) {
-          dropdownMenu.classList.remove("show");
-          dropdownToggle.classList.remove("active");
-        } else {
-          // Close all other dropdowns, then open the clicked one
-          closeAllDropdowns(dropdownToggle);
-          dropdownMenu.classList.add("show");
-          dropdownToggle.classList.add("active");
+        try {
+          const res = await fetch(FORM_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          });
+
+          if (!res.ok) throw new Error('Bad response');
+
+          // Hide form, show success
+          form.hidden = true;
+          successView.hidden = false;
+
+          // Move focus to success heading for screen readers
+          const heading = successView.querySelector('#successHeading');
+          if (heading) {
+            // Make it programmatically focusable just for this jump
+            heading.setAttribute('tabindex', '-1');
+            heading.focus({ preventScroll: true });
+            // optional cleanup later
+            setTimeout(() => heading.removeAttribute('tabindex'), 100);
+          }
+        } catch (err) {
+          statusElm.textContent = 'Something went wrong. Please try again.';
+        } finally {
+          setLoading(false);
+          // Clear the form on success view to “blank it out”
+          if (!successView.hidden) form.reset();
         }
-
-        updateNavigationClass(); // Update the class when the dropdown is toggled
       });
-    });
-
-    // Close all dropdowns when clicking outside
-    document.addEventListener("click", (e) => {
-      const targetElement = e.target as Element;
-      const anyDropdownMenuOpen = Array.from(dropdownToggles).some((toggle) => {
-        const dropdownMenu = toggle.nextElementSibling;
-        return (
-          dropdownMenu.contains(targetElement) || toggle.contains(targetElement)
-        );
-      });
-
-      if (!anyDropdownMenuOpen) {
-        closeAllDropdowns(); // Close all dropdowns if clicked outside
-        updateNavigationClass(); // Update the class when all dropdowns are closed
-      }
-    });
-  });
-</script>
+    })();
+  </script>
+</Modal>

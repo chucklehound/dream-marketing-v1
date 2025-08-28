@@ -1,47 +1,35 @@
 @import '../styles/main.scss';
+@import '../styles/colours.scss';
+@import '../styles/elements.scss';
 
 .button {
-    background: transparent;
-    font-family: 'SpaceGrotesk', sans-serif;
-    color: $color-plus-white;
-    background: $color-wallstreet-black;
-    box-shadow: 2px 2px 0 1px rgba($color-wallstreet-black,.1);
-    padding: 12px 24px;
-    border-radius: 8px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    transition: background-color .2s ease, box-shadow .2s ease;
-
-    &:hover {
-        background-color: $color-dark-blue;
-        color: $color-plus-white;
-        box-shadow: inset 0 0 0 1px $color-wallstreet-black, 0 0 0 0 rgba($color-wallstreet-black,.1);
-    }
+    cursor: pointer;
+    
+    @include dreamButtonPrimarySmall;
     
     &.secondary {
-        box-shadow: inset 0 0 0 1px rgba($color-wallstreet-black, 0.40), 2px 2px 0 1px rgba($color-wallstreet-black,.1);
-        background: transparent;
-        color: $color-wallstreet-black;
-
-        &:hover {
-            background-color: rgba($color-dark-blue, .3);
-        }
+        @include dreamButtonSecondarySmall;
     }
 
-    &.reverse {
-        box-shadow: inset 0 0 0 1px $color-background-beige, 2px 2px 0 1px rgba($color-wallstreet-black,.1);
-        color: $color-background-beige;
-        background: rgba($color-wallstreet-black, .7);
+    &.medium {
+        @include dreamButtonPrimaryMedium;
+    }
 
-        &:hover {
-            background: $color-wallstreet-black;
-            box-shadow: inset 0 0 0 1px rgba($color-background-beige,.2);
-        }
+    &.medium.secondary {
+        @include dreamButtonSecondaryMedium;
+    }
+
+    &.large {
+        @include dreamButtonPrimaryLarge;
+    }
+
+    &.large.secondary {
+        @include dreamButtonSecondaryLarge;
+    }
+
+    &.discord-button {
+        flex-direction: row-reverse;
+        border-color: #5865F2 !important;
     }
 }
 
