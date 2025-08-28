@@ -57,6 +57,44 @@ export default function DreamieShowcase({ images, messages }) {
   // Keep StrictMode double-effect from firing twice in dev
   const strictGuard = useRef(false);
 
+  // --- NEW: lightweight preload cache + pending-next tracker ---
+  const preloadCache = useRef(new Map());
+  const pendingRef = useRef({ idx: null, promise: null });
+
+  function preload(src) {
+    if (!src) return Promise.resolve();
+    if (preloadCache.current.has(src)) return preloadCache.current.get(src);
+
+    const img = new Image();
+    img.decoding = "async";
+    img.src = src;
+
+    const done = () => {};
+    const p =
+      (img.decode ? img.decode().catch(done) : Promise.resolve()).then(done);
+
+    preloadCache.current.set(src, p);
+    return p;
+  }
+
+  function findNextSafeIndex(from) {
+    const half = Math.floor(visibleCount / 2);
+    const left = images.slice(0, half);
+    const right =
+      images.length >= visibleCount
+        ? images.slice(images.length - half)
+        : Array(half).fill(images[images.length - 1]);
+    const blocklist = [...left, ...right].map((src) => images.indexOf(src));
+    let next = (from + 1) % images.length;
+    let tries = 0;
+    while (blocklist.includes(next) && tries < images.length) {
+      next = (next + 1) % images.length;
+      tries++;
+    }
+    return next;
+  }
+  // --- end NEW ---
+
   // Mount + resize handling
   useEffect(() => {
     setMounted(true);
@@ -68,7 +106,7 @@ export default function DreamieShowcase({ images, messages }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const half = Math.floor(visibleCount / 2);
+  const half = useMemo(() => Math.floor(visibleCount / 2), [visibleCount]);
 
   // Sentinel rows (memoised to avoid recalcs)
   const { leftSentinels, rightSentinels } = useMemo(() => {
@@ -107,6 +145,12 @@ export default function DreamieShowcase({ images, messages }) {
     function onTick() {
       if (strictGuard.current) return;
       strictGuard.current = true;
+
+      // --- NEW: pick next + start preloading immediately ---
+      const next = findNextSafeIndex(centerIdx);
+      pendingRef.current = { idx: next, promise: preload(images[next]) };
+      // --- end NEW ---
+
       setShowCenter(false);
       // release guard after frame (dev StrictMode)
       requestAnimationFrame(() => {
@@ -115,26 +159,34 @@ export default function DreamieShowcase({ images, messages }) {
     }
     window.addEventListener("dream:tick", onTick);
     return () => window.removeEventListener("dream:tick", onTick);
-  }, []);
+  }, [centerIdx, images, visibleCount]);
 
-  // 2) When fade-out ends, swap to next safe index and fade back in
+  // 2) When fade-out ends, swap to next safe index (AFTER preload) and fade back in
   useEffect(() => {
     if (showCenter) return;
+
     const t = setTimeout(() => {
-      let next = (centerIdx + 1) % images.length;
-      const blocklist = [...leftSentinels, ...rightSentinels].map((src) =>
-        images.indexOf(src)
-      );
-      let tries = 0;
-      while (blocklist.includes(next) && tries < images.length) {
-        next = (next + 1) % images.length;
-        tries++;
+      const pending = pendingRef.current?.promise;
+      const nextIdx =
+        pendingRef.current?.idx != null
+          ? pendingRef.current.idx
+          : findNextSafeIndex(centerIdx);
+
+      const apply = () => {
+        setCenterIdx(nextIdx);
+        setShowCenter(true);
+      };
+
+      // If the next image is still decoding, finish that before swapping
+      if (pending) {
+        pending.then(apply);
+      } else {
+        apply();
       }
-      setCenterIdx(next);
-      setShowCenter(true);
     }, FADE);
+
     return () => clearTimeout(t);
-  }, [showCenter, centerIdx, images, leftSentinels, rightSentinels]);
+  }, [showCenter, centerIdx]);
 
   const widths = useMemo(() => getWidths(visibleCount), [visibleCount]);
 
@@ -188,6 +240,9 @@ export default function DreamieShowcase({ images, messages }) {
                   opacity: showCenter ? 1 : 0,
                   transition: `opacity ${FADE}ms`,
                 }}
+                // hint the browser not to defer the hero image
+                loading="eager"
+                decoding="async"
                 draggable={false}
               />
             ) : (
@@ -202,6 +257,8 @@ export default function DreamieShowcase({ images, messages }) {
                   opacity: 1,
                   transition: "none",
                 }}
+                loading="lazy"
+                decoding="async"
                 draggable={false}
               />
             )}
