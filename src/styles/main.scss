@@ -260,6 +260,10 @@ header {
     z-index: 1;
     padding: 12px 0 32px;
     min-height: 400px;
+    
+    @media (max-width: 600px) {
+        overflow: hidden; /* This is solving a really weird bug */
+    }
 
     .actions {
         display: flex;
