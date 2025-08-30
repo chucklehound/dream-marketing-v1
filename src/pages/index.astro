@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import { Image } from 'astro:assets';
+
 import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
@@ -131,7 +133,7 @@ const contentBlocks = [
 ];
 ---
 
-<Layout title="AI employees that help your business grow">
+<Layout title="Dream - AI that grows your business">
   <Navigation />
   <header class="hero-home index-hero">
     <div class="hero-elements main-content">
@@ -206,7 +208,13 @@ const contentBlocks = [
                 <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
                 <cite>
                   <span>Charlie Hart, Co‑founder at Givewheel</span>
-                  <img src={quoteLogo.src} alt="The logo for Givewheel">
+                  <Image
+                    src={quoteLogo}
+                    alt="The logo for Givewheel"
+                    width={364}
+                    height={96}
+                    format="webp"
+                  />
                 </cite>
               </blockquote>
             </div>
@@ -216,7 +224,13 @@ const contentBlocks = [
               <blockquote>
                 <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
                 <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
-                <img src={quoteLogojdi.src} alt="The logo for Just Dough It">
+                <Image
+                  src={quoteLogojdi}
+                  alt="The logo for Just Dough It"
+                  width={480}
+                  height={56}
+                  format="webp"
+                />
               </blockquote>
             </div>
     
@@ -225,7 +239,13 @@ const contentBlocks = [
               <blockquote>
                 <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
                 <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
-                <img src={quoteLogohol.src} alt="The logo for Holibob">
+                <Image
+                  src={quoteLogohol}
+                  alt="The logo for Holibob"
+                  width={408}
+                  height={96}
+                  format="webp"
+                />
               </blockquote>
             </div>
     
@@ -240,7 +260,13 @@ const contentBlocks = [
     
 <section class="final-cta"> 
   <article class="main-content cta-container"> 
-    <img src={ctaDreamies.src} alt="The 5 Dreamies of Dream - Business, Sales, Marketing, Finance, and Design" />
+    <Image
+      src={ctaDreamies}
+      alt="The 5 Dreamies of Dream - Business, Sales, Marketing, Finance, and Design"
+      width={1248}
+      height={452}
+      format="webp"
+    />
     <div class="content-title">
       <h2><span class="highlight-title">Grow your business </span><br/>with Dream</h2>
     </div>

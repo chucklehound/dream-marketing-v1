@@ -392,6 +392,7 @@ header {
                 max-height: 385px;
                 min-height: 385px;
                 position: relative;
+                
 
                 &.ai-team {
                     max-height: 320px;
@@ -602,7 +603,21 @@ header {
     }
 
     &.hero-home {
-
+        
+        &:after {
+            content: '';
+            width: 700px;
+            height: 700px;
+            border-radius: 100%;
+            background: $plus-white;
+            filter: blur(72px);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -350px;
+            margin-left: -350px;
+        }
+        
         &.index-hero {
 
             @media (min-width: 1024px) {
@@ -1470,6 +1485,7 @@ section[aria-label="Trust metrics"] {
 
         img {
             width: 100%;
+            height: auto;
             max-width: 624px;
         }
 
@@ -2715,7 +2731,9 @@ section[aria-label="Trust metrics"] {
                     }
 
                     img {
-                        max-height: 48px;
+                        width: 100%;
+                        max-height: 44px;
+                        object-fit: contain;
                     }
                 }
             }
@@ -3917,6 +3935,8 @@ ul.all-posts {
     img {
         max-height: 48px;
         max-width: 240px;
+        width: auto;
+        object-fit: contain;
         margin: 12px auto 0;
     }
 }
