@@ -222,9 +222,9 @@ const contentBlocks = [
             <!-- Slide 1 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
+                <p>"Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain - it finds the right companies, reaches out, follows up, and keeps leads warm. We're now top of mind for corporate charity campaigns, without stretching our team. It's taken us from reactive to proactive, without hiring."</p>
                 <cite>
-                  <span>Charlie Hart, Co‑founder at Givewheel</span>
+                  <span>Charlie Hart, Co-founder at Givewheel</span>
                   <Image
                     src={quoteLogo}
                     alt="The logo for Givewheel"
@@ -239,7 +239,7 @@ const contentBlocks = [
             <!-- Slide 2 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
+                <p>"Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I'd never have had time for - emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we've won has come through Dream, and it's freed me to focus on growing the business instead of chasing leads."</p>
                 <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
                 <Image
                   src={quoteLogojdi}
@@ -254,7 +254,7 @@ const contentBlocks = [
             <!-- Slide 3 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
+                <p>"Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach - finding the right partners, reaching out, and booking calls - so we just show up ready to close. It even opened up new sectors like airlines that we'd never had time to target before. It's like having a dedicated sales team on autopilot, without the overhead."</p>
                 <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
                 <Image
                   src={quoteLogohol}
@@ -326,6 +326,62 @@ const contentBlocks = [
 <span id="rotating-text" aria-live="polite"></span>
 
 <script>
+  (function startSharedTicker(period = 5000) {
+    if (window.__dreamTicker) return;
+
+    const S = { timer: null, period, running: false, expected: 0 };
+
+    const dispatch = () => window.dispatchEvent(new CustomEvent("dream:tick"));
+    const schedule = (delay) => { S.timer = setTimeout(tick, Math.max(0, delay)); };
+
+    function tick() {
+      const now = performance.now();
+      const behind = now - S.expected;
+
+      if (behind > S.period * 0.8) {
+        // overslept → skip backlog
+        S.expected = now + S.period;
+        dispatch();
+        schedule(S.period);
+        return;
+      }
+
+      S.expected += S.period;
+      dispatch();
+      schedule(S.expected - performance.now());
+    }
+
+    function start() {
+      if (S.running) return;
+      S.running = true;
+      S.expected = performance.now() + S.period;
+      dispatch();
+      schedule(S.period);
+    }
+
+    function stop() {
+      S.running = false;
+      clearTimeout(S.timer);
+      S.timer = null;
+    }
+
+    function onVis() {
+      if (document.visibilityState === "hidden") {
+        stop();
+      } else {
+        start();
+      }
+    }
+
+    window.addEventListener("visibilitychange", onVis, { passive: true });
+    window.addEventListener("pagehide", stop, { passive: true });
+    window.addEventListener("pageshow", start, { passive: true });
+
+    start();
+    window.__dreamTicker = { start, stop };
+  })();
+
+  // --- your rotating text consumer ---
   document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("rotating-text");
     const texts = [
@@ -336,7 +392,7 @@ const contentBlocks = [
       "get paid on time"
     ];
     let i = 0;
-    const FADE = 400; // ms
+    const FADE = 400;
 
     // Render first item immediately
     el.textContent = texts[i];
@@ -355,44 +411,6 @@ const contentBlocks = [
     window.addEventListener("dream:tick", advance);
   });
 </script>
-
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const rotatingTextElement = document.getElementById("rotating-text");
-      const texts = [
-        "start a business",
-        "enter new markets",
-        "save an hour every day",
-        "handle more customers",
-      ];
-      let index = 0;
-
-      function rotateText() {
-        // Fade out
-        rotatingTextElement.style.opacity = "0";
-
-        setTimeout(() => {
-          // Change text after fade out
-          rotatingTextElement.textContent = texts[index];
-
-          // Fade in
-          rotatingTextElement.style.opacity = "1";
-
-          // Move to next index, looping back to the start
-          index = (index + 1) % texts.length;
-        }, 200); // Adjust timing for fade-out before changing text
-
-        // Repeat after 5 seconds
-        setTimeout(rotateText, 5000);
-      }
-
-      // Start the rotation
-      rotateText();
-    });
-  </script> -->
-
-
-
 
 <script type="module">
   const target = document.querySelector('.promo-human');

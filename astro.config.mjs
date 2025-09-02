@@ -9,4 +9,13 @@ export default defineConfig({
     integrations: [sitemap({
         customPages: [],
       }), react()],
+      vite: {
+        css: {
+          preprocessorOptions: {
+            scss: {
+              quietDeps: true
+            }
+          }
+        }
+      }
 });
