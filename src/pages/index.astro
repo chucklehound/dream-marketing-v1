@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 import Image from "astro/components/Image.astro";
+import { getImage } from "astro:assets";
 
 import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
@@ -53,16 +54,21 @@ import dreamie23 from '/src/img/hero-dreamies/dreamie-23.png';
 import dreamie24 from '/src/img/hero-dreamies/dreamie-24.png';
 import dreamie25 from '/src/img/hero-dreamies/dreamie-25.png';
 
-const dreamieImages = [
-  dreamie1, dreamie2, dreamie3, dreamie4, dreamie5,
-  dreamie6, dreamie7, dreamie8, dreamie9, dreamie10,
-  dreamie11, dreamie12, dreamie13, dreamie14, dreamie15,
-  dreamie16, dreamie17, dreamie18, dreamie19, dreamie20,
-  dreamie21, dreamie22, dreamie23, dreamie24, dreamie25
+const originals = [
+  dreamie1,dreamie2,dreamie3,dreamie4,dreamie5,
+  dreamie6,dreamie7,dreamie8,dreamie9,dreamie10,
+  dreamie11,dreamie12,dreamie13,dreamie14,dreamie15,
+  dreamie16,dreamie17,dreamie18,dreamie19,dreamie20,
+  dreamie21,dreamie22,dreamie23,dreamie24,dreamie25
 ];
 
-// Just return an array of src strings now
-const images = dreamieImages.map((img) => img.src);
+// Convert to WebP at build time; keep same dimensions
+const webps = await Promise.all(originals.map((src) => getImage({ src, format: "webp" })));
+const images = webps.map((i) => i.src);
+
+// (Optional) Preload the first few that appear on first paint
+const PRELOAD_COUNT = 3;
+const preloadUrls = images.slice(0, PRELOAD_COUNT);
 
 const messages = [
   // cycle 1
@@ -134,6 +140,12 @@ const contentBlocks = [
   },
 ];
 ---
+
+<head>
+  {preloadUrls.map((u) => (
+    <link rel="preload" as="image" href={u} fetchpriority="high" />
+  ))}
+</head>
 
 <Layout title="AI employees that help your business grow">
   <Navigation />
