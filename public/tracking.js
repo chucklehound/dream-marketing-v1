@@ -23,7 +23,7 @@
     }
     
     const t=g('dream_tracking');
-    if(t)fetch('https://api.usedream.ai/site-visit/',{
+    if(t)fetch('https://apiv2.usedream.ai/site-visit/',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({

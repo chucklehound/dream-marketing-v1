@@ -3,19 +3,31 @@ import Button from "./Button.astro";
 import Modal from "./Modal.astro";
 import phoneIcon from "/src/img/phone-call.svg";
 import whatsAppIcon from "/src/img/whats-app-icon.svg";
+import qrImg from "/src/img/qr.png";
 
-import qrImg from '/src/img/qr.png';
+import { getImage } from "astro:assets";
+
+import promoPhoneGuy from "/src/img/promo-phone-guy.jpg";
+
 ---
 
+<head>
+    <link rel="preload" as="image" href={promoPhoneGuy.src} fetchpriority="high" />
+</head>
+
 <section class="main-content">
-  <article class="full-width-contrast promo-home promo-phone">
+  <article
+    class="full-width-contrast promo-home promo-phone">
     <div class="content-container">
       <div class="content-title">
         <h2>
           Hire your team as easily as <br />
-          <span class="highlight-title">saying ‘hello...’</span>
+          <span class="highlight-title">saying &lsquo;hello...&rsquo;</span>
         </h2>
-        <p>No complicated sign-up, either call or WhatsApp and hire your Dream team in minutes.</p>
+        <p>
+          No complicated sign-up, either call or WhatsApp and hire your Dream
+          team in minutes.
+        </p>
 
         <div class="actions">
           <!-- Mobile: real tel link -->
@@ -59,37 +71,56 @@ import qrImg from '/src/img/qr.png';
   <!-- Static modal (PNG QR + tel fallback) -->
   <Modal id="call-modal" closeLabel="Close">
     <h2 slot="title" id="qrTitle">Get started with Dream in minutes</h2>
-    <p>All it takes is a quick call. You'll speak directly to your Personal Assistant, no humans involved.</p>
+    <p>
+      All it takes is a quick call. You'll speak directly to your Personal
+      Assistant, no humans involved.
+    </p>
     <div class="qr-modal">
       <figure class="qr-modal__visual">
-        <img src={qrImg.src} width="256" height="256" alt="">
+        <img src={qrImg.src} width="256" height="256" alt="" />
       </figure>
     </div>
   </Modal>
 </section>
 
 <style>
+.promo-phone {
+  background-image: var(--promo-phone-bg) !important;
+}
+
 /* Scoped visibility swap (match base selector weight) */
-.promo-phone .button.secondary.medium[data-mobile-call]{display:inline-flex}
-.promo-phone .button.secondary.medium[data-open-modal="call-modal"]{display:none}
+.promo-phone .button.secondary.medium[data-mobile-call] {
+  display: inline-flex;
+}
+.promo-phone .button.secondary.medium[data-open-modal="call-modal"] {
+  display: none;
+}
 
 /* When desktop-like, swap visibility */
-html.desktoplike .promo-phone .button.secondary.medium[data-mobile-call]{display:none}
-html.desktoplike .promo-phone .button.secondary.medium[data-open-modal="call-modal"]{display:inline-flex}
+html.desktoplike
+  .promo-phone
+  .button.secondary.medium[data-mobile-call] {
+  display: none;
+}
+html.desktoplike
+  .promo-phone
+  .button.secondary.medium[data-open-modal="call-modal"] {
+  display: inline-flex;
+}
 </style>
 
 <script is:inline>
   // Tiny, idempotent desktop detection; safe across multiple instances
-  (function(){
-    if (document.documentElement.classList.contains('desktoplike')) return;
-    var mq = matchMedia('(hover: hover) and (pointer: fine)');
-    function set(){
+  (function () {
+    if (document.documentElement.classList.contains("desktoplike")) return;
+    var mq = matchMedia("(hover: hover) and (pointer: fine)");
+    function set() {
       var uaMobile = navigator.userAgentData?.mobile === true;
       var hasTouch = (navigator.maxTouchPoints || 0) > 0;
       var desktoplike = mq.matches && !uaMobile && !hasTouch;
-      document.documentElement.classList.toggle('desktoplike', desktoplike);
+      document.documentElement.classList.toggle("desktoplike", desktoplike);
     }
     set();
-    mq.addEventListener?.('change', set);
+    mq.addEventListener?.("change", set);
   })();
 </script>
