@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import { Image } from 'astro:assets';
+
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
 import dreamLogo from '/src/img/dream-logo-new.svg';
-import Button from '../components/Button.astro';
 
 import aboutHero from '/src/img/about-hero.png';
 
@@ -28,7 +29,13 @@ import HireGuyBlock from '../components/HireGuyBlock.astro';
 	<header class="hero-home">
 		<div class="hero-elements main-content">
 			<section class="header-text solo-header small-header">
-				<img src={aboutHero.src} alt="The Dream founders rendered as Dreamies">
+				<Image
+				src={aboutHero}
+				alt="The Dream founders rendered as Dreamies"
+				width={702}
+				height={300}
+				format="webp"
+				/>
 				<h1 class="page-title">We're bringing <span class="highlight-title">the promise of AI</span> to founders and small businesses</h1>
 			</section>
 		</div>
