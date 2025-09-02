@@ -16,6 +16,9 @@ import ogUrl from "/src/img/web-app-manifest-512x512.png";
 const currentPath = Astro.url.pathname;
 const baseUrl = "https://usedream.ai";
 const fullUrl = `${baseUrl}${currentPath}`;
+
+import promoGuy from '/src/img/promo-phone-guy.jpg';
+
 ---
 
 <!doctype html>
@@ -24,7 +27,7 @@ const fullUrl = `${baseUrl}${currentPath}`;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Dream - AI sales agents that grow marketplaces"
+      content="Dream - AI-powered employees that save you time"
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="apple-touch-icon" sizes="180x180" href={appleIcon.src} />
@@ -36,6 +39,21 @@ const fullUrl = `${baseUrl}${currentPath}`;
     <meta name="theme-color" content="#FFD601" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link
+      rel="preload"
+      as="image"
+      href={promoGuy.src}
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="font"
+      href="/fonts/Geist-VariableFont_wght.woff2"
+      type="font/woff2"
+      crossorigin
+    />
 
     <meta name="og:url" content={fullUrl} />
     <meta property="og:logo" content={ogUrl.src} />

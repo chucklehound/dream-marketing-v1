@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import Image from "astro/components/Image.astro";
+
 import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
@@ -13,9 +15,6 @@ import card1 from '/src/img/carousel-1--phone.png';
 import card2 from '/src/img/carousel-2--whatsapp.png';
 import card3 from '/src/img/carousel-3--update.png';
 import card4 from '/src/img/carousel-4--success.png';
-
-import whatsAppIcon from '/src/img/whats-app-icon.svg';
-import phoneIcon from '/src/img/phone-call.svg';
 
 import quoteLogo from '/src/img/givewheel-logo.png';
 import quoteLogojdi from '/src/img/justdoughit-logo.png';
@@ -214,7 +213,13 @@ const contentBlocks = [
                 <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
                 <cite>
                   <span>Charlie Hart, Co‑founder at Givewheel</span>
-                  <img src={quoteLogo.src} alt="The logo for Givewheel">
+                  <Image
+                    src={quoteLogo}
+                    alt="The logo for Givewheel"
+                    width={364}
+                    height={96}
+                    format="webp"
+                  />
                 </cite>
               </blockquote>
             </div>
@@ -224,7 +229,13 @@ const contentBlocks = [
               <blockquote>
                 <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
                 <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
-                <img src={quoteLogojdi.src} alt="The logo for Just Dough It">
+                <Image
+                  src={quoteLogojdi}
+                  alt="The logo for Just Dough It"
+                  width={480}
+                  height={56}
+                  format="webp"
+                />
               </blockquote>
             </div>
     
@@ -233,7 +244,13 @@ const contentBlocks = [
               <blockquote>
                 <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
                 <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
-                <img src={quoteLogohol.src} alt="The logo for Holibob">
+                <Image
+                  src={quoteLogohol}
+                  alt="The logo for Holibob"
+                  width={408}
+                  height={96}
+                  format="webp"
+                />
               </blockquote>
             </div>
     

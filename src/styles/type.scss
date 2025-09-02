@@ -66,7 +66,7 @@
     font-size: 16px;
     line-height: 22px;
     font-weight: 400;
-    color: $color-text-black;
+    color: $wallstreet-black;
 }
 
 .page-title {
@@ -101,5 +101,5 @@ p, .p {
     @include body;
 
     margin-bottom: 0.8em;
-    color: $color-performa-black;
+    color: $performa-black;
 }
