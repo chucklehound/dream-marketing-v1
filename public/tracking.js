@@ -7,7 +7,7 @@
     const scriptTag = document.currentScript;
     const accountId = new URLSearchParams(scriptTag.src.split('?')[1]).get('id');
     
-    fetch('https://api.usedream.ai/site-visit/verify-tag/',{
+    fetch('https://apiv2.usedream.ai/site-visit/verify-tag/',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
