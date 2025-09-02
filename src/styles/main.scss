@@ -278,6 +278,8 @@ header {
 
         img {
             max-width: 100%;
+            height: auto;
+            width: auto;
         }
 
         figure {
@@ -1049,6 +1051,7 @@ main {
 
         img {
             width: 100%;
+            height: auto;
             max-width: 624px;
         }
 
@@ -1588,6 +1591,7 @@ h3.section-title {
 
         img {
             max-height: 256px;
+            width: auto;
         }
 
         .card-badge {
@@ -1835,9 +1839,10 @@ h3.section-title {
 
             img {
                 width: 100%;
+                height: auto;
                 max-height: 100%;
-                object-fit: cover;
-                object-position: 0 0;
+                object-fit: contain;
+                object-position: center;
             }
         }
 

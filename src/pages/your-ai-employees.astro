@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import Image from "astro/components/Image.astro";
+
 import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
@@ -39,7 +41,6 @@ import Modal from '../components/Modal.astro';
   <header class="hero-home">
     <div class="hero-elements main-content">
         <section class="header-image home-hero ai-team">
-            <!-- <img src={placeholderHero.src} style="" /> -->
             <div class="video-wrapper">
                 <video autoplay
                 muted
@@ -91,11 +92,12 @@ import Modal from '../components/Modal.astro';
           <div class="dreamie-grid">
             <!-- Image -->
             <figure class="dreamie-figure">
-              <img 
-                src={personalAssistant.src} 
-                alt="" 
-                class="dreamie-img" 
-                aria-hidden="true" 
+              <Image
+                src={personalAssistant}
+                alt="A picture of a personal assistant dreamie holding a clipboard and waving"
+                class="dreamie-img"
+                aria-hidden="true"
+                format="webp"
               />
             </figure>
       
@@ -115,15 +117,33 @@ import Modal from '../components/Modal.astro';
               <h3>Your Personal Assistant is</h3>
               <ul class="dreamie-feature-list" role="list">
                 <li class="dreamie-feature">
-                  <img src={iconCalendar.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconCalendar}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <img src={iconPhone.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconPhone}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Connected to you with phone and WhatsApp, so you can chat and get updates on the go.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <img src={iconAttachment.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconAttachment}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Ready to create, convert, and manage files, images and more.</p>
                 </li>
               </ul>
@@ -134,7 +154,7 @@ import Modal from '../components/Modal.astro';
                 target="" 
                 variant="primary" 
                 size="large" 
-              ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+              ><img src={arrowRight.src} alt="" aria-hidden="true"></Button>
             </div>
           </div>
         </article>
@@ -144,11 +164,12 @@ import Modal from '../components/Modal.astro';
           <div class="dreamie-grid">
             <!-- Image -->
             <figure class="dreamie-figure">
-              <img 
-                src={headOfSales.src} 
-                alt="" 
-                class="dreamie-img" 
-                aria-hidden="true" 
+              <Image
+                src={headOfSales}
+                alt="A picture of a head of sales dreamie holding a coffee and waving"
+                class="dreamie-img"
+                aria-hidden="true"
+                format="webp"
               />
             </figure>
       
@@ -168,15 +189,33 @@ import Modal from '../components/Modal.astro';
               <h3>Your Head of Sales is</h3>
               <ul class="dreamie-feature-list" role="list">
                 <li class="dreamie-feature">
-                  <img src={iconAnnouncement.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconAnnouncement}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Ready to grow your business with sales campaigns.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <img src={iconAward.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconAward}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Always managing conversations to close the deal.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <img src={iconMessageAlert.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                  <Image
+                    src={iconMessageAlert}
+                    alt=""
+                    aria-hidden="true"
+                    class="dreamie-feature-icon"
+                    format="webp"
+                  />
                   <p>Keeping you up to date on closed deals or important information.</p>
                 </li>
               </ul>
@@ -187,7 +226,7 @@ import Modal from '../components/Modal.astro';
                 target="" 
                 variant="primary" 
                 size="large" 
-                ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+                ><img src={arrowRight.src} alt="" aria-hidden="true"></Button>
             </div>
           </div>
         </article>
@@ -203,7 +242,13 @@ import Modal from '../components/Modal.astro';
               <article class="card">
                 <div class="card-header">
                   <figure class="card-figure">
-                    <img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                    <Image
+                      src={financeManager}
+                      alt=""
+                      class="card-figure-img"
+                      aria-hidden="true"
+                      format="webp"
+                    />
                   </figure>
       
                   <p class="card-badge" aria-label="Starting soon">
@@ -230,7 +275,13 @@ import Modal from '../components/Modal.astro';
               <article class="card">
                 <div class="card-header">
                   <figure class="card-figure">
-                    <img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+                    <Image
+                      src={headOfMarketing}
+                      alt=""
+                      class="card-figure-img"
+                      aria-hidden="true"
+                      format="webp"
+                    />
                   </figure>
       
                   <p class="card-badge" aria-label="Starting soon">
@@ -257,7 +308,13 @@ import Modal from '../components/Modal.astro';
               <article class="card">
                 <div class="card-header">
                   <figure class="card-figure">
-                    <img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                    <Image
+                      src={csManager}
+                      alt=""
+                      class="card-figure-img"
+                      aria-hidden="true"
+                      format="webp"
+                    />
                   </figure>
       
                   <p class="card-badge" aria-label="Starting soon">

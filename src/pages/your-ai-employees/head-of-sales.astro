@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+import Image from 'astro/components/Image.astro';
+
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
@@ -9,8 +11,6 @@ import Button from '../../components/Button.astro';
 import iconAward from '/src/img/award.svg';
 import iconAnnouncement from '/src/img/announcement.svg';
 import iconMessageAlert from '/src/img/message-alert-square.svg';
-
-import personalAssistant from '/src/img/personal-assistant.png';
 
 import smallHOS1 from '/src/img/hos-small-1.png';
 import smallHOS2 from '/src/img/hos-small-2.png';
@@ -40,24 +40,35 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
 	<header class="hero-home solo-header">
 		<div class="hero-elements main-content">
             <figure class="dreamie-figure seo-header">
-              <img 
-                src={smallHOS1.src} 
-                alt="" 
-                class="dreamie-img" 
-                aria-hidden="true" 
-              />
-              <img 
-                src={headOfSales.src} 
-                alt="" 
-                class="dreamie-img" 
-                aria-hidden="true" 
-              />
-              <img 
-                src={smallHOS2.src} 
-                alt="" 
-                class="dreamie-img" 
-                aria-hidden="true" 
-              />
+              <Image
+          src={smallHOS1}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={headOfSales}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={smallHOS2}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
             </figure>
 			<section class="header-text">
 				<h1 class="page-title">Meet your Head of Sales</h1>
@@ -122,7 +133,11 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
             <div class="seo-panels">
               <div class="panel">
                 <div class="panel-image">
-                  <img src={seoPane1.src} alt="A call on a phone coming from your Dream PA">
+                  <Image
+                  src={seoPane1}
+                  alt="A call on a phone coming from your Dream PA"
+                  format="webp"
+                />
                 </div>
                 <div class="panel-content">
                   <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
@@ -140,7 +155,11 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
               </div>
               <div class="panel">
                 <div class="panel-image">
-                  <img src={seoPane2.src} alt="A WhatsApp chat with your PA">
+                  <Image
+                  src={seoPane2}
+                  alt="A WhatsApp chat with your PA"
+                  format="webp"
+                />
                 </div>
                 <div class="panel-content">
                   <h3 class="panel-title">Share documents, voice notes, or just get updates.</h3>
@@ -161,16 +180,22 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
 
           <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
             <article class="content-container">
-                <div class="content-title">
-                    <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
-                  </div>
+              <div class="content-title">
+                <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+              </div>
           
               <ul class="employee-card-grid compact-grid" role="list">
                 <li class="employee-card">
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={personalAssistant.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                        src={headOfSales}
+                        alt=""
+                        class="card-figure-img"
+                        aria-hidden="true"
+                        format="webp"
+                      />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -178,12 +203,12 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                       </p>
           
                       <h3 class="card-title">
-                        Personal Assistant
+                        Head of Sales
                       </h3>
                     </div>
           
                     <footer class="card-footer">
-                      <Button label="Hire them now" href="/your-ai-employees/personal-assistant" target="" variant="primary" size="medium" />
+                      <Button label="Hire them now" href="/your-ai-employees/head-of-sales" target="" variant="primary" size="medium" />
                     </footer>
                   </article>
                 </li>
@@ -192,7 +217,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={financeManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -205,7 +236,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                     </div>
           
                     <footer class="card-footer">
-                        <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
                     </footer>
                   </article>
                 </li>
@@ -215,7 +246,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={headOfMarketing}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -228,7 +265,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                     </div>
           
                     <footer class="card-footer">
-                        <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
                     </footer>
                   </article>
                 </li>
@@ -238,7 +275,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={csManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -251,7 +294,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                     </div>
           
                     <footer class="card-footer">
-                        <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
                     </footer>
                   </article>
                 </li>

@@ -4,6 +4,8 @@ const { items = [] } = Astro.props;
 
 import './Carousel.scss';
 
+import { Image } from 'astro:assets';
+
 import Button from './Button.astro';
 import arrowRight from '/src/img/new-arrow-right.svg?raw';
 import arrowLeft from '/src/img/new-arrow-left.svg?raw';
@@ -16,7 +18,13 @@ import arrowLeft from '/src/img/new-arrow-left.svg?raw';
       {items.map((item, index) => (
         <div class="carousel__card" key={index}>
           <div class="carousel__image">
-  <img src={item.image.src} alt={item.title} />
+            <Image
+            src={item.image}
+            alt={item.title}
+            width={872}
+            height={476}
+            format="webp"
+          />
 </div>
           <div class="carousel__content">
             <h3 class="carousel__title">{item.title}</h3>
@@ -24,7 +32,7 @@ import arrowLeft from '/src/img/new-arrow-left.svg?raw';
                 <p class="carousel__subtitle">{item.subtitle}</p>
                 <Button
                     label={item.ctaText}
-                    href={item.ctaUrl}
+                    data-open-modal="mailing-list-modal"
                     target="_self"
                     size="medium"
                     variant="secondary"

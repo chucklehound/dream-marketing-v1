@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+import Image from 'astro/components/Image.astro';
+
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
@@ -20,9 +22,6 @@ import arrowRight from '/src/img/new-arrow-right.svg';
 import seoPane1 from '/src/img/carousel-1--phone.png';
 import seoPane2 from '/src/img/carousel-2--whatsapp.png';
 
-import whatsAppIcon from '/src/img/whats-app-icon.svg';
-import phoneIcon from '/src/img/phone-call.svg';
-
 import headOfSales from '/src/img/head-of-sales.png';
 import financeManager from '/src/img/finance-manager.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
@@ -40,23 +39,34 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
 	<header class="hero-home solo-header">
 		<div class="hero-elements main-content">
       <figure class="dreamie-figure seo-header">
-        <img 
-          src={smallPA1.src} 
-          alt="" 
-          class="dreamie-img" 
-          aria-hidden="true" 
+        <Image
+          src={smallPA1}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
         />
-        <img 
-          src={personalAssistant.src} 
-          alt="" 
-          class="dreamie-img" 
-          aria-hidden="true" 
+
+        <Image
+          src={personalAssistant}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
         />
-        <img 
-          src={smallPA2.src} 
-          alt="" 
-          class="dreamie-img" 
-          aria-hidden="true" 
+
+        <Image
+          src={smallPA2}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
         />
       </figure>
 			<section class="header-text">
@@ -121,7 +131,11 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
             <div class="seo-panels">
               <div class="panel">
                 <div class="panel-image">
-                  <img src={seoPane1.src} alt="A call on a phone coming from your Dream PA">
+                  <Image
+                    src={seoPane1}
+                    alt="A call on a phone coming from your Dream PA"
+                    format="webp"
+                  />
                 </div>
                 <div class="panel-content">
                   <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
@@ -139,7 +153,11 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
               </div>
               <div class="panel">
                 <div class="panel-image">
-                  <img src={seoPane2.src} alt="A WhatsApp chat with your PA">
+                  <Image
+                    src={seoPane2}
+                    alt="A WhatsApp chat with your PA"
+                    format="webp"
+                  />
                 </div>
                 <div class="panel-content">
                   <h3 class="panel-title">Share documents, voice notes, or just get updates.</h3>
@@ -171,7 +189,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={headOfSales.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                        src={headOfSales}
+                        alt=""
+                        class="card-figure-img"
+                        aria-hidden="true"
+                        format="webp"
+                      />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -193,7 +217,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={financeManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={financeManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -216,7 +246,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={headOfMarketing.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={headOfMarketing}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
@@ -239,7 +275,13 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <article class="card">
                     <div class="card-header">
                       <figure class="card-figure">
-                        <img src={csManager.src} alt="" class="card-figure-img" aria-hidden="true" />
+                        <Image
+                          src={csManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
                       </figure>
           
                       <p class="card-badge" aria-label="Starting soon">
