@@ -1,0 +1,430 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import { Image } from 'astro:assets';
+
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+import Button from '../../components/Button.astro';
+
+import iconCalendar from '/src/img/calendar.svg';
+import iconPhone from '/src/img/phone.svg';
+import iconAttachment from '/src/img/attachment.svg';
+
+import personalAssistant from '/src/img/personal-assistant.png';
+
+import smallPA1 from '/src/img/pa-small-1.png';
+import smallPA2 from '/src/img/pa-small-2.png';
+
+import arrowRight from '/src/img/new-arrow-right.svg';
+
+import seoPane1 from '/src/img/carousel-1--phone.png';
+import seoPane2 from '/src/img/carousel-2--whatsapp.png';
+
+import headOfSales from '/src/img/head-of-sales.png';
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
+
+import Modal from '../../components/Modal.astro';
+
+import HireGuyBlock from '../../components/HireGuyBlock.astro';
+
+
+---
+
+<Layout title="Meet your Personal Assistant - Dream">
+	<Navigation />
+	<header class="hero-home solo-header">
+		<div class="hero-elements main-content">
+      <figure class="dreamie-figure seo-header">
+        <Image
+          src={smallPA1}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={personalAssistant}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={smallPA2}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+			<section class="header-text">
+				<h1 class="page-title">Meet your <span class="highlight-title">Personal Assistant</span></h1>
+				<span>Armed with the expertise to run the day-to-day of your business. No email goes unanswered, no meeting unbooked. All your company admin just happens, you'll wonder what to do with all that time.</span>
+			</section>
+		</div>
+	</header>
+	<main class="pinch-footer">
+        <section class="main-content dreamie-module" aria-labelledby="dreamie-heading">
+            <article class="content-container">
+              <div class="dreamie-grid">
+                <!-- Image -->
+                
+          
+                <!-- Text content -->
+                <div class="dreamie-content">
+                  <h2 id="dreamie-heading">
+                    Take away your admin headache, hire your Dream Personal Assistant today.
+                  </h2>
+          
+                  <p>
+                    Running a business means juggling endless admin — emails, calls, scheduling, and paperwork that pull you away from the work you care about. Your Dream Personal Assistant is your always-on virtual helper, trained to manage your inbox, book meetings, and handle small business admin from start to finish. From filing confirmation statements to managing your calendar, they keep the day running smoothly while you stay focused on growth.
+                  </p>
+                  <p>
+                    Unlike other AI assistants that need constant intervention, your Personal Assistant works proactively from WhatsApp or the phone, turning your requests into actions the moment you ask, or even before you do. Whether it’s arranging client calls, chasing invoices, or preparing documents, they keep you organised, on time, and free to concentrate on running your business.
+                  </p>
+          
+                  <h3>Your Personal Assistant is</h3>
+                  <ul class="dreamie-feature-list" role="list">
+                    <li class="dreamie-feature">
+                      <img src={iconCalendar.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <img src={iconPhone.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Connected to you with phone and WhatsApp, so you can chat and get updates on the go.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <img src={iconAttachment.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <p>Ready to create, convert, and manage files, images and more.</p>
+                    </li>
+                  </ul>
+          
+                  <Button 
+                    label="Hire your own Personal Assistant" 
+                    href="/get-started" 
+                    target="" 
+                    variant="primary" 
+                    size="large" 
+                  ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+                </div>
+              </div>
+            </article>
+          </section>
+          <section class="main-content">
+            <article class="content-container">
+              <div class="content-title">
+                <h2>Available <span class="highlight-title">anywhere, anytime.</span></h2>
+                <p>Dream works with the apps you use every day, so you can call or message to get jobs done.</p>
+              </div>
+            <div class="seo-panels">
+              <div class="panel">
+                <div class="panel-image">
+                  <Image
+                    src={seoPane1}
+                    alt="A call on a phone coming from your Dream PA"
+                    format="webp"
+                  />
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Your Personal Assistant is only a call away, letting you get updates and take action by just asking.</p>
+                    <Button
+                      label="Learn more"
+                      href="/how-it-works"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-image">
+                  <Image
+                    src={seoPane2}
+                    alt="A WhatsApp chat with your PA"
+                    format="webp"
+                  />
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Share documents, voice notes, or just get updates.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Chat with Dream where you chat with everyone. Manage your workload with voice notes, or just message.</p>
+                    <Button
+                      label="Start now"
+                      href="/get-started"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          </section>
+
+          <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+            <article class="content-container">
+              <div class="content-title">
+                <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+              </div>
+          
+              <ul class="employee-card-grid compact-grid" role="list">
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                        src={headOfSales}
+                        alt=""
+                        class="card-figure-img"
+                        aria-hidden="true"
+                        format="webp"
+                      />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Ready to hire</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Head of Sales
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Hire them now" href="/your-ai-employees/head-of-sales" target="" variant="primary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={financeManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Finance Manager
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- Head of Marketing -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={headOfMarketing}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Head of Marketing
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- CS Manager -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={csManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Customer Service Manager
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+              </ul>
+          
+            </article>
+          </section>
+
+          <HireGuyBlock />
+	</main>
+	<Footer />
+
+  <Modal id="mailing-list-modal" closeLabel="Close">
+		<h2 slot="title">New team members are joining soon, find out when they start.</h2>
+		<p>We're getting new employees ready to onboard, get an instant notification when they're ready to hire.</p>
+	  
+		<div class="modal-form">
+		  <!-- Form view -->
+		  <form id="contactForm" class="webform" novalidate>
+			<!-- honeypot -->
+			<input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
+	  
+			<label>
+			  Name
+			  <input type="text" name="name" required />
+			</label>
+	  
+			<label>
+			  Email
+			  <input type="email" name="email" required />
+			</label>
+	  
+			<fieldset class="dreamie-radio-group">
+			  <legend>Which employee are you most excited by?</legend>
+			  <div class="radio-option">
+				<input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+				<label for="finance">Finance Manager</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+				<label for="marketing">Head of Marketing</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+				<label for="cs">Customer Service Manager</label>
+			  </div>
+			  <div class="radio-option">
+				<input type="radio" id="other" name="dreamie" value="Other" />
+				<label for="other">Other</label>
+			  </div>
+			</fieldset>
+	  
+			<button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
+			  Get updates
+			</button>
+	  
+			<p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+		  </form>
+	  
+		  <!-- Success view (hidden until success) -->
+		  <div id="successView" class="success-view" hidden>
+			<h4 id="successHeading">Thanks — you're on the list</h4>
+			<p>While you’re here, you might enjoy these community articles</p>
+			<ul class="success-links">
+			  <li><a href="/community/givewheel-case-study">GiveWheel Scales Corporate Fundraising With Dream</a></li>
+			  <li><a href="/community/cold-email-templates-that-get-retail-buyers-to-stock-your-product">Cold Email Templates That Get Retail Buyers to Stock Your Product</a></li>
+			</ul>
+	  
+			<div class="success-actions">
+			  <button type="button" class="button" data-close-modal>Close</button>
+			</div>
+		  </div>
+		</div>
+	  
+		<script is:inline>
+		  (function () {
+			const FORM_URL = "https://submit-form.com/xjnEmLMC6"; // Formspark endpoint
+	  
+			const modal       = document.getElementById('mailing-list-modal');
+			const form        = modal.querySelector('#contactForm');
+			const btn         = modal.querySelector('#submitBtn');
+			const statusElm   = modal.querySelector('#formStatus');
+			const successView = modal.querySelector('#successView');
+	  
+			const setLoading = (loading) => {
+			  if (!btn) return;
+			  btn.disabled = loading;
+			  btn.dataset.originalLabel ??= btn.textContent;
+			  btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
+			};
+	  
+			form.addEventListener('submit', async (e) => {
+			  e.preventDefault();
+			  setLoading(true);
+			  statusElm.textContent = '';
+	  
+			  try {
+				const res = await fetch(FORM_URL, {
+				  method: "POST",
+				  headers: {
+					"Content-Type": "application/json",
+					"Accept": "application/json"
+				  },
+				  body: JSON.stringify(Object.fromEntries(new FormData(form)))
+				});
+	  
+				if (!res.ok) throw new Error('Bad response');
+	  
+				// Hide form, show success
+				form.hidden = true;
+				successView.hidden = false;
+	  
+				// Move focus to success heading for screen readers
+				const heading = successView.querySelector('#successHeading');
+				if (heading) {
+				  // Make it programmatically focusable just for this jump
+				  heading.setAttribute('tabindex', '-1');
+				  heading.focus({ preventScroll: true });
+				  // optional cleanup later
+				  setTimeout(() => heading.removeAttribute('tabindex'), 100);
+				}
+			  } catch (err) {
+				statusElm.textContent = 'Something went wrong. Please try again.';
+			  } finally {
+				setLoading(false);
+				// Clear the form on success view to “blank it out”
+				if (!successView.hidden) form.reset();
+			  }
+			});
+		  })();
+		</script>
+	  </Modal>
+</Layout>
