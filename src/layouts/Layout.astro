@@ -17,6 +17,8 @@ const currentPath = Astro.url.pathname;
 const baseUrl = "https://usedream.ai";
 const fullUrl = `${baseUrl}${currentPath}`;
 
+import TooltipHost from "../components/TooltipHost.astro";
+
 import promoGuy from '/src/img/promo-phone-guy.jpg';
 
 ---
@@ -77,6 +79,7 @@ import promoGuy from '/src/img/promo-phone-guy.jpg';
     </script>
   </head>
   <body>
+    <TooltipHost />
     <slot />
   </body>
 </html>

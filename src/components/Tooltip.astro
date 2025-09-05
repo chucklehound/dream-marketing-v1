@@ -1,0 +1,41 @@
+---
+/**
+ * <Tooltip text="Hi!" pos="top" gap={8} mode="auto">
+ *   <button>Invite</button>
+ * </Tooltip>
+ */
+ type Pos = 'top' | 'bottom' | 'left' | 'right';
+type Mode = 'auto' | 'hover' | 'click';
+
+interface Props {
+  text: string;         // required
+  pos?: Pos;            // default 'top'
+  gap?: number;         // default 8
+  mode?: Mode;          // 'auto' (default) | 'hover' | 'click'
+  class?: string;       // optional extra class on wrapper
+  addTabindex?: boolean;// default true; adds tabindex=0 if child not focusable
+}
+
+const {
+  text,
+  pos = 'top',
+  gap = 8,
+  mode = 'auto',
+  class: className = '',
+  addTabindex = true,
+} = Astro.props;
+
+// We wrap the slotted element so we can always attach data- attributes
+// and optionally a tabindex if needed.
+---
+
+<span
+  class={`tooltip-target ${className}`.trim()}
+  data-tooltip={text}
+  data-tooltip-pos={pos}
+  data-tooltip-gap={String(gap)}
+  data-tooltip-mode={mode}
+  { ...(addTabindex ? { tabindex: '0' } : {}) }
+>
+  <slot />
+</span>

@@ -1,0 +1,184 @@
+---
+import "../components/tooltip.scss";
+---
+
+<!-- Invisible host; include once near the root layout -->
+<div hidden data-tooltip-host></div>
+
+<script type="module" is:inline>
+  // Lightweight global tooltip controller
+  (() => {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'dream-tooltip';
+    tooltip.setAttribute('role', 'tooltip');
+    tooltip.setAttribute('aria-hidden', 'true');
+    tooltip.innerHTML = `
+      <div class="dream-tooltip__content"></div>
+      <button type="button" class="dream-tooltip__close" aria-label="Dismiss tooltip">×</button>
+    `;
+    const contentEl = tooltip.querySelector('.dream-tooltip__content');
+    const closeBtn = tooltip.querySelector('.dream-tooltip__close');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.appendChild(tooltip);
+    });
+
+    let currentTarget = null;
+    let openedByClick = false;
+
+    const isCoarse = () => window.matchMedia('(pointer: coarse)').matches;
+
+    const getPref = (el) => (el.getAttribute('data-tooltip-pos') || 'top').toLowerCase();
+    const getGap = (el) => Number(el.getAttribute('data-tooltip-gap') || 8);
+    const getMode = (el) => (el.getAttribute('data-tooltip-mode') || 'auto');
+
+    function showTooltip(target, triggerMode) {
+      const text = target.getAttribute('data-tooltip') || '';
+      if (!text) return;
+
+      currentTarget = target;
+      const modeAttr = getMode(target);
+      openedByClick = triggerMode === 'click' ||
+                      (modeAttr === 'click') ||
+                      (modeAttr === 'auto' && isCoarse());
+
+      contentEl.textContent = text;
+      tooltip.classList.toggle('is-touch', openedByClick);
+
+      // a11y: connect via aria-describedby
+      let id = target.getAttribute('aria-describedby');
+      if (!id) {
+        id = `dream-tt-${Math.random().toString(36).slice(2)}`;
+        target.setAttribute('aria-describedby', id);
+      }
+      tooltip.id = id;
+
+      tooltip.setAttribute('aria-hidden', 'false');
+      positionTooltip(target, getPref(target));
+      tooltip.classList.add('is-visible');
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('is-visible', 'is-touch');
+      tooltip.setAttribute('aria-hidden', 'true');
+      currentTarget = null;
+      openedByClick = false;
+    }
+
+    function positionTooltip(target, preferred) {
+      const gap = getGap(target);
+      const rect = target.getBoundingClientRect();
+      // First show offscreen to measure
+      tooltip.style.visibility = 'hidden';
+      tooltip.style.display = 'block';
+      const tt = tooltip.getBoundingClientRect();
+
+      let pos = preferred;
+      const vw = document.documentElement.clientWidth;
+      const vh = document.documentElement.clientHeight;
+      const fitsTop = rect.top >= tt.height + gap;
+      const fitsBottom = (vh - rect.bottom) >= tt.height + gap;
+      const fitsLeft = rect.left >= tt.width + gap;
+      const fitsRight = (vw - rect.right) >= tt.width + gap;
+
+      if (preferred === 'top' && !fitsTop) pos = fitsBottom ? 'bottom' : (fitsRight ? 'right' : (fitsLeft ? 'left' : 'bottom'));
+      if (preferred === 'bottom' && !fitsBottom) pos = fitsTop ? 'top' : (fitsRight ? 'right' : (fitsLeft ? 'left' : 'top'));
+      if (preferred === 'left' && !fitsLeft) pos = fitsRight ? 'right' : (fitsTop ? 'top' : (fitsBottom ? 'bottom' : 'right'));
+      if (preferred === 'right' && !fitsRight) pos = fitsLeft ? 'left' : (fitsTop ? 'top' : (fitsBottom ? 'bottom' : 'left'));
+
+      let top = 0, left = 0;
+      switch (pos) {
+        case 'top':
+          top = rect.top - tt.height - gap;
+          left = rect.left + (rect.width - tt.width) / 2;
+          break;
+        case 'bottom':
+          top = rect.bottom + gap;
+          left = rect.left + (rect.width - tt.width) / 2;
+          break;
+        case 'left':
+          top = rect.top + (rect.height - tt.height) / 2;
+          left = rect.left - tt.width - gap;
+          break;
+        case 'right':
+          top = rect.top + (rect.height - tt.height) / 2;
+          left = rect.right + gap;
+          break;
+      }
+
+      const pad = 8;
+      left = Math.max(pad, Math.min(left, vw - tt.width - pad));
+      top = Math.max(pad, Math.min(top, vh - tt.height - pad));
+
+      Object.assign(tooltip.style, {
+        position: 'fixed',
+        top: `${Math.round(top)}px`,
+        left: `${Math.round(left)}px`,
+        visibility: 'visible',
+        display: 'block'
+      });
+    }
+
+    // Hover (desktop) + focus
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target.closest('[data-tooltip]');
+      if (!t) return;
+      const mode = getMode(t);
+      if (isCoarse() || mode === 'click') return; // no hover on touch or click-only
+      showTooltip(t, 'hover');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (openedByClick) return;
+      const to = e.relatedTarget;
+      if (!to || (!tooltip.contains(to) && (!currentTarget || !currentTarget.contains(to)))) {
+        hideTooltip();
+      }
+    });
+    document.addEventListener('focusin', (e) => {
+      const t = e.target.closest('[data-tooltip]');
+      if (!t) return;
+      const mode = getMode(t);
+      if (mode !== 'click') showTooltip(t, 'hover');
+    });
+    document.addEventListener('focusout', () => {
+      if (!openedByClick) hideTooltip();
+    });
+
+    // Click/tap toggle
+    document.addEventListener('click', (e) => {
+      const t = e.target.closest('[data-tooltip]');
+      const inTooltip = tooltip.contains(e.target);
+
+      if (e.target.closest('.dream-tooltip__close')) {
+        hideTooltip();
+        return;
+      }
+
+      if (t) {
+        const mode = getMode(t);
+        if (mode === 'hover' && !isCoarse()) return; // hover-only
+        if (currentTarget === t && openedByClick) hideTooltip();
+        else showTooltip(t, 'click');
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      if (openedByClick && !inTooltip) hideTooltip();
+    });
+
+    // Esc to dismiss
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') hideTooltip();
+    });
+
+    // Reflow on resize/scroll
+    const reflow = () => {
+      if (currentTarget && tooltip.classList.contains('is-visible')) {
+        positionTooltip(currentTarget, getPref(currentTarget));
+      }
+    };
+    window.addEventListener('scroll', reflow, true);
+    window.addEventListener('resize', reflow);
+  })();
+</script>

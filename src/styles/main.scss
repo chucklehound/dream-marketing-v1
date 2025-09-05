@@ -722,10 +722,6 @@ main {
     section {
         padding: 24px 0;
 
-        @media (min-width: 700px) {
-            padding: 48px 0;
-        }
-
             .text-container {
                 width: 100%;
                 display: flex;
@@ -2282,6 +2278,184 @@ table.how-works-table {
             font-size: 14px;
             line-height: 20px;
         }
+    }
+}
+
+.new-team-cards {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 0 0 32px;
+    position: relative;
+    max-width: 1280px;
+    margin: 32px auto;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 800px) {
+        flex-direction: column-reverse;
+        padding: 12px 8px 0;
+    }
+
+    .new-team-hire {
+        min-width: 360px;
+        max-width: 360px;
+        padding: 0;
+        position: relative;
+        top: -16px;
+        bottom: -16px;
+
+        @media (max-width: 800px) {
+            width: 100%;
+            min-width: auto;
+            max-width: 100%;
+            top: 0;
+        }
+
+        .plan-details {
+            background: none;
+            display: block;
+            gap: 12px;
+            width: auto;
+            padding: 0;
+            border: 0;
+            color: $performa-black;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            text-align: center;
+            line-height: 18px;
+            letter-spacing: 0.13px;
+            cursor: pointer;
+        }
+    }
+
+    .new-team-image {
+        padding: 16px 16px 44px;
+        flex: 1 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        @media (max-width: 800px) {
+            padding: 16px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 440px;
+            object-fit: contain;
+        }
+    }
+
+    .plan {
+        flex: 1;
+        padding: 16px;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        background: $classic-yellow;
+        border-radius: 16px;
+
+
+        p {
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 1024px) {
+            padding: 32px;
+            background: none;
+        }
+
+        &.promoted {
+            background: $plus-white;
+            border-radius: 12px;
+            border: 1px solid $sawtooth-blue;
+            box-shadow: 0 12px 24px 0 rgba($wallstreet-black, .1), 0 8px 16px rgba($sawtooth-blue, .1);
+        }
+
+        .plan-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+
+            svg, path {
+                fill: $sawtooth-blue;
+            }
+
+            h3 {
+                font-size: 28px;
+                line-height: 32px;
+            }
+            
+            .plan-badge {
+                border-radius: 12px;
+                font-size: 14px;
+                background: $lighter-grey;
+                padding: 4px 12px;
+                font-weight: 500;
+            }
+        }
+
+        hr {
+            border: 0;
+            background: rgba($performa-black, .2);
+            height: 1px;
+        }
+
+        .plan-price {
+            color: $medusa-blue;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px;
+            margin-bottom: 24px;
+        }
+
+        .plan-trial {
+            flex: 1;
+            text-align: center;
+            font-weight: 400;
+            padding: 8px 0 12px;
+            background: linear-gradient(90deg, $wallstreet-black 0%, $sawtooth-blue 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .plan-features {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 12px 0;
+            
+            &:first-of-type {
+                min-height: 160px;
+            }
+
+            ul, li {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 16px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 48px);
+        border-radius: 16px;
+        opacity: 0.5;
+        background: radial-gradient(80% 80% at 0% 50%, #97D5FC 0%, #EBE9E4 100%);
+        z-index: -1;
     }
 }
 

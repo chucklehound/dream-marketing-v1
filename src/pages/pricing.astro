@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import { Image } from 'astro:assets';
+
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
@@ -21,6 +23,11 @@ import Modal from '../components/Modal.astro';
 
 import HireGuyBlock from '../components/HireGuyBlock.astro';
 
+import paTeamImage from '/src/img/pa-hero.png';
+import headOfSalesImage from '/src/img/sales-hero.png';
+
+import Tooltip from "../components/Tooltip.astro";
+
 ---
 
 <Layout title="Dream Pricing - Priced for every business, open to any business">
@@ -34,293 +41,109 @@ import HireGuyBlock from '../components/HireGuyBlock.astro';
 		</div>
 	</header>
 	<main class="pinch-footer pricing-page">
-		<section class="main-content pricing-table">
+		<section class="main-content new-pricing-cards">
 			<article class="content-container">
-				<h3>Try your AI employees today</h3>
-				<section aria-labelledby="pricing-heading">
-					<h2 id="pricing-heading" class="visually-hidden">Pricing plans</h2>
-					<ul role="list" class="pricing-grid">
-					  {/* Entrepreneur — Most popular */}
-					  <li class="plan promoted" aria-label="Entrepreneur plan, most popular">
-						<article aria-labelledby="plan-ent-title" aria-describedby="plan-ent-price plan-ent-trial">
-						  <div class="plan-header">
-							<Fragment set:html={priceStar} />
-							<h3 id="plan-ent-title" class="plan-title">Entrepreneur</h3>
-							<p class="plan-badge" aria-label="Most popular">Most popular</p>
+				<div class="content-title">
+					<h2>Build <span class="highlight-title">your team</span>, your way</h2>
+					<p>Start with one employee, then build your team.</p>
+				</div>
+				<div class="new-team-cards">
+					<div class="new-team-hire">
+						<div class="plan promoted" aria-label="Entrepreneur plan, most popdivar">
+							<article aria-labelledby="plan-ent-title" aria-describedby="plan-ent-price plan-ent-trial">
+							  <div class="plan-header">
+								<Fragment set:html={priceStar} />
+								<h3 id="plan-ent-title" class="plan-title">Personal Assistant</h3>
+								<p class="plan-badge" aria-label="Most popular">Most popular</p>
+							  </div>
+					  
+							  <p id="plan-ent-price" class="plan-price">
+								From £20<span class="per">/month</span>
+							  </p>
+					  
+							  <Button
+								label="Hire me now"
+								href="/get-started"
+								target=""
+								variant="primary"
+								size="medium"
+								aria-describedby="plan-ent-trial"
+							  />
+					  
+							  <p id="plan-ent-trial" class="plan-trial">
+								<span aria-hidden="true" class="plan-trial-icon" /> 14 days free trial
+							  </p>
+										
+							  <div class="plan-features">
+								<p>Armed with the expertise to run the day-to-day of your business. No email goes unanswered, no meeting unbooked. All your company admin just happens, you'll wonder what to do with all that time.</p>
+							  </div>
+					  
+							  <hr class="plan-sep" aria-hidden="true" />
+					  
+							  <div class="plan-features">
+								<Tooltip text="Base price includes 50 messages/ month. Choose your package at sign-up to increase this">
+									<span class="plan-details">Usage limits apply</span>
+								  </Tooltip>
+							  </div>
+							</article>
 						  </div>
-				  
-						  <p id="plan-ent-price" class="plan-price">
-							£39.99<span class="per">/month</span>
-						  </p>
-				  
-						  <Button
-							label="Sign up now"
-							href="/get-started"
-							target=""
-							variant="primary"
-							size="medium"
-							aria-describedby="plan-ent-trial"
-						  />
-				  
-						  <p id="plan-ent-trial" class="plan-trial">
-							<span aria-hidden="true" class="plan-trial-icon" /> 14 days free trial
-						  </p>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							<h4 class="plan-subtitle">What AI employees can you hire?</h4>
-							<li>Personal Assistant</li>
-							<li>
-							  Head of Sales
-							  <small class="plan-note"> (Maximum 50 outreaches)</small>
-							</li>
-						  </ul>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							  <h4 class="plan-subtitle">Maximum users</h4>
-							  <p class="plan-limit">1 account</p>
-						  </ul>
-						</article>
-					  </li>
-				  
-					  {/* Start‑up */}
-					  <li class="plan" aria-label="Start-up plan">
-						<article aria-labelledby="plan-start-title" aria-describedby="plan-start-price plan-start-trial">
-						  <div class="plan-header">
-							<Fragment set:html={priceStar} />
-							<h3 id="plan-start-title" class="plan-title">Start-up</h3>
+					</div>
+					<div class="new-team-image">
+						<Image src={paTeamImage} alt="A picture of a personal assistant team" />
+					</div>
+				</div>
+				<div class="new-team-cards">
+					<div class="new-team-hire">
+						<div class="plan promoted" aria-label="Entrepreneur plan, most popdivar">
+							<article aria-labelledby="plan-ent-title" aria-describedby="plan-ent-price plan-ent-trial">
+							  <div class="plan-header">
+								<Fragment set:html={priceStar} />
+								<h3 id="plan-ent-title" class="plan-title">Head of Sales</h3>
+							  </div>
+					  
+							  <p id="plan-ent-price" class="plan-price">
+								From £50<span class="per">/month</span>
+							  </p>
+					  
+							  <Button
+								label="Hire me now"
+								href="/get-started"
+								target=""
+								variant="primary"
+								size="medium"
+								aria-describedby="plan-ent-trial"
+							  />
+					  
+							  <p id="plan-ent-trial" class="plan-trial">
+								<span aria-hidden="true" class="plan-trial-icon" /> 14 days free trial
+							  </p>
+										
+							  <div class="plan-features">
+								<p>Your sales manager has one mission, and that’s growing your business every day. They’ll draft outreach strategies, search high and low for new customers, then create the perfect message to reach those customers.</p>
+								<aside><small>Also includes a simple Personal Assistant</small></aside>
+							  </div>
+					  
+							  <hr class="plan-sep" aria-hidden="true" />
+					  
+							  <div class="plan-features">
+								  <Tooltip text="Base price includes 50 outreaches/ month. Choose your package at sign-up to increase this">
+									<span class="plan-details">Usage limits apply</span>
+								  </Tooltip>
+							  </div>
+							</article>
 						  </div>
-				  
-						  <p id="plan-start-price" class="plan-price">
-							From £100<span class="per">/month</span>
-						  </p>
-				  
-						  <Button
-							label="Sign up now"
-							href="/get-started"
-							target=""
-							variant="secondary"
-							size="medium"
-							aria-describedby="plan-start-trial"
-						  />
-				  
-						  <p id="plan-start-trial" class="plan-trial">
-							<span aria-hidden="true" class="plan-trial-icon" /> 14 days free trial
-						  </p>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							<h4 class="plan-subtitle">What AI employees can you hire?</h4>
-							<li>All employees</li>
-							<li>Business, Sales, Marketing, &amp; Finance</li>
-						  </ul>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							  <h4 class="plan-subtitle">Maximum users</h4>
-							  <p class="plan-limit">3 accounts</p>
-						  </ul>
-						</article>
-					  </li>
-				  
-					  {/* Business */}
-					  <li class="plan" aria-label="Business plan">
-						<article aria-labelledby="plan-biz-title" aria-describedby="plan-biz-price plan-biz-trial">
-						  <div class="plan-header">
-							<Fragment set:html={priceStar} />
-							<h3 id="plan-biz-title" class="plan-title">Business</h3>
-						  </div>
-				  
-						  <p id="plan-biz-price" class="plan-price">
-							From £250<span class="per">/month</span>
-						  </p>
-				  
-						  <Button
-							label="Sign up now"
-							href="/get-started"
-							target=""
-							variant="secondary"
-							size="medium"
-							aria-describedby="plan-biz-trial"
-						  />
-				  
-						  <p id="plan-biz-trial" class="plan-trial">
-							<span aria-hidden="true" class="plan-trial-icon" /> 14 days free trial
-						  </p>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							<h4 class="plan-subtitle">What AI employees can you hire?</h4>
-							<li>All employees</li>
-							<li>Business, Sales, Marketing, &amp; Finance</li>
-						  </ul>
-				  
-						  <hr class="plan-sep" aria-hidden="true" />
-				  
-						  <ul class="plan-features">
-							  <h4 class="plan-subtitle">Maximum users</h4>
-							  <p class="plan-limit">10 accounts</p>
-						  </ul>
-						</article>
-					  </li>
-					</ul>
-				  </section>
-			</article>
-		</section>
-		<section class="main-content" aria-labelledby="employee-comparison-heading">
-			<article class="content-container">
-			  <h3 id="employee-comparison-heading">What can your employees do for your business?</h3>
-		  
-			  <!-- Personal Assistant -->
-			  <div class="price-table-outer">
-				<table class="employee-comparison" cellspacing="0" cellpadding="0">
-					<thead>
-					  <tr class="table-head-row">
-						<!-- WHOLE left block is the TH -->
-						<th scope="col" class="employee-colhead">
-						  <div class="employee-header">
-							<img src={tablePA.src} alt="" class="employee-icon" aria-hidden="true" />
-							<span class="employee-title">Personal Assistant</span>
-						  </div>
-						</th>
-			  
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Entrepreneur</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Start-up</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Business</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-					  </tr>
-			  
-					</thead>
-			  
-					<tbody>
-					  <tr>
-						<td>Your unlimited email &amp; calendar assistant</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td>Book and manage your travel</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td>Create briefings for your meetings</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td>Automatically draft and follow-up on emails</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td><a class="more-link" href="/your-ai-employees/personal-assistant">And more...</a></td>
-						<td colspan="3"></td>
-					  </tr>
-					</tbody>
-				  </table>
-			  </div>
-		  
-			  <!-- Head of Sales -->
-			  <div class="price-table-outer">
-				<table class="employee-comparison" cellspacing="0" cellpadding="0">
-					<thead>
-					  <tr class="table-head-row">
-						<th scope="col" class="employee-colhead">
-						  <div class="employee-header">
-							<img src={tableSales.src} alt="" class="employee-icon" aria-hidden="true" />
-							<span class="employee-title">Head of Sales</span>
-						  </div>
-						</th>
-			  
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Entrepreneur</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Start-up</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-						<th scope="col" class="plan-colhead">
-						  <Fragment set:html={priceStar} />
-						  <span class="plan-name">Business</span>
-						  <Button label="Sign up now" href="/get-started" target="" variant="secondary" size="small" />
-						</th>
-					  </tr>
-					</thead>
-			  
-					<tbody>
-					  <tr>
-						<td>Run your email outreach</td>
-						<td>
-						  <span class="price-detail">
-							<span>Price per contact:</span> Free<br /><span>Limit:</span> 50 total
-						  </span>
-						</td>
-						<td>
-						  <span class="price-detail">
-							<span>Price per contact:</span> £0.25<br /><span>Limit</span>: 1000/month
-						  </span>
-						</td>
-						<td>
-						  <span class="price-detail">
-							<span>Price per contact:</span> £0.20<br /><span>Limit</span>: 5000/month
-						  </span>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Manage your funnel</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td>Handle customer contracts</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td>Book and manage customer meetings</td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-						<td aria-label="Included"><img src={checkIcon.src} alt="A tick icon"></td>
-					  </tr>
-					  <tr>
-						<td><a class="more-link" href="/your-ai-employees/head-of-sales">And more...</a></td>
-						<td colspan="3"></td>
-					  </tr>
-					</tbody>
-				  </table>
+					</div>
+					<div class="new-team-image">
+						<Image src={headOfSalesImage} alt="A picture of a sales team" />
+					</div>
 				</div>
 			</article>
-		  </section>
-		  <section class="main-content" aria-labelledby="new-employees-heading">
+		</section>
+		<section class="main-content" aria-labelledby="new-employees-heading">
 			<article class="content-container">
-			  <h3 id="new-employees-heading" class="section-title">New employees onboarding soon</h3>
+				<div class="content-title">
+					<h2>Onboarding soon</h2>
+				</div>
 		  
 			  <ul class="employee-card-grid" role="list">
 				<!-- Finance Manager -->

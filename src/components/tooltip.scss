@@ -1,0 +1,59 @@
+.dream-tooltip {
+    --tt-bg: rgba(20, 20, 25, 0.95);
+    --tt-fg: #fff;
+    --tt-radius: 8px;
+    --tt-pad: 8px 10px;
+    --tt-shadow: 0 6px 20px rgba(0,0,0,0.22);
+    --tt-z: 9999;
+  
+    position: fixed;
+    z-index: var(--tt-z);
+    background: var(--tt-bg);
+    color: var(--tt-fg);
+    border-radius: var(--tt-radius);
+    padding: 0;
+    box-shadow: var(--tt-shadow);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 120ms ease, transform 120ms ease;
+    pointer-events: auto;
+  }
+  
+  .dream-tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .dream-tooltip__content {
+    padding: var(--tt-pad);
+    font: 500 0.875rem/1.3 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    max-width: min(320px, 80vw);
+    word-break: break-word;
+  }
+  
+  /* Close button appears for tap/click */
+  .dream-tooltip__close {
+    display: none;
+    position: absolute;
+    top: 0; right: 0;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    font: 700 1rem/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: var(--tt-fg);
+    padding: 6px 10px 8px;
+    cursor: pointer;
+  }
+  .dream-tooltip.is-touch .dream-tooltip__close { display: inline-block; }
+  
+  /* Optional caret */
+  .dream-tooltip.is-visible::before {
+    content: "";
+    position: absolute;
+    width: 0; height: 0;
+    border: 6px solid transparent;
+    border-top-color: var(--tt-bg);
+    top: 100%;
+    left: 50%;
+  }
+  
