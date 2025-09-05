@@ -2429,8 +2429,15 @@ table.how-works-table {
         .plan-features {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 8px;
             padding: 12px 0;
+
+            a {
+                font-weight: 500;
+                color: $wallstreet-black;
+            }
             
             &:first-of-type {
                 min-height: 160px;
