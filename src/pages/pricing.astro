@@ -10,10 +10,7 @@ import Button from '../components/Button.astro';
 
 import priceStar from '/src/img/price-star.svg?raw';
 
-import tableSales from '/src/img/sales-table-dreamie.png';
-import tablePA from '/src/img/pa-table-dreamie.png';
-
-import checkIcon from '/src/img/check.svg';
+import helpIcon from '/src/img/help-circle.svg';
 
 import financeManager from '/src/img/finance-manager.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
@@ -45,7 +42,7 @@ import Tooltip from "../components/Tooltip.astro";
 			<article class="content-container">
 				<div class="content-title">
 					<h2>Build <span class="highlight-title">your team</span>, your way</h2>
-					<p>Start with one employee, then build your team.</p>
+					<p>Start with one employee, then add the whole team.</p>
 				</div>
 				<div class="new-team-cards">
 					<div class="new-team-hire">
@@ -83,7 +80,7 @@ import Tooltip from "../components/Tooltip.astro";
 					  
 							  <div class="plan-features">
 								<Tooltip text="Base price includes 50 messages/ month. Choose your package at sign-up to increase this">
-									<span class="plan-details">Usage limits apply</span>
+									<span class="plan-details">Usage limits apply<Image src={helpIcon} role="presentation" alt=""/></span>
 								  </Tooltip>
 							  </div>
 							</article>
@@ -129,7 +126,7 @@ import Tooltip from "../components/Tooltip.astro";
 					  
 							  <div class="plan-features">
 								  <Tooltip text="Base price includes 50 outreaches/ month. Choose your package at sign-up to increase this">
-									<span class="plan-details">Usage limits apply</span>
+									<span class="plan-details">Usage limits apply<Image src={helpIcon} role="presentation" alt=""/></span>
 								  </Tooltip>
 							  </div>
 							</article>

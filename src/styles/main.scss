@@ -581,6 +581,31 @@ header {
     &.hero-home {
 
         &.index-hero {
+            background: url('/src/img/star-repeat.svg') repeat center;
+            position: relative;
+
+            @keyframes pulseBig {
+                0% { transform: scale(1); opacity: .2; }
+                100% { transform: scale(90); opacity: 0; }
+            }
+
+            &:after {
+                content: '';
+                opacity: .2;
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                z-index: -1;
+                filter: blur(12px);
+                border: 12px solid $quadra-grey;
+                mix-blend-mode: difference;
+                isolation: isolate;
+                left: 50%;
+                margin-left: -16px;
+                top: 50%;
+                margin-top: -16px;
+                animation: pulseBig 5s $cubic-timing infinite;
+            }
 
             @media (min-width: 1024px) {
                 .actions {
@@ -2433,6 +2458,11 @@ table.how-works-table {
             align-items: flex-start;
             gap: 8px;
             padding: 12px 0;
+
+            .plan-details {
+                display: flex;
+                gap: 4px;
+            }
 
             a {
                 font-weight: 500;
