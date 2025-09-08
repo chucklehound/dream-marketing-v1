@@ -2502,6 +2502,10 @@ table.how-works-table {
 .referral-header {
     position: relative;
 
+    img {
+        margin: auto;
+    }
+
     &:after {
         content: '';
         display: block;
@@ -2510,7 +2514,7 @@ table.how-works-table {
         background: url('/src/img/sunburst.svg') no-repeat center;
         background-size: cover;
         position: absolute;
-        bottom: 32px;
+        bottom: 48px;
         left: 50%;
         margin-left: -300px;
         z-index: -1;

@@ -86,7 +86,12 @@ const contentBlocks = [
           ? <h1 class="page-title">{refData.name}’s Personal Assistant invited you</h1>
           : <h1 class="page-title">You’re invited to Dream</h1>
         }
-        <p>It takes minutes to get started, choose an option below.</p>
+
+        { refData.name
+          ? <p>{refData.name}'s' PA has invited you to Dream. Hire your own team in minutes, and start saving time.</p>
+          : <p>Get your own PA in minutes. Hire them now, and start saving time.</p>
+
+        }
       </section>
 
     </div>
