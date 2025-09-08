@@ -340,10 +340,9 @@ const contentBlocks = [
     <!-- Success view (hidden until success) -->
     <div id="successView" class="success-view" hidden>
       <h4 id="successHeading">Thanks — you're on the list</h4>
-      <p>While you’re here, you might enjoy these community articles</p>
+      <p>While you’re here, follow us on LinkedIn</p>
       <ul class="success-links">
-        <li><a href="/community/givewheel-case-study">GiveWheel Scales Corporate Fundraising With Dream</a></li>
-        <li><a href="/community/cold-email-templates-that-get-retail-buyers-to-stock-your-product">Cold Email Templates That Get Retail Buyers to Stock Your Product</a></li>
+        <li><a href="https://www.linkedin.com/company/dream-ai-employees">Dream on LinkedIn</a></li>
       </ul>
 
       <div class="success-actions">
@@ -354,61 +353,90 @@ const contentBlocks = [
 
   <script is:inline>
     (function () {
-      const FORM_URL = "https://submit-form.com/xjnEmLMC6"; // Formspark endpoint
-
+      const PORTAL_ID = "49000459";
+      const FORM_GUID = "4c792f29-f1da-4d96-9151-126ad0262902";
+      const HS_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
+    
       const modal       = document.getElementById('mailing-list-modal');
       const form        = modal.querySelector('#contactForm');
       const btn         = modal.querySelector('#submitBtn');
       const statusElm   = modal.querySelector('#formStatus');
       const successView = modal.querySelector('#successView');
-
+    
+      const getCookie = (name) =>
+        document.cookie.split('; ').find(c => c.startsWith(name + '='))?.split('=')[1];
+    
       const setLoading = (loading) => {
         if (!btn) return;
         btn.disabled = loading;
         btn.dataset.originalLabel ??= btn.textContent;
         btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
       };
-
+    
+      const splitName = (full) => {
+        const parts = (full || '').trim().split(/\s+/);
+        if (!parts.length) return { first: '', last: '' };
+        if (parts.length === 1) return { first: parts[0], last: '' };
+        return { first: parts.slice(0, -1).join(' '), last: parts.at(-1) };
+      };
+    
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        setLoading(true);
         statusElm.textContent = '';
-
+        if (form.address?.value?.trim()) return; // honeypot
+    
+        setLoading(true);
+    
+        const fd = new FormData(form);
+        const email   = (fd.get('email')   || '').toString().trim();
+        const name    = (fd.get('name')    || '').toString().trim();
+        const dreamie = (fd.get('dreamie') || '').toString().trim();
+    
+        const { first, last } = splitName(name);
+    
+        // Use HubSpot internal property names
+        const fields = [
+          { name: 'email', value: email },
+          { name: 'firstname', value: first },
+          { name: 'lastname',  value: last },
+          { name: 'which_employee_are_you_most_excited_by_', value: dreamie },
+        ];
+    
+        const context = {
+          hutk: getCookie('hubspotutk') || undefined,
+          pageUri: window.location.href,
+          pageName: document.title
+        };
+    
         try {
-          const res = await fetch(FORM_URL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          const res = await fetch(HS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fields, context })
           });
-
           if (!res.ok) throw new Error('Bad response');
-
-          // Hide form, show success
+    
           form.hidden = true;
           successView.hidden = false;
-
-          // Move focus to success heading for screen readers
+    
           const heading = successView.querySelector('#successHeading');
           if (heading) {
-            // Make it programmatically focusable just for this jump
             heading.setAttribute('tabindex', '-1');
             heading.focus({ preventScroll: true });
-            // optional cleanup later
             setTimeout(() => heading.removeAttribute('tabindex'), 100);
           }
-        } catch (err) {
+          form.reset();
+        } catch {
           statusElm.textContent = 'Something went wrong. Please try again.';
         } finally {
           setLoading(false);
-          // Clear the form on success view to “blank it out”
-          if (!successView.hidden) form.reset();
         }
       });
     })();
-  </script>
+    </script>
+    
+    
+    
 </Modal>
 
 <script>
