@@ -583,20 +583,23 @@ header {
         &.index-hero {
             background: url('/src/img/star-repeat.svg') repeat center;
             position: relative;
+            overflow: hidden;
 
             @keyframes pulseBig {
-                0% { transform: scale(1); opacity: .2; }
-                100% { transform: scale(90); opacity: 0; }
+                0% { transform: scale(1); opacity: .1; }
+                20% { opacity: .1; }
+                80% { opacity: 0; }
+                100% { transform: scale(110); opacity: 0; }
             }
 
             &:after {
                 content: '';
-                opacity: .2;
+                opacity: .1;
                 width: 32px;
                 height: 32px;
                 position: absolute;
                 z-index: -1;
-                filter: blur(12px);
+                filter: blur(2px);
                 border: 12px solid $quadra-grey;
                 mix-blend-mode: difference;
                 isolation: isolate;
