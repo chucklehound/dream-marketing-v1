@@ -1,0 +1,151 @@
+---
+/**
+ * Static-only referral page for local testing.
+ * - Builds one page per ID in src/data/referrals.json
+ * - No API, no env flags
+ */
+
+ import Layout from '../../layouts/Layout.astro';
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import Modal from '../../components/Modal.astro';
+import Carousel from '../../components/Carousel.astro';
+
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+import qrImg from '/src/img/qr.png';
+
+import card1 from '/src/img/how-works-1.png';
+import card2 from '/src/img/how-works-2.png';
+import card3 from '/src/img/how-works-3.png';
+import card4 from '/src/img/how-works-4.png';
+
+type RefData = {
+  id: string;
+  name: string | null;
+  dreamieImage: string;
+  whatsappIntro?: string;
+};
+
+// ✅ Pre-render ALL referral pages from JSON
+export async function getStaticPaths() {
+  const mod = await import('../../data/referrals.json');
+  const refs = (mod.default ?? mod) as Record<string, any>;
+
+  return Object.keys(refs).map((id) => ({
+    params: { refId: id },
+    props: {
+      refData: {
+        id,
+        name: refs[id].name ?? null,
+        dreamieImage: refs[id].dreamieImage ?? '',
+        whatsappIntro: refs[id].whatsappIntro ?? "Hi, I'm interested in Dream",
+      } as RefData
+    }
+  }));
+}
+
+// Receive the prebuilt data
+const { refData } = Astro.props as { refData: RefData };
+
+const PHONE_E164 = "+447476963324";
+const WA_BASE = "https://wa.me/447476963324";
+
+// Keep the referral ID in the first WhatsApp message (purely convenience while static)
+const waText = `${refData.whatsappIntro}${refData.id ? ` — Referral:${refData.id}` : ''}`;
+const callHref = `tel:${PHONE_E164}`;
+const waHref   = `${WA_BASE}?text=${encodeURIComponent(waText)}`;
+
+const pageTitle = refData.name
+  ? `${refData.name}’s Personal Assistant invited you – Dream`
+  : `You're invited – Dream`;
+
+const ogImage = refData.dreamieImage || undefined;
+
+const contentBlocks = [
+  { image: card1, title: 'Give your employees a task and they’ll research and plan it themselves. No more micromanaging.', subtitle: 'Learn more about', ctaText: 'How they work', ctaUrl: '/how-it-works' },
+  { image: card2, title: 'Automate your workload by asking. No complicated templates or apps to learn.', subtitle: 'Learn more about', ctaText: 'AI employees', ctaUrl: '/your-ai-employees' },
+  { image: card3, title: 'Work at the speed of your voice. Send voice notes or call your employees for any kind of work.', subtitle: 'Learn more about', ctaText: 'How they work', ctaUrl: '/how-it-works' },
+  { image: card4, title: 'Your employees have their own email, so they can arrange meetings, coordinate travel and more.', subtitle: 'Learn more about', ctaText: 'What it costs', ctaUrl: '/pricing' },
+];
+---
+
+<Layout title={pageTitle}>
+  <Navigation />
+
+  <header class="hero-home solo-header">
+    <div class="hero-elements main-content">
+        { refData.dreamieImage && (
+          <div class="referral-header">
+            <img src={refData.dreamieImage} alt={refData.name ? `${refData.name}'s Dreamie` : "Dreamie"} width="420" height="420" />
+          </div>
+        )}
+      <section class="header-text">
+        { refData.name
+          ? <h1 class="page-title">{refData.name}’s Personal Assistant invited you</h1>
+          : <h1 class="page-title">You’re invited to Dream</h1>
+        }
+        <p>It takes minutes to get started, choose an option below.</p>
+      </section>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="get-started-content main-content">
+      <article class="content-container">
+        <div class="start-cards">
+          <div class="card-item">
+            <h2>Call to start</h2>
+            <p>Start a voice call with your Personal Assistant and they’ll talk you through creating your Dream account.</p>
+
+            <Button label="Call your PA" href={callHref} variant="secondary" size="medium">
+              <img src={phoneIcon.src} role="presentation" alt="" />
+            </Button>
+
+            <Button label="Call your PA" variant="secondary" size="medium" role="button" as="button" rel="noopener" data-open-modal="call-modal">
+              <img src={phoneIcon.src} role="presentation" alt="" />
+            </Button>
+          </div>
+
+          <div class="card-item">
+            <h2>WhatsApp to start</h2>
+            <p>Chat with your Personal Assistant on WhatsApp, and create your Dream account as easily as chatting.</p>
+
+            <Button label="Message on WhatsApp" href={waHref} variant="secondary" size="medium">
+              <img src={whatsAppIcon.src} role="presentation" alt="">
+            </Button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="main-content">
+      <article class="content-container full-width">
+        <div class="content-title">
+          <h2>Smart employees, <br/>Meet <span class="highlight-title">powerful tools</span></h2>
+          <p>Dream’s AI employees use some of the most advanced technology on the planet, but we made them even better by giving them custom tools so they can work smarter and faster.</p>
+        </div>
+        <Carousel items={contentBlocks} />
+      </article>
+    </section>
+  </main>
+
+  <Modal id="call-modal" closeLabel="Close">
+    <h2 slot="title" id="qrTitle">Get started with Dream in minutes</h2>
+    <p>All it takes is a quick call. You'll speak directly to your new team member, no humans involved.</p>
+    <section class="qr-modal">
+      <figure class="qr-modal__visual">
+        <img src={qrImg.src} width="256" height="256" alt="">
+      </figure>
+    </section>
+  </Modal>
+
+  <Footer />
+</Layout>
+
+<style>
+.ref-dreamie { margin-block: 1rem 0; }
+.ref-dreamie img { display:block; width: 100%; max-width: 420px; height:auto; object-fit: contain; }
+</style>

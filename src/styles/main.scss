@@ -2499,6 +2499,24 @@ table.how-works-table {
     }
 }
 
+.referral-header {
+    position: relative;
+
+    &:after {
+        content: '';
+        display: block;
+        width: 600px;
+        height: 244px;
+        background: url('/src/img/sunburst.svg') no-repeat center;
+        background-size: cover;
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        margin-left: -300px;
+        z-index: -1;
+    }
+}
+
 /* Default: show mobile call, hide modal opener */
 .button.secondary.medium[data-mobile-call] { display: inline-flex; }
 .button.secondary.medium[data-open-modal="call-modal"] { display: none; }
