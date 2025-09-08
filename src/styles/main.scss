@@ -1652,6 +1652,7 @@ h3.section-title {
             img {
                 min-width: 300px;
                 height: auto;
+                width: auto;
 
                 @media (max-width: 1024px) {
                     max-height: 240px;
@@ -2113,6 +2114,16 @@ ul.all-posts {
 .get-started-content {
     padding-top: 0;
 
+    h3 {
+        text-align: center;
+        @include heading4;
+        margin: 32px auto 24px;
+
+        @media (max-width: 700px) {
+            @include heading5;
+        }
+    }
+
     .content-container {
         padding-top:  0;
     }
@@ -2501,6 +2512,7 @@ table.how-works-table {
 
 .referral-header {
     position: relative;
+    overflow: hidden;
 
     img {
         margin: auto;

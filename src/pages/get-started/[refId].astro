@@ -12,9 +12,18 @@ import Footer from '../../components/Footer.astro';
 import Modal from '../../components/Modal.astro';
 import Carousel from '../../components/Carousel.astro';
 
+import { Image } from 'astro:assets';
+
 import whatsAppIcon from '/src/img/whats-app-icon.svg';
 import phoneIcon from '/src/img/phone-call.svg';
 import qrImg from '/src/img/qr.png';
+
+import headOfSales from '/src/img/head-of-sales.png';
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
+
+import personalAssistant from '/src/img/personal-assistant.png';
 
 import card1 from '/src/img/how-works-1.png';
 import card2 from '/src/img/how-works-2.png';
@@ -76,21 +85,21 @@ const contentBlocks = [
 
   <header class="hero-home solo-header">
     <div class="hero-elements main-content">
-        { refData.dreamieImage && (
           <div class="referral-header">
-            <img src={refData.dreamieImage} alt={refData.name ? `${refData.name}'s Dreamie` : "Dreamie"} width="420" height="420" />
+            { refData.dreamieImage 
+              ? <img src={refData.dreamieImage} alt={refData.name ? `${refData.name}'s Dreamie` : "Dreamie"} width="420" height="420" />
+              : <Image src={personalAssistant} alt="Your PA" />
+            }
           </div>
-        )}
       <section class="header-text">
         { refData.name
-          ? <h1 class="page-title">{refData.name}’s Personal Assistant invited you</h1>
+          ? <h1 class="page-title">{refData.name}’s <span class="highlight-title">Personal Assistant</span> invited you</h1>
           : <h1 class="page-title">You’re invited to Dream</h1>
         }
 
         { refData.name
-          ? <p>{refData.name}'s' PA has invited you to Dream. Hire your own team in minutes, and start saving time.</p>
+          ? <p>{refData.name}'s PA has invited you to Dream. Hire your own team in minutes, and start saving time.</p>
           : <p>Get your own PA in minutes. Hire them now, and start saving time.</p>
-
         }
       </section>
 
@@ -100,6 +109,9 @@ const contentBlocks = [
   <main>
     <section class="get-started-content main-content">
       <article class="content-container">
+        {refData.name && (
+          <h3>Use {refData.name}'s link and you'll both earn money off.</h3>
+        )}
         <div class="start-cards">
           <div class="card-item">
             <h2>Call to start</h2>
@@ -135,6 +147,132 @@ const contentBlocks = [
         <Carousel items={contentBlocks} />
       </article>
     </section>
+
+    <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+      <article class="content-container">
+        <div class="content-title">
+          <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+        </div>
+    
+        <ul class="employee-card-grid compact-grid" role="list">
+          <li class="employee-card">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                  src={headOfSales}
+                  alt=""
+                  class="card-figure-img"
+                  aria-hidden="true"
+                  format="webp"
+                />
+                </figure>
+    
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Ready to hire</span>
+                </p>
+    
+                <h3 class="card-title">
+                  Head of Sales
+                </h3>
+              </div>
+    
+              <footer class="card-footer">
+                <Button label="Hire them now" href="/your-ai-employees/head-of-sales" target="" variant="primary" size="medium" />
+              </footer>
+            </article>
+          </li>
+
+          <li class="employee-card">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={financeManager}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+    
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+    
+                <h3 class="card-title">
+                  Finance Manager
+                </h3>
+              </div>
+    
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+    
+          <!-- Head of Marketing -->
+          <li class="employee-card">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={headOfMarketing}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+    
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+    
+                <h3 class="card-title">
+                  Head of Marketing
+                </h3>
+              </div>
+    
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+    
+          <!-- CS Manager -->
+          <li class="employee-card">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={csManager}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+    
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+    
+                <h3 class="card-title">
+                  Customer Service Manager
+                </h3>
+              </div>
+    
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+        </ul>
+    
+      </article>
+    </section>
+
   </main>
 
   <Modal id="call-modal" closeLabel="Close">
