@@ -314,33 +314,34 @@ const contentBlocks = [
       <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
 
       <fieldset class="dreamie-radio-group">
-        <legend>Which employee are you most excited by?</legend>
-
+        <legend>Which employees are you most excited by? <span class="muted">(pick all that apply)</span></legend>
+      
         <div class="radio-option">
-          <input type="radio" id="personal-assistant" name="dreamie" value="Personal Assistant" required />
+          <input type="checkbox" id="personal-assistant" name="dreamie" value="Personal Assistant" />
           <label for="personal-assistant">Personal Assistant</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="sales" name="dreamie" value="Head of Sales" />
+          <input type="checkbox" id="sales" name="dreamie" value="Head of Sales" />
           <label for="sales">Head of Sales</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="finance" name="dreamie" value="Finance Manager" />
+          <input type="checkbox" id="finance" name="dreamie" value="Finance Manager" />
           <label for="finance">Finance Manager</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="marketing" name="dreamie" value="Head of Marketing" />
+          <input type="checkbox" id="marketing" name="dreamie" value="Head of Marketing" />
           <label for="marketing">Head of Marketing</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="cs" name="dreamie" value="Customer Service Manager" />
+          <input type="checkbox" id="cs" name="dreamie" value="Customer Service Manager" />
           <label for="cs">Customer Service Manager</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="other" name="dreamie" value="Other" />
+          <input type="checkbox" id="other" name="dreamie" value="Other" />
           <label for="other">Other</label>
         </div>
       </fieldset>
+      
 
       <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
         Get updates
@@ -365,27 +366,34 @@ const contentBlocks = [
 
   <script is:inline>
     (function () {
+      // Prevent duplicate bindings if this script is included twice
+      if (window.__hsMailingInit) return;
+      window.__hsMailingInit = true;
+  
       const PORTAL_ID = "49000459";
       const FORM_GUID = "4c792f29-f1da-4d96-9151-126ad0262902";
       const HS_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
-    
+  
       const modal       = document.getElementById('mailing-list-modal');
-      const form        = modal.querySelector('#contactForm');
-      const btn         = modal.querySelector('#submitBtn');
-      const statusElm   = modal.querySelector('#formStatus');
-      const successView = modal.querySelector('#successView');
-    
+      const form        = modal?.querySelector('#contactForm');
+      const btn         = modal?.querySelector('#submitBtn');
+      const statusElm   = modal?.querySelector('#formStatus');
+      const successView = modal?.querySelector('#successView');
+  
+      if (!form) return;
+      if (form.dataset.bound === '1') return;
+      form.dataset.bound = '1';
+  
       const getCookie = (name) =>
         document.cookie.split('; ').find(c => c.startsWith(name + '='))?.split('=')[1];
-    
+  
       const setLoading = (loading) => {
         if (!btn) return;
         btn.disabled = loading;
         btn.dataset.originalLabel ??= btn.textContent;
         btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
       };
-    
-      // robust split (no .at)
+  
       const splitName = (full) => {
         const s = (full || '').trim().replace(/\s+/g, ' ');
         if (!s) return { first: '', last: '' };
@@ -393,63 +401,75 @@ const contentBlocks = [
         if (parts.length === 1) return { first: parts[0], last: '' };
         return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
       };
-    
-      // normalize website to include protocol
-      const normalizeUrl = (u) => {
-        const s = (u || '').trim();
-        if (!s) return '';
-        return /^https?:\/\//i.test(s) ? s : `https://${s}`;
+  
+      // Map checkbox label/value -> HubSpot CRM option value (from your HS form)
+      const OPTION_MAP = {
+        'Personal Assistant':        'L6cGUyY3rxjbrVhObJdhj',
+        'Head of Sales':             'heWA2aiKPXyI4gZmUDUmF',   // note: I4
+        'Head of Marketing':         'oqS6sVZIgJPH0sSj37WLH',
+        'Customer Services Manager': 'Ky7KhJjSBxEwocMYR8UOf',
+        'Finance Manager':           'zToAvy_nDQn8MCqsJHTtv',
+        'Something else':            'gRPuHuaxPur2_WQovppri'
       };
-    
+  
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        statusElm.textContent = '';
-        if (form.address?.value?.trim()) return; // honeypot
-    
+        if (statusElm) statusElm.textContent = '';
+        // honeypot
+        if (form.address?.value?.trim()) return;
+  
         setLoading(true);
-    
+  
         try {
           const fd = new FormData(form);
-          const fullName = (fd.get('name')     || '').toString().trim();
-          const email    = (fd.get('email')    || '').toString().trim();
-          const dreamie  = (fd.get('dreamie')  || '').toString().trim();
-          const company  = (fd.get('company')  || '').toString().trim();
-          const phone    = (fd.get('phone')    || '').toString().trim();
-    
+          const fullName = (fd.get('name')  || '').toString().trim();
+          const email    = (fd.get('email') || '').toString().trim();
+          const company  = (fd.get('company') || '').toString().trim();
+          const phone    = (fd.get('phone')   || '').toString().trim();
+  
+          // Collect all checked checkboxes named "dreamie" and map to CRM values
+          const selected = Array.from(form.querySelectorAll('input[name="dreamie"]:checked'))
+            .map(i => OPTION_MAP[i.value])
+            .filter(Boolean);
+  
+          if (selected.length === 0) {
+            if (statusElm) statusElm.textContent = 'Please pick at least one employee.';
+            setLoading(false);
+            return;
+          }
+  
+          // HubSpot expects semicolon-separated internal option values
+          const whichEmployeesValue = selected.join(';');
+  
           const { first, last } = splitName(fullName);
-    
-          // HubSpot contact property internal names
+  
           const fields = [
             { name: 'email', value: email },
             { name: 'firstname', value: first },
             { name: 'lastname',  value: last },
-            { name: 'which_employees_', value: dreamie },
+            { name: 'which_employees_', value: whichEmployeesValue },
             { name: 'company', value: company },
             { name: 'phone',   value: phone },
-          ].filter(f => f.value !== ''); // skip blanks
-    
+          ].filter(f => f.value !== '');
+  
           const context = {
             hutk: getCookie('hubspotutk') || undefined,
             pageUri: window.location.href,
             pageName: document.title
           };
-    
+  
           const res = await fetch(HS_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fields, context })
           });
-
-          // Optional: uncomment to inspect what HubSpot returns
-          // const payload = await res.json().catch(() => null);
-          // console.log('HubSpot response:', payload);
-
+  
           if (!res.ok) throw new Error('Bad response');
-    
+  
           form.hidden = true;
-          successView.hidden = false;
-    
-          const heading = successView.querySelector('#successHeading');
+          if (successView) successView.hidden = false;
+  
+          const heading = successView?.querySelector('#successHeading');
           if (heading) {
             heading.setAttribute('tabindex', '-1');
             heading.focus({ preventScroll: true });
@@ -457,13 +477,17 @@ const contentBlocks = [
           }
           form.reset();
         } catch {
-          statusElm.textContent = 'Something went wrong. Please try again.';
+          if (statusElm) statusElm.textContent = 'Something went wrong. Please try again.';
         } finally {
           setLoading(false);
         }
       });
     })();
   </script>
+  
+  
+  
+
 </Modal>
 
 
