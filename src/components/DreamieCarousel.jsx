@@ -2,25 +2,25 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // ---- Styles by Dreamie type (unchanged) ----
 const typeStyles = {
-  "Personal Assistant": {
-    borderColor: "#3F7245",
+  "Personal Pro": {
+    borderColor: "#0B5B50",
     background:
-      "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #3F7245",
+      "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #0B5B50",
   },
-  "Head of Sales": {
-    borderColor: "#1B365D",
+  "Sales Pro": {
+    borderColor: "#255a8e",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(245,248,255,0.9) 100%), #1B365D",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(245,248,255,0.9) 100%), #255a8e",
   },
-  "Head of Marketing": {
-    borderColor: "#6D3F72",
+  "Marketing Pro": {
+    borderColor: "#A01D3E",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(251,242,255,0.90) 100%), #6D3F72",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(251,242,255,0.90) 100%), #A01D3E",
   },
-  "Head of Finance": {
-    borderColor: "#BF6B2C",
+  "Finance Pro": {
+    borderColor: "#ffd601",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(255,249,241,0.90) 100%), #BF6B2C",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(255,249,241,0.90) 100%), #ffd601",
   },
 };
 
