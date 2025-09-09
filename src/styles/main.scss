@@ -1891,7 +1891,7 @@ section[aria-label="Trust metrics"] {
     flex: 1 50%;
 
     span {
-        color: desaturate(lighten($color-text-black, 50%), 70%);
+        color: $light-grey;
         font-size: 14px;
     }
 }

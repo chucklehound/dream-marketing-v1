@@ -283,8 +283,8 @@ const contentBlocks = [
 <Footer />
 
 <Modal id="mailing-list-modal" closeLabel="Close">
-  <h2 slot="title">Hire your own Dreamies</h2>
-  <p>We're getting our Dreamies ready to onboard, get an instant notification when they're ready to hire.</p>
+  <h2 slot="title">Hire your own employees</h2>
+  <p>We're getting our employees ready to onboard, get an instant notification when they're ready to hire.</p>
 
   <div class="modal-form">
     <!-- Form view -->
@@ -294,26 +294,43 @@ const contentBlocks = [
 
       <label>
         Name
-        <input type="text" name="name" required />
+        <input type="text" name="name" autocomplete="name" required />
       </label>
 
       <label>
         Email
-        <input type="email" name="email" required />
+        <input type="email" name="email" autocomplete="email" required />
+      </label>
+
+      <label>
+        Company name
+        <input type="text" name="company" autocomplete="organization" />
+      </label>
+
+      <label>
+        Phone number
+        <input type="tel" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phoneHelp" />
+      </label>
+      <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
+      
+      <label>
+        Website URL
+        <input type="url" name="website" autocomplete="url" placeholder="https://example.com" />
       </label>
 
       <fieldset class="dreamie-radio-group">
         <legend>Which employee are you most excited by?</legend>
+
         <div class="radio-option">
-          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
-          <label for="finance">Personal Assistant</label>
+          <input type="radio" id="personal-assistant" name="dreamie" value="Personal Assistant" required />
+          <label for="personal-assistant">Personal Assistant</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
-          <label for="finance">Head of Sales</label>
+          <input type="radio" id="sales" name="dreamie" value="Head of Sales" />
+          <label for="sales">Head of Sales</label>
         </div>
         <div class="radio-option">
-          <input type="radio" id="finance" name="dreamie" value="Finance Manager" required />
+          <input type="radio" id="finance" name="dreamie" value="Finance Manager" />
           <label for="finance">Finance Manager</label>
         </div>
         <div class="radio-option">
@@ -373,11 +390,20 @@ const contentBlocks = [
         btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
       };
     
+      // robust split (no .at)
       const splitName = (full) => {
-        const parts = (full || '').trim().split(/\s+/);
-        if (!parts.length) return { first: '', last: '' };
+        const s = (full || '').trim().replace(/\s+/g, ' ');
+        if (!s) return { first: '', last: '' };
+        const parts = s.split(' ');
         if (parts.length === 1) return { first: parts[0], last: '' };
-        return { first: parts.slice(0, -1).join(' '), last: parts.at(-1) };
+        return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
+      };
+    
+      // normalize website to include protocol
+      const normalizeUrl = (u) => {
+        const s = (u || '').trim();
+        if (!s) return '';
+        return /^https?:\/\//i.test(s) ? s : `https://${s}`;
       };
     
       form.addEventListener('submit', async (e) => {
@@ -387,33 +413,44 @@ const contentBlocks = [
     
         setLoading(true);
     
-        const fd = new FormData(form);
-        const email   = (fd.get('email')   || '').toString().trim();
-        const name    = (fd.get('name')    || '').toString().trim();
-        const dreamie = (fd.get('dreamie') || '').toString().trim();
-    
-        const { first, last } = splitName(name);
-    
-        // Use HubSpot internal property names
-        const fields = [
-          { name: 'email', value: email },
-          { name: 'firstname', value: first },
-          { name: 'lastname',  value: last },
-          { name: 'which_employee_are_you_most_excited_by_', value: dreamie },
-        ];
-    
-        const context = {
-          hutk: getCookie('hubspotutk') || undefined,
-          pageUri: window.location.href,
-          pageName: document.title
-        };
-    
         try {
+          const fd = new FormData(form);
+          const fullName = (fd.get('name')     || '').toString().trim();
+          const email    = (fd.get('email')    || '').toString().trim();
+          const dreamie  = (fd.get('dreamie')  || '').toString().trim();
+          const company  = (fd.get('company')  || '').toString().trim();
+          const phone    = (fd.get('phone')    || '').toString().trim();
+          const website  = normalizeUrl((fd.get('website') || '').toString());
+    
+          const { first, last } = splitName(fullName);
+    
+          // HubSpot contact property internal names
+          const fields = [
+            { name: 'email', value: email },
+            { name: 'firstname', value: first },
+            { name: 'lastname',  value: last },
+            { name: 'which_employee_are_you_most_excited_by_', value: dreamie },
+            { name: 'company', value: company },
+            { name: 'phone',   value: phone },
+            { name: 'website', value: website },
+          ].filter(f => f.value !== ''); // skip blanks
+    
+          const context = {
+            hutk: getCookie('hubspotutk') || undefined,
+            pageUri: window.location.href,
+            pageName: document.title
+          };
+    
           const res = await fetch(HS_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fields, context })
           });
+
+          // Optional: uncomment to inspect what HubSpot returns
+          // const payload = await res.json().catch(() => null);
+          // console.log('HubSpot response:', payload);
+
           if (!res.ok) throw new Error('Bad response');
     
           form.hidden = true;
@@ -433,11 +470,10 @@ const contentBlocks = [
         }
       });
     })();
-    </script>
-    
-    
-    
+  </script>
 </Modal>
+
+
 
 <script>
   (function startSharedTicker(period = 5000) {
