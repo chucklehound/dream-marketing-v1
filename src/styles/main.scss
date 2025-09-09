@@ -264,6 +264,12 @@ header {
         max-height: 768px;
     }
 
+    @media (min-width: 500px) {
+        &.index-hero .header-text .page-title br {
+            display: none;
+        }
+    }
+
     &.solo-header, .solo-header {
         text-align: center;
         min-height: 400px;
@@ -490,8 +496,8 @@ header {
         
         h1 {
             max-width: 900px;
-            font-size: 40px;
-            line-height: 48px;
+            font-size: 44px;
+            line-height: 52px;
             letter-spacing: -0.1rem;
 
             span {
