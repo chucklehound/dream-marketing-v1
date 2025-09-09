@@ -312,11 +312,6 @@ const contentBlocks = [
         <input type="tel" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phoneHelp" />
       </label>
       <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
-      
-      <label>
-        Website URL
-        <input type="url" name="website" autocomplete="url" placeholder="https://example.com" />
-      </label>
 
       <fieldset class="dreamie-radio-group">
         <legend>Which employee are you most excited by?</legend>
@@ -420,7 +415,6 @@ const contentBlocks = [
           const dreamie  = (fd.get('dreamie')  || '').toString().trim();
           const company  = (fd.get('company')  || '').toString().trim();
           const phone    = (fd.get('phone')    || '').toString().trim();
-          const website  = normalizeUrl((fd.get('website') || '').toString());
     
           const { first, last } = splitName(fullName);
     
@@ -429,10 +423,9 @@ const contentBlocks = [
             { name: 'email', value: email },
             { name: 'firstname', value: first },
             { name: 'lastname',  value: last },
-            { name: 'which_employee_are_you_most_excited_by_', value: dreamie },
+            { name: 'which_employees_', value: dreamie },
             { name: 'company', value: company },
             { name: 'phone',   value: phone },
-            { name: 'website', value: website },
           ].filter(f => f.value !== ''); // skip blanks
     
           const context = {
