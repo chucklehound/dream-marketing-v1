@@ -26,9 +26,9 @@ import headOfMarketing from '/src/img/head-of-marketing.png';
 import csManager from '/src/img/cs-manager.png';
 import personalAssistant from '/src/img/personal-assistant.png';
 
-import Modal from '../../components/Modal.astro';
-
 import HireGuyBlock from '../../components/HireGuyBlock.astro';
+
+import HubspotModal from '../../components/HubspotModal.astro';
 
 
 ---
@@ -84,17 +84,17 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                 <!-- Text content -->
                 <div class="dreamie-content">
                   <h2 id="dreamie-heading">
-                    Your Head of Sales makes growing your business their personal mission.
+                    Your Sales Pro makes growing your business their personal mission.
                   </h2>
           
                   <p>
-                    Your Sales Manager is here to win business, every day. They build and run targeted outreach, digging into every corner of your market to uncover customers worth having. Every lead is researched, every prospect understood, and every message sharpened to cut through the noise and get a reply.
+                    Your Sales Pro is here to win business, every day. They build and run targeted outreach, digging into every corner of your market to uncover customers worth having. Every lead is researched, every prospect understood, and every message sharpened to cut through the noise and get a reply.
                   </p>
                   <p>
-                    When interest sparks, they make sure it catches. Your Sales Manager handles the questions, keeps the conversation alive, and deals with all the admin that comes with turning a “maybe” into a “yes.” You skip the grind and step in when it counts — to seal the deal and take the win.
+                    When interest sparks, they make sure it catches. Your Sales Pro handles the questions, keeps the conversation alive, and deals with all the admin that comes with turning a “maybe” into a “yes.” You skip the grind and step in when it counts — to seal the deal and take the win.
                   </p>
           
-                  <h3>Your Head of Sales is</h3>
+                  <h3>Your Sales Pro is</h3>
                   <ul class="dreamie-feature-list" role="list">
                     <li class="dreamie-feature">
                       <Image
@@ -129,7 +129,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   </ul>
           
                   <Button 
-                    label="Hire your own Head of Sales" 
+                    label="Hire your own Sales Pro" 
                     href="/get-started?pro=sales" 
                     target="" 
                     variant="primary" 
@@ -158,7 +158,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                 <div class="panel-content">
                   <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
                   <div class="panel-footer">
-                    <p class="panel-subtitle">Your Head of Sales is only a call away, letting you get updates and take action by just asking.</p>
+                    <p class="panel-subtitle">Your Sales Pro is only a call away, letting you get updates and take action by just asking.</p>
                     <Button
                       label="Learn more"
                       href="/how-it-works"
@@ -323,207 +323,5 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
 	</main>
 	<Footer />
 
-  <Modal id="mailing-list-modal" closeLabel="Close">
-    <h2 slot="title">Hire your own employees</h2>
-    <p>We're getting our employees ready to onboard, get an instant notification when they're ready to hire.</p>
-  
-    <div class="modal-form">
-      <!-- Form view -->
-      <form id="contactForm" class="webform" novalidate>
-        <!-- honeypot -->
-        <input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
-  
-        <label>
-          Name
-          <input type="text" name="name" autocomplete="name" required />
-        </label>
-  
-        <label>
-          Email
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
-  
-        <label>
-          Company name
-          <input type="text" name="company" autocomplete="organization" />
-        </label>
-  
-        <label>
-          Phone number
-          <input type="tel" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phoneHelp" />
-        </label>
-        <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
-  
-        <fieldset class="dreamie-radio-group">
-          <legend>Which employees are you most excited by? <span class="muted">(pick all that apply)</span></legend>
-        
-          <div class="radio-option">
-            <input type="checkbox" id="personal-assistant" name="dreamie" value="Personal Assistant" />
-            <label for="personal-assistant">Personal Assistant</label>
-          </div>
-          <div class="radio-option">
-            <input type="checkbox" id="sales" name="dreamie" value="Head of Sales" />
-            <label for="sales">Head of Sales</label>
-          </div>
-          <div class="radio-option">
-            <input type="checkbox" id="finance" name="dreamie" value="Finance Manager" />
-            <label for="finance">Finance Manager</label>
-          </div>
-          <div class="radio-option">
-            <input type="checkbox" id="marketing" name="dreamie" value="Head of Marketing" />
-            <label for="marketing">Head of Marketing</label>
-          </div>
-          <div class="radio-option">
-            <input type="checkbox" id="cs" name="dreamie" value="Customer Service Manager" />
-            <label for="cs">Customer Service Manager</label>
-          </div>
-          <div class="radio-option">
-            <input type="checkbox" id="other" name="dreamie" value="Other" />
-            <label for="other">Other</label>
-          </div>
-        </fieldset>
-        
-  
-        <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
-          Get updates
-        </button>
-  
-        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-      </form>
-  
-      <!-- Success view (hidden until success) -->
-      <div id="successView" class="success-view" hidden>
-        <h4 id="successHeading">Thanks — you're on the list</h4>
-        <p>While you’re here, follow us on LinkedIn</p>
-        <ul class="success-links">
-          <li><a href="https://www.linkedin.com/company/dream-ai-employees">Dream on LinkedIn</a></li>
-        </ul>
-  
-        <div class="success-actions">
-          <button type="button" class="button" data-close-modal>Close</button>
-        </div>
-      </div>
-    </div>
-  
-    <script is:inline>
-      (function () {
-        // Prevent duplicate bindings if this script is included twice
-        if (window.__hsMailingInit) return;
-        window.__hsMailingInit = true;
-    
-        const PORTAL_ID = "49000459";
-        const FORM_GUID = "4c792f29-f1da-4d96-9151-126ad0262902";
-        const HS_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
-    
-        const modal       = document.getElementById('mailing-list-modal');
-        const form        = modal?.querySelector('#contactForm');
-        const btn         = modal?.querySelector('#submitBtn');
-        const statusElm   = modal?.querySelector('#formStatus');
-        const successView = modal?.querySelector('#successView');
-    
-        if (!form) return;
-        if (form.dataset.bound === '1') return;
-        form.dataset.bound = '1';
-    
-        const getCookie = (name) =>
-          document.cookie.split('; ').find(c => c.startsWith(name + '='))?.split('=')[1];
-    
-        const setLoading = (loading) => {
-          if (!btn) return;
-          btn.disabled = loading;
-          btn.dataset.originalLabel ??= btn.textContent;
-          btn.textContent = loading ? 'Sending…' : btn.dataset.originalLabel;
-        };
-    
-        const splitName = (full) => {
-          const s = (full || '').trim().replace(/\s+/g, ' ');
-          if (!s) return { first: '', last: '' };
-          const parts = s.split(' ');
-          if (parts.length === 1) return { first: parts[0], last: '' };
-          return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
-        };
-    
-        // Map checkbox label/value -> HubSpot CRM option value (from your HS form)
-        const OPTION_MAP = {
-          'Personal Assistant':        'L6cGUyY3rxjbrVhObJdhj',
-          'Head of Sales':             'heWA2aiKPXyI4gZmUDUmF',   // note: I4
-          'Head of Marketing':         'oqS6sVZIgJPH0sSj37WLH',
-          'Customer Services Manager': 'Ky7KhJjSBxEwocMYR8UOf',
-          'Finance Manager':           'zToAvy_nDQn8MCqsJHTtv',
-          'Something else':            'gRPuHuaxPur2_WQovppri'
-        };
-    
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          if (statusElm) statusElm.textContent = '';
-          // honeypot
-          if (form.address?.value?.trim()) return;
-    
-          setLoading(true);
-    
-          try {
-            const fd = new FormData(form);
-            const fullName = (fd.get('name')  || '').toString().trim();
-            const email    = (fd.get('email') || '').toString().trim();
-            const company  = (fd.get('company') || '').toString().trim();
-            const phone    = (fd.get('phone')   || '').toString().trim();
-    
-            // Collect all checked checkboxes named "dreamie" and map to CRM values
-            const selected = Array.from(form.querySelectorAll('input[name="dreamie"]:checked'))
-              .map(i => OPTION_MAP[i.value])
-              .filter(Boolean);
-    
-            if (selected.length === 0) {
-              if (statusElm) statusElm.textContent = 'Please pick at least one employee.';
-              setLoading(false);
-              return;
-            }
-    
-            // HubSpot expects semicolon-separated internal option values
-            const whichEmployeesValue = selected.join(';');
-    
-            const { first, last } = splitName(fullName);
-    
-            const fields = [
-              { name: 'email', value: email },
-              { name: 'firstname', value: first },
-              { name: 'lastname',  value: last },
-              { name: 'which_employees_', value: whichEmployeesValue },
-              { name: 'company', value: company },
-              { name: 'phone',   value: phone },
-            ].filter(f => f.value !== '');
-    
-            const context = {
-              hutk: getCookie('hubspotutk') || undefined,
-              pageUri: window.location.href,
-              pageName: document.title
-            };
-    
-            const res = await fetch(HS_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ fields, context })
-            });
-    
-            if (!res.ok) throw new Error('Bad response');
-    
-            form.hidden = true;
-            if (successView) successView.hidden = false;
-    
-            const heading = successView?.querySelector('#successHeading');
-            if (heading) {
-              heading.setAttribute('tabindex', '-1');
-              heading.focus({ preventScroll: true });
-              setTimeout(() => heading.removeAttribute('tabindex'), 100);
-            }
-            form.reset();
-          } catch {
-            if (statusElm) statusElm.textContent = 'Something went wrong. Please try again.';
-          } finally {
-            setLoading(false);
-          }
-        });
-      })();
-    </script>
-  </Modal>
+  <HubspotModal />
 </Layout>
