@@ -864,7 +864,7 @@ main {
                 justify-content: flex-start;
                 align-items: center;
 
-                @media (max-width: 1150px) {
+                @media (max-width: 1100px) {
                     margin-bottom: 0;
                     align-items: flex-end;
                 }
@@ -874,7 +874,8 @@ main {
                 background: #010C1E url('/src/img/hero-shop-girl.jpg') no-repeat calc(50% + 9vw) center;
                 background-size: contain;
 
-                @media (max-width: 1020px) {
+                @media (max-width: 1100px) {
+                    padding-top: 32px;
                     background-position: bottom center;
                 }
 
@@ -896,8 +897,24 @@ main {
                     }
                 }
 
-                @media (max-width: 1020px) {
+                @media (min-width: 600px) and (max-width: 1100px) {
+                    background-size: auto 400px;
+                }
+
+                @media (max-width: 599px) {
+                    background-size: auto 300px;
+                }
+
+                @media (max-width: 700px) {
+                    .content-container .content-title br {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 1100px) {
                     align-items: flex-start;
+                    height: 65vh;
+                    min-height: 650px;
                     
                     .content-container {
                         text-align: center;
@@ -906,10 +923,10 @@ main {
                         padding-top: 52px;
 
                     .content-title {
-                        padding: 0 24px;
+                        padding: 0;
                     }
 
-                    br {
+                    h2 br {
                         display: initial !important;
                     }
 
@@ -927,7 +944,7 @@ main {
             }
 
             @media (max-width: 1100px) {
-                &.promo-human, &.promo-phone {
+                &.promo-phone {
                     background-size: auto 500px;
                 }
             }
@@ -948,7 +965,7 @@ main {
                 position: relative;
                 padding-left: 64px;
 
-                @media (max-width: 1150px) {
+                @media (max-width: 1100px) {
                     padding-left: 0;
                 }
 
