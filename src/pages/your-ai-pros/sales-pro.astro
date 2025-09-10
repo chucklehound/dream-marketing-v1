@@ -24,6 +24,7 @@ import headOfSales from '/src/img/head-of-sales.png';
 import financeManager from '/src/img/finance-manager.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
 import csManager from '/src/img/cs-manager.png';
+import personalAssistant from '/src/img/personal-assistant.png';
 
 import Modal from '../../components/Modal.astro';
 
@@ -32,7 +33,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
 
 ---
 
-<Layout title="Meet your Head of Sales - Dream">
+<Layout title="Meet your Sales Pro - Dream">
 	<Navigation />
 	<header class="hero-home solo-header">
 		<div class="hero-elements main-content">
@@ -68,8 +69,8 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
         />
             </figure>
 			<section class="header-text">
-				<h1 class="page-title">Meet your <span class="highlight-title">Head of Sales</span></h1>
-				<span>Your sales manager has one mission, and that’s growing your business every day. They’ll draft outreach strategies, search high and low for new customers, then create the perfect message to reach those customers.</span>
+				<h1 class="page-title">Meet your <span class="highlight-title">Sales Pro</span></h1>
+				<span>Your Sales Pro has one mission, and that’s growing your business every day. They’ll draft outreach strategies, search high and low for new customers, then create the perfect message to reach those customers.</span>
 			</section>
 		</div>
 	</header>
@@ -96,22 +97,40 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                   <h3>Your Head of Sales is</h3>
                   <ul class="dreamie-feature-list" role="list">
                     <li class="dreamie-feature">
-                      <img src={iconAnnouncement.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
-                      <p>Ready to grow your business with sales campaigns.</p>
+                      <Image
+                        src={iconAnnouncement}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
+                      <p>Ready to grow your business with high-quality sales outreach.</p>
                     </li>
                     <li class="dreamie-feature">
-                      <img src={iconAward.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <Image
+                        src={iconAward}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
                       <p>Always managing conversations to close the deal.</p>
                     </li>
                     <li class="dreamie-feature">
-                      <img src={iconMessageAlert.src} alt="" aria-hidden="true" class="dreamie-feature-icon" />
+                      <Image
+                        src={iconMessageAlert}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
                       <p>Keeping you up to date on closed deals or important information.</p>
                     </li>
                   </ul>
           
                   <Button 
                     label="Hire your own Head of Sales" 
-                    href="/get-started" 
+                    href="/get-started?pro=sales" 
                     target="" 
                     variant="primary" 
                     size="large" 
@@ -187,7 +206,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                     <div class="card-header">
                       <figure class="card-figure">
                         <Image
-                        src={headOfSales}
+                        src={personalAssistant}
                         alt=""
                         class="card-figure-img"
                         aria-hidden="true"
@@ -200,12 +219,12 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                       </p>
           
                       <h3 class="card-title">
-                        Head of Sales
+                        Personal Pro
                       </h3>
                     </div>
           
                     <footer class="card-footer">
-                      <Button label="Hire them now" href="/your-ai-employees/head-of-sales" target="" variant="primary" size="medium" />
+                      <Button label="Hire them now" href="/your-ai-pros/personal-pro" target="" variant="primary" size="medium" />
                     </footer>
                   </article>
                 </li>
@@ -228,7 +247,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                       </p>
           
                       <h3 class="card-title">
-                        Finance Manager
+                        Finance Pro
                       </h3>
                     </div>
           
@@ -257,7 +276,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                       </p>
           
                       <h3 class="card-title">
-                        Head of Marketing
+                        Marketing Pro
                       </h3>
                     </div>
           
@@ -286,7 +305,7 @@ import HireGuyBlock from '../../components/HireGuyBlock.astro';
                       </p>
           
                       <h3 class="card-title">
-                        Customer Service Manager
+                        Support Pro
                       </h3>
                     </div>
           

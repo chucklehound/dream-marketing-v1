@@ -1,0 +1,331 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import { Image } from 'astro:assets';
+
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+import Button from '../../components/Button.astro';
+
+import iconCalendar from '/src/img/calendar.svg';
+import iconPhone from '/src/img/phone.svg';
+import iconAttachment from '/src/img/attachment.svg';
+import iconPlane from '/src/img/plane.svg';
+
+import personalAssistant from '/src/img/personal-assistant.png';
+
+import smallPA1 from '/src/img/pa-small-1.png';
+import smallPA2 from '/src/img/pa-small-2.png';
+
+import arrowRight from '/src/img/new-arrow-right.svg';
+
+import seoPane1 from '/src/img/carousel-1--phone.png';
+import seoPane2 from '/src/img/carousel-2--whatsapp.png';
+
+import headOfSales from '/src/img/head-of-sales.png';
+import financeManager from '/src/img/finance-manager.png';
+import headOfMarketing from '/src/img/head-of-marketing.png';
+import csManager from '/src/img/cs-manager.png';
+
+
+import HireGuyBlock from '../../components/HireGuyBlock.astro';
+
+import HubspotModal from '../../components/hubspotModal.astro';
+
+
+---
+
+<Layout title="Meet your Personal Pro - Dream">
+	<Navigation />
+	<header class="hero-home solo-header">
+		<div class="hero-elements main-content">
+      <figure class="dreamie-figure seo-header">
+        <Image
+          src={smallPA1}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={personalAssistant}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+
+        <Image
+          src={smallPA2}
+          alt=""
+          class="dreamie-img"
+          aria-hidden="true"
+          format="webp"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+			<section class="header-text">
+				<h1 class="page-title">Meet your <span class="highlight-title">Personal Pro</span></h1>
+				<span>Armed with the expertise to run the day-to-day of your business. No email goes unanswered, no meeting unbooked. All your company admin just happens, you'll wonder what to do with all that extra time.</span>
+			</section>
+		</div>
+	</header>
+	<main class="pinch-footer">
+        <section class="main-content dreamie-module" aria-labelledby="dreamie-heading">
+            <article class="content-container">
+              <div class="dreamie-grid">
+                <!-- Image -->
+                
+          
+                <!-- Text content -->
+                <div class="dreamie-content">
+                  <h2 id="dreamie-heading">
+                    Take away your admin headache, hire your Personal Pro today.
+                  </h2>
+          
+                  <p>
+                    Running a business means juggling endless admin — emails, calls, scheduling, and paperwork that pull you away from the work you care about. Your Dream Personal Pro is your always-on virtual helper, trained to manage your inbox, book meetings, and handle small business admin from start to finish. From filing confirmation statements to managing your calendar, they keep the day running smoothly while you stay focused on growth.
+                  </p>
+                  <p>
+                    Unlike other AI assistants that need constant intervention, your Personal Pro works proactively from WhatsApp or the phone, turning your requests into actions the moment you ask, or even before you do. Whether it’s arranging client calls, chasing invoices, or preparing documents, they keep you organised, on time, and free to concentrate on running your business.
+                  </p>
+          
+                  <h3>Your Personal Pro is</h3>
+                  <ul class="dreamie-feature-list" role="list">
+                    <li class="dreamie-feature">
+                      <Image
+                        src={iconCalendar}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
+                      <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <Image
+                        src={iconPlane}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
+                      <p>Ready to plan and book your travel; taxis, flights, and hotels.</p>
+                    </li>
+                    <li class="dreamie-feature">
+                      <Image
+                        src={iconAttachment}
+                        alt=""
+                        aria-hidden="true"
+                        class="dreamie-feature-icon"
+                        format="webp"
+                      />
+                      <p>Sorting restaurant bookings, finding specialists, and handling your admin.</p>
+                    </li>
+                  </ul>
+          
+                  <Button 
+                    label="Hire your own Personal Pro" 
+                    href="/get-started" 
+                    target="" 
+                    variant="primary" 
+                    size="large" 
+                  ><img src={arrowRight.src} alt="A right facing arrow"></Button>
+                </div>
+              </div>
+            </article>
+          </section>
+          <section class="main-content">
+            <article class="content-container">
+              <div class="content-title">
+                <h2>Available <span class="highlight-title">anywhere, anytime.</span></h2>
+                <p>Dream works with the apps you use every day, so you can call or message to get jobs done.</p>
+              </div>
+            <div class="seo-panels">
+              <div class="panel">
+                <div class="panel-image">
+                  <Image
+                    src={seoPane1}
+                    alt="A call on a phone coming from your Dream PA"
+                    format="webp"
+                  />
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Important work doesn't wait for you to open an app.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Your Personal Pro is only a call away, letting you get updates and take action by just asking.</p>
+                    <Button
+                      label="Learn more"
+                      href="/how-it-works"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="panel-image">
+                  <Image
+                    src={seoPane2}
+                    alt="A WhatsApp chat with your PA"
+                    format="webp"
+                  />
+                </div>
+                <div class="panel-content">
+                  <h3 class="panel-title">Share documents, voice notes, or just get updates.</h3>
+                  <div class="panel-footer">
+                    <p class="panel-subtitle">Chat with Dream where you chat with everyone. Manage your workload with voice notes, or just message.</p>
+                    <Button
+                      label="Start now"
+                      href="/get-started"
+                      target="_self"
+                      size="medium"
+                      variant="secondary"
+                  />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          </section>
+
+          <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+            <article class="content-container">
+              <div class="content-title">
+                <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+              </div>
+          
+              <ul class="employee-card-grid compact-grid" role="list">
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                        src={headOfSales}
+                        alt=""
+                        class="card-figure-img"
+                        aria-hidden="true"
+                        format="webp"
+                      />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Ready to hire</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Sales Pro
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <Button label="Hire them now" href="/your-ai-pros/sales-pro" target="" variant="primary" size="medium" />
+                    </footer>
+                  </article>
+                </li>
+
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={financeManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Finance Pro
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- Head of Marketing -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={headOfMarketing}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Marketing Pro
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+          
+                <!-- CS Manager -->
+                <li class="employee-card">
+                  <article class="card">
+                    <div class="card-header">
+                      <figure class="card-figure">
+                        <Image
+                          src={csManager}
+                          alt=""
+                          class="card-figure-img"
+                          aria-hidden="true"
+                          format="webp"
+                        />
+                      </figure>
+          
+                      <p class="card-badge" aria-label="Starting soon">
+                        <span aria-hidden="true">Starting soon</span>
+                      </p>
+          
+                      <h3 class="card-title">
+                        Support Pro
+                      </h3>
+                    </div>
+          
+                    <footer class="card-footer">
+                      <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+                    </footer>
+                  </article>
+                </li>
+              </ul>
+          
+            </article>
+          </section>
+
+          <HireGuyBlock />
+	</main>
+	<Footer />
+
+  <HubspotModal />
+</Layout>

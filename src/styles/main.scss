@@ -501,8 +501,8 @@ header {
             letter-spacing: -0.1rem;
 
             span {
-                font-size: 40px;
-                line-height: 48px;
+                font-size: 44px;
+                line-height: 52px;
                 font-weight: 600;
                 font-style: normal;
                 position: relative;
@@ -514,7 +514,7 @@ header {
             #rotating-text {
                 @media (max-width: 900px) {
                     display: block;
-                    min-height: 96px;
+                    min-height: 104px;
                 }
             }
 
@@ -593,7 +593,7 @@ header {
 
             @keyframes pulseBig {
                 0% { transform: scale(1); opacity: .1; }
-                20% { opacity: .1; }
+                20% { opacity: .12; }
                 80% { opacity: 0; }
                 100% { transform: scale(110); opacity: 0; }
             }
@@ -874,8 +874,8 @@ main {
                 background: #010C1E url('/src/img/hero-shop-girl.jpg') no-repeat calc(50% + 9vw) center;
                 background-size: contain;
 
-                @media (max-width: 1150px) {
-                    background-position: top center;
+                @media (max-width: 1020px) {
+                    background-position: bottom center;
                 }
 
                 .content-container {
@@ -893,10 +893,35 @@ main {
                         z-index: 3;
                         transition: opacity .3s ease;
                         pointer-events: none;
-        
-                        @media (max-width: 1150px) {
-                            display: none !important;
-                        }
+                    }
+                }
+
+                @media (max-width: 1020px) {
+                    align-items: flex-start;
+                    
+                    .content-container {
+                        text-align: center;
+                        align-items: flex-start;
+                        justify-content: center;
+                        padding-top: 52px;
+
+                    .content-title {
+                        padding: 0 24px;
+                    }
+
+                    br {
+                        display: initial !important;
+                    }
+
+                    .content-title, .content-title * {
+                        text-align: center;
+                    }
+
+                    &:before {
+                        background-image: url('/src/img/overlay-ping-narrow.svg');
+                        top: 0;
+                        background-position: top center;
+                    }
                     }
                 }
             }
@@ -1672,6 +1697,7 @@ h3.section-title {
             flex-direction: column;
             gap: 16px;
             justify-content: flex-start;
+            align-items: flex-start;
             max-width: 960px;
             margin: auto;
 
@@ -1754,6 +1780,10 @@ h3.section-title {
                 font-size: 14px;
                 line-height: 20px;
             }
+        }
+
+        a {
+            margin-top: 12px;
         }
     }
 

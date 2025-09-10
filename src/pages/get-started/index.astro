@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import Button from '../../components/Button.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import phoneIcon from '/src/img/phone-call.svg';
+
+import "../../styles/main.scss";
+
+import Modal from '../../components/Modal.astro';
+
+import qrImg from '/src/img/qr.png';
+
+import Carousel from '../../components/Carousel.astro';
+
+import card1 from '/src/img/how-works-1.png';
+import card2 from '/src/img/how-works-2.png';
+import card3 from '/src/img/how-works-3.png';
+import card4 from '/src/img/how-works-4.png';
+
+const contentBlocks = [
+  {
+    image: card1,
+    title: 'Give your employees a task and they’ll research and plan it themselves. No more micromanaging.',
+    subtitle: 'Learn more about',
+    ctaText: 'How they work',
+    ctaUrl: '/how-it-works',
+  },
+  {
+    image: card2,
+    title: 'Automate your workload by asking. No complicated templates or apps to learn.',
+    subtitle: 'Learn more about',
+    ctaText: 'AI employees',
+    ctaUrl: '/your-ai-pros',
+  },
+  {
+    image: card3,
+    title: 'Work at the speed of your voice. Send voice notes or call your employees for any kind of work.',
+    subtitle: 'Learn more about',
+    ctaText: 'How they work',
+    ctaUrl: '/how-it-works',
+  },
+  {
+    image: card4,
+    title: 'Your employees have their own email, so they can arrange meetings, coordinate travel and more.',
+    subtitle: 'Learn more about',
+    ctaText: 'What it costs',
+    ctaUrl: '/pricing',
+  },
+];
+---
+
+<Layout title="Dream - Just a call gets you started">
+  <Navigation />
+  <header class="hero-home solo-header">
+    <div class="hero-elements main-content">
+      <section class="header-text content-title">
+        <!-- Make role part dynamic -->
+        <h1 class="page-title">Say hello to your <span data-pro-label>Personal Pro</span></h1>
+        <p>It takes minutes to get started, choose an option below.</p>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section class="get-started-content main-content">
+      <article class="content-container">
+        <div class="start-cards">
+          <div class="card-item">
+            <h2>Call your Pro</h2>
+            <p>Start a voice call with your <span data-pro-label>Personal Pro</span> and they’ll talk you through how they can help.</p>
+
+            <!-- Direct mobile call -->
+            <Button
+              label="Call your PA"
+              href="tel:+447476963324"
+              variant="secondary"
+              size="medium"
+              data-mobile-call
+            >
+              <img src={phoneIcon.src} role="presentation" alt="" />
+            </Button>
+
+            <!-- Desktop QR modal (number shown in modal/QR) -->
+            <Button
+              label="Call your Pro"
+              variant="secondary"
+              size="medium"
+              role="button"
+              as="button"
+              rel="noopener"
+              data-open-modal="call-modal"
+            >
+              <img src={phoneIcon.src} role="presentation" alt="" />
+            </Button>
+          </div>
+
+          <div class="card-item">
+            <h2>WhatsApp your Pro</h2>
+            <p>Chat with your <span data-pro-label>Personal Pro</span> on WhatsApp, and they'll chat about how they can help.</p>
+
+            <Button
+              label="Message on WhatsApp"
+              href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
+              variant="secondary"
+              size="medium"
+              data-whatsapp
+            >
+              <img src={whatsAppIcon.src} role="presentation" alt="">
+            </Button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="main-content">
+      <article class="content-container full-width">
+        <div class="content-title">
+          <h2>Smart employees, <br/>Meet <span class="highlight-title">powerful tools</span></h2>
+          <p>Dream’s AI employees use some of the most advanced technology on the planet, but we made them even better by giving them custom tools so they can work smarter and faster.</p>
+        </div>
+        <Carousel items={contentBlocks} />
+      </article>
+    </section>
+  </main>
+
+  <Modal id="call-modal" closeLabel="Close">
+    <h2 slot="title" id="qrTitle">Get started with Dream in minutes</h2>
+    <p>All it takes is a quick call. You'll speak directly to your new team member, no humans involved.</p>
+    <section class="qr-modal">
+      <figure class="qr-modal__visual">
+        <img src={qrImg.src} width="256" height="256" alt="">
+      </figure>
+    </section>
+  </Modal>
+
+  <Footer />
+
+  <!-- Desktop/touch detection (unchanged) -->
+  <script is:inline>
+    (function () {
+      var mqDesktop = matchMedia('(hover: hover) and (pointer: fine)');
+      function set() {
+        var uaMobile = (navigator.userAgentData && navigator.userAgentData.mobile === true);
+        var hasTouch = (navigator.maxTouchPoints || 0) > 0;
+        var desktoplike = mqDesktop.matches && !uaMobile && !hasTouch;
+        document.documentElement.classList.toggle('desktoplike', desktoplike);
+      }
+      set();
+      mqDesktop.addEventListener?.('change', set);
+    })();
+  </script>
+
+<script is:inline>
+	(function () {
+	  const params = new URLSearchParams(location.search);
+  
+	  // 1) Role from ?pro=
+	  const keyRaw = (params.get('pro') || 'personal').trim().toLowerCase();
+	  const allowed = ['personal','sales','marketing','finance'];
+	  const key = allowed.includes(keyRaw) ? keyRaw : keyRaw; // allow custom too (e.g., ?pro=design)
+  
+	  // 2) Optional number overrides
+	  const phoneOverride = params.get('phone'); // e.g. +4477...
+	  const waOverride    = params.get('wa');    // e.g. 4477... (digits only for wa.me)
+  
+	  // 3) Defaults per role (edit when you have distinct numbers)
+	  const DEFAULT_PHONE = '+447476963324';
+	  const DEFAULT_WA    = '447476963324'; // wa.me MUST NOT include '+'
+	  const PROS = {
+		personal:  { label: 'Personal Pro',  phone: DEFAULT_PHONE, wa: DEFAULT_WA },
+		sales:     { label: 'Sales Pro',     phone: DEFAULT_PHONE, wa: DEFAULT_WA },
+		marketing: { label: 'Marketing Pro', phone: DEFAULT_PHONE, wa: DEFAULT_WA },
+		finance:   { label: 'Finance Pro',   phone: DEFAULT_PHONE, wa: DEFAULT_WA }
+	  };
+  
+	  const toTitle = (s) => s.replace(/[-_]+/g,' ').replace(/\b\w/g, m => m.toUpperCase()).trim();
+	  const toWaDigits = (s) => (s || '').replace(/[^\d]/g, ''); // strip +, spaces, etc.
+  
+	  const base = PROS[key] || { label: `${toTitle(key)} Pro`, phone: DEFAULT_PHONE, wa: DEFAULT_WA };
+	  const phone = phoneOverride || base.phone;
+	  const waNum = toWaDigits(waOverride || base.wa);
+  
+	  // Update all role labels
+	  document.querySelectorAll('[data-pro-label]').forEach(el => {
+		el.textContent = base.label;
+	  });
+  
+	  // Update tel link
+	  const callBtn = document.querySelector('[data-mobile-call]');
+	  if (callBtn) callBtn.setAttribute('href', `tel:${phone}`);
+  
+	  // Update WhatsApp link
+	  const waBtn = document.querySelector('[data-whatsapp]');
+	  if (waBtn && waNum) {
+		const text = `Hi, I'm interested in Dream (${base.label})`;
+		waBtn.setAttribute('href', `https://wa.me/${waNum}?text=${encodeURIComponent(text)}`);
+	  }
+	})();
+  </script>
+  
+</Layout>
