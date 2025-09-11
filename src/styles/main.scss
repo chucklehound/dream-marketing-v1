@@ -592,7 +592,7 @@ header {
 
             @keyframes pulseBig {
                 0% { transform: scale(1); opacity: .1; }
-                20% { opacity: .12; }
+                20% { opacity: .11; }
                 80% { opacity: 0; }
                 100% { transform: scale(110); opacity: 0; }
             }
@@ -605,7 +605,7 @@ header {
                 position: absolute;
                 z-index: -1;
                 filter: blur(2px);
-                border: 12px solid $quadra-grey;
+                border: 10px solid $quadra-grey;
                 mix-blend-mode: difference;
                 isolation: isolate;
                 left: 50%;
