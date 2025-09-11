@@ -253,7 +253,6 @@ export default function DreamieShowcase({ images, messages }) {
                 height={height}
                 style={{
                   borderRadius: 14,
-                  objectFit: "cover",
                   opacity: 1,
                   transition: "none",
                 }}

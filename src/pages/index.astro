@@ -20,6 +20,7 @@ import card4 from '/src/img/carousel-4--success.png';
 import quoteLogo from '/src/img/givewheel-logo.png';
 import quoteLogojdi from '/src/img/justdoughit-logo.png';
 import quoteLogohol from '/src/img/holibob-logo.png';
+import quoteLogoAi from '/src/img/angel-invest-logo.png';
 
 import ctaDreamies from '/src/img/end-cta-guys.png';
 
@@ -159,12 +160,11 @@ const contentBlocks = [
       <section class="header-text">
         <h1 class="page-title">
           Hire a Pro <br/>to help you
-          <span id="rotating-text">difficult markets</span>
+          <span id="rotating-text" aria-live="polite"></span>
         </h1>
       </section>
       <div class="actions">
-        <Button label="Get started" href="/get-started" target="_blank" size="medium"
-          ></Button>
+        <Button label="Get started" href="/get-started" target="_blank" size="medium" />
         <Button
           label="Meet the Pros"
           href="/your-ai-pros"
@@ -205,7 +205,7 @@ const contentBlocks = [
         </div>
         <div class="content-title">
           <h2>Built to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
-          <p>Your AI employees are tailored for your business - they learn what you do, how you speak & how you work. </p>
+          <p>Your AI employees are tailored for your business - they learn what you do, how you speak & how you work. </p>
         </div>
       </article>
     </section>
@@ -222,6 +222,7 @@ const contentBlocks = [
             <!-- Slide 1 -->
             <div class="quote-slide">
               <blockquote>
+                <aside class="pro-tag">Sales Pro</aside>
                 <p>"Dream has been a game-changer for GiveWheel. Their Sales Pro is like a second brain - it finds the right companies, reaches out, follows up, and keeps leads warm. We're now top of mind for corporate charity campaigns, without stretching our team. It's taken us from reactive to proactive, without hiring."</p>
                 <cite>
                   <span>Charlie Hart, Co-founder at Givewheel</span>
@@ -239,6 +240,7 @@ const contentBlocks = [
             <!-- Slide 2 -->
             <div class="quote-slide">
               <blockquote>
+                <aside class="pro-tag">Personal Pro</aside><aside class="pro-tag">Sales Pro</aside>
                 <p>"Dream has transformed Just Dough It from a side hustle into a full-time business. Their Sales Pro does the outreach I'd never have had time for - emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we've won has come through Dream, and it's freed me to focus on growing the business instead of chasing leads."</p>
                 <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
                 <Image
@@ -254,11 +256,27 @@ const contentBlocks = [
             <!-- Slide 3 -->
             <div class="quote-slide">
               <blockquote>
+                <aside class="pro-tag">Sales Pro</aside>
                 <p>"Dream has been a huge growth driver for Holibob. Our Sales Pro runs all our outreach - finding the right partners, reaching out, and booking calls - so we just show up ready to close. It even opened up new sectors like airlines that we'd never had time to target before. It's like having a dedicated sales team on autopilot, without the overhead."</p>
                 <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
                 <Image
                   src={quoteLogohol}
                   alt="The logo for Holibob"
+                  width={408}
+                  height={96}
+                  format="webp"
+                />
+              </blockquote>
+            </div>
+
+            <div class="quote-slide">
+              <blockquote>
+                <aside class="pro-tag">Personal Pro</aside>
+                <p>"I would love for all my portfolio of 100s of companies to have an assistant like you."</p>
+                <cite><span>Jens Lapinski, CEO & Founder, Angel Invest Ventures</span></cite>
+                <Image
+                  src={quoteLogoAi}
+                  alt="The logo for Angel Invest"
                   width={408}
                   height={96}
                   format="webp"
@@ -287,90 +305,69 @@ const contentBlocks = [
     <div class="content-title">
       <h2><span class="highlight-title">Grow your business </span><br/>with Dream</h2>
     </div>
-    <Button label="Get started" href="/get-started" target="_blank" size="medium"
-            ></Button> 
-          </article> 
-    </section>
+    <Button label="Get started" href="/get-started" target="_blank" size="medium" /> 
+  </article> 
+</section>
 </main>
     
 <Footer />
 
-<script>
-  (function startSharedTicker(period = 5000) {
-    const w = window as any; // cast to any to silence TS about custom props
-    if (w.__dreamTickerStarted) return;
-    w.__dreamTickerStarted = true;
-
-    // Fire an initial tick so everything aligns immediately
-    window.dispatchEvent(new CustomEvent("dream:tick"));
-
-    let expected = Date.now() + period;
-    function tick() {
-      window.dispatchEvent(new CustomEvent("dream:tick"));
-      const drift = Date.now() - expected;
-      expected += period;
-      setTimeout(tick, Math.max(0, period - drift));
-    }
-    setTimeout(tick, period);
-  })();
-</script>
-
-
-<style>
-  #rotating-text {
-    transition: opacity 0.4s; /* must match FADE in React */
-    opacity: 0;
-  }
-</style>
-
-<span id="rotating-text" aria-live="polite"></span>
-
+<!-- === Shared Ticker (singleton) + Rotating Headline (drift-proof) === -->
 <script>
   (function startSharedTicker(period = 5000) {
     if (window.__dreamTicker) return;
 
-    const S = { timer: null, period, running: false, expected: 0 };
+    const S = { timer: null, period, running: false, expected: 0, count: 0, booted: false };
 
-    const dispatch = () => window.dispatchEvent(new CustomEvent("dream:tick"));
+    const dispatch = () => {
+      S.count++;
+      window.dispatchEvent(new CustomEvent("dream:tick", { detail: { count: S.count, period: S.period, ts: performance.now() } }));
+    };
+
     const schedule = (delay) => { S.timer = setTimeout(tick, Math.max(0, delay)); };
 
     function tick() {
       const now = performance.now();
+      if (!S.expected) S.expected = now + S.period;
+
       const behind = now - S.expected;
 
+      // Overslept (tab slept) → skip backlog, fire once, then resume on-beat
       if (behind > S.period * 0.8) {
-        // overslept → skip backlog
         S.expected = now + S.period;
-        dispatch();
         schedule(S.period);
+        dispatch();
         return;
       }
 
       S.expected += S.period;
-      dispatch();
       schedule(S.expected - performance.now());
+      dispatch();
     }
 
     function start() {
       if (S.running) return;
       S.running = true;
       S.expected = performance.now() + S.period;
-      dispatch();
       schedule(S.period);
+
+      // First boot: emit one immediate tick so UI paints a value quickly.
+      if (!S.booted) {
+        S.booted = true;
+        dispatch();
+      }
     }
 
     function stop() {
       S.running = false;
       clearTimeout(S.timer);
       S.timer = null;
+      S.expected = 0;
     }
 
     function onVis() {
-      if (document.visibilityState === "hidden") {
-        stop();
-      } else {
-        start();
-      }
+      if (document.visibilityState === "hidden") stop();
+      else start();
     }
 
     window.addEventListener("visibilitychange", onVis, { passive: true });
@@ -378,12 +375,20 @@ const contentBlocks = [
     window.addEventListener("pageshow", start, { passive: true });
 
     start();
-    window.__dreamTicker = { start, stop };
+
+    window.__dreamTicker = {
+      start, stop,
+      getCount: () => S.count,
+      getPeriod: () => S.period
+    };
   })();
 
-  // --- your rotating text consumer ---
-  document.addEventListener("DOMContentLoaded", () => {
+  // ---- Rotating headline: derives purely from global count (no local counters) ----
+  (function attachHeadline() {
     const el = document.getElementById("rotating-text");
+    if (!el || el.dataset.rotatorAttached) return;
+    el.dataset.rotatorAttached = "1";
+
     const texts = [
       "start a business",
       "enter new markets",
@@ -391,55 +396,93 @@ const contentBlocks = [
       "handle more customers",
       "get paid on time"
     ];
-    let i = 0;
+
     const FADE = 400;
+    el.style.transition = `opacity ${FADE}ms ease`;
+    el.style.willChange = "opacity";
 
-    // Render first item immediately
-    el.textContent = texts[i];
-    el.style.opacity = "1";
-    i = (i + 1) % texts.length;
+    const ticker = window.__dreamTicker;
+    const getCount = () => (ticker?.getCount?.() ?? 1);
+    const mod = (n, m) => ((n % m) + m) % m;
 
-    function advance() {
-      el.style.opacity = "0";
-      setTimeout(() => {
-        el.textContent = texts[i];
+    function renderForCount(count, withFade = true) {
+      const idx = mod(count - 1, texts.length);
+      const next = texts[idx];
+
+      if (!withFade) {
+        el.textContent = next;
         el.style.opacity = "1";
-        i = (i + 1) % texts.length;
-      }, FADE);
+        el.__last = next;
+        return;
+      }
+      if (el.__last === next && el.style.opacity === "1") return;
+
+      const onFadeOut = () => {
+        el.removeEventListener("transitionend", onFadeOut);
+        el.textContent = next;
+        requestAnimationFrame(() => {
+          el.addEventListener("transitionend", () => {}, { once: true });
+          el.style.opacity = "1";
+          el.__last = next;
+        });
+      };
+
+      // Start fade-out if visible; otherwise just swap in
+      if (getComputedStyle(el).opacity !== "0") {
+        el.addEventListener("transitionend", onFadeOut, { once: true });
+        el.style.opacity = "0";
+      } else {
+        el.textContent = next;
+        el.style.opacity = "1";
+        el.__last = next;
+      }
     }
 
-    window.addEventListener("dream:tick", advance);
-  });
+    // Initial snap (no fade)
+    renderForCount(getCount(), false);
+
+    window.addEventListener("dream:tick", (e) => renderForCount(e?.detail?.count ?? getCount() + 1, true), { passive: true });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") renderForCount(getCount(), false);
+    }, { passive: true });
+    window.addEventListener("pageshow", () => renderForCount(getCount(), false), { passive: true });
+  })();
 </script>
 
+<style>
+  #rotating-text {
+    transition: opacity 0.4s;
+    opacity: 1;
+  }
+</style>
+
+<!-- === Promo reveal on view === -->
 <script type="module">
   const target = document.querySelector('.promo-human');
 
   const observer = new IntersectionObserver(
     ([entry], observer) => {
-      if (entry.isIntersecting) {
+      if (entry?.isIntersecting) {
         target.classList.add('visible');
-        observer.unobserve(target); // 🔥 Stop observing after first trigger
+        observer.unobserve(target);
       }
     },
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.4
-    }
+    { root: null, rootMargin: '0px', threshold: 0.4 }
   );
 
   if (target) observer.observe(target);
 </script>
 
+<!-- === Quote carousel (plain JS; removed TS-only syntax) === -->
 <script>
   (function () {
     const root = document.querySelector('.customer-quote .quote-body');
     if (!root) return;
   
-    const track = root.querySelector('.quote-track') as HTMLElement;
-    const slides = Array.from(root.querySelectorAll('.quote-slide')) as HTMLElement[];
-    const dotsWrap = root.querySelector('.quote-dots') as HTMLElement;
+    const track = root.querySelector('.quote-track');
+    const slides = Array.from(root.querySelectorAll('.quote-slide'));
+    const dotsWrap = root.querySelector('.quote-dots');
+    if (!track || !slides.length || !dotsWrap) return;
   
     // Build dots
     slides.forEach((_, i) => {
@@ -455,17 +498,15 @@ const contentBlocks = [
     const dots = Array.from(dotsWrap.querySelectorAll('button'));
   
     let idx = 0;
-    let autoMs = 6000;
-    let timer: number | null = null;
+    const autoMs = 6000;
+    let timer = null;
     let programmaticScroll = false;
   
-    function updateDots(i: number) {
-      dots.forEach((d, k) =>
-        d.setAttribute('aria-current', k === i ? 'true' : 'false')
-      );
+    function updateDots(i) {
+      dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
     }
   
-    function goTo(i: number, smooth = true) {
+    function goTo(i, smooth = true) {
       idx = (i + slides.length) % slides.length;
       programmaticScroll = true;
       track.scrollTo({
@@ -480,7 +521,7 @@ const contentBlocks = [
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting && e.intersectionRatio > 0.6) {
-            const n = slides.indexOf(e.target as HTMLElement);
+            const n = slides.indexOf(e.target);
             if (n !== -1) {
               idx = n;
               updateDots(idx);
@@ -513,7 +554,7 @@ const contentBlocks = [
     }
   
     // Wait until smooth scroll finishes before scheduling next tick
-    function waitForScrollEnd(): Promise<void> {
+    function waitForScrollEnd() {
       if ('onscrollend' in window) {
         return new Promise((resolve) => {
           const handler = () => {
@@ -524,7 +565,7 @@ const contentBlocks = [
         });
       }
       return new Promise((resolve) => {
-        let t: number;
+        let t;
         const onScroll = () => {
           if (!programmaticScroll) return;
           clearTimeout(t);
@@ -539,7 +580,7 @@ const contentBlocks = [
     }
   
     // User manual scroll: reset cycle after they stop
-    let manualDebounce: number;
+    let manualDebounce;
     track.addEventListener(
       'scroll',
       () => {
@@ -558,9 +599,5 @@ const contentBlocks = [
     programmaticScroll = false;
     scheduleNext();
   })();
-  </script>
-  
-  
-  
-  
+</script>
 </Layout>
