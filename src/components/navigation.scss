@@ -90,7 +90,7 @@ nav {
       border-radius: 32px;
       background: $classic-yellow;
       cursor: pointer;
-      transition: box-shadow .3s ease;
+      transition: background-color .3s ease, box-shadow .3s ease;
 
       &.hero-nav {
         position: relative;
@@ -216,6 +216,7 @@ nav {
       @media (min-width: 1000px) {
         &:hover {
           box-shadow: $box-shadow-md;
+          background: $quadra-grey;
         }
       }
 
