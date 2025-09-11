@@ -2202,6 +2202,13 @@ ul.all-posts {
         justify-content: flex-start;
         align-items: flex-start;
 
+        &.starting-soon {
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
         h2 {
             color: $plus-white;
             @include heading3;

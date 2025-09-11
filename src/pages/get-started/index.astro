@@ -29,6 +29,8 @@ import headOfSales from '/src/img/head-of-sales.png';
 import headOfMarketing from '/src/img/head-of-marketing.png';
 import csManager from '/src/img/cs-manager.png';
 
+import HubspotModal from '../../components/HubspotModal.astro';
+
 const contentBlocks = [
   {
     image: card1,
@@ -66,7 +68,6 @@ const contentBlocks = [
   <header class="hero-home solo-header">
     <div class="hero-elements main-content">
       <section class="header-text content-title">
-        <!-- Make role part dynamic -->
         <h1 class="page-title">Say hello to your <span class="highlight-title" data-pro-label>Personal Pro</span></h1>
         <p>It takes minutes to get started, choose an option below.</p>
       </section>
@@ -74,16 +75,16 @@ const contentBlocks = [
   </header>
 
   <main>
-    <section class="get-started-content main-content">
+    <!-- READY MODULE: shows for ready Pros (personal, sales) -->
+    <section class="get-started-content main-content" data-pro-available>
       <article class="content-container">
         <div class="start-cards">
           <div class="card-item">
             <h2>Call your Pro</h2>
             <p>Start a voice call with your <span data-pro-label>Personal Pro</span> and they’ll talk you through how they can help.</p>
 
-            <!-- Direct mobile call -->
             <Button
-              label="Call your PA"
+              label="Call your Pro"
               href="tel:+447476963324"
               variant="secondary"
               size="medium"
@@ -92,7 +93,6 @@ const contentBlocks = [
               <img src={phoneIcon.src} role="presentation" alt="" />
             </Button>
 
-            <!-- Desktop QR modal (number shown in modal/QR) -->
             <Button
               label="Call your Pro"
               variant="secondary"
@@ -124,168 +124,232 @@ const contentBlocks = [
       </article>
     </section>
 
-	<!-- Set active pro from URL -->
-<script is:inline>
-	(function () {
-	  const params = new URLSearchParams(location.search);
-	  const key = (params.get('pro') || 'personal').trim().toLowerCase();
-	  // expose to CSS via a root data-attr
-	  document.documentElement.setAttribute('data-pro-active', key);
-	})();
-  </script>
-  
-  <!-- CSS rules to hide the active pro’s card -->
-  <style is:global>
-	[data-pro-active="personal"]  [data-pro-card="personal"]  { display: none !important; }
-	[data-pro-active="sales"]     [data-pro-card="sales"]     { display: none !important; }
-	[data-pro-active="marketing"] [data-pro-card="marketing"] { display: none !important; }
-	[data-pro-active="finance"]   [data-pro-card="finance"]   { display: none !important; }
-	[data-pro-active="support"]   [data-pro-card="support"]   { display: none !important; }
-  </style>
-  
-  <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
-	<article class="content-container">
-	  <div class="content-title">
-		<h2>Meet the rest of <span class="highlight-title">your team</span></h2>
-	  </div>
-  
-	  <ul class="employee-card-grid compact-grid" role="list">
-		<!-- Personal Pro -->
-		<li class="employee-card" data-pro-card="personal">
-		  <article class="card">
-			<div class="card-header">
-			  <figure class="card-figure">
-				<Image
-				  src={personalAssistant}
-				  alt=""
-				  class="card-figure-img"
-				  aria-hidden="true"
-				  format="webp"
-				/>
-			  </figure>
-  
-			  <p class="card-badge" aria-label="Ready to hire">
-				<span aria-hidden="true">Ready to hire</span>
-			  </p>
-  
-			  <h3 class="card-title">Personal Pro</h3>
-			</div>
-  
-			<footer class="card-footer">
-			  <Button label="Hire them now" href="/get-started" target="" variant="primary" size="medium" />
-			</footer>
-		  </article>
-		</li>
+    <!-- WAITLIST MODULE: shows for not-ready Pros (marketing, finance, support) -->
+    <section class="get-started-content main-content" data-pro-waitlist hidden>
+      <article class="content-container">
+        <div class="start-cards">
+          <div class="card-item starting-soon">
+            <h2><span data-pro-label>Marketing Pro</span> is starting soon</h2>
+            <p>We’re still onboarding your <span data-pro-label>Pro</span>. Find out as soon as they're ready to hire.</p>
 
-		<li class="employee-card" data-pro-card="sales">
-			<article class="card">
-			  <div class="card-header">
-				<figure class="card-figure">
-				  <Image
-					src={headOfSales}
-					alt=""
-					class="card-figure-img"
-					aria-hidden="true"
-					format="webp"
-				  />
-				</figure>
-	
-				<p class="card-badge" aria-label="Ready to hire">
-				  <span aria-hidden="true">Ready to hire</span>
-				</p>
-	
-				<h3 class="card-title">Sales Pro</h3>
-			  </div>
-	
-			  <footer class="card-footer">
-				<Button label="Hire them now" href="get-started?pro=sales" target="" variant="primary" size="medium" />
-			  </footer>
-			</article>
-		  </li>
-  
-		<!-- Finance Pro -->
-		<li class="employee-card" data-pro-card="finance">
-		  <article class="card">
-			<div class="card-header">
-			  <figure class="card-figure">
-				<Image
-				  src={financeManager}
-				  alt=""
-				  class="card-figure-img"
-				  aria-hidden="true"
-				  format="webp"
-				/>
-			  </figure>
-  
-			  <p class="card-badge" aria-label="Starting soon">
-				<span aria-hidden="true">Starting soon</span>
-			  </p>
-  
-			  <h3 class="card-title">Finance Pro</h3>
-			</div>
-  
-			<footer class="card-footer">
-			  <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
-			</footer>
-		  </article>
-		</li>
-  
-		<!-- Marketing Pro -->
-		<li class="employee-card" data-pro-card="marketing">
-		  <article class="card">
-			<div class="card-header">
-			  <figure class="card-figure">
-				<Image
-				  src={headOfMarketing}
-				  alt=""
-				  class="card-figure-img"
-				  aria-hidden="true"
-				  format="webp"
-				/>
-			  </figure>
-  
-			  <p class="card-badge" aria-label="Starting soon">
-				<span aria-hidden="true">Starting soon</span>
-			  </p>
-  
-			  <h3 class="card-title">Marketing Pro</h3>
-			</div>
-  
-			<footer class="card-footer">
-			  <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
-			</footer>
-		  </article>
-		</li>
-  
-		<!-- Support Pro -->
-		<li class="employee-card" data-pro-card="support">
-		  <article class="card">
-			<div class="card-header">
-			  <figure class="card-figure">
-				<Image
-				  src={csManager}
-				  alt=""
-				  class="card-figure-img"
-				  aria-hidden="true"
-				  format="webp"
-				/>
-			  </figure>
-  
-			  <p class="card-badge" aria-label="Starting soon">
-				<span aria-hidden="true">Starting soon</span>
-			  </p>
-  
-			  <h3 class="card-title">Support Pro</h3>
-			</div>
-  
-			<footer class="card-footer">
-			  <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
-			</footer>
-		  </article>
-		</li>
-	  </ul>
-	</article>
-  </section>
+            <Button
+              label="Get notified"
+              variant="primary"
+              size="medium"
+              as="button"
+              data-open-modal="mailing-list-modal"
+            />
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Active Pro → hide its card in the list below -->
+    <script is:inline>
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const key = (params.get('pro') || 'personal').trim().toLowerCase();
+
+        // Single source of truth: label, status, numbers
+        const PROS = {
+          personal:  { label: 'Personal Pro',  status: 'ready',    phone: '+447476963324', wa: '447476963324' },
+          sales:     { label: 'Sales Pro',     status: 'ready',    phone: '+447476963324', wa: '447476963324' },
+          marketing: { label: 'Marketing Pro', status: 'waitlist', phone: '+447476963324', wa: '447476963324' },
+          finance:   { label: 'Finance Pro',   status: 'waitlist', phone: '+447476963324', wa: '447476963324' },
+          support:   { label: 'Support Pro',   status: 'waitlist', phone: '+447476963324', wa: '447476963324' }
+        };
+
+        const toTitle = (s) => s.replace(/[-_]+/g,' ').replace(/\b\w/g, m => m.toUpperCase()).trim();
+        const toWaDigits = (s) => (s || '').replace(/[^\d]/g, '');
+
+        const base = PROS[key] || { label: `${toTitle(key)} Pro`, status: 'waitlist', phone: '+447476963324', wa: '447476963324' };
+
+        // Expose to CSS
+        document.documentElement.setAttribute('data-pro-active', key);
+        document.documentElement.setAttribute('data-pro-status', base.status);
+
+        // Update labels
+        document.querySelectorAll('[data-pro-label]').forEach(el => el.textContent = base.label);
+
+        // Update tel
+        const callBtn = document.querySelector('[data-mobile-call]');
+        if (callBtn) callBtn.setAttribute('href', `tel:${base.phone}`);
+
+        // Update WhatsApp
+        const waBtn = document.querySelector('[data-whatsapp]');
+        if (waBtn) {
+          const text = `Hi, I'm interested in Dream (${base.label})`;
+          waBtn.setAttribute('href', `https://wa.me/${toWaDigits(base.wa)}?text=${encodeURIComponent(text)}`);
+        }
+
+        // Toggle ready vs waitlist modules
+        const ready  = document.querySelector('[data-pro-available]');
+        const wait   = document.querySelector('[data-pro-waitlist]');
+        if (ready && wait) {
+          const isReady = base.status === 'ready';
+          ready.hidden = !isReady;
+          wait.hidden  =  isReady ? true : false;
+        }
+      })();
+    </script>
+
+    <!-- CSS rules to hide the active pro’s card -->
+    <style is:global>
+      [data-pro-active="personal"]  [data-pro-card="personal"]  { display: none !important; }
+      [data-pro-active="sales"]     [data-pro-card="sales"]     { display: none !important; }
+      [data-pro-active="marketing"] [data-pro-card="marketing"] { display: none !important; }
+      [data-pro-active="finance"]   [data-pro-card="finance"]   { display: none !important; }
+      [data-pro-active="support"]   [data-pro-card="support"]   { display: none !important; }
+
+      /* Optional: prevent flash if you want to hard-hide by status too */
+      [data-pro-status="ready"]    [data-pro-waitlist] { display: none !important; }
+      [data-pro-status="waitlist"] [data-pro-available] { display: none !important; }
+    </style>
+
+    <section class="main-content pricing-table" aria-labelledby="new-employees-heading">
+      <article class="content-container">
+        <div class="content-title">
+          <h2>Meet the rest of <span class="highlight-title">your team</span></h2>
+        </div>
+
+        <ul class="employee-card-grid compact-grid" role="list">
+          <!-- Personal Pro -->
+          <li class="employee-card" data-pro-card="personal">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={personalAssistant}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+
+                <p class="card-badge" aria-label="Ready to hire">
+                  <span aria-hidden="true">Ready to hire</span>
+                </p>
+
+                <h3 class="card-title">Personal Pro</h3>
+              </div>
+
+              <footer class="card-footer">
+                <Button label="Hire them now" href="/get-started" target="" variant="primary" size="medium" />
+              </footer>
+            </article>
+          </li>
+
+          <!-- Sales Pro -->
+          <li class="employee-card" data-pro-card="sales">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={headOfSales}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+
+                <p class="card-badge" aria-label="Ready to hire">
+                  <span aria-hidden="true">Ready to hire</span>
+                </p>
+
+                <h3 class="card-title">Sales Pro</h3>
+              </div>
+
+              <footer class="card-footer">
+                <Button label="Hire them now" href="/get-started?pro=sales" target="" variant="primary" size="medium" />
+              </footer>
+            </article>
+          </li>
+
+          <!-- Finance Pro -->
+          <li class="employee-card" data-pro-card="finance">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={financeManager}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+
+                <h3 class="card-title">Finance Pro</h3>
+              </div>
+
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+
+          <!-- Marketing Pro -->
+          <li class="employee-card" data-pro-card="marketing">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={headOfMarketing}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+
+                <h3 class="card-title">Marketing Pro</h3>
+              </div>
+
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+
+          <!-- Support Pro -->
+          <li class="employee-card" data-pro-card="support">
+            <article class="card">
+              <div class="card-header">
+                <figure class="card-figure">
+                  <Image
+                    src={csManager}
+                    alt=""
+                    class="card-figure-img"
+                    aria-hidden="true"
+                    format="webp"
+                  />
+                </figure>
+
+                <p class="card-badge" aria-label="Starting soon">
+                  <span aria-hidden="true">Starting soon</span>
+                </p>
+
+                <h3 class="card-title">Support Pro</h3>
+              </div>
+
+              <footer class="card-footer">
+                <button class="button secondary medium" data-open-modal="mailing-list-modal">Get notified</button>
+              </footer>
+            </article>
+          </li>
+        </ul>
+      </article>
+    </section>
 
     <section class="main-content">
       <article class="content-container full-width">
@@ -308,6 +372,8 @@ const contentBlocks = [
     </section>
   </Modal>
 
+  <HubspotModal />
+
   <Footer />
 
   <!-- Desktop/touch detection (unchanged) -->
@@ -324,53 +390,4 @@ const contentBlocks = [
       mqDesktop.addEventListener?.('change', set);
     })();
   </script>
-
-<script is:inline>
-	(function () {
-	  const params = new URLSearchParams(location.search);
-  
-	  // 1) Role from ?pro=
-	  const keyRaw = (params.get('pro') || 'personal').trim().toLowerCase();
-	  const allowed = ['personal','sales','marketing','finance'];
-	  const key = allowed.includes(keyRaw) ? keyRaw : keyRaw; // allow custom too (e.g., ?pro=design)
-  
-	  // 2) Optional number overrides
-	  const phoneOverride = params.get('phone'); // e.g. +4477...
-	  const waOverride    = params.get('wa');    // e.g. 4477... (digits only for wa.me)
-  
-	  // 3) Defaults per role (edit when you have distinct numbers)
-	  const DEFAULT_PHONE = '+447476963324';
-	  const DEFAULT_WA    = '447476963324'; // wa.me MUST NOT include '+'
-	  const PROS = {
-		personal:  { label: 'Personal Pro',  phone: DEFAULT_PHONE, wa: DEFAULT_WA },
-		sales:     { label: 'Sales Pro',     phone: DEFAULT_PHONE, wa: DEFAULT_WA },
-		marketing: { label: 'Marketing Pro', phone: DEFAULT_PHONE, wa: DEFAULT_WA },
-		finance:   { label: 'Finance Pro',   phone: DEFAULT_PHONE, wa: DEFAULT_WA }
-	  };
-  
-	  const toTitle = (s) => s.replace(/[-_]+/g,' ').replace(/\b\w/g, m => m.toUpperCase()).trim();
-	  const toWaDigits = (s) => (s || '').replace(/[^\d]/g, ''); // strip +, spaces, etc.
-  
-	  const base = PROS[key] || { label: `${toTitle(key)} Pro`, phone: DEFAULT_PHONE, wa: DEFAULT_WA };
-	  const phone = phoneOverride || base.phone;
-	  const waNum = toWaDigits(waOverride || base.wa);
-  
-	  // Update all role labels
-	  document.querySelectorAll('[data-pro-label]').forEach(el => {
-		el.textContent = base.label;
-	  });
-  
-	  // Update tel link
-	  const callBtn = document.querySelector('[data-mobile-call]');
-	  if (callBtn) callBtn.setAttribute('href', `tel:${phone}`);
-  
-	  // Update WhatsApp link
-	  const waBtn = document.querySelector('[data-whatsapp]');
-	  if (waBtn && waNum) {
-		const text = `Hi, I'm interested in Dream (${base.label})`;
-		waBtn.setAttribute('href', `https://wa.me/${waNum}?text=${encodeURIComponent(text)}`);
-	  }
-	})();
-  </script>
-  
 </Layout>
