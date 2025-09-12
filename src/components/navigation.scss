@@ -421,12 +421,22 @@ nav {
     svg rect {
       fill: $plus-white;
     }
+
+    @media (prefers-color-scheme: dark) {
+      background: $medium-grey;
+    }
   }
 }
 
 .hamburger svg {
   width: 24px;
   height: 24px;
+
+  @media (prefers-color-scheme: dark) {
+     rect {
+      fill: $lighter-grey;
+    }
+  }
 }
 
 .visually-hidden {
@@ -484,6 +494,10 @@ nav {
     backdrop-filter: blur(12px);
     background-color: rgba($plus-white, .95);
 
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($wallstreet-black, .75);
+    }
+
     a {
       width: 100%;
       text-align: center;
@@ -527,7 +541,7 @@ nav {
   }
 
   .mobile-login-button {
-    padding: 0 12px;
+    padding-top: 16px;
   }
 
   .mobile-login-button a, .mobile-login-button {
@@ -535,6 +549,10 @@ nav {
     width: 100%;
     margin-left: auto;
     text-align: center;
+    
+    .button.secondary {
+      font-size: 16px;
+    }
   }
 }
 
