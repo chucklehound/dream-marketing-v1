@@ -614,6 +614,13 @@ header {
                 100% { transform: scale(110); opacity: 0; }
             }
 
+            @keyframes pulseBigDark {
+                0% { transform: scale(1); opacity: .5; }
+                20% { opacity: .4; }
+                80% { opacity: 0; }
+                100% { transform: scale(110); opacity: 0; }
+            }
+
             &:after {
                 content: '';
                 opacity: .1;
@@ -621,6 +628,7 @@ header {
                 height: 32px;
                 position: absolute;
                 z-index: -1;
+                border-radius: 50%;
                 filter: blur(2px);
                 border: 10px solid $quadra-grey;
                 mix-blend-mode: difference;
@@ -632,8 +640,9 @@ header {
                 animation: pulseBig 5s $cubic-timing infinite;
 
                 @media (prefers-color-scheme: dark) {
-                    border-color: $performa-black;
-                    mix-blend-mode: plus-darker;
+                    border-color: $wallstreet-black;
+                    mix-blend-mode: multiply;
+                    animation-name: pulseBigDark;
                 }
             }
 
