@@ -968,7 +968,19 @@ main {
                     }
 
                     &:before {
-                        background-image: url('/src/img/overlay-ping-narrow.svg');
+                        background-image: url("/src/img/overlay-ping-narrow.svg");
+
+                        /* High-DPR hint (Safari/Chrome on mobile) */
+                        background-image: -webkit-image-set(
+                          url("/src/img/overlay-ping-narrow.svg") 1x,
+                          url("/src/img/overlay-ping-narrow.svg") 2x,
+                          url("/src/img/overlay-ping-narrow.svg") 3x
+                        );
+                        background-image: image-set(
+                          url("/src/img/overlay-ping-narrow.svg") type("image/svg+xml") 1x,
+                          url("/src/img/overlay-ping-narrow.svg") type("image/svg+xml") 2x,
+                          url("/src/img/overlay-ping-narrow.svg") type("image/svg+xml") 3x
+                        );
                         top: 0;
                         background-position: top center;
                     }
