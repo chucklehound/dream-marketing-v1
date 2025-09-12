@@ -102,4 +102,8 @@ p, .p {
 
     margin-bottom: 0.8em;
     color: $performa-black;
+
+    @media (prefers-color-scheme: dark) {
+        color: $light-grey;
+    }
 }

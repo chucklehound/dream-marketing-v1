@@ -1,158 +1,118 @@
 @import './colours.scss';
 @import './type.scss';
 
-@mixin dreamButtonPrimarySmall {
-    background: transparent;
+@mixin ButtonConstants {
     font-family: 'Geist', sans-serif;
-    display: flex;
-    height: 32px;
-    padding: 8px 12px;
     justify-content: center;
     align-items: center;
     gap: 8px;
     border-radius: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
+    text-decoration: none; 
+    letter-spacing: -0.1%;
+    display: flex;
+}
+
+@mixin PrimaryButton {
     background: $wallstreet-black;
     box-shadow: $box-shadow-sm;
     color: $plus-white;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
 
     &:hover {
         box-shadow: $box-shadow-md;
         background: $performa-black;
     }
+
+    @media (prefers-color-scheme: dark) {
+        color: $lightest-grey;
+        background-color: $performa-black;
+        border: 1px solid rgba($light-grey, .2);
+
+        &:hover {
+            color: $plus-white;
+            background: $wallstreet-black;
+            border-color: rgba($plus-white, .4);
+        }
+    }
+}
+
+@mixin SecondaryButton {
+    border: 1px solid $light-grey;
+    background: $plus-white;
+    box-shadow: $box-shadow-sm;
+    color: $wallstreet-black;
+
+    &:hover {
+        box-shadow: $box-shadow-md; 
+        background: $quadra-grey;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background: $wallstreet-black;
+        color: $lighter-grey;
+        border: 1px solid rgba($light-grey, .5);
+
+        &:hover {
+            background: $wallstreet-black;
+            border-color: rgba($plus-white, .4);
+        }
+    }
+}
+
+@mixin dreamButtonPrimarySmall {
+    @include PrimaryButton();
+    @include ButtonConstants();
+
+    height: 32px;
+    padding: 8px 12px;
 }
 
 @mixin dreamButtonSecondarySmall {
-    font-family: 'Geist', sans-serif;
-    display: flex;
-    height: 32px;
-    padding: 8px 12px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
+    @include ButtonConstants();
+    @include SecondaryButton();
+
     border: 1px solid $light-grey;
     background: $plus-white;
     box-shadow: $box-shadow-sm;
     color: $wallstreet-black;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
-
-    &:hover {
-        box-shadow: $box-shadow-md;
-        background: $quadra-grey;
-    }
 }
 
 @mixin dreamButtonPrimaryMedium {
-    background: transparent;
-    font-family: 'Geist', sans-serif;
-    display: flex;
+    @include PrimaryButton();
+    @include ButtonConstants();
+
     height: 44px;
     padding: 12px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
-    background: $wallstreet-black;
-    box-shadow: $box-shadow-sm;
-    color: $plus-white;
-    font-weight: 500;
-    white-space: nowrap;   
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
-
-    &:hover {
-        box-shadow: $box-shadow-md;
-        background: $performa-black;
-    }
 }
 
 @mixin dreamButtonSecondaryMedium {
-    font-family: 'Geist', sans-serif;
-    display: flex;
+    @include ButtonConstants();
+    @include SecondaryButton();
+
     height: 44px;
     padding: 12px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
     border: 1px solid $light-grey;
     background: $plus-white;
     box-shadow: $box-shadow-sm;
     color: $wallstreet-black;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
-    
-    &:hover {
-        box-shadow: $box-shadow-md; 
-        background: $quadra-grey;
-    }
 }
 
 @mixin dreamButtonPrimaryLarge {
-    background: transparent;
-    font-family: 'Geist', sans-serif;
-    display: flex;
+    @include PrimaryButton();
+    @include ButtonConstants();
+
     height: 52px;
     padding: 16px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
-    background: $wallstreet-black;
-    box-shadow: $box-shadow-sm;
-    color: $plus-white;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
-    font-size: 18px;
-    line-height: 22px;
-
-    &:hover {
-        box-shadow: $box-shadow-md;
-        background: $performa-black;
-    }
 }
 
 @mixin dreamButtonSecondaryLarge {
-    font-family: 'Geist', sans-serif;
-    display: flex;
+    @include ButtonConstants();
+    @include SecondaryButton();
+
     height: 52px;
     padding: 16px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
-    border: 1px solid $light-grey;
-    background: $plus-white;
-    box-shadow: $box-shadow-sm;
-    color: $wallstreet-black;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: background-color .2s ease, box-shadow .2s ease;
-    text-decoration: none; 
-    letter-spacing: -0.1%;
-    font-size: 18px;
-    line-height: 22px;
-    
-    &:hover {
-        box-shadow: $box-shadow-md; 
-        background: $quadra-grey;
-    }
 }
 
 .hero {
