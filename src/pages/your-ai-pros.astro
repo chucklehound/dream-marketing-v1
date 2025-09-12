@@ -19,10 +19,16 @@ import headOfSales from '/src/img/head-of-sales.png';
 import iconCalendar from '/src/img/calendar.svg';
 import iconAttachment from '/src/img/attachment.svg';
 import iconPlane from '/src/img/plane.svg';
+import iconCalendarLight from '/src/img/calendar-light.svg';
+import iconAttachmentLight from '/src/img/attachment-light.svg';
+import iconPlaneLight from '/src/img/plane-light.svg';
 
 import iconAward from '/src/img/award.svg';
+import iconAwardLight from '/src/img/award-light.svg';
 import iconAnnouncement from '/src/img/announcement.svg';
+import iconAnnouncementLight from '/src/img/announcement-light.svg';
 import iconMessageAlert from '/src/img/message-alert-square.svg';
+import iconMessageAlertLight from '/src/img/message-alert-square-light.svg';
 
 import arrowRight from '/src/img/new-arrow-right.svg';
 
@@ -117,33 +123,42 @@ import Modal from '../components/Modal.astro';
               <h3>Your Personal Pro is</h3>
               <ul class="dreamie-feature-list" role="list">
                 <li class="dreamie-feature">
-                  <Image
+                  <picture>
+                    <source srcset={iconCalendarLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
                     src={iconCalendar}
                     alt=""
                     aria-hidden="true"
                     class="dreamie-feature-icon"
                     format="webp"
                   />
+                  </picture>
                   <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <Image
+                  <picture>
+                    <source srcset={iconPlaneLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
                     src={iconPlane}
                     alt=""
                     aria-hidden="true"
                     class="dreamie-feature-icon"
                     format="webp"
                   />
+                  </picture>
                   <p>Ready to plan and book your travel; taxis, flights, and hotels.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <Image
+                  <picture>
+                    <source srcset={iconAttachmentLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
                     src={iconAttachment}
                     alt=""
                     aria-hidden="true"
                     class="dreamie-feature-icon"
                     format="webp"
                   />
+                  </picture>
                   <p>Sorting restaurant bookings, finding specialists, and handling your admin.</p>
                 </li>
               </ul>
@@ -189,33 +204,42 @@ import Modal from '../components/Modal.astro';
               <h3>Your Sales Pro is</h3>
               <ul class="dreamie-feature-list" role="list">
                 <li class="dreamie-feature">
-                  <Image
+                  <picture>
+                    <source srcset={iconAnnouncementLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
                     src={iconAnnouncement}
                     alt=""
                     aria-hidden="true"
                     class="dreamie-feature-icon"
-                    format="webp"
+                    format="svg"
                   />
+                  </picture>
                   <p>Ready to grow your business with high-quality sales outreach.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <Image
-                    src={iconAward}
-                    alt=""
-                    aria-hidden="true"
-                    class="dreamie-feature-icon"
-                    format="webp"
-                  />
+                  <picture>
+                    <source srcset={iconAwardLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
+                      src={iconAward}
+                      alt=""
+                      aria-hidden="true"
+                      class="dreamie-feature-icon"
+                      format="svg"
+                    />
+                  </picture>
                   <p>Always managing conversations to close the deal.</p>
                 </li>
                 <li class="dreamie-feature">
-                  <Image
-                    src={iconMessageAlert}
-                    alt=""
-                    aria-hidden="true"
-                    class="dreamie-feature-icon"
-                    format="webp"
-                  />
+                  <picture>
+                    <source srcset={iconMessageAlertLight.src} media="(prefers-color-scheme: dark)" />
+                    <Image
+                      src={iconMessageAlert}
+                      alt=""
+                      aria-hidden="true"
+                      class="dreamie-feature-icon"
+                      format="svg"
+                    />
+                  </picture>
                   <p>Keeping you up to date on closed deals or important information.</p>
                 </li>
               </ul>

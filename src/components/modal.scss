@@ -20,6 +20,12 @@
     animation: appearModal .4s ease 1;
     transform-origin: top center;
 
+    @media (prefers-color-scheme: dark) {
+        border: 1px solid $performa-black;
+        background: $wallstreet-black;
+        box-shadow: 0 12px 24px 2px rgba($wallstreet-black,.7);
+    }
+
     .modal__surface {
         display: flex;
         flex-direction: column;

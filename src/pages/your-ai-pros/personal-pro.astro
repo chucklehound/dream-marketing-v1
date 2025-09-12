@@ -9,9 +9,11 @@ import Footer from '../../components/Footer.astro';
 import Button from '../../components/Button.astro';
 
 import iconCalendar from '/src/img/calendar.svg';
-import iconPhone from '/src/img/phone.svg';
 import iconAttachment from '/src/img/attachment.svg';
 import iconPlane from '/src/img/plane.svg';
+import iconCalendarLight from '/src/img/calendar-light.svg';
+import iconAttachmentLight from '/src/img/attachment-light.svg';
+import iconPlaneLight from '/src/img/plane-light.svg';
 
 import personalAssistant from '/src/img/personal-assistant.png';
 
@@ -100,33 +102,42 @@ import HubspotModal from '../../components/HubspotModal.astro';
                   <h3>Your Personal Pro is</h3>
                   <ul class="dreamie-feature-list" role="list">
                     <li class="dreamie-feature">
-                      <Image
+                      <picture>
+                        <source srcset={iconCalendarLight.src} media="(prefers-color-scheme: dark)" />
+                        <Image
                         src={iconCalendar}
                         alt=""
                         aria-hidden="true"
                         class="dreamie-feature-icon"
                         format="webp"
                       />
+                      </picture>
                       <p>Always managing your inbox and calendar, drafting replies and handling scheduling.</p>
                     </li>
                     <li class="dreamie-feature">
-                      <Image
+                      <picture>
+                        <source srcset={iconPlaneLight.src} media="(prefers-color-scheme: dark)" />
+                        <Image
                         src={iconPlane}
                         alt=""
                         aria-hidden="true"
                         class="dreamie-feature-icon"
                         format="webp"
                       />
+                      </picture>
                       <p>Ready to plan and book your travel; taxis, flights, and hotels.</p>
                     </li>
                     <li class="dreamie-feature">
-                      <Image
+                      <picture>
+                        <source srcset={iconAttachmentLight.src} media="(prefers-color-scheme: dark)" />
+                        <Image
                         src={iconAttachment}
                         alt=""
                         aria-hidden="true"
                         class="dreamie-feature-icon"
                         format="webp"
                       />
+                      </picture>
                       <p>Sorting restaurant bookings, finding specialists, and handling your admin.</p>
                     </li>
                   </ul>

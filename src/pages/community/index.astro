@@ -6,6 +6,7 @@ import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 
 import arrowRightDark from '/src/img/arrow-right-dark.svg';
+import arrowRight from '/src/img/new-arrow-right.svg';
 
 import Button from '../../components/Button.astro';
 
@@ -51,7 +52,13 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
                 <div class="post-content">
                   <h4>{post.data.postTitle}</h4>
                   <p>{post.data.seoMetaDescription}</p>
-                  <span class="button secondary">Read more<img src={arrowRightDark.src} alt="An arrow" role="presentation"></span>
+                  <span class="button secondary">
+                    Read more
+                    <picture>
+                      <source srcset={arrowRight.src} media="(prefers-color-scheme: dark)" />
+                      <img src={arrowRightDark.src} alt="An arrow" role="presentation">
+                    </picture>
+                  </span>
                 </div>
               </a>
             </li>

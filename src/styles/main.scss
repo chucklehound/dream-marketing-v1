@@ -585,6 +585,10 @@ header {
             color: $performa-black;            
             max-width: 600px;
 
+            @media (prefers-color-scheme: dark) {
+                color: $lighter-grey;
+            }
+
             @media (min-width: 800px) {
                 font-size: 18px;
             line-height: 24px;
@@ -665,6 +669,10 @@ header {
                 background-size: cover;
                 position: absolute;
                 left: 0;
+
+                @media (prefers-color-scheme: dark) {
+                    background-image: url('/src/img/community-header-dark.jpg');
+                }
 
                 @media (max-width: 960px) {
                     height: 400px;
@@ -785,6 +793,10 @@ main {
                 padding: 48px;
                 flex: 1;
 
+                @media (prefers-color-scheme: dark) {
+                    background: rgba($classic-yellow, .2);
+                }
+
                 &.promo-about {
                     max-width: 100%;
                     margin-bottom: 32px;
@@ -803,6 +815,10 @@ main {
                     line-height: 52px;
                     letter-spacing: -2px;
                     color: $wallstreet-black;
+
+                    @media (prefers-color-scheme: dark) {
+                        color: $plus-white;
+                    }
                 }
 
                 a.button {
@@ -1148,11 +1164,19 @@ main {
     &.contrast-container {
         background: $classic-yellow;
 
+        @media (prefers-color-scheme: dark) {
+            background: $wallstreet-black;
+        }
+
         .highlight-title {
             background: linear-gradient(90deg, #489FD9 0%, #000D26 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
+            @media (prefers-color-scheme: dark) {
+                background-image: linear-gradient(90deg, $mystic-blue 0%, $plus-white 100%);
+            }
         }
     }
 
@@ -1346,6 +1370,10 @@ main {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
+        
+        @media (prefers-color-scheme: dark) {
+            background-image: linear-gradient(270deg, $plus-white 0%, $mystic-blue 100%);
+        }
 
         @media (max-width: 700px) {
             font-size: 24px;
@@ -1365,6 +1393,10 @@ h3.section-title {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
+
+        @media (prefers-color-scheme: dark) {
+            background-image: linear-gradient(90deg, $plus-white, $mystic-blue);
+        }
 
         @media (max-width: 700px) {
             font-size: 24px;
@@ -1461,6 +1493,12 @@ h3.section-title {
                     background: $lighter-grey;
                     padding: 4px 12px;
                     font-weight: 500;
+
+                    @media (prefers-color-scheme: dark) {
+                        color: $dream-yellow;
+                        background: $performa-black;
+                        box-shadow: inset 0 4px 4px rgba($dream-yellow, .4), inset 0 -4px 4px rgba($medusa-blue, .5), 0 0 1px 1px rgba($wallstreet-black, .35);
+                    }
                 }
             }
 
@@ -1640,6 +1678,10 @@ h3.section-title {
         flex-direction: column;
         gap: 16px;
 
+        @media (prefers-color-scheme: dark) {
+            background: rgba($medusa-blue, .6);
+        }
+
         .card {
             flex: 1;
             justify-content: flex-start;
@@ -1683,6 +1725,12 @@ h3.section-title {
             box-shadow: inset 0 4px 4px rgba($plus-white, .7), inset 0 -4px 4px rgba($wallstreet-black, .1), 0 0 1px 1px rgba($wallstreet-black, .15);
             font-weight: 600;
             display: inline-block;
+
+            @media (prefers-color-scheme: dark) {
+                color: $dream-yellow;
+                background: $performa-black;
+                box-shadow: inset 0 4px 4px rgba($dream-yellow, .4), inset 0 -4px 4px rgba($medusa-blue, .5), 0 0 1px 1px rgba($wallstreet-black, .35);
+            }
         }
 
         .card-footer {
@@ -1772,6 +1820,10 @@ h3.section-title {
                     gap: 12px;
                     flex: 1;
 
+                    @media (prefers-color-scheme: dark) {
+                        background: rgba($medium-grey, .5);
+                    }
+
                     p {
                         font-size: 16px;
                         line-height: 22px;
@@ -1802,6 +1854,10 @@ h3.section-title {
             -webkit-text-fill-color: transparent;
             text-align: left;
 
+            @media (prefers-color-scheme: dark) {
+                background-image: linear-gradient(90deg, $lightest-grey 0%, $mystic-blue 100%);
+            }
+
             @media (max-width: 1024px) {
                 font-size: 24px;
                 line-height: 28px;
@@ -1816,6 +1872,10 @@ h3.section-title {
             line-height: 24px; /* 150% */
             letter-spacing: 0.16px;
             margin-top: 12px;
+
+            @media (prefers-color-scheme: dark) {
+                color: $lighter-grey;
+            }
         }
 
         p {
@@ -1825,6 +1885,10 @@ h3.section-title {
             font-style: normal;
             font-weight: 400;
             line-height: 28px;
+
+            @media (prefers-color-scheme: dark) {
+                color: $lighter-grey;
+            }
 
             @media (max-width: 1024px) {
                 font-size: 14px;
@@ -1897,6 +1961,11 @@ h3.section-title {
         min-width: 45%;
         transition: box-shadow 0.3s ease, background-color 0.3s ease;
 
+        @media (prefers-color-scheme: dark) { 
+            background: $wallstreet-black;
+            border-color: rgba($light-grey, .5);
+          }
+
         @media (max-width: 900px) {
             min-width: 55%;
         }
@@ -1904,6 +1973,15 @@ h3.section-title {
         &:hover {
             box-shadow: $box-shadow-md;
             background: $white;
+
+            @media (prefers-color-scheme: dark) { 
+                background: $performa-black;
+                border-color: rgba($light-grey, .3);
+        
+                .panel-image {
+                  background: $wallstreet-black;
+                }
+              }
           }
 
         @media (max-width: 960px) {
@@ -1920,6 +1998,10 @@ h3.section-title {
             align-self: stretch;
             border-radius: 8px;
             background: $lightest-grey;
+
+            @media (prefers-color-scheme: dark) { 
+                background: $performa-black;
+              }
 
             @media (max-width: 600px) {
                 height: 180px;
@@ -1952,6 +2034,10 @@ h3.section-title {
               background-clip: text;
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
+
+              @media (prefers-color-scheme: dark) { 
+                background-image: linear-gradient(90deg, $plus-white 0%, $mystic-blue 100%);
+              }
             }
       
             .panel-subtitle {
@@ -1962,6 +2048,10 @@ h3.section-title {
               line-height: 20px; // 125%
               letter-spacing: initial;
               margin: 0;
+
+              @media (prefers-color-scheme: dark) {  
+                color: $mystic-blue;
+              }
             }
       
             .panel-footer {
@@ -2038,15 +2128,27 @@ ul.all-posts {
                 line-height: 36px;
                 color: $wallstreet-black;
                 text-decoration: none;
+
+                @media (prefers-color-scheme: dark) {
+                    color: $plus-white;
+                }
             }
 
             p {
                 color: $performa-black;
                 text-decoration: none;
+
+                @media (prefers-color-scheme: dark) {
+                    color: $lighter-grey;
+                }
             }
 
             span {
                 color: $wallstreet-black;
+
+                @media (prefers-color-scheme: dark) {
+                    color: $plus-white;
+                }
             }
         }
 
@@ -2068,6 +2170,10 @@ ul.all-posts {
         height: 80vh;
         overflow: hidden;
         position: relative;
+
+        @media (prefers-color-scheme: dark) {
+            background: $performa-black;
+        }
 
         .post-back-link {
             position: absolute;
@@ -2159,6 +2265,10 @@ ul.all-posts {
         a {
             color: $wallstreet-black;
             font-weight: 500;
+
+            @media (prefers-color-scheme: dark) {
+                color: $plus-white;
+            }
         }
 
         nav.toc {
@@ -2384,6 +2494,11 @@ table.how-works-table {
         background: $classic-yellow;
         border-bottom: 1px solid rgba($wallstreet-black, .3);
 
+        @media (prefers-color-scheme: dark) {
+            background: $wallstreet-black;
+            border-color: $performa-black;
+        }
+
         @media (max-width: 700px) {
             top: 64px;
         } 
@@ -2400,6 +2515,10 @@ table.how-works-table {
         line-height: 32px; /* 133.333% */
         letter-spacing: -0.24px;
         color: $wallstreet-black;
+
+        @media (prefers-color-scheme: dark) {
+            color: $plus-white;
+        }
     }
 
     td {
@@ -2412,9 +2531,18 @@ table.how-works-table {
         border-bottom: 1px solid $light-grey;
         color: $performa-black;
 
+        @media (prefers-color-scheme: dark) {
+            color: $light-grey;
+            border-color: $performa-black;
+        }
+
         &:nth-of-type(2n) {
             font-weight: 500;
             color: $wallstreet-black;
+
+            @media (prefers-color-scheme: dark) {
+                color: $plus-white;
+            }
         }
     }
 
@@ -2476,6 +2604,10 @@ table.how-works-table {
             line-height: 18px;
             letter-spacing: 0.13px;
             cursor: pointer;
+
+            @media (prefers-color-scheme: dark) {
+                color: $lighter-grey;
+            }
         }
     }
 
@@ -2522,6 +2654,10 @@ table.how-works-table {
             border-radius: 12px;
             border: 1px solid $sawtooth-blue;
             box-shadow: 0 12px 24px 0 rgba($wallstreet-black, .1), 0 8px 16px rgba($sawtooth-blue, .1);
+
+            @media (prefers-color-scheme: dark) {
+                background: linear-gradient($medusa-blue, $wallstreet-black);
+            }
         }
 
         .plan-header {
@@ -2534,6 +2670,10 @@ table.how-works-table {
 
             svg, path {
                 fill: $sawtooth-blue;
+
+                @media (prefers-color-scheme: dark) {
+                    fill: $mystic-blue;
+                }
             }
 
             h3 {
@@ -2547,6 +2687,12 @@ table.how-works-table {
                 background: $lighter-grey;
                 padding: 4px 12px;
                 font-weight: 500;
+
+                @media (prefers-color-scheme: dark) {
+                    color: $mystic-blue;
+                    background: $performa-black;
+                    box-shadow: inset 0 4px 4px rgba($mystic-blue, .4), inset 0 -4px 4px rgba($medusa-blue, .5), 0 0 1px 1px rgba($wallstreet-black, .35);
+                }
             }
         }
 
@@ -2554,6 +2700,10 @@ table.how-works-table {
             border: 0;
             background: rgba($performa-black, .2);
             height: 1px;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: $medium-grey;
+            }
         }
 
         .plan-price {
@@ -2563,6 +2713,10 @@ table.how-works-table {
             font-weight: 600;
             line-height: 20px;
             margin-bottom: 24px;
+
+            @media (prefers-color-scheme: dark) {
+                color: $mystic-blue;
+            }
         }
 
         .plan-trial {
@@ -2574,6 +2728,10 @@ table.how-works-table {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
+            @media (prefers-color-scheme: dark) {
+                background-image: linear-gradient(90deg, $plus-white, $mystic-blue);
+            }
         }
 
         .plan-features {
@@ -2592,8 +2750,18 @@ table.how-works-table {
             a {
                 font-weight: 500;
                 color: $wallstreet-black;
+
+                @media (prefers-color-scheme: dark) {
+                    color: $lighter-grey;
+                }
             }
-            
+
+            @media (prefers-color-scheme: dark) {
+                p {
+                    color: $lighter-grey;
+                }
+            }
+
             &:first-of-type {
                 min-height: 160px;
             }
@@ -2618,6 +2786,10 @@ table.how-works-table {
         opacity: 0.5;
         background: radial-gradient(80% 80% at 0% 50%, #97D5FC 0%, #EBE9E4 100%);
         z-index: -1;
+
+        @media (prefers-color-scheme: dark) {
+            background-image: radial-gradient(80% 80% at 0% 50%, #97D5FC 0%, $performa-black 100%);
+        }
     }
 }
 

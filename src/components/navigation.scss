@@ -166,8 +166,12 @@ nav {
             transform: scale(1.2);
           }
 
+          &:before {
+            background-color: $wallstreet-black;
+          }
+
           &::after {
-            background-position: 200% 0;
+            background-position: 150% 0;
           }
         }
       }
