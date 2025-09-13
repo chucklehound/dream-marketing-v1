@@ -8,9 +8,15 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
 import holibobDreamie from '/src/img/animated-dreamies/holibob.mp4';
+import holibobDreamieDark from '/src/img/animated-dreamies/holibob-dark.mp4';
 import curatorsDreamie from '/src/img/animated-dreamies/curators.mp4';
 import jdiDreamie from '/src/img/animated-dreamies/jdi-1.mp4';
+import jdiDreamieDark from '/src/img/animated-dreamies/jdi-dark.mp4';
 import edmundsDreamie from '/src/img/animated-dreamies/edmunds.mp4';
+
+import placeholderOne from '/src/img/animated-dreamies/holibob-poster.png';
+import placeholderThree from '/src/img/animated-dreamies/edmunds-poster.png';
+import placeholderFour from '/src/img/animated-dreamies/jdi-poster.png';
 
 
 import personalAssistant from '/src/img/personal-assistant.png';
@@ -51,7 +57,9 @@ import Modal from '../components/Modal.astro';
                 <video autoplay
                 muted
                 playsinline
+                poster={placeholderOne.src}
                 loop width="300" height="440">
+                <source src={holibobDreamieDark} type="video/mp4" media="(prefers-color-scheme: dark)" />
                 <source src={holibobDreamie} type="video/mp4" />
                 Your browser does not support the video tag.
             </video> 
@@ -69,7 +77,9 @@ import Modal from '../components/Modal.astro';
         <video autoplay
         muted
         playsinline
+        poster={placeholderThree.src}
         loop width="300" height="440">
+        <source src={jdiDreamieDark} type="video/mp4" media="(prefers-color-scheme: dark)" />
         <source src={jdiDreamie} type="video/mp4" />
         Your browser does not support the video tag.
     </video> 
@@ -78,6 +88,7 @@ import Modal from '../components/Modal.astro';
     <video autoplay
     muted
     playsinline
+    poster={placeholderFour.src}
     loop width="300" height="440">
     <source src={edmundsDreamie} type="video/mp4" />
     Your browser does not support the video tag.

@@ -167,7 +167,13 @@ nav {
           }
 
           &:before {
-            background-color: $wallstreet-black;
+            background-color: $quadra-grey;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            &:before {
+              background-color: $wallstreet-black;
+            }
           }
 
           &::after {
