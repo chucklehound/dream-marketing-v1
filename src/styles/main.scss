@@ -577,7 +577,6 @@ header {
                 margin-top: 0;
 
                 a {
-                    font-size: 14px;
                     padding: 8px 20px;
                 }
             }
@@ -899,10 +898,6 @@ main {
                     display: flex;
                     gap: 12px;
                     flex-wrap: wrap;
-
-                    @media (max-width: 700px) {
-                        font-size: 14px;
-                    }
                 }
             }
 
