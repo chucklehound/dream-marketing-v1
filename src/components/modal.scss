@@ -21,6 +21,7 @@
     transform-origin: top center;
 
     @media (prefers-color-scheme: dark) {
+        box-shadow: 0 0 8px 1px rgba($medusa-blue, .5);
         border: 1px solid $performa-black;
         background: $wallstreet-black;
         box-shadow: 0 12px 24px 2px rgba($wallstreet-black,.7);
@@ -52,6 +53,10 @@
 
             &:hover {
                 background: $quadra-grey;
+
+                @media (prefers-color-scheme: dark) { 
+                    background: rgba($plus-white, .3);
+                }
             }
         }
 
@@ -59,6 +64,10 @@
             font-size: 20px;
             line-height: 24px;
             letter-spacing: -0.1px;
+
+            @media (prefers-color-scheme: dark) {
+                color: $plus-white;
+            }
         }
     }
 }
@@ -83,6 +92,10 @@
             background: $classic-yellow;
             border-radius: 8px;
             padding: 24px;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: rgba($medusa-blue, .5);
+            }
             
             form {
                 display: flex;
@@ -98,6 +111,10 @@
                 label, fieldset legend {
                     font-weight: 500;
                     color: $wallstreet-black;
+
+                    @media (prefers-color-scheme: dark) {
+                        color: $plus-white;
+                    }
                 }
 
                 fieldset {
@@ -122,6 +139,11 @@
                     border-radius: 6px;
                     padding: 8px 16px;
                     background: $plus-white;
+
+                    @media (prefers-color-scheme: dark) {
+                        border-color: $medium-grey;
+                        background: $wallstreet-black;
+                    }
                 }
             }
         }
