@@ -52,10 +52,11 @@
     @media (prefers-color-scheme: dark) {
         background: $wallstreet-black;
         color: $lighter-grey;
-        border: 1px solid rgba($light-grey, .5);
+        border: 1px solid rgba($light-grey, .3);
 
         &:hover {
             background: $wallstreet-black;
+            color: $plus-white;
             border-color: rgba($plus-white, .4);
         }
     }

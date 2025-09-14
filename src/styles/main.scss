@@ -109,6 +109,15 @@ body {
     }
 }
 
+/* manual toggle with <html data-theme="dark"> */
+html[data-theme="dark"] .block { --bg-img: var(--bg-img-dark); }
+html[data-theme="light"] .block { --bg-img: var(--bg-img-light); }
+
+/* optional: respect system if no manual theme set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .block { --bg-img: var(--bg-img-dark); }
+}
+
 $spacing: 8px;
 
 @keyframes appear {
@@ -1084,7 +1093,7 @@ main {
             width: 100vw;
             background-repeat: repeat-x;
             backface-visibility: hidden;
-            
+            background-image: var(--bg-img, var(--bg-img-light));
             height: 102px;
             background-size: 2584px;
             left: 0;
@@ -2411,7 +2420,7 @@ ul.all-posts {
     width: 100%; 
 
     @media (max-width: 700px) {
-        padding: 32px 0;
+        padding: 40px 0;
     }
 }
 .customer-quote .quote-viewport { overflow: hidden; width: 100%; }
