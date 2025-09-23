@@ -9,7 +9,8 @@ import Footer from "../components/Footer.astro";
 
 import holibobDreamie from '/src/img/animated-dreamies/holibob.mp4';
 import holibobDreamieDark from '/src/img/animated-dreamies/holibob-dark.mp4';
-import curatorsDreamie from '/src/img/animated-dreamies/givewheel.mp4';
+import givewheelDreamie from '/src/img/animated-dreamies/givewheel.mp4';
+import givewheelDreamieDark from '/src/img/animated-dreamies/givewheel-dark.mp4';
 import jdiDreamie from '/src/img/animated-dreamies/jdi-1.mp4';
 import jdiDreamieDark from '/src/img/animated-dreamies/jdi-dark.mp4';
 import edmundsDreamie from '/src/img/animated-dreamies/edmunds.mp4';
@@ -72,7 +73,8 @@ import Modal from '../components/Modal.astro';
             playsinline
             poster={placeholderTwo.src}
             loop width="300" height="440">
-            <source src={curatorsDreamie} type="video/mp4" />
+            <source src={givewheelDreamieDark} type="video/mp4" media="(prefers-color-scheme: dark)" />
+            <source src={givewheelDreamie} type="video/mp4" />
             Your browser does not support the video tag.
         </video> 
     </div>
