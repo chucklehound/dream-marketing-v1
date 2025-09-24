@@ -732,6 +732,10 @@ header {
             mix-blend-mode: multiply;
             min-width: 160px;
 
+            @media (prefers-color-scheme: dark) {
+                mix-blend-mode: lighten;
+            }
+
             video {
                 position: relative;
                 left: -10px;
