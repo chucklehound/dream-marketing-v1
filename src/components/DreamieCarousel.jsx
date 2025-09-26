@@ -216,7 +216,6 @@ export default function DreamieShowcase({ images, messages }) {
           <div
             key={i}
             style={{
-              transform: isCenter ? "scale(1.11)" : "none",
               flex: `0 0 ${width}px`,
               display: "flex",
               flexDirection: "column",

@@ -10,7 +10,7 @@ import arrowRight from '/src/img/new-arrow-right.svg';
 
 import Button from '../../components/Button.astro';
 
-import discordLogo from '/src/img/Discord-Symbol-Blurple 1.svg';
+import whatsAppIcon from '/src/img/whats-app-icon.svg';
 
 
 // Fetch all posts from the 'posts' collection
@@ -30,11 +30,11 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
         <Button
         label="Join our community"
         class="discord-button"
-        href="https://discord.gg/UNYwC8Cu"
+        href="https://chat.whatsapp.com/HqqA93vEHU3JQM0T3LKYJz"
         target="_blank"
         variant="secondary"
         size="medium"
-      ><img src={discordLogo.src} alt="The Discord logo"></Button>
+      ><img src={whatsAppIcon.src} alt="The WhatsApp logo" role="presentation"></Button>
 			</section>
 		</div>
 	</header>

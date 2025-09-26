@@ -369,6 +369,10 @@ header {
 
             .hero-carousel-main {
                 align-items: flex-end;
+
+                > div {
+                    transform: scale(1.23);
+                }
             }
 
             @media (min-width: 1024px) {
@@ -1946,6 +1950,10 @@ h3.section-title {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+
+    svg, svg path {
+        fill: $performa-black;
+    }
 
     li a {
         background: $quadra-grey;

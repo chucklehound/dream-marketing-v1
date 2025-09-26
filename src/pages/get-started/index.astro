@@ -80,6 +80,20 @@ const contentBlocks = [
       <article class="content-container">
         <div class="start-cards">
           <div class="card-item">
+            <h2>WhatsApp your Pro</h2>
+            <p>Chat with your <span data-pro-label>Personal Pro</span> on WhatsApp, and they'll chat about how they can help.</p>
+
+            <Button
+              label="Message on WhatsApp"
+              href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
+              variant="secondary"
+              size="medium"
+              data-whatsapp
+            >
+              <img src={whatsAppIcon.src} role="presentation" alt="">
+            </Button>
+          </div>
+          <div class="card-item">
             <h2>Call your Pro</h2>
             <p>Start a voice call with your <span data-pro-label>Personal Pro</span> and they’ll talk you through how they can help.</p>
 
@@ -106,20 +120,6 @@ const contentBlocks = [
             </Button>
           </div>
 
-          <div class="card-item">
-            <h2>WhatsApp your Pro</h2>
-            <p>Chat with your <span data-pro-label>Personal Pro</span> on WhatsApp, and they'll chat about how they can help.</p>
-
-            <Button
-              label="Message on WhatsApp"
-              href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-              variant="secondary"
-              size="medium"
-              data-whatsapp
-            >
-              <img src={whatsAppIcon.src} role="presentation" alt="">
-            </Button>
-          </div>
         </div>
       </article>
     </section>
