@@ -24,6 +24,13 @@ const typeStyles = {
   },
 };
 
+function zIndexFor(i, half, count) {
+  // Mountain shape: highest at center, decreasing with distance.
+  // Tie-break: left side wins over right at equal distance.
+  const base = count - Math.abs(i - half); // center biggest number
+  return base * 2 + (i <= half ? 1 : 0);
+}
+
 const FADE = 400; // ms — must match the inline rotating text CSS timing
 
 function getVisibleCount() {
@@ -35,11 +42,24 @@ function getVisibleCount() {
 }
 
 function getWidths(count) {
-  const preset = [270, 250, 230, 200, 160];
-  const arr = [];
+  const base = [270, 250, 230, 200, 160]; // center → edge for |i| = 0..4
   const half = Math.floor(count / 2);
+
+  // If we need more than base provides (e.g. half=5 for 11 items),
+  // extend by stepping down further so edges never duplicate.
+  if (half >= base.length) {
+    let last = base[base.length - 1]; // start from 160
+    const min = 120;                  // don’t go too tiny
+    const step = 20;                  // consistent falloff beyond the preset
+    for (let k = base.length; k <= half; k++) {
+      last = Math.max(min, last - step); // 160 → 140 → 120, etc.
+      base.push(last);
+    }
+  }
+
+  const arr = [];
   for (let i = -half; i <= half; i++) {
-    arr.push(preset[Math.abs(i)] ?? 160);
+    arr.push(base[Math.abs(i)]);
   }
   return arr;
 }
@@ -222,7 +242,7 @@ export default function DreamieShowcase({ images, messages }) {
               alignItems: "center",
               position: "relative",
               margin: "0 -24px",
-              zIndex: isCenter ? 2 : 1,
+              zIndex: zIndexFor(i, half, rowImages.length),
             }}
           >
             {isCenter ? (
