@@ -26,6 +26,13 @@ const typeStyles = {
 
 const FADE = 400; // ms — must match the inline rotating text CSS timing
 
+function zIndexFor(i, half, count) {
+  // Mountain shape: highest at center, decreasing with distance.
+  // Tie-break: left side wins over right at equal distance.
+  const base = count - Math.abs(i - half); // center biggest number
+  return base * 2 + (i <= half ? 1 : 0);
+}
+
 function getVisibleCount() {
   const width = typeof window !== "undefined" ? window.innerWidth : 1300;
   if (width < 500) return 5;
@@ -223,7 +230,7 @@ export default function DreamieShowcase({ images, messages }) {
               alignItems: "center",
               position: "relative",
               margin: "0 -24px",
-              zIndex: isCenter ? 2 : 1,
+              zIndex: zIndexFor(i, half, rowImages.length),
             }}
           >
             {isCenter ? (
