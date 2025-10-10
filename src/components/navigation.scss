@@ -16,6 +16,11 @@
     box-shadow: inset 0 -8px 12px 0 rgba($plus-white, .6), inset 0 -1px 1px 0 rgba($plus-white, .5), inset 0 20px 12px 0 rgba($plus-white, .2);
     transition: background-color .2s ease;
 
+    @media (prefers-color-scheme: dark) {
+      background: rgba($wallstreet-black, .2);
+      box-shadow: inset 0 -8px 12px 0 rgba($wallstreet-black, .6), inset 0 -1px 1px 0 rgba($wallstreet-black, .5), inset 0 20px 12px 0 rgba($wallstreet-black, .2);
+    }
+
     @media (max-width: 800px) {
       padding-top: 16px;
     }
@@ -37,6 +42,12 @@
       max-height: 32px;
       height: 32px;
       width: 128px;
+
+      @media (prefers-color-scheme: dark) {
+        path {
+          fill: $plus-white;
+        }
+      }
 
       @media (max-width: 600px) {
         max-height: 28px;
@@ -77,7 +88,7 @@ nav {
     }
 
     a {
-      color: $color-wallstreet-black;
+      color: $wallstreet-black;
       font-family: 'Geist', sans-serif;
       position: relative;
       text-align: center;
@@ -90,7 +101,12 @@ nav {
       border-radius: 32px;
       background: $classic-yellow;
       cursor: pointer;
-      transition: box-shadow .3s ease;
+      transition: background-color .3s ease, box-shadow .3s ease;
+
+      @media (prefers-color-scheme: dark) {
+        background: $performa-black;
+        color: $plus-white;
+      }
 
       &.hero-nav {
         position: relative;
@@ -122,6 +138,10 @@ nav {
           border-radius: 24px;
           background: $classic-yellow;
           z-index: 0;
+
+          @media (prefers-color-scheme: dark) {
+            background: $performa-black;
+          }
         }
 
         &::after {
@@ -132,7 +152,7 @@ nav {
           top: -1px;
           height: 38px;
           border-radius: 24px;
-          background: linear-gradient(90deg, $dream-yellow, $sawtooth-blue, $dream-yellow, $sawtooth-blue, $dream-yellow);
+          background: linear-gradient(90deg, $dream-yellow, $strawberry-red, $sawtooth-blue, $dream-yellow, $strawberry-red, $sawtooth-blue, $dream-yellow);
           background-size: 300%;
           z-index: -1;
           transition: opacity 0.2s;
@@ -146,8 +166,18 @@ nav {
             transform: scale(1.2);
           }
 
+          &:before {
+            background-color: $quadra-grey;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            &:before {
+              background-color: $wallstreet-black;
+            }
+          }
+
           &::after {
-            background-position: 200% 0;
+            background-position: 150% 0;
           }
         }
       }
@@ -216,11 +246,16 @@ nav {
       @media (min-width: 1000px) {
         &:hover {
           box-shadow: $box-shadow-md;
+          background: $quadra-grey;
+
+          @media (prefers-color-scheme: dark) {
+            background: $wallstreet-black;
+          }
         }
       }
 
       &.active {
-        box-shadow: inset 0 0 0 32px rgba($color-wallstreet-black, .25), inset 0 0 4px 1px rgba($color-dream-yellow, .15);
+        box-shadow: inset 0 0 0 32px rgba($wallstreet-black, .25), inset 0 0 4px 1px rgba($dream-yellow, .15);
       }
 
       &.active {
@@ -236,7 +271,7 @@ nav {
     top: 100%;
     width: 100vw;
     left: 0;
-    background-color: $color-plus-white;
+    background-color: $plus-white;
     border-radius: 0;
     list-style: none;
     padding: 0;
@@ -261,7 +296,7 @@ nav {
         align-items: flex-start;
         flex: 1;
         padding: 8px 0 0 16px;
-        border-left: 1px solid $color-gray-lighter;
+        border-left: 1px solid $lighter-grey;
 
         > * {
           width: 100%;
@@ -285,7 +320,7 @@ nav {
           font-weight: 600;
           line-height: 40px; /* 125% */
           letter-spacing: -0.48px;
-          color: $color-wallstreet-black;
+          color: $wallstreet-black;
           text-align: left;
           display: flex;
           align-items: center;
@@ -317,12 +352,12 @@ nav {
         letter-spacing: -0.36px;
         text-align: left;
         margin-bottom: 8px;
-        color: $color-wallstreet-black;
+        color: $wallstreet-black;
         
         @media (max-width: 1120px) {
           margin: 12px 0 4px;
           padding-bottom: 8px;
-          border-bottom: 1px solid $color-gray-light;
+          border-bottom: 1px solid $light-grey;
           width: 100%;
         }
       }
@@ -358,52 +393,6 @@ nav {
       }
     }
   }
-
-
-  
-  .navbar .dropdown-menu li {
-    padding: 4px 0 0;
-    
-    &:not(:last-of-type) {
-      padding: 4px 0;
-      border-bottom: 1px solid $color-grays-lighter;
-    }
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
-    a {
-      display: block;
-      text-shadow: none;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: 600;
-      text-align: left;
-      width: 100%;
-      color: $color-performa-black;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: background .2s ease;
-
-      @media (max-width: 1120px) {
-        padding: 12px 0;
-      }
-
-      &:hover {
-        background: rgba($color-wallstreet-black, .25);
-        box-shadow: none;
-      }
-
-      img {
-        width: 32px;
-        height: 32px;
-      }
-    }
-  }
-
-
   
   /* Hamburger menu styles */
 .hamburger {
@@ -433,10 +422,14 @@ nav {
   }
 
   &.navOpen {
-    background: $color-wallstreet-black;
+    background: $wallstreet-black;
 
     svg rect {
-      fill: $color-plus-white;
+      fill: $plus-white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: $medium-grey;
     }
   }
 }
@@ -444,6 +437,12 @@ nav {
 .hamburger svg {
   width: 24px;
   height: 24px;
+
+  @media (prefers-color-scheme: dark) {
+     rect {
+      fill: $lighter-grey;
+    }
+  }
 }
 
 .visually-hidden {
@@ -499,7 +498,11 @@ nav {
     transform-origin: top right;
     box-shadow: 0px 8px 16px 0px rgba(6, 22, 54, 0.10), 0px 2px 4px 0px rgba(0, 13, 38, 0.20);
     backdrop-filter: blur(12px);
-    background-color: rgba($color-plus-white, .95);
+    background-color: rgba($plus-white, .95);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($wallstreet-black, .75);
+    }
 
     a {
       width: 100%;
@@ -511,7 +514,7 @@ nav {
   .dropdown-menu.show {
     position: relative;
     background: transparent;
-    color: $color-plus-white;
+    color: $plus-white;
     left: 0;
     margin-left: 16px;
     width: 100%;
@@ -520,12 +523,12 @@ nav {
 
     @media (max-width: 1120px) {
       padding-bottom: 12px;
-      border-bottom: 1px solid $color-pomona-black;
+      border-bottom: 1px solid $medium-grey;
     }
 
     li {
       &:not(:last-of-type) {
-        border-color: rgba($color-plus-white, .2);
+        border-color: rgba($plus-white, .2);
       } 
     }
   }
@@ -544,7 +547,7 @@ nav {
   }
 
   .mobile-login-button {
-    padding: 0 12px;
+    padding-top: 16px;
   }
 
   .mobile-login-button a, .mobile-login-button {
@@ -552,6 +555,10 @@ nav {
     width: 100%;
     margin-left: auto;
     text-align: center;
+    
+    .button.secondary {
+      font-size: 16px;
+    }
   }
 }
 

@@ -4,7 +4,6 @@
     font-family: "Geist";
     src: url("/src/styles/fonts/Geist-VariableFont_wght.woff2") format("woff2-variations");
     font-weight: 300 700;
-    font-display: swap;
 }
 
 @mixin pageHeading {
@@ -67,7 +66,7 @@
     font-size: 16px;
     line-height: 22px;
     font-weight: 400;
-    color: $color-text-black;
+    color: $wallstreet-black;
 }
 
 .page-title {
@@ -102,5 +101,9 @@ p, .p {
     @include body;
 
     margin-bottom: 0.8em;
-    color: $color-performa-black;
+    color: $performa-black;
+
+    @media (prefers-color-scheme: dark) {
+        color: $light-grey;
+    }
 }

@@ -1,8 +1,10 @@
 ---
 import Button from "./Button.astro";
+import HubspotModal from "/src/components/HubspotModal.astro";
 import Modal from "./Modal.astro";
 
 import qrImg from '/src/img/qr.png';
+
 ---
 
 <section class="main-content">
@@ -28,15 +30,7 @@ import qrImg from '/src/img/qr.png';
   </article>
 
   <!-- Static modal (PNG QR + tel fallback) -->
-  <Modal id="call-modal" closeLabel="Close">
-    <h2 slot="title" id="qrTitle">Get started with Dream in minutes</h2>
-    <p>All it takes is a quick call. You'll speak directly to your Personal Assistant, no humans involved.</p>
-    <div class="qr-modal">
-      <figure class="qr-modal__visual">
-        <img src={qrImg.src} width="256" height="256" alt="">
-      </figure>
-    </div>
-  </Modal>
+  <HubspotModal />
 </section>
 
 <style>
