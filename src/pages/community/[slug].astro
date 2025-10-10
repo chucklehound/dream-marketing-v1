@@ -70,7 +70,7 @@ const cleanHeadings = headings.map(heading => {
 });
 ---
 
-<Layout title={post.data.postTitle}>
+<Layout title={post.data.postTitle} noindex>
     <PostSeo slot="postSeo">
       <meta property="og:title" content={post.data.postTitle} />
       <meta property="og:description" content={post.data.seoMetaDescription} />
