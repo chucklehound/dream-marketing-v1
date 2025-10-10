@@ -10,7 +10,7 @@ import arrowRight from '/src/img/new-arrow-right.svg';
 
 import Button from '../../components/Button.astro';
 
-import whatsAppIcon from '/src/img/whats-app-icon.svg';
+import HubspotModal from '../../components/HubspotModal.astro';
 
 
 // Fetch all posts from the 'posts' collection
@@ -60,4 +60,6 @@ const sortedPosts = posts.sort((a, b) => b.data.datePublished.getTime() - a.data
     </section>
   </main>
   <Footer />
+
+  <HubspotModal />
 </Layout>
