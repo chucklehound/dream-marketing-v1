@@ -2,29 +2,27 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // ---- Styles by Dreamie type (unchanged) ----
 const typeStyles = {
-  "Personal Assistant": {
-    borderColor: "#3F7245",
+  "Personal Pro": {
+    borderColor: "#0B5B50",
     background:
-      "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #3F7245",
+      "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #0B5B50",
   },
-  "Head of Sales": {
-    borderColor: "#1B365D",
+  "Sales Pro": {
+    borderColor: "#255a8e",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(245,248,255,0.9) 100%), #1B365D",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(245,248,255,0.9) 100%), #255a8e",
   },
-  "Head of Marketing": {
-    borderColor: "#6D3F72",
+  "Marketing Pro": {
+    borderColor: "#A01D3E",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(251,242,255,0.90) 100%), #6D3F72",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(251,242,255,0.90) 100%), #A01D3E",
   },
-  "Head of Finance": {
-    borderColor: "#BF6B2C",
+  "Finance Pro": {
+    borderColor: "#ffd601",
     background:
-      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(255,249,241,0.90) 100%), #BF6B2C",
+      "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(255,249,241,0.90) 100%), #ffd601",
   },
 };
-
-const FADE = 400; // ms — must match the inline rotating text CSS timing
 
 function zIndexFor(i, half, count) {
   // Mountain shape: highest at center, decreasing with distance.
@@ -32,6 +30,8 @@ function zIndexFor(i, half, count) {
   const base = count - Math.abs(i - half); // center biggest number
   return base * 2 + (i <= half ? 1 : 0);
 }
+
+const FADE = 400; // ms — must match the inline rotating text CSS timing
 
 function getVisibleCount() {
   const width = typeof window !== "undefined" ? window.innerWidth : 1300;
@@ -42,11 +42,24 @@ function getVisibleCount() {
 }
 
 function getWidths(count) {
-  const preset = [270, 250, 230, 200, 160];
-  const arr = [];
+  const base = [270, 250, 230, 200, 160]; // center → edge for |i| = 0..4
   const half = Math.floor(count / 2);
+
+  // If we need more than base provides (e.g. half=5 for 11 items),
+  // extend by stepping down further so edges never duplicate.
+  if (half >= base.length) {
+    let last = base[base.length - 1]; // start from 160
+    const min = 120;                  // don’t go too tiny
+    const step = 20;                  // consistent falloff beyond the preset
+    for (let k = base.length; k <= half; k++) {
+      last = Math.max(min, last - step); // 160 → 140 → 120, etc.
+      base.push(last);
+    }
+  }
+
+  const arr = [];
   for (let i = -half; i <= half; i++) {
-    arr.push(preset[Math.abs(i)] ?? 160);
+    arr.push(base[Math.abs(i)]);
   }
   return arr;
 }
@@ -223,7 +236,6 @@ export default function DreamieShowcase({ images, messages }) {
           <div
             key={i}
             style={{
-              transform: isCenter ? "scale(1.11)" : "none",
               flex: `0 0 ${width}px`,
               display: "flex",
               flexDirection: "column",
@@ -260,7 +272,6 @@ export default function DreamieShowcase({ images, messages }) {
                 height={height}
                 style={{
                   borderRadius: 14,
-                  objectFit: "cover",
                   opacity: 1,
                   transition: "none",
                 }}

@@ -68,41 +68,40 @@ const images = dreamieImages.map((img) => img.src);
 
 const messages = [
   // cycle 1
-  { name: "Ben",     type: "Head of Marketing",  text: "overseeing the build of the company website" },   // start a business
-  { name: "Tina",    type: "Head of Sales",      text: "researching and building target company lists" }, // enter new markets
-  { name: "Ethan",   type: "Personal Assistant", text: "managing incoming phone calls" },                 // save an hour
-  { name: "Sophia",  type: "Head of Sales",      text: "sending contracts out for signature" },           // handle more customers
-  { name: "Anna",    type: "Head of Finance",    text: "chasing up missing receipts and invoices" },      // get paid on time
+  { name: "Ben",     type: "Marketing Pro",  text: "overseeing the build of the company website" },   // start a business
+  { name: "Tina",    type: "Sales Pro",      text: "researching and building target company lists" }, // enter new markets
+  { name: "Ethan",   type: "Personal Pro",   text: "managing incoming phone calls" },                 // save an hour
+  { name: "Sophia",  type: "Sales Pro",      text: "sending contracts out for signature" },           // handle more customers
+  { name: "Anna",    type: "Finance Pro",    text: "chasing up missing receipts and invoices" },      // get paid on time
 
   // cycle 2
-  { name: "Chris",   type: "Head of Marketing",  text: "creating and managing social media content" },
-  { name: "Alex",    type: "Head of Sales",      text: "testing and refining outreach campaigns" },
-  { name: "Nina",    type: "Personal Assistant", text: "arranging travel for frequent business trips" },
-  { name: "Pablo",   type: "Personal Assistant", text: "handling and directing phone enquiries" },
-  { name: "Charlie", type: "Head of Finance",    text: "following up on missing financial documents" },
+  { name: "Chris",   type: "Marketing Pro",  text: "creating and managing social media content" },
+  { name: "Alex",    type: "Sales Pro",      text: "testing and refining outreach campaigns" },
+  { name: "Nina",    type: "Personal Pro",   text: "arranging travel for frequent business trips" },
+  { name: "Pablo",   type: "Personal Pro",   text: "handling and directing phone enquiries" },
+  { name: "Charlie", type: "Finance Pro",    text: "following up on missing financial documents" },
 
   // cycle 3
-  { name: "Leo",     type: "Head of Marketing",  text: "planning and creating social media posts" },
-  { name: "Omar",    type: "Head of Marketing",  text: "selecting and preparing company lists for campaigns" },
-  { name: "Kara",    type: "Personal Assistant", text: "booking complex travel itineraries" },
-  { name: "Sam",     type: "Personal Assistant", text: "following up quickly with every new enquiry" },   // tweaked
-  { name: "Priya",   type: "Head of Finance",    text: "tracking down outstanding receipts and invoices" },
+  { name: "Leo",     type: "Marketing Pro",  text: "planning and creating social media posts" },
+  { name: "Omar",    type: "Marketing Pro",  text: "selecting and preparing company lists for campaigns" },
+  { name: "Kara",    type: "Personal Pro",   text: "booking complex travel itineraries" },
+  { name: "Sam",     type: "Personal Pro",   text: "following up quickly with every new enquiry" }, 
+  { name: "Priya",   type: "Finance Pro",    text: "tracking down outstanding receipts and invoices" },
 
   // cycle 4
-  { name: "Grace",   type: "Head of Marketing",  text: "setting up your first ad campaign" },             // tweaked
-  { name: "Jack",    type: "Head of Sales",      text: "identifying prospects in adjacent markets" },
-  { name: "Philipp", type: "Personal Assistant", text: "extracting and organising receipts from emails" },
-  { name: "Liam",    type: "Personal Assistant", text: "managing onboarding paperwork for new customers" }, // tweaked
-  { name: "Hugo",    type: "Head of Finance",    text: "ensuring all receipts and invoices are accounted for" },
+  { name: "Grace",   type: "Marketing Pro",  text: "setting up your first ad campaign" },           
+  { name: "Jack",    type: "Sales Pro",      text: "identifying prospects in adjacent markets" },
+  { name: "Philipp", type: "Personal Pro",   text: "extracting and organising receipts from emails" },
+  { name: "Liam",    type: "Personal Pro",   text: "managing onboarding paperwork for new customers" },
+  { name: "Hugo",    type: "Finance Pro",    text: "ensuring all receipts and invoices are accounted for" },
 
   // cycle 5
-  { name: "Jordan",  type: "Personal Assistant", text: "organising your business calendar from day one" },  // tweaked
-  { name: "Olivia",  type: "Head of Sales",      text: "opening conversations in new regions" },
-  { name: "Isla",    type: "Personal Assistant", text: "organising receipts and uploading them to accounts" },
-  { name: "Noah",    type: "Personal Assistant", text: "keeping all customer conversations organised in one place" }, // tweaked
-  { name: "Maya",    type: "Head of Finance",    text: "following up on incomplete financial records" }
+  { name: "Jordan",  type: "Personal Pro",   text: "organising your business calendar from day one" },
+  { name: "Olivia",  type: "Sales Pro",      text: "opening conversations in new regions" },
+  { name: "Isla",    type: "Personal Pro",   text: "organising receipts and uploading them to accounts" },
+  { name: "Noah",    type: "Personal Pro",   text: "keeping all customer conversations organised in one place" },
+  { name: "Maya",    type: "Finance Pro",    text: "following up on incomplete financial records" }
 ];
-
 import Carousel from '../components/Carousel.astro';
 
 const contentBlocks = [
@@ -144,7 +143,7 @@ const contentBlocks = [
       </section>
       <section class="header-text">
         <h1 class="page-title">
-          AI employees that help you
+          Hire a Pro to help you
           <span id="rotating-text">difficult markets</span>
         </h1>
       </section>
