@@ -4,7 +4,7 @@
       transform-box: fill-box;
       transform-origin: center left;
       transform: scale(0);
-      animation: grow 1.2s cubic-bezier(0,0.1,0.5,0.1) forwards;
+      animation: grow 1.3s cubic-bezier(0,0.1,0.5,0.1) forwards;
     }
 
     @keyframes grow {
@@ -27,8 +27,9 @@
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(0 627) scale(1810 2707.78)">
       <stop stop-color="#97D5FC"/>
-      <stop offset="0.6" stop-color="#FFD601"/>
-      <stop offset="0.8" stop-color="#000D26" stop-opacity="0"/>
+      <stop offset="0.3" stop-color="#F37E96"/>
+      <stop offset="0.4" stop-color="#FFD601"/>
+      <stop offset="0.9" stop-color="#000D26" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
