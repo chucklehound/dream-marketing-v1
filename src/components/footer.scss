@@ -1,9 +1,9 @@
 @import '../styles/main.scss';
 
 .footer {
-    background: $color-wallstreet-black radial-gradient(rgba($color-text-black,1) 50%, rgba($color-performa-black,1)) center no-repeat;
+    background: $wallstreet-black radial-gradient(rgba($wallstreet-black,1) 50%, rgba($performa-black,1)) center no-repeat;
     background-size: cover;
-    color: $color-plus-white;
+    color: $plus-white;
     padding: 64px 24px 32px;
     min-height: 440px;
     display: flex;
@@ -35,7 +35,7 @@
           line-height: 22px;
           font-weight: 500;
           margin-bottom: 12px;
-          color: $color-grays-lighter;
+          color: $lighter-grey;
           letter-spacing: -0.2px;
         }
   
@@ -47,14 +47,14 @@
             margin-bottom: 8px;
             
             a {
-              color: $color-grays-light;
+              color: $light-grey;
               text-decoration: none;
               transition: color 0.3s;
               font-size: 14px;
               line-height: 20px;
               
               &:hover {
-                color: $color-plus-white
+                color: $plus-white
               }
             }
           }
@@ -69,7 +69,7 @@
     .footer-bottom {
       font-size: 14px;
       text-align: left;
-      color: $color-grays-lighter;
+      color: $lighter-grey;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -85,7 +85,7 @@
   
       p {
         margin: 0;
-        color: $color-grays-light;
+        color: $light-grey;
       }
 
       @media (max-width: 1000px) {
@@ -128,7 +128,7 @@
         width: 100%;
         max-width: 1152px;
         text-align: left;
-        color: $color-grays-light;
+        color: $light-grey;
         border-top: 1px solid transparent; /* Make the border itself transparent */
 border-image: linear-gradient(90deg, rgba(255, 254, 250, 0.1), rgba(255, 254, 250, 0.2), rgba(255, 254, 250, 0.1)) 1;
 

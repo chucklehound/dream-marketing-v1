@@ -590,152 +590,292 @@ const contentBlocks = [
 
 
 
-<script type="module">
-  const target = document.querySelector('.promo-human');
-
-  const observer = new IntersectionObserver(
-    ([entry], observer) => {
-      if (entry.isIntersecting) {
-        target.classList.add('visible');
-        observer.unobserve(target); // 🔥 Stop observing after first trigger
+  <script>
+    (function startSharedTicker(period = 5000) {
+      if (window.__dreamTicker) return;
+  
+      const S = { timer: null, period, running: false, expected: 0, count: 0, booted: false };
+  
+      const dispatch = () => {
+        S.count++;
+        window.dispatchEvent(new CustomEvent("dream:tick", { detail: { count: S.count, period: S.period, ts: performance.now() } }));
+      };
+  
+      const schedule = (delay) => { S.timer = setTimeout(tick, Math.max(0, delay)); };
+  
+      function tick() {
+        const now = performance.now();
+        if (!S.expected) S.expected = now + S.period;
+  
+        const behind = now - S.expected;
+  
+        // Overslept (tab slept) → skip backlog, fire once, then resume on-beat
+        if (behind > S.period * 0.8) {
+          S.expected = now + S.period;
+          schedule(S.period);
+          dispatch();
+          return;
+        }
+  
+        S.expected += S.period;
+        schedule(S.expected - performance.now());
+        dispatch();
       }
-    },
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.4
-    }
-  );
-
-  if (target) observer.observe(target);
-</script>
-
-<script>
-  (function () {
-    const root = document.querySelector('.customer-quote .quote-body');
-    if (!root) return;
   
-    const track = root.querySelector('.quote-track') as HTMLElement;
-    const slides = Array.from(root.querySelectorAll('.quote-slide')) as HTMLElement[];
-    const dotsWrap = root.querySelector('.quote-dots') as HTMLElement;
+      function start() {
+        if (S.running) return;
+        S.running = true;
+        S.expected = performance.now() + S.period;
+        schedule(S.period);
   
-    // Build dots
-    slides.forEach((_, i) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', `Go to quote ${i + 1}`);
-      b.addEventListener('click', () => {
-        goTo(i, true);
-        resetCycle();
-      });
-      dotsWrap.appendChild(b);
-    });
-    const dots = Array.from(dotsWrap.querySelectorAll('button'));
-  
-    let idx = 0;
-    let autoMs = 6000;
-    let timer: number | null = null;
-    let programmaticScroll = false;
-  
-    function updateDots(i: number) {
-      dots.forEach((d, k) =>
-        d.setAttribute('aria-current', k === i ? 'true' : 'false')
-      );
-    }
-  
-    function goTo(i: number, smooth = true) {
-      idx = (i + slides.length) % slides.length;
-      programmaticScroll = true;
-      track.scrollTo({
-        left: slides[idx].offsetLeft,
-        behavior: smooth ? 'smooth' : 'auto',
-      });
-      updateDots(idx);
-    }
-  
-    // IntersectionObserver keeps idx in sync if user drags
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio > 0.6) {
-            const n = slides.indexOf(e.target as HTMLElement);
-            if (n !== -1) {
-              idx = n;
-              updateDots(idx);
-            }
-          }
-        });
-      },
-      { root: track, threshold: [0.6] }
-    );
-    slides.forEach((s) => io.observe(s));
-  
-    // Autoplay with self-scheduling timeout
-    function scheduleNext() {
-      clearNext();
-      timer = window.setTimeout(() => {
-        goTo(idx + 1, true);
-        waitForScrollEnd().then(() => {
-          programmaticScroll = false;
-          scheduleNext();
-        });
-      }, autoMs);
-    }
-    function clearNext() {
-      if (timer) clearTimeout(timer);
-      timer = null;
-    }
-    function resetCycle() {
-      clearNext();
-      scheduleNext();
-    }
-  
-    // Wait until smooth scroll finishes before scheduling next tick
-    function waitForScrollEnd(): Promise<void> {
-      if ('onscrollend' in window) {
-        return new Promise((resolve) => {
-          const handler = () => {
-            track.removeEventListener('scrollend', handler);
-            resolve();
-          };
-          track.addEventListener('scrollend', handler, { once: true });
-        });
+        // First boot: emit one immediate tick so UI paints a value quickly.
+        if (!S.booted) {
+          S.booted = true;
+          dispatch();
+        }
       }
-      return new Promise((resolve) => {
-        let t: number;
-        const onScroll = () => {
-          if (!programmaticScroll) return;
-          clearTimeout(t);
-          t = window.setTimeout(() => {
-            track.removeEventListener('scroll', onScroll);
-            resolve();
-          }, 150);
+  
+      function stop() {
+        S.running = false;
+        clearTimeout(S.timer);
+        S.timer = null;
+        S.expected = 0;
+      }
+  
+      function onVis() {
+        if (document.visibilityState === "hidden") stop();
+        else start();
+      }
+  
+      window.addEventListener("visibilitychange", onVis, { passive: true });
+      window.addEventListener("pagehide", stop, { passive: true });
+      window.addEventListener("pageshow", start, { passive: true });
+  
+      start();
+  
+      window.__dreamTicker = {
+        start, stop,
+        getCount: () => S.count,
+        getPeriod: () => S.period
+      };
+    })();
+  
+    // ---- Rotating headline: derives purely from global count (no local counters) ----
+    (function attachHeadline() {
+      const el = document.getElementById("rotating-text");
+      if (!el || el.dataset.rotatorAttached) return;
+      el.dataset.rotatorAttached = "1";
+  
+      const texts = [
+        "start a business",
+        "enter new markets",
+        "save an hour every day",
+        "handle more customers",
+        "get paid on time"
+      ];
+  
+      const FADE = 400;
+      el.style.transition = `opacity ${FADE}ms ease`;
+      el.style.willChange = "opacity";
+  
+      const ticker = window.__dreamTicker;
+      const getCount = () => (ticker?.getCount?.() ?? 1);
+      const mod = (n, m) => ((n % m) + m) % m;
+  
+      function renderForCount(count, withFade = true) {
+        const idx = mod(count - 1, texts.length);
+        const next = texts[idx];
+  
+        if (!withFade) {
+          el.textContent = next;
+          el.style.opacity = "1";
+          el.__last = next;
+          return;
+        }
+        if (el.__last === next && el.style.opacity === "1") return;
+  
+        const onFadeOut = () => {
+          el.removeEventListener("transitionend", onFadeOut);
+          el.textContent = next;
+          requestAnimationFrame(() => {
+            el.addEventListener("transitionend", () => {}, { once: true });
+            el.style.opacity = "1";
+            el.__last = next;
+          });
         };
-        track.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      });
-    }
   
-    // User manual scroll: reset cycle after they stop
-    let manualDebounce: number;
-    track.addEventListener(
-      'scroll',
-      () => {
-        if (programmaticScroll) return;
-        clearNext();
-        clearTimeout(manualDebounce);
-        manualDebounce = window.setTimeout(() => {
-          scheduleNext();
-        }, 800);
+        // Start fade-out if visible; otherwise just swap in
+        if (getComputedStyle(el).opacity !== "0") {
+          el.addEventListener("transitionend", onFadeOut, { once: true });
+          el.style.opacity = "0";
+        } else {
+          el.textContent = next;
+          el.style.opacity = "1";
+          el.__last = next;
+        }
+      }
+  
+      // Initial snap (no fade)
+      renderForCount(getCount(), false);
+  
+      window.addEventListener("dream:tick", (e) => renderForCount(e?.detail?.count ?? getCount() + 1, true), { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") renderForCount(getCount(), false);
+      }, { passive: true });
+      window.addEventListener("pageshow", () => renderForCount(getCount(), false), { passive: true });
+    })();
+  </script>
+  
+  <style>
+    #rotating-text {
+      transition: opacity 0.4s;
+      opacity: 1;
+    }
+  </style>
+  
+  <!-- === Promo reveal on view === -->
+  <script type="module">
+    const target = document.querySelector('.promo-human');
+  
+    const observer = new IntersectionObserver(
+      ([entry], observer) => {
+        if (entry?.isIntersecting) {
+          target.classList.add('visible');
+          observer.unobserve(target);
+        }
       },
-      { passive: true }
+      { root: null, rootMargin: '0px', threshold: 0.4 }
     );
   
-    // Init
-    goTo(0, false);
-    programmaticScroll = false;
-    scheduleNext();
-  })();
+    if (target) observer.observe(target);
+  </script>
+  
+  <!-- === Quote carousel (plain JS; removed TS-only syntax) === -->
+  <script>
+    (function () {
+      const root = document.querySelector('.customer-quote .quote-body');
+      if (!root) return;
+    
+      const track = root.querySelector('.quote-track');
+      const slides = Array.from(root.querySelectorAll('.quote-slide'));
+      const dotsWrap = root.querySelector('.quote-dots');
+      if (!track || !slides.length || !dotsWrap) return;
+    
+      // Build dots
+      slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Go to quote ${i + 1}`);
+        b.addEventListener('click', () => {
+          goTo(i, true);
+          resetCycle();
+        });
+        dotsWrap.appendChild(b);
+      });
+      const dots = Array.from(dotsWrap.querySelectorAll('button'));
+    
+      let idx = 0;
+      const autoMs = 6000;
+      let timer = null;
+      let programmaticScroll = false;
+    
+      function updateDots(i) {
+        dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
+      }
+    
+      function goTo(i, smooth = true) {
+        idx = (i + slides.length) % slides.length;
+        programmaticScroll = true;
+        track.scrollTo({
+          left: slides[idx].offsetLeft,
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+        updateDots(idx);
+      }
+    
+      // IntersectionObserver keeps idx in sync if user drags
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && e.intersectionRatio > 0.6) {
+              const n = slides.indexOf(e.target);
+              if (n !== -1) {
+                idx = n;
+                updateDots(idx);
+              }
+            }
+          });
+        },
+        { root: track, threshold: [0.6] }
+      );
+      slides.forEach((s) => io.observe(s));
+    
+      // Autoplay with self-scheduling timeout
+      function scheduleNext() {
+        clearNext();
+        timer = window.setTimeout(() => {
+          goTo(idx + 1, true);
+          waitForScrollEnd().then(() => {
+            programmaticScroll = false;
+            scheduleNext();
+          });
+        }, autoMs);
+      }
+      function clearNext() {
+        if (timer) clearTimeout(timer);
+        timer = null;
+      }
+      function resetCycle() {
+        clearNext();
+        scheduleNext();
+      }
+    
+      // Wait until smooth scroll finishes before scheduling next tick
+      function waitForScrollEnd() {
+        if ('onscrollend' in window) {
+          return new Promise((resolve) => {
+            const handler = () => {
+              track.removeEventListener('scrollend', handler);
+              resolve();
+            };
+            track.addEventListener('scrollend', handler, { once: true });
+          });
+        }
+        return new Promise((resolve) => {
+          let t;
+          const onScroll = () => {
+            if (!programmaticScroll) return;
+            clearTimeout(t);
+            t = window.setTimeout(() => {
+              track.removeEventListener('scroll', onScroll);
+              resolve();
+            }, 150);
+          };
+          track.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        });
+      }
+    
+      // User manual scroll: reset cycle after they stop
+      let manualDebounce;
+      track.addEventListener(
+        'scroll',
+        () => {
+          if (programmaticScroll) return;
+          clearNext();
+          clearTimeout(manualDebounce);
+          manualDebounce = window.setTimeout(() => {
+            scheduleNext();
+          }, 800);
+        },
+        { passive: true }
+      );
+    
+      // Init
+      goTo(0, false);
+      programmaticScroll = false;
+      scheduleNext();
+    })();
   </script>
   
   
