@@ -28,6 +28,13 @@ import HireGuyBlock from "../components/HireGuyBlock.astro";
 
 import Modal from "../components/Modal.astro";
 
+import training1 from '/src/img/training-logos/vertice.svg';
+import training2 from '/src/img/training-logos/paypal.svg';
+import training3 from '/src/img/training-logos/ovo.svg';
+import training4 from '/src/img/training-logos/monzo.svg';
+import training5 from '/src/img/training-logos/octopus.svg';
+import training6 from '/src/img/training-logos/synthesia.svg';
+
 // Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
 import dreamie2 from '/src/img/hero-dreamies/dreamie-2.png';
@@ -137,7 +144,11 @@ const contentBlocks = [
 ];
 ---
 
-
+<head>
+  {preloadUrls.map((u) => (
+    <link rel="preload" as="image" href={u} fetchpriority="high" />
+  ))}
+</head>
 
 <Layout title="Dream - AI that grows your business">
   <Navigation />
@@ -150,7 +161,7 @@ const contentBlocks = [
       </section>
       <section class="header-text">
         <h1 class="page-title">
-          Hire a Pro to help you
+          Hire AI employees to
           <span id="rotating-text">difficult markets</span>
         </h1>
       </section>
@@ -158,9 +169,19 @@ const contentBlocks = [
         <Button
         target=""
         variant="primary"
-        size="large"
-        data-open-modal="mailing-list-modal"
-        label="">Be the first to hire</Button>
+        size="medium"
+        label="">Schedule your interview now</Button>
+      </div>
+      <div class="training-details">
+        <span>Trained by real employees from...</span>
+        <ul class="logos">
+          <li><span class="visually-hidden">Synthesia</span><img src={training6.src} alt="" /></li>
+          <li><span class="visually-hidden">OVO Energy</span><img src={training3.src} alt="" style="max-height: 40px;"/></li>
+          <li><span class="visually-hidden">Paypal</span><img src={training2.src} alt="" /></li>
+          <li><span class="visually-hidden">Monzo</span><img src={training4.src} alt="" style="max-width: 120px;"/></li>
+          <li><span class="visually-hidden">Vertice</span><img src={training1.src} alt="" /></li>
+          <li><span class="visually-hidden">Octopus Energy</span><img src={training5.src} alt="" style="max-width: 160px;"/></li>
+        </ul>
       </div>
     </div>
   </header>

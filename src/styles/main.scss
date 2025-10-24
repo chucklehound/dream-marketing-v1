@@ -369,15 +369,13 @@ header {
 
             .hero-carousel-main {
                 align-items: flex-end;
+                transform: scale(0.9);
 
-                > div {
-                    transform: scale(1.23);
-                }
             }
 
             @media (min-width: 1024px) {
                 .hero-carousel-main {
-                    align-items: flex-start;
+                    align-items: flex-end;
                 }
             }
 
@@ -394,8 +392,9 @@ header {
             }
 
             &.home-hero {
-                max-height: 385px;
-                min-height: 385px;
+                max-height: 270px;
+                min-height: 270px;
+                margin-bottom: -48px;
                 position: relative;
 
                 &.ai-team {
@@ -428,6 +427,8 @@ header {
 
                 .ticker-window {
                     width: 100vw;
+                    max-height: 280px;
+                    margin-top: -90px;
                     transform: scale(0.87);
                     animation: fade-in .7s ease 1;
                     
@@ -470,7 +471,7 @@ header {
         }
 
         @media (min-width: 1024px) {
-            padding: $spacing 0;
+            padding: 0 0 $spacing*2;
             justify-content: center;
             align-items: center;
             overflow: visible;
@@ -483,6 +484,42 @@ header {
                 align-items: center;
                 padding: 0;
                 justify-content: center;
+            }
+        }
+
+        .training-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            order: 2;
+
+            span {
+                @include heading6;
+            }
+
+            .logos {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                img {
+                    max-width: 144px;
+                    width: 100%;
+                    max-height: 36px;
+                }
             }
         }
     }
@@ -664,7 +701,7 @@ header {
                 }
 
                 .header-image {
-                    order: 3;
+                    order: 1;
                 }
     
                 .header-text {
@@ -722,7 +759,7 @@ header {
         }
 
         @media (min-width: 1023px) {
-            padding: $spacing*2 0;
+            padding: 0;
             flex-direction: row;
             justify-content: center;
             gap: 4px;

@@ -42,7 +42,7 @@ function getVisibleCount() {
 }
 
 function getWidths(count) {
-  const base = [270, 250, 230, 200, 160]; // center → edge for |i| = 0..4
+  const base = [250, 230, 210, 180, 140]; // center → edge for |i| = 0..4
   const half = Math.floor(count / 2);
 
   // If we need more than base provides (e.g. half=5 for 11 items),
@@ -271,7 +271,6 @@ export default function DreamieShowcase({ images, messages }) {
                 width={width}
                 height={height}
                 style={{
-                  borderRadius: 14,
                   opacity: 1,
                   transition: "none",
                 }}
