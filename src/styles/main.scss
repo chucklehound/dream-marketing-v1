@@ -348,7 +348,7 @@ header {
 
     .hero-elements {
         display: flex;
-        gap: 32px;
+        gap: 24px;
         flex-direction: column;
         padding: 0 0 $spacing*2;
         z-index: 2;
@@ -394,7 +394,8 @@ header {
             &.home-hero {
                 max-height: 270px;
                 min-height: 270px;
-                margin-bottom: -48px;
+                margin-bottom: -24px;
+                order: 3;
                 position: relative;
 
                 &.ai-team {
@@ -476,7 +477,7 @@ header {
             align-items: center;
             overflow: visible;
             max-height: 100%;
-            gap: 32px;
+            gap: 24px;
 
             .header-image {
                 width: 100%;
@@ -493,7 +494,7 @@ header {
             justify-content: center;
             align-items: center;
             gap: 16px;
-            order: 2;
+            order: 4;
 
             span {
                 @include heading6;
@@ -504,7 +505,7 @@ header {
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
-                gap: 32px;
+                gap: 44px;
                 list-style: none;
                 padding: 0;
                 margin: 0;
@@ -542,11 +543,11 @@ header {
     
     .header-text {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
         text-align: center;
-        gap: 20px;
+        gap: 12px;
 
         @media (max-width: 768px) {
             padding: 0 16px;
@@ -643,6 +644,38 @@ header {
             line-height: 24px;
             }
         }
+
+        .top-tag {
+            padding: 2px 20px; 
+            border-radius: 24px;
+            gap: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: $lighter-grey;
+            border: 1px solid rgba($performa-black, .3);;
+            color: rgba($wallstreet-black, .8);
+
+            img {
+                width: 16px;
+                height: 16px;
+                display: block;
+            }
+
+            span {
+                font-size: 14px;
+                line-height: 18px;
+                font-weight: 500;
+                text-transform: uppercase;
+
+                &:first-of-type {
+                    font-weight: 600;
+                    font-size: 15px;
+                }
+            }
+            
+            
+        }
     }
 
     &.hero-home {
@@ -650,6 +683,7 @@ header {
         &.index-hero {
             background: url('/src/img/star-repeat.svg') repeat center;
             position: relative;
+            padding-top: 12px;
             overflow: hidden;
 
             @media (prefers-color-scheme: dark) {
@@ -699,15 +733,10 @@ header {
                 .actions {
                     order: 2;
                 }
-
-                .header-image {
-                    order: 1;
-                }
     
                 .header-text {
                     order: 1;
                     position: relative;
-                    top: 16px;
                 }
             }
         }

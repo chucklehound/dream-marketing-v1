@@ -20,6 +20,8 @@ import quoteLogo from '/src/img/givewheel-logo.png';
 import quoteLogojdi from '/src/img/justdoughit-logo.png';
 import quoteLogohol from '/src/img/holibob-logo.png';
 
+import clock from '/src/img/clock.svg';
+
 import ctaDreamies from '/src/img/end-cta-guys.png';
 
 import DreamieCarousel from '../components/DreamieCarousel.jsx';
@@ -34,6 +36,13 @@ import training3 from '/src/img/training-logos/ovo.svg';
 import training4 from '/src/img/training-logos/monzo.svg';
 import training5 from '/src/img/training-logos/octopus.svg';
 import training6 from '/src/img/training-logos/synthesia.svg';
+
+import training1dark from '/src/img/training-logos/vertice.svg';
+import training2dark from '/src/img/training-logos/paypal.svg';
+import training3dark from '/src/img/training-logos/ovo.svg';
+import training4dark from '/src/img/training-logos/monzo.svg';
+import training5dark from '/src/img/training-logos/octopus.svg';
+import training6dark from '/src/img/training-logos/synthesia.svg';
 
 // Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
@@ -164,6 +173,13 @@ const contentBlocks = [
           Hire AI employees to
           <span id="rotating-text">difficult markets</span>
         </h1>
+        <aside class="availability">
+          <aside class="top-tag">
+            <img src={clock.src} alt="" role="presentation" />
+            <span>Only 12 now available this month</span>
+          </aside>
+          <small>(Hire free for 7 days, then from £50/mnth)</small>
+        </aside>
       </section>
       <div class="actions">
         <Button
@@ -186,6 +202,26 @@ const contentBlocks = [
     </div>
   </header>
   <main>
+    <section class="main-content">
+      <article class="content-container">
+        <div class="">
+          <h3>JustDoughIt</h3>
+          <p>hired Ollie, AI Sales Employee</p>
+        </div>
+        <div class="">
+          <h3>Holibob</h3>
+          <p>hired Selly, AI Sales Employee</p>
+        </div>
+        <div class="">
+          <h3>Givewheel</h3>
+          <p>hired John, AI Personal Assistant</p>
+        </div>
+        <div class="">
+          <h3>Edmunds</h3>
+          <p>hired Kevin, AI Sales Employee</p>
+        </div>
+      </article>
+    </section>
     <HireGuyBlock />
     <section class="main-content">
       <article class="content-container full-width">
