@@ -685,7 +685,6 @@ header {
                 line-height: 20px;
                 letter-spacing: 0.2px;
                 font-weight: 500;
-                text-transform: uppercase;
 
                 strong {
                     font-weight: 600;
@@ -940,7 +939,8 @@ header {
         &:after {
             content: '';
             position: absolute;
-            inset: 0; // shorthand for top/left/bottom/right:0
+            inset: 0; 
+            margin-top: 64px;
             width: 100%;
             height: 100%;
             filter: blur(24px);

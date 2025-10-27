@@ -11,6 +11,10 @@ import chats1 from '/src/img/home-chats.png';
 import chats2 from '/src/img/home-chats-2.png';
 import chats3 from '/src/img/home-chats-3.png';
 
+import chats1Dark from '/src/img/home-chats-dark.png';
+import chats2Dark from '/src/img/home-chats-2-dark.png';
+import chats3Dark from '/src/img/home-chats-3-dark.png';
+
 import card1 from '/src/img/carousel-1--phone.png';
 import card2 from '/src/img/carousel-2--whatsapp.png';
 import card3 from '/src/img/carousel-3--update.png';
@@ -166,7 +170,7 @@ const contentBlocks = [
   ))}
 </head>
 
-<Layout title="Dream - AI that grows your business">
+<Layout title="Dream - Hire AI Employees">
   <Navigation />
   <header class="hero-home index-hero">
     <div class="hero-elements main-content">
@@ -322,9 +326,14 @@ const contentBlocks = [
     <section class="main-content contain-on-mobile">
       <article class="content-container">
         <div class="breakout rotating-chats">
-          <div class="block" style={`background-image: url(${chats1.src});`}></div>
-          <div class="block" style={`background-image: url(${chats2.src});`}></div>
-          <div class="block" style={`background-image: url(${chats3.src});`}></div>
+          <div class="block"
+     style={`--bg-img-light: url('${chats1.src}'); --bg-img-dark: url('${chats1Dark.src}')`}></div>
+
+<div class="block"
+     style={`--bg-img-light: url('${chats2.src}'); --bg-img-dark: url('${chats2Dark.src}')`}></div>
+
+<div class="block"
+     style={`--bg-img-light: url('${chats3.src}'); --bg-img-dark: url('${chats3Dark.src}')`}></div>
         </div>
         <div class="content-title">
           <h2>Trained to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
