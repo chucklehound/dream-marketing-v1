@@ -19,8 +19,15 @@ import card4 from '/src/img/carousel-4--success.png';
 import quoteLogo from '/src/img/givewheel-logo.png';
 import quoteLogojdi from '/src/img/justdoughit-logo.png';
 import quoteLogohol from '/src/img/holibob-logo.png';
+import quoteLogoAi from '/src/img/angel-invest-logo.png';
+
+import jdiManager from '/src/img/jdi-manager.png';
+import gwManager from '/src/img/gw-manager.png';
+import hbManager from '/src/img/hb-manager.png';
+import edManager from '/src/img/ed-manager.png';
 
 import clock from '/src/img/clock.svg';
+import clockDark from '/src/img/clock-dark.svg';
 
 import ctaDreamies from '/src/img/end-cta-guys.png';
 
@@ -37,12 +44,12 @@ import training4 from '/src/img/training-logos/monzo.svg';
 import training5 from '/src/img/training-logos/octopus.svg';
 import training6 from '/src/img/training-logos/synthesia.svg';
 
-import training1dark from '/src/img/training-logos/vertice.svg';
-import training2dark from '/src/img/training-logos/paypal.svg';
-import training3dark from '/src/img/training-logos/ovo.svg';
-import training4dark from '/src/img/training-logos/monzo.svg';
-import training5dark from '/src/img/training-logos/octopus.svg';
-import training6dark from '/src/img/training-logos/synthesia.svg';
+import training1dark from '/src/img/training-logos/vertice-dark.svg';
+import training2dark from '/src/img/training-logos/paypal-dark.svg';
+import training3dark from '/src/img/training-logos/ovo-dark.svg';
+import training4dark from '/src/img/training-logos/monzo-dark.svg';
+import training5dark from '/src/img/training-logos/octopus-dark.svg';
+import training6dark from '/src/img/training-logos/synthesia-dark.svg';
 
 // Import dreamie1 to dreamie25 as an array
 import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
@@ -175,10 +182,12 @@ const contentBlocks = [
         </h1>
         <aside class="availability">
           <aside class="top-tag">
-            <img src={clock.src} alt="" role="presentation" />
-            <span>Only 12 now available this month</span>
+            <picture>
+              <source srcset={clockDark.src} media="(prefers-color-scheme: dark)" />
+              <img src={clock.src} alt="" role="presentation" />
+            </picture>
+            <span><strong>Only 12</strong> now available this month</span>
           </aside>
-          <small>(Hire free for 7 days, then from £50/mnth)</small>
         </aside>
       </section>
       <div class="actions">
@@ -191,12 +200,48 @@ const contentBlocks = [
       <div class="training-details">
         <span>Trained by real employees from...</span>
         <ul class="logos">
-          <li><span class="visually-hidden">Synthesia</span><img src={training6.src} alt="" /></li>
-          <li><span class="visually-hidden">OVO Energy</span><img src={training3.src} alt="" style="max-height: 40px;"/></li>
-          <li><span class="visually-hidden">Paypal</span><img src={training2.src} alt="" /></li>
-          <li><span class="visually-hidden">Monzo</span><img src={training4.src} alt="" style="max-width: 120px;"/></li>
-          <li><span class="visually-hidden">Vertice</span><img src={training1.src} alt="" /></li>
-          <li><span class="visually-hidden">Octopus Energy</span><img src={training5.src} alt="" style="max-width: 160px;"/></li>
+          <li>
+            <span class="visually-hidden">Synthesia</span>
+            <picture>
+              <source srcset={training6dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training6} alt="Synthesia" />
+            </picture>
+          </li>
+          <li>
+            <span class="visually-hidden">OVO Energy</span>
+            <picture>
+              <source srcset={training3dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training3} alt="OVO Energy" style="max-height: 40px;" />
+            </picture>
+          </li>
+          <li>
+            <span class="visually-hidden">Airwallex</span>
+            <picture>
+              <source srcset={training2dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training2} alt="Airwallex" />
+            </picture>
+          </li>
+          <li>
+            <span class="visually-hidden">Monzo</span>
+            <picture>
+              <source srcset={training4dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training4} alt="Monzo" style="max-width: 120px;" />
+            </picture>
+          </li>
+          <li>
+            <span class="visually-hidden">Vertice</span>
+            <picture>
+              <source srcset={training1dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training1} alt="Vertice" />
+            </picture>
+          </li>
+          <li>
+            <span class="visually-hidden">Octopus Energy</span>
+            <picture>
+              <source srcset={training5dark.src} media="(prefers-color-scheme: dark)" />
+              <Image src={training5} alt="Octopus Energy" style="max-width: 160px;" />
+            </picture>
+          </li>
         </ul>
       </div>
     </div>
@@ -204,21 +249,62 @@ const contentBlocks = [
   <main>
     <section class="main-content">
       <article class="content-container">
-        <div class="">
-          <h3>JustDoughIt</h3>
-          <p>hired Ollie, AI Sales Employee</p>
+        <div class="content-title">
+          <h2>Small <span class="highlight-title">businesses hiring </span>our employees today...</h2>
         </div>
-        <div class="">
-          <h3>Holibob</h3>
-          <p>hired Selly, AI Sales Employee</p>
+        <div class="customer-modules">
+          <div class="customer-example-dreamie">
+            <Image class="dreamie-sample" src={jdiManager} alt="An image of JustDoughIt's manager, Ollie" />
+            <div class="customer-example-card">
+              <h5>JustDoughIt</h5>
+              <p>hired</p>
+              <span style="border-color: #FFA466; background: linear-gradient(90deg, #FFE1CC,#FFA466);">Ollie, AI Sales Employee</span>
+              <div class="customer-example-action">
+                <p>Ollie suggests new markets to outreach to & handles the sample requests when they come in</p>
+              </div>
+            </div>
+          </div>
+          <div class="customer-example-dreamie">
+            <Image class="dreamie-sample" src={hbManager} alt="An image of Holibob's manager, Nati" />
+            <div class="customer-example-card">
+            <h5>Holibob</h5>
+            <p>hired</p>
+            <span style="border-color: #5BE1D0; background: linear-gradient(90deg, #B1F1E9, #5BE1D0">Nati, AI Sales Employee</span>
+            <div class="customer-example-action">
+              <p>Nati has been running all our outreach to customers & suppliers</p>
+            </div>
+          </div>
+          </div>
+          <div class="customer-example-dreamie">
+            <Image class="dreamie-sample" src={gwManager} alt="An image of Givewheel's manager, Hannag" />
+            <div class="customer-example-card">
+            <h5>Givewheel</h5>
+            <p>hired</p>
+            <span style="border-color: #AFA4D6; background: linear-gradient(90deg, #CDC7E6, #AFA4D6">Hannah, AI Personal Assistant</span>
+            <div class="customer-example-action">
+              <p>Hannah has been running our email campaigns to put GiveWheel in front of 1000's of businesses</p>
+            </div>
+          </div>
+          </div>
+          <div class="customer-example-dreamie">
+            <Image class="dreamie-sample" src={edManager} alt="An image of Edmunds's manager, Kevin" />
+            <div class="customer-example-card">
+            <h5>Edmunds</h5>
+            <p>hired</p>
+            <span style="border-color: #6996E2; background: linear-gradient(90deg, #BFD2F3, #6996E2">Kevin, AI Sales Employee</span>
+            <div class="customer-example-action">
+              <p>Kevin suggested that we expand our Xmas campaigns to more markets - we're already getting replies</p>
+            </div>
+          </div>
+          </div>
         </div>
-        <div class="">
-          <h3>Givewheel</h3>
-          <p>hired John, AI Personal Assistant</p>
-        </div>
-        <div class="">
-          <h3>Edmunds</h3>
-          <p>hired Kevin, AI Sales Employee</p>
+        <div class="customer-hire-footer">
+          <h4>Yours? Schedule your interview</h4>
+          <Button
+        target=""
+        variant="primary"
+        size="medium"
+        label="">Schedule your interview now</Button>
         </div>
       </article>
     </section>
@@ -226,22 +312,13 @@ const contentBlocks = [
     <section class="main-content">
       <article class="content-container full-width">
         <div class="content-title">
-          <h2>Work is hard. <br/>So we made <span class="highlight-title">Dream simple</span></h2>
+          <h2>Work is hard. <br/>So we made working with <span class="highlight-title">Dream employees simple</span></h2>
           <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
         </div>
         <Carousel items={contentBlocks} />
       </article>
     </section>
-    <section class="main-content">
-      <article class="full-width-contrast promo-home promo-human">
-        <div class="content-container">
-          <div class="content-title">
-            <h2>Dream is your 24/7 <br/><span class="highlight-title">AI powered</span> workforce</h2>
-            <p>The employees that you need to reach your business goals, <br/>working for you every hour of every day.</p>
-          </div>
-        </div>
-      </article>
-    </section>
+    
     <section class="main-content contain-on-mobile">
       <article class="content-container">
         <div class="breakout rotating-chats">
@@ -250,7 +327,7 @@ const contentBlocks = [
           <div class="block" style={`background-image: url(${chats3.src});`}></div>
         </div>
         <div class="content-title">
-          <h2>Built to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
+          <h2>Trained to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
           <p>Your AI employees are tailored for your business - they learn what you do, how you speak & how you work. </p>
         </div>
       </article>
@@ -268,9 +345,10 @@ const contentBlocks = [
             <!-- Slide 1 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
+                <aside class="pro-tag">Sales Pro</aside>
+                <p>"Dream has been a game-changer for GiveWheel. Their Sales Pro is like a second brain - it finds the right companies, reaches out, follows up, and keeps leads warm. We're now top of mind for corporate charity campaigns, without stretching our team. It's taken us from reactive to proactive, without hiring."</p>
                 <cite>
-                  <span>Charlie Hart, Co‑founder at Givewheel</span>
+                  <span>Charlie Hart, Co-founder at Givewheel</span>
                   <Image
                     src={quoteLogo}
                     alt="The logo for Givewheel"
@@ -285,7 +363,8 @@ const contentBlocks = [
             <!-- Slide 2 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
+                <aside class="pro-tag">Personal Pro</aside><aside class="pro-tag">Sales Pro</aside>
+                <p>"Dream has transformed Just Dough It from a side hustle into a full-time business. Their Sales Pro does the outreach I'd never have had time for - emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we've won has come through Dream, and it's freed me to focus on growing the business instead of chasing leads."</p>
                 <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
                 <Image
                   src={quoteLogojdi}
@@ -300,11 +379,27 @@ const contentBlocks = [
             <!-- Slide 3 -->
             <div class="quote-slide">
               <blockquote>
-                <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
+                <aside class="pro-tag">Sales Pro</aside>
+                <p>"Dream has been a huge growth driver for Holibob. Our Sales Pro runs all our outreach - finding the right partners, reaching out, and booking calls - so we just show up ready to close. It even opened up new sectors like airlines that we'd never had time to target before. It's like having a dedicated sales team on autopilot, without the overhead."</p>
                 <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
                 <Image
                   src={quoteLogohol}
                   alt="The logo for Holibob"
+                  width={408}
+                  height={96}
+                  format="webp"
+                />
+              </blockquote>
+            </div>
+
+            <div class="quote-slide">
+              <blockquote>
+                <aside class="pro-tag">Personal Pro</aside>
+                <p>"I would love for all my portfolio of 100s of companies to have an assistant like you."</p>
+                <cite><span>Jens Lapinski, CEO & Founder, Angel Invest Ventures</span></cite>
+                <Image
+                  src={quoteLogoAi}
+                  alt="The logo for Angel Invest"
                   width={408}
                   height={96}
                   format="webp"
