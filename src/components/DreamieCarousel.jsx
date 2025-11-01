@@ -2,22 +2,22 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // ---- Styles by Dreamie type (unchanged) ----
 const typeStyles = {
-  "Personal Pro": {
+  "Personal Assistant": {
     borderColor: "#0B5B50",
     background:
       "linear-gradient(90deg, rgba(255, 254, 252, 0.75) 0%, rgba(255, 254, 252, 0.90) 100%), #0B5B50",
   },
-  "Sales Pro": {
+  "Sales Manager": {
     borderColor: "#255a8e",
     background:
       "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(245,248,255,0.9) 100%), #255a8e",
   },
-  "Marketing Pro": {
+  "Marketing Manager": {
     borderColor: "#A01D3E",
     background:
       "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(251,242,255,0.90) 100%), #A01D3E",
   },
-  "Finance Pro": {
+  "Finance Manager": {
     borderColor: "#ffd601",
     background:
       "linear-gradient(90deg, rgba(255,254,252,0.75) 0%, rgba(255,249,241,0.90) 100%), #ffd601",
