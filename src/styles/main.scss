@@ -293,6 +293,10 @@ header {
         min-height: 400px;
         height: auto;
 
+        &.get-started-header {
+            min-height: 256px;
+        }
+
         img, figure {
             max-width: 800px;
             max-height: 300px;

@@ -66,11 +66,11 @@ const contentBlocks = [
 
 <Layout title="Dream - Just a call gets you started" noindex>
   <Navigation />
-  <header class="hero-home solo-header">
+  <header class="hero-home solo-header get-started-header">
     <div class="hero-elements main-content">
       <section class="header-text content-title">
-        <h1 class="page-title">Say hello to your <span class="highlight-title" data-pro-label>Personal Pro</span></h1>
-        <p>It takes minutes to get started, choose an option below.</p>
+        <h1 class="page-title">Schedule <span class="highlight-title" data-pro-label>your interview</span></h1>
+        <p>Be one of the first to hire a Dream AI employee.</p>
       </section>
     </div>
   </header>
@@ -79,49 +79,10 @@ const contentBlocks = [
     <!-- READY MODULE: shows for ready Pros (personal, sales) -->
     <section class="get-started-content main-content" data-pro-available>
       <article class="content-container">
-        <div class="start-cards">
-          <div class="card-item">
-            <h2>WhatsApp your Pro</h2>
-            <p>Chat with your <span data-pro-label>Personal Pro</span> on WhatsApp, and they'll chat about how they can help.</p>
-
-            <Button
-              label="Message on WhatsApp"
-              href="https://wa.me/447476963324?text=Hi%20I%27m%20interested%20in%20Dream"
-              variant="secondary"
-              size="medium"
-              data-whatsapp
-            >
-              <img src={whatsAppIcon.src} role="presentation" alt="">
-            </Button>
-          </div>
-          <div class="card-item">
-            <h2>Call your Pro</h2>
-            <p>Start a voice call with your <span data-pro-label>Personal Pro</span> and they’ll talk you through how they can help.</p>
-
-            <Button
-              label="Call your Pro"
-              href="tel:+447476963324"
-              variant="secondary"
-              size="medium"
-              data-mobile-call
-            >
-              <img src={phoneIcon.src} role="presentation" alt="" />
-            </Button>
-
-            <Button
-              label="Call your Pro"
-              variant="secondary"
-              size="medium"
-              role="button"
-              as="button"
-              rel="noopener"
-              data-open-modal="call-modal"
-            >
-              <img src={phoneIcon.src} role="presentation" alt="" />
-            </Button>
-          </div>
-
-        </div>
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/charlie-usedream/pre-interview-call" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
       </article>
     </section>
 
@@ -145,68 +106,6 @@ const contentBlocks = [
       </article>
     </section>
 
-    <!-- Active Pro → hide its card in the list below -->
-    <script is:inline>
-      (function () {
-        const params = new URLSearchParams(location.search);
-        const key = (params.get('pro') || 'personal').trim().toLowerCase();
-
-        // Single source of truth: label, status, numbers
-        const PROS = {
-          personal:  { label: 'Personal Pro',  status: 'ready',    phone: '+447476963324', wa: '447476963324' },
-          sales:     { label: 'Sales Pro',     status: 'ready',    phone: '+447476963324', wa: '447476963324' },
-          marketing: { label: 'Marketing Pro', status: 'waitlist', phone: '+447476963324', wa: '447476963324' },
-          finance:   { label: 'Finance Pro',   status: 'waitlist', phone: '+447476963324', wa: '447476963324' },
-          support:   { label: 'Support Pro',   status: 'waitlist', phone: '+447476963324', wa: '447476963324' }
-        };
-
-        const toTitle = (s) => s.replace(/[-_]+/g,' ').replace(/\b\w/g, m => m.toUpperCase()).trim();
-        const toWaDigits = (s) => (s || '').replace(/[^\d]/g, '');
-
-        const base = PROS[key] || { label: `${toTitle(key)} Pro`, status: 'waitlist', phone: '+447476963324', wa: '447476963324' };
-
-        // Expose to CSS
-        document.documentElement.setAttribute('data-pro-active', key);
-        document.documentElement.setAttribute('data-pro-status', base.status);
-
-        // Update labels
-        document.querySelectorAll('[data-pro-label]').forEach(el => el.textContent = base.label);
-
-        // Update tel
-        const callBtn = document.querySelector('[data-mobile-call]');
-        if (callBtn) callBtn.setAttribute('href', `tel:${base.phone}`);
-
-        // Update WhatsApp
-        const waBtn = document.querySelector('[data-whatsapp]');
-        if (waBtn) {
-          const text = `Hi, I'm interested in Dream (${base.label})`;
-          waBtn.setAttribute('href', `https://wa.me/${toWaDigits(base.wa)}?text=${encodeURIComponent(text)}`);
-        }
-
-        // Toggle ready vs waitlist modules
-        const ready  = document.querySelector('[data-pro-available]');
-        const wait   = document.querySelector('[data-pro-waitlist]');
-        if (ready && wait) {
-          const isReady = base.status === 'ready';
-          ready.hidden = !isReady;
-          wait.hidden  =  isReady ? true : false;
-        }
-      })();
-    </script>
-
-    <!-- CSS rules to hide the active pro’s card -->
-    <style is:global>
-      [data-pro-active="personal"]  [data-pro-card="personal"]  { display: none !important; }
-      [data-pro-active="sales"]     [data-pro-card="sales"]     { display: none !important; }
-      [data-pro-active="marketing"] [data-pro-card="marketing"] { display: none !important; }
-      [data-pro-active="finance"]   [data-pro-card="finance"]   { display: none !important; }
-      [data-pro-active="support"]   [data-pro-card="support"]   { display: none !important; }
-
-      /* Optional: prevent flash if you want to hard-hide by status too */
-      [data-pro-status="ready"]    [data-pro-waitlist] { display: none !important; }
-      [data-pro-status="waitlist"] [data-pro-available] { display: none !important; }
-    </style>
-
     <section class="main-content">
       <article class="content-container full-width">
         <div class="content-title">
@@ -228,22 +127,5 @@ const contentBlocks = [
     </section>
   </Modal>
 
-  <HubspotModal />
-
   <Footer />
-
-  <!-- Desktop/touch detection (unchanged) -->
-  <script is:inline>
-    (function () {
-      var mqDesktop = matchMedia('(hover: hover) and (pointer: fine)');
-      function set() {
-        var uaMobile = (navigator.userAgentData && navigator.userAgentData.mobile === true);
-        var hasTouch = (navigator.maxTouchPoints || 0) > 0;
-        var desktoplike = mqDesktop.matches && !uaMobile && !hasTouch;
-        document.documentElement.classList.toggle('desktoplike', desktoplike);
-      }
-      set();
-      mqDesktop.addEventListener?.('change', set);
-    })();
-  </script>
 </Layout>

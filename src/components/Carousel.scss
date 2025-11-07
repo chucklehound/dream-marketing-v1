@@ -154,6 +154,10 @@
       }
       
     }
+
+    &:last-of-type .carousel__image {
+      background: $wallstreet-black;
+    }
   }
 
   &__button {
