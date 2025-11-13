@@ -9,7 +9,7 @@ import '../components/footer.scss';
 
 import Logo from './Logo.astro';
 
-import iconDiscord from '/src/img/icon-discord.svg?raw';
+import iconPhone from '/src/img/icon-phone.svg?raw';
 import iconLinkedIn from '/src/img/icon-linkedin.svg?raw';
 import iconInstagram from '/src/img/icon-instagram.svg?raw';
 // import iconTiktok from '/src/img/icon-tiktok.svg?raw';
@@ -23,9 +23,15 @@ import iconYoutube from '/src/img/icon-youtube.svg?raw';
             <div class="footer-bottom">
                 <div>
                   <Logo version="stacked" mode="mono" color="#ffffff"/>
-                <p>Your AI-powered employees that save you time</p>
+                <p>AI Employees to grow your business</p>
                 </div>
                 <ul class="footer-social-links">
+					<li class="channel-item">
+						  <a href="tel:+441865537407" class="channel-link" target="_blank" rel="noopener noreferrer">
+                <Fragment set:html={iconPhone} />
+							<span class="channel-label visually-hidden">Call us on 01865 537407</span>
+						  </a>
+						</li>
                 {/* <li class="channel-item">
 						  <a href="https://discord.gg/UNYwC8Cu" class="channel-link" target="_blank" rel="noopener noreferrer">
                 <Fragment set:html={iconDiscord} />
@@ -56,7 +62,7 @@ import iconYoutube from '/src/img/icon-youtube.svg?raw';
             
         
         </div>
-        <small>© 2025 Dream | All rights reserved</small>
+        <small>&copy; 2025 Dream | All rights reserved</small>
     </footer>
   )}
   
@@ -99,6 +105,6 @@ import iconYoutube from '/src/img/icon-youtube.svg?raw';
           
       
       </div>
-      <small>© 2025 Dream | All rights reserved</small>
+      <small>&copy; 2025 Dream | All rights reserved</small>
   </footer>
 )}

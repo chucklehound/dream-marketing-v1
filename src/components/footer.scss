@@ -100,7 +100,7 @@
       display: flex;
       gap: 12px;
       padding: 8px 0 0;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       
 
@@ -110,6 +110,9 @@
         min-width: 32px;
         min-height: 32px;
         max-height: 32px;
+        color: $light-grey;
+
+        
 
           &:hover {
             background: rgba($plus-white, .1);
