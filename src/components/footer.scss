@@ -123,15 +123,29 @@
       }
     }
 
+    .small-stuff {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 24px 0;
+      max-width: 1152px;
+      border-top: 1px solid transparent; /* Make the border itself transparent */
+      border-image: linear-gradient(90deg, rgba(255, 254, 250, 0.1), rgba(255, 254, 250, 0.2), rgba(255, 254, 250, 0.1)) 1;
+
+      a {
+        color: $light-grey;
+        font-size: 14px;
+        line-height: 18px;
+        display: block;
+        text-decoration: none;
+        padding: 0;
+      }
+    }
+
     small {
-        padding: 24px 0;
-        width: 100%;
-        max-width: 1152px;
         text-align: left;
         color: $light-grey;
-        border-top: 1px solid transparent; /* Make the border itself transparent */
-border-image: linear-gradient(90deg, rgba(255, 254, 250, 0.1), rgba(255, 254, 250, 0.2), rgba(255, 254, 250, 0.1)) 1;
-
       }
   }
   
