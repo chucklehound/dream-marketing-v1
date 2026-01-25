@@ -53,13 +53,14 @@
             font-size: 20px;
             line-height: 24px;
             letter-spacing: -0.1px;
+            font-family: 'Nature', sans-serif;
         }
     }
 }
 
 #mailing-list-modal {
-    width: 600px;
-    margin-left: -300px;
+    width: 1152px;
+    margin-left: -576px;
     padding: 32px;
 
     .modal__header {
@@ -74,8 +75,9 @@
 
     .modal__surface {
         .modal-form {
-            background: $classic-yellow;
-            border-radius: 8px;
+            border-radius: 24px;
+            border: 1px solid var(--Quadra-Grey, #EBE9E4);
+            background: linear-gradient(180deg, #FFFEFC 0%, #F7F3ED 100%);
             padding: 24px;
             
             form {
@@ -151,7 +153,8 @@
 }
 
 ::backdrop {
-    background: rgba($wallstreet-black,.6);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 13, 38, 0.60) 0%, rgba(55, 69, 98, 0.60) 100%);
+    backdrop-filter: blur(6px);
 }
 
 #call-modal {

@@ -1,5 +1,10 @@
 @import '../styles/main.scss';
 
+@keyframes rotate {
+  100% { transform: rotate(1turn); }
+}
+
+
 .navigation {
     width: 100%;
     display: flex;
@@ -11,7 +16,7 @@
     top: 0;
     z-index: 99;
     padding: 8px 16px 0;
-    background: rgba($plus-white, .5);
+    background: transparent;
     backdrop-filter: blur(8px);
     box-shadow: inset 0 -8px 12px 0 rgba($plus-white, .6), inset 0 -1px 1px 0 rgba($plus-white, .5), inset 0 20px 12px 0 rgba($plus-white, .2);
     transition: background-color .2s ease;
@@ -240,6 +245,48 @@ nav {
 
         @media (max-width: 500px) {
           font-size: 13px;
+        }
+      }
+
+      &.button.secondary.mailing-list-button {
+        overflow: hidden;
+        padding: 1px;
+        border-radius: 32px;
+        border: 0;
+        box-shadow: $box-shadow-sm;
+
+        &::after {
+          content: "";
+          inset: 0;
+          top: -50%;
+          margin-top: -44px;
+          position: absolute;
+          aspect-ratio: 1;
+          width: 100%;
+          z-index: 0;
+          animation: rotate 3s linear infinite;
+          background: conic-gradient(#FFD601, #EE4266,#97D5FC, #BFE8E3, #FFD601);
+        }
+
+        .mailing-list-button-inner {
+          height: 100%;
+          padding: 0 4px 0 16px;
+          display: flex;
+          cursor: pointer;
+          align-items: center;
+          gap: 12px;
+          border-radius: 32px;
+          background-color: $plus-white;
+          z-index: 1;
+          position: relative;
+          transition: opacity .2s ease;
+          backdrop-filter: blur(8px);
+        }
+
+        &:hover {
+          .mailing-list-button-inner {
+            opacity: 0.95;
+          }
         }
       }
 
@@ -617,9 +664,6 @@ nav {
 @keyframes grow {
   0% { max-height: 0; }
   100% { max-height: 320px;}
-}
-
-.navigation.open {
 }
 
 .navbar .dropdown-menu {

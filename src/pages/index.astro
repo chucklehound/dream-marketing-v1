@@ -7,291 +7,237 @@ import Button from "../components/Button.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
-import chats1 from '/src/img/home-chats.png';
-import chats2 from '/src/img/home-chats-2.png';
-import chats3 from '/src/img/home-chats-3.png';
-
-import card1 from '/src/img/carousel-1--phone.png';
-import card2 from '/src/img/carousel-2--whatsapp.png';
-import card3 from '/src/img/carousel-3--update.png';
-import card4 from '/src/img/carousel-4--success.png';
-
-import quoteLogo from '/src/img/givewheel-logo.png';
-import quoteLogojdi from '/src/img/justdoughit-logo.png';
-import quoteLogohol from '/src/img/holibob-logo.png';
-
-import ctaDreamies from '/src/img/end-cta-guys.png';
-
-import DreamieCarousel from '../components/DreamieCarousel.jsx';
-
-import HireGuyBlock from "../components/HireGuyBlock.astro";
-
 import Modal from "../components/Modal.astro";
 
-// Import dreamie1 to dreamie25 as an array
-import dreamie1 from '/src/img/hero-dreamies/dreamie-1.png';
-import dreamie2 from '/src/img/hero-dreamies/dreamie-2.png';
-import dreamie3 from '/src/img/hero-dreamies/dreamie-3.png';
-import dreamie4 from '/src/img/hero-dreamies/dreamie-4.png';
-import dreamie5 from '/src/img/hero-dreamies/dreamie-5.png';
-import dreamie6 from '/src/img/hero-dreamies/dreamie-6.png';
-import dreamie7 from '/src/img/hero-dreamies/dreamie-7.png';
-import dreamie8 from '/src/img/hero-dreamies/dreamie-8.png';
-import dreamie9 from '/src/img/hero-dreamies/dreamie-9.png';
-import dreamie10 from '/src/img/hero-dreamies/dreamie-10.png';
-import dreamie11 from '/src/img/hero-dreamies/dreamie-11.png';
-import dreamie12 from '/src/img/hero-dreamies/dreamie-12.png';
-import dreamie13 from '/src/img/hero-dreamies/dreamie-13.png';
-import dreamie14 from '/src/img/hero-dreamies/dreamie-14.png';
-import dreamie15 from '/src/img/hero-dreamies/dreamie-15.png';
-import dreamie16 from '/src/img/hero-dreamies/dreamie-16.png';
-import dreamie17 from '/src/img/hero-dreamies/dreamie-17.png';
-import dreamie18 from '/src/img/hero-dreamies/dreamie-18.png';
-import dreamie19 from '/src/img/hero-dreamies/dreamie-19.png';
-import dreamie20 from '/src/img/hero-dreamies/dreamie-20.png';
-import dreamie21 from '/src/img/hero-dreamies/dreamie-21.png';
-import dreamie22 from '/src/img/hero-dreamies/dreamie-22.png';
-import dreamie23 from '/src/img/hero-dreamies/dreamie-23.png';
-import dreamie24 from '/src/img/hero-dreamies/dreamie-24.png';
-import dreamie25 from '/src/img/hero-dreamies/dreamie-25.png';
+import salesStatue from '/src/img/statue-sales.png';
+import personalStatus from '/src/img/personal-statue.png';
 
-const originals = [
-  dreamie1,dreamie2,dreamie3,dreamie4,dreamie5,
-  dreamie6,dreamie7,dreamie8,dreamie9,dreamie10,
-  dreamie11,dreamie12,dreamie13,dreamie14,dreamie15,
-  dreamie16,dreamie17,dreamie18,dreamie19,dreamie20,
-  dreamie21,dreamie22,dreamie23,dreamie24,dreamie25
-];
+import ArrowCircle from '/src/img/icons/arrow-circle.svg?raw';
 
-// Convert to WebP at build time; keep same dimensions
-const webps = await Promise.all(originals.map((src) => getImage({ src, format: "webp" })));
-const images = webps.map((i) => i.src);
+import taxiSticker from "/src/img/stickers/taxi.png";
+import calendarSticker from "/src/img/stickers/calendar.png";
 
-// (Optional) Preload the first few that appear on first paint
-const PRELOAD_COUNT = 3;
-const preloadUrls = images.slice(0, PRELOAD_COUNT);
+import featureSticker1 from '/src/img/stickers/feature1.png';
 
-const messages = [
-  // cycle 1
-  { name: "Ben",     type: "Marketing Pro",  text: "overseeing the build of the company website" },   // start a business
-  { name: "Tina",    type: "Sales Pro",      text: "researching and building target company lists" }, // enter new markets
-  { name: "Ethan",   type: "Personal Pro",   text: "managing incoming phone calls" },                 // save an hour
-  { name: "Sophia",  type: "Sales Pro",      text: "sending contracts out for signature" },           // handle more customers
-  { name: "Anna",    type: "Finance Pro",    text: "chasing up missing receipts and invoices" },      // get paid on time
-
-  // cycle 2
-  { name: "Chris",   type: "Marketing Pro",  text: "creating and managing social media content" },
-  { name: "Alex",    type: "Sales Pro",      text: "testing and refining outreach campaigns" },
-  { name: "Nina",    type: "Personal Pro",   text: "arranging travel for frequent business trips" },
-  { name: "Pablo",   type: "Personal Pro",   text: "handling and directing phone enquiries" },
-  { name: "Charlie", type: "Finance Pro",    text: "following up on missing financial documents" },
-
-  // cycle 3
-  { name: "Leo",     type: "Marketing Pro",  text: "planning and creating social media posts" },
-  { name: "Omar",    type: "Marketing Pro",  text: "selecting and preparing company lists for campaigns" },
-  { name: "Kara",    type: "Personal Pro",   text: "booking complex travel itineraries" },
-  { name: "Sam",     type: "Personal Pro",   text: "following up quickly with every new enquiry" }, 
-  { name: "Priya",   type: "Finance Pro",    text: "tracking down outstanding receipts and invoices" },
-
-  // cycle 4
-  { name: "Grace",   type: "Marketing Pro",  text: "setting up your first ad campaign" },           
-  { name: "Jack",    type: "Sales Pro",      text: "identifying prospects in adjacent markets" },
-  { name: "Philipp", type: "Personal Pro",   text: "extracting and organising receipts from emails" },
-  { name: "Liam",    type: "Personal Pro",   text: "managing onboarding paperwork for new customers" },
-  { name: "Hugo",    type: "Finance Pro",    text: "ensuring all receipts and invoices are accounted for" },
-
-  // cycle 5
-  { name: "Jordan",  type: "Personal Pro",   text: "organising your business calendar from day one" },
-  { name: "Olivia",  type: "Sales Pro",      text: "opening conversations in new regions" },
-  { name: "Isla",    type: "Personal Pro",   text: "organising receipts and uploading them to accounts" },
-  { name: "Noah",    type: "Personal Pro",   text: "keeping all customer conversations organised in one place" },
-  { name: "Maya",    type: "Finance Pro",    text: "following up on incomplete financial records" }
-];
-import Carousel from '../components/Carousel.astro';
-
-const contentBlocks = [
-  {
-    image: card1,
-    title: 'No complicated apps to learn, starting is as simple as making a call.',
-    subtitle: 'Be the first to hire',
-    ctaText: 'Get notified',
-  },
-  {
-    image: card2,
-    title: 'Make plans with a message, and leave your Dream team to handle the hard work.',
-    subtitle: 'Be the first to hire',
-    ctaText: 'Get notified',
-  },
-  {
-    image: card3,
-    title: 'Grow your business without growing your workload. Your team handles the hard work, you take the call.',
-    subtitle: 'Be the first to hire',
-    ctaText: 'Get notified',
-  },
-  {
-    image: card4,
-    title: 'Priced to get your business started, built to make it succeed.',
-    subtitle: 'Be the first to hire',
-    ctaText: 'Get notified',
-  },
-];
 ---
 
 
 
 <Layout title="Dream - AI that grows your business">
+  
+
   <Navigation />
   <header class="hero-home index-hero">
     <div class="hero-elements main-content">
-      <section class="header-image home-hero">
-        <div class="ticker-window">
-          <DreamieCarousel images={images} messages={messages} client:load />
-        </div>
-      </section>
       <section class="header-text">
+        <aside class="ticker-badge">Only 14 available this month</aside>
         <h1 class="page-title">
-          Hire a Pro to help you
-          <span id="rotating-text">difficult markets</span>
+          The assistant you’ve always been promised.
         </h1>
+        <div class="actions hero-actions">
+          <Button target="" data-open-modal="mailing-list-modal">Join the waitlist <fragment set:html={ArrowCircle}/></Button>
+        </div>
+        <Image class="hero-statue" src={salesStatue} alt="A pale white statue of an assistant" width={335} height={503}/>
       </section>
-      <div class="actions">
-        <Button
-        target=""
-        variant="primary"
-        size="large"
-        data-open-modal="mailing-list-modal"
-        label="">Be the first to hire</Button>
-      </div>
     </div>
   </header>
   <main>
-    <HireGuyBlock />
-    <section class="main-content">
-      <article class="content-container full-width">
-        <div class="content-title">
-          <h2>Work is hard. <br/>So we made <span class="highlight-title">Dream simple</span></h2>
-          <p>Dream keeps things simple on the surface, while powerful AI managers handle the hard stuff.</p>
-        </div>
-        <Carousel items={contentBlocks} />
+    <section class="content-panels">
+      <article>
+        <h4>Your assistants</h4>
+        <h2>Work <s>like</s> better than people</h2>
       </article>
+      <div class="wow-content sticker-host">
+        <div class="sticker-layer">
+          <img
+            class="sticker"
+            src={taxiSticker.src}
+            alt=""
+            draggable="false"
+            loading="eager"
+            decoding="async"
+            style="top: 85%; left: 95%; width: 256px;"
+            data-sticker
+          />
+          <img
+            class="sticker"
+            src={calendarSticker.src}
+            alt=""
+            draggable="false"
+            loading="eager"
+            decoding="async"
+            style="left: 5%; top: 18%; width: 256px;"
+            data-sticker
+          />
+        </div>
+      </div>
     </section>
-    <section class="main-content">
-      <article class="full-width-contrast promo-home promo-human">
-        <div class="content-container">
-          <div class="content-title">
-            <h2>Dream is your 24/7 <br/><span class="highlight-title">AI powered</span> workforce</h2>
-            <p>The employees that you need to reach your business goals, <br/>working for you every hour of every day.</p>
+
+    <section class="content-panels">
+      <article>
+      <h4>What makes them different?</h4>
+      <h2>Dream's assistants</h2>
+      </article>
+      
+      
+      <div class="sticker-host">
+      
+        <div class="assistant-features">
+          <div class="content-box">
+            <img
+            class="sticker"
+            src={featureSticker1.src}
+            alt=""
+            draggable="false"
+            loading="eager"
+            decoding="async"
+            style="left: 30%; top: -5%; width: 256px;"
+            data-sticker
+          />
+            <h5>Work inside your systems</h5>
+            <p>They don’t draft. They do. Emails sent. Meetings booked. CRM updated.</p>
+            </div>
+            
+            
+            <div class="content-box">
+              <img
+              class="sticker"
+              src={featureSticker1.src}
+              alt=""
+              draggable="false"
+              loading="eager"
+              decoding="async"
+              style="left: 30%; top: -5%; width: 256px;"
+              data-sticker
+            />
+            <h5>Deploy humans on demand</h5>
+            <p>When AI isn’t enough, they spin up people. Calls made. Forms filled. Deals progressed.</p>
+            </div>
+            
+            
+            <div class="content-box">
+              <img
+              class="sticker"
+              src={featureSticker1.src}
+              alt=""
+              draggable="false"
+              loading="eager"
+              decoding="async"
+              style="left: 30%; top: -5%; width: 256px;"
+              data-sticker
+            />
+            <h5>Remember what matters</h5>
+            <p>One brain across inbox, calendar, travel, and sales. No context lost. No threads dropped.</p>
+            </div>
+            
+            
+            <div class="content-box">
+              <img
+              class="sticker"
+              src={featureSticker1.src}
+              alt=""
+              draggable="false"
+              loading="eager"
+              decoding="async"
+              style="left: 30%; top: -5%; width: 256px;"
+              data-sticker
+            />
+            <h5>Take ownership</h5>
+            <p>You set the goal. They take it from there. From first action to final result.</p>
+            </div>
+        </div>
+      
+      
+      </div>
+      </section>
+
+    <section class="content-panels centre-title">
+      <article>
+        <h4>It's not choosing, it's hiring</h4>
+        <h2>The best assistant you'll never meet</h2>
+      </article>
+      <div class="sticker-host agent-choice">
+        <section class="content-panels agent-panels">
+          <!-- Personal Assistant -->
+          <article class="agent-block">
+          <div class="agent-copy">
+          <div class="agent-header">
+          <h3>Your Personal Assistant</h3>
+          <p class="agent-lede">
+           Offload your admin. Never worry about an email, calendar or phone call again, your PA handles it all.
+          </p>
           </div>
-        </div>
-      </article>
-    </section>
-    <section class="main-content contain-on-mobile">
-      <article class="content-container">
-        <div class="breakout rotating-chats">
-          <div class="block" style={`background-image: url(${chats1.src});`}></div>
-          <div class="block" style={`background-image: url(${chats2.src});`}></div>
-          <div class="block" style={`background-image: url(${chats3.src});`}></div>
-        </div>
-        <div class="content-title">
-          <h2>Built to <span class="highlight-title">handle the things</span> <br/>you don't want to</h2>
-          <p>Your AI employees are tailored for your business - they learn what you do, how you speak & how you work. </p>
-        </div>
-      </article>
-    </section>
-    <section class="customer-quote main-content"> 
-      <article class="quote-body"> 
-        <div class="content-title">
-          <h2>AI that works <span class="highlight-title">for everyone</span></h2>
-        </div>
-    
-        <!-- Only this viewport/track rotates -->
-        <div class="quote-viewport">
-          <div class="quote-track" role="group" aria-roledescription="carousel" aria-label="Customer quotes">
-    
-            <!-- Slide 1 -->
-            <div class="quote-slide">
-              <blockquote>
-                <p>“Dream has been a game-changer for GiveWheel. Their Sales Manager is like a second brain—it finds the right companies, reaches out, follows up, and keeps leads warm. We’re now top of mind for corporate charity campaigns, without stretching our team. It’s taken us from reactive to proactive, without hiring.”</p>
-                <cite>
-                  <span>Charlie Hart, Co‑founder at Givewheel</span>
-                  <Image
-                    src={quoteLogo}
-                    alt="The logo for Givewheel"
-                    width={364}
-                    height={96}
-                    format="webp"
-                  />
-                </cite>
-              </blockquote>
-            </div>
-    
-            <!-- Slide 2 -->
-            <div class="quote-slide">
-              <blockquote>
-                <p>“Dream has transformed Just Dough It from a side hustle into a full-time business. Their Head of Sales does the outreach I’d never have had time for—emailing venues across the country, keeping the pipeline full, and following up automatically. Every customer we’ve won has come through Dream, and it’s freed me to focus on growing the business instead of chasing leads.”</p>
-                <cite><span>Will Cowley, Owner at Just Dough It</span></cite>
-                <Image
-                  src={quoteLogojdi}
-                  alt="The logo for Just Dough It"
-                  width={480}
-                  height={56}
-                  format="webp"
-                />
-              </blockquote>
-            </div>
-    
-            <!-- Slide 3 -->
-            <div class="quote-slide">
-              <blockquote>
-                <p>“Dream has been a huge growth driver for Holibob. Our Head of Sales runs all our outreach—finding the right partners, reaching out, and booking calls—so we just show up ready to close. It even opened up new sectors like airlines that we’d never had time to target before. It’s like having a dedicated sales team on autopilot, without the overhead.”</p>
-                <cite><span>Angus Hardy, Co-founder at Holibob</span></cite>
-                <Image
-                  src={quoteLogohol}
-                  alt="The logo for Holibob"
-                  width={408}
-                  height={96}
-                  format="webp"
-                />
-              </blockquote>
-            </div>
-    
+          
+          
+          <div class="agent-skills conversation-box empty-box">
+            <p>
+              I quietly run your day — inbox, calendar, travel, projects — as one continuous picture. Things get handled before they become problems.
+              </p>
+              <p>
+              I already know the context, booking and planning your meetings, travel, and meals based on what you like.
+              </p>
+              <p>
+              Calm, organised, always a step ahead.
+              </p>
           </div>
+          
+          
+          <div class="agent-cta">
+            <Button target="" data-open-modal="mailing-list-modal">Join the waitlist <fragment set:html={ArrowCircle}/></Button>
+          </div>
+          </div>
+          
+          
+          <div class="agent-media">
+            <Image src={personalStatus} alt="A pale white status of an assistant" width={335} height={503}/>
+          </div>
+          </article>
+          
+          
+          <!-- Sales Manager -->
+          <article class="agent-block">
+          <div class="agent-copy">
+          <div class="agent-header">
+          <h3>Your Sales Manager</h3>
+          <p class="agent-lede">
+           Your first sales hire. Equally capable running outbound campaigns as they are at advising on sales strategy.
+          </p>
+          </div>
+          
+          
+          <div class="agent-skills conversation-box empty-box">
+            <p>
+              I run your outbound engine — finding prospects, launching campaigns, and keeping pipeline moving across email and social.
+              </p>
+              <p>
+              I read every signal, surface hot leads, and deploy human callers to seal the deal on social, or with a call.
+              </p>
+              <p>
+              Relentless about momentum. Focused on revenue.
+              </p>
         </div>
-    
-        <!-- Dots live INSIDE the box -->
-        <div class="quote-dots" aria-label="Slide pagination"></div>
-      </article> 
+          
+          
+          <div class="agent-cta">
+            <Button target="" data-open-modal="mailing-list-modal">Join the waitlist <fragment set:html={ArrowCircle}/></Button>
+          </div>
+          </div>
+          
+          
+          <div class="agent-media">
+            <Image src={salesStatue} alt="A pale white status of an assistant" width={335} height={503}/>
+          </div>
+          </article>
+          </section>
+      </div>
     </section>
-    
-    
-<section class="final-cta"> 
-  <article class="main-content cta-container"> 
-    <Image
-      src={ctaDreamies}
-      alt="The 5 Dreamies of Dream - Business, Sales, Marketing, Finance, and Design"
-      width={1248}
-      height={452}
-      format="webp"
-    />
-    <div class="content-title">
-      <h2><span class="highlight-title">Grow your business </span><br/>with Dream</h2>
-    </div>
-    <Button
-        target=""
-        variant="primary"
-        size="medium"
-        data-open-modal="mailing-list-modal"
-        label="">Be the first to hire</Button>
-          </article> 
-    </section>
-</main>
+  </main>
     
 <Footer />
 
 <Modal id="mailing-list-modal" closeLabel="Close">
-  <h2 slot="title">Hire your own employees</h2>
-  <p>We're getting our employees ready to onboard, get an instant notification when they're ready to hire.</p>
-
+  <h2 slot="title">You’re closer than you’ve ever been</h2>
+    <p>Our assistants are tailored for you. Add your information to be one of the first to hire.</p>
   <div class="modal-form">
     <!-- Form view -->
     <form id="contactForm" class="webform" novalidate>
@@ -491,297 +437,64 @@ const contentBlocks = [
     })();
   </script>
   
-  
+  <script>
+  (() => {
+  let active = null;
+  let startX = 0, startY = 0;
+  let startDX = 0, startDY = 0;
+  let z = 1;
+
+  const px = (n) => `${n}px`;
+  const parsePx = (v) => (v && v.endsWith("px") ? parseFloat(v) : 0);
+
+  function getSticker(e) {
+    return e.target.closest(".sticker");
+  }
+
+  function onDown(e) {
+    const el = getSticker(e);
+    if (!el) return;
+
+    active = el;
+    active.style.zIndex = String(++z);
+
+    // pointer start
+    startX = e.clientX;
+    startY = e.clientY;
+
+    // current offsets (from inline style or computed)
+    const cs = getComputedStyle(active);
+    startDX = parsePx(cs.getPropertyValue("--dx").trim());
+    startDY = parsePx(cs.getPropertyValue("--dy").trim());
+
+    active.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  }
+
+  function onMove(e) {
+    if (!active) return;
+
+    const dx = startDX + (e.clientX - startX);
+    const dy = startDY + (e.clientY - startY);
+
+    active.style.setProperty("--dx", px(dx));
+    active.style.setProperty("--dy", px(dy));
+  }
+
+  function onUp(e) {
+    if (!active) return;
+    try { active.releasePointerCapture(e.pointerId); } catch {}
+    active = null;
+  }
+
+  document.addEventListener("pointerdown", onDown);
+  document.addEventListener("pointermove", onMove);
+  document.addEventListener("pointerup", onUp);
+  document.addEventListener("pointercancel", onUp);
+})();
+  </script>
   
 
 </Modal>
 
-<!-- === Shared Ticker (singleton) + Rotating Headline (drift-proof) === -->
-<script>
-  (function startSharedTicker(period = 5000) {
-    if (window.__dreamTicker) return;
-
-    const S = { timer: null, period, running: false, expected: 0, count: 0, booted: false };
-
-    const dispatch = () => {
-      S.count++;
-      window.dispatchEvent(new CustomEvent("dream:tick", { detail: { count: S.count, period: S.period, ts: performance.now() } }));
-    };
-
-    const schedule = (delay) => { S.timer = setTimeout(tick, Math.max(0, delay)); };
-
-    function tick() {
-      const now = performance.now();
-      if (!S.expected) S.expected = now + S.period;
-
-      const behind = now - S.expected;
-
-      // Overslept (tab slept) → skip backlog, fire once, then resume on-beat
-      if (behind > S.period * 0.8) {
-        S.expected = now + S.period;
-        schedule(S.period);
-        dispatch();
-        return;
-      }
-
-      S.expected += S.period;
-      schedule(S.expected - performance.now());
-      dispatch();
-    }
-
-    function start() {
-      if (S.running) return;
-      S.running = true;
-      S.expected = performance.now() + S.period;
-      schedule(S.period);
-
-      // First boot: emit one immediate tick so UI paints a value quickly.
-      if (!S.booted) {
-        S.booted = true;
-        dispatch();
-      }
-    }
-
-    function stop() {
-      S.running = false;
-      clearTimeout(S.timer);
-      S.timer = null;
-      S.expected = 0;
-    }
-
-    function onVis() {
-      if (document.visibilityState === "hidden") stop();
-      else start();
-    }
-
-    window.addEventListener("visibilitychange", onVis, { passive: true });
-    window.addEventListener("pagehide", stop, { passive: true });
-    window.addEventListener("pageshow", start, { passive: true });
-
-    start();
-
-    window.__dreamTicker = {
-      start, stop,
-      getCount: () => S.count,
-      getPeriod: () => S.period
-    };
-  })();
-
-  // ---- Rotating headline: derives purely from global count (no local counters) ----
-  (function attachHeadline() {
-    const el = document.getElementById("rotating-text");
-    if (!el || el.dataset.rotatorAttached) return;
-    el.dataset.rotatorAttached = "1";
-
-    const texts = [
-      "start a business",
-      "enter new markets",
-      "save an hour every day",
-      "handle more customers",
-      "get paid on time"
-    ];
-
-    const FADE = 400;
-    el.style.transition = `opacity ${FADE}ms ease`;
-    el.style.willChange = "opacity";
-
-    const ticker = window.__dreamTicker;
-    const getCount = () => (ticker?.getCount?.() ?? 1);
-    const mod = (n, m) => ((n % m) + m) % m;
-
-    function renderForCount(count, withFade = true) {
-      const idx = mod(count - 1, texts.length);
-      const next = texts[idx];
-
-      if (!withFade) {
-        el.textContent = next;
-        el.style.opacity = "1";
-        el.__last = next;
-        return;
-      }
-      if (el.__last === next && el.style.opacity === "1") return;
-
-      const onFadeOut = () => {
-        el.removeEventListener("transitionend", onFadeOut);
-        el.textContent = next;
-        requestAnimationFrame(() => {
-          el.addEventListener("transitionend", () => {}, { once: true });
-          el.style.opacity = "1";
-          el.__last = next;
-        });
-      };
-
-      // Start fade-out if visible; otherwise just swap in
-      if (getComputedStyle(el).opacity !== "0") {
-        el.addEventListener("transitionend", onFadeOut, { once: true });
-        el.style.opacity = "0";
-      } else {
-        el.textContent = next;
-        el.style.opacity = "1";
-        el.__last = next;
-      }
-    }
-
-    // Initial snap (no fade)
-    renderForCount(getCount(), false);
-
-    window.addEventListener("dream:tick", (e) => renderForCount(e?.detail?.count ?? getCount() + 1, true), { passive: true });
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") renderForCount(getCount(), false);
-    }, { passive: true });
-    window.addEventListener("pageshow", () => renderForCount(getCount(), false), { passive: true });
-  })();
-</script>
-
-<style>
-  #rotating-text {
-    transition: opacity 0.4s;
-    opacity: 1;
-  }
-</style>
-
-<!-- === Promo reveal on view === -->
-<script type="module">
-  const target = document.querySelector('.promo-human');
-
-  const observer = new IntersectionObserver(
-    ([entry], observer) => {
-      if (entry?.isIntersecting) {
-        target.classList.add('visible');
-        observer.unobserve(target);
-      }
-    },
-    { root: null, rootMargin: '0px', threshold: 0.4 }
-  );
-
-  if (target) observer.observe(target);
-</script>
-
-<!-- === Quote carousel (plain JS; removed TS-only syntax) === -->
-<script>
-  (function () {
-    const root = document.querySelector('.customer-quote .quote-body');
-    if (!root) return;
-  
-    const track = root.querySelector('.quote-track');
-    const slides = Array.from(root.querySelectorAll('.quote-slide'));
-    const dotsWrap = root.querySelector('.quote-dots');
-    if (!track || !slides.length || !dotsWrap) return;
-  
-    // Build dots
-    slides.forEach((_, i) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', `Go to quote ${i + 1}`);
-      b.addEventListener('click', () => {
-        goTo(i, true);
-        resetCycle();
-      });
-      dotsWrap.appendChild(b);
-    });
-    const dots = Array.from(dotsWrap.querySelectorAll('button'));
-  
-    let idx = 0;
-    const autoMs = 6000;
-    let timer = null;
-    let programmaticScroll = false;
-  
-    function updateDots(i) {
-      dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
-    }
-  
-    function goTo(i, smooth = true) {
-      idx = (i + slides.length) % slides.length;
-      programmaticScroll = true;
-      track.scrollTo({
-        left: slides[idx].offsetLeft,
-        behavior: smooth ? 'smooth' : 'auto',
-      });
-      updateDots(idx);
-    }
-  
-    // IntersectionObserver keeps idx in sync if user drags
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.intersectionRatio > 0.6) {
-            const n = slides.indexOf(e.target);
-            if (n !== -1) {
-              idx = n;
-              updateDots(idx);
-            }
-          }
-        });
-      },
-      { root: track, threshold: [0.6] }
-    );
-    slides.forEach((s) => io.observe(s));
-  
-    // Autoplay with self-scheduling timeout
-    function scheduleNext() {
-      clearNext();
-      timer = window.setTimeout(() => {
-        goTo(idx + 1, true);
-        waitForScrollEnd().then(() => {
-          programmaticScroll = false;
-          scheduleNext();
-        });
-      }, autoMs);
-    }
-    function clearNext() {
-      if (timer) clearTimeout(timer);
-      timer = null;
-    }
-    function resetCycle() {
-      clearNext();
-      scheduleNext();
-    }
-  
-    // Wait until smooth scroll finishes before scheduling next tick
-    function waitForScrollEnd() {
-      if ('onscrollend' in window) {
-        return new Promise((resolve) => {
-          const handler = () => {
-            track.removeEventListener('scrollend', handler);
-            resolve();
-          };
-          track.addEventListener('scrollend', handler, { once: true });
-        });
-      }
-      return new Promise((resolve) => {
-        let t;
-        const onScroll = () => {
-          if (!programmaticScroll) return;
-          clearTimeout(t);
-          t = window.setTimeout(() => {
-            track.removeEventListener('scroll', onScroll);
-            resolve();
-          }, 150);
-        };
-        track.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      });
-    }
-  
-    // User manual scroll: reset cycle after they stop
-    let manualDebounce;
-    track.addEventListener(
-      'scroll',
-      () => {
-        if (programmaticScroll) return;
-        clearNext();
-        clearTimeout(manualDebounce);
-        manualDebounce = window.setTimeout(() => {
-          scheduleNext();
-        }, 800);
-      },
-      { passive: true }
-    );
-  
-    // Init
-    goTo(0, false);
-    programmaticScroll = false;
-    scheduleNext();
-  })();
-</script>
 </Layout>
