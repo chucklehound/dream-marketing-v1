@@ -1823,8 +1823,10 @@ section.content-panels {
             flex: 1;
             display: flex;
             flex-direction: column;
+            text-align: center;
             gap: 12px;
             position: relative;
+            min-width: 280px;
 
             img.sticker {
                 max-width: 192px;
