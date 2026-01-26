@@ -6,12 +6,18 @@
     font-weight: 300 700;
 }
 
+@font-face {
+    font-family: "Nature";
+    src: url("/src/styles/fonts/ZT Nature Variable-VF.woff2") format("woff2-variations");
+    font-weight: 300 700;
+}
+
 @mixin pageHeading {
     font-size: 84px;
     line-height: 96px;
     letter-spacing: -2.5px;
     font-weight: 600;
-    font-family: 'Geist', sans-serif;
+    font-family: 'Nature', sans-serif;
 }
 
 @mixin heading1 {
@@ -102,8 +108,4 @@ p, .p {
 
     margin-bottom: 0.8em;
     color: $performa-black;
-
-    @media (prefers-color-scheme: dark) {
-        color: $light-grey;
-    }
 }

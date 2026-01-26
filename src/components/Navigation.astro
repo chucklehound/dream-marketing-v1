@@ -14,6 +14,8 @@ import Button from "../components/Button.astro";
 
 import Modal from '../components/Modal.astro';
 
+import ArrowCircleIcon from "/src/img/icons/arrow-circle-dark.svg?raw";
+
 ---
 
 <div class="navigation">
@@ -29,8 +31,9 @@ import Modal from '../components/Modal.astro';
         target=""
         variant="secondary"
         size="small"
+        class="mailing-list-button"
         data-open-modal="mailing-list-modal"
-        label="">Sign up for launch</Button>
+        label=""><div class="mailing-list-button-inner">Join the waitlist<fragment set:html={ArrowCircleIcon} /></div></Button>
     </div>
   </nav>
 </div>

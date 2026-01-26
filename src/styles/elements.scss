@@ -24,18 +24,6 @@
         box-shadow: $box-shadow-md;
         background: $performa-black;
     }
-
-    @media (prefers-color-scheme: dark) {
-        color: $lightest-grey;
-        background-color: $performa-black;
-        border: 1px solid rgba($light-grey, .2);
-
-        &:hover {
-            color: $plus-white;
-            background: $wallstreet-black;
-            border-color: rgba($plus-white, .4);
-        }
-    }
 }
 
 @mixin SecondaryButton {
@@ -47,18 +35,6 @@
     &:hover {
         box-shadow: $box-shadow-md; 
         background: $quadra-grey;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        background: $wallstreet-black;
-        color: $lighter-grey;
-        border: 1px solid rgba($light-grey, .3);
-
-        &:hover {
-            background: $wallstreet-black;
-            color: $plus-white;
-            border-color: rgba($plus-white, .4);
-        }
     }
 }
 

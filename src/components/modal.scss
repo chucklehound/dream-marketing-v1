@@ -13,12 +13,16 @@
     left: 50%;
     margin-left: -250px;
     top: 10vh;
-    border-radius: 16px;
+    border-radius: 44px;
     border: 1px solid $light-grey;
     background: $plus-white;
     box-shadow: 0 12px 24px 2px rgba($wallstreet-black,.12);
     animation: appearModal .4s ease 1;
     transform-origin: top center;
+
+    @media (max-width: 900px) {
+        border-radius: 12px;
+    }
 
     .modal__surface {
         display: flex;
@@ -53,13 +57,14 @@
             font-size: 20px;
             line-height: 24px;
             letter-spacing: -0.1px;
+            font-family: 'Nature', sans-serif;
         }
     }
 }
 
 #mailing-list-modal {
-    width: 600px;
-    margin-left: -300px;
+    width: 1152px;
+    margin-left: -576px;
     padding: 32px;
 
     .modal__header {
@@ -74,19 +79,37 @@
 
     .modal__surface {
         .modal-form {
-            background: $classic-yellow;
-            border-radius: 8px;
+            border-radius: 24px;
+            border: 1px solid var(--Quadra-Grey, #EBE9E4);
+            background: linear-gradient(180deg, #FFFEFC 0%, #F7F3ED 100%);
             padding: 24px;
+
+            @media (max-width: 600px) {
+                border: none;
+                padding: 0 16px 16px;
+                border-radius: 12px;
+            }
+
+            button.primary {
+                max-width: 500px;
+                padding: 24px;
+                margin: 24px auto 0;
+                text-wrap: wrap;
+            }
             
             form {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 gap: 12px;
 
                 label {
                     display: flex;
                     flex-direction: column;
                     gap: 4px;
+                    width: 100%;
+                    max-width: 500px;
                 }
 
                 label, fieldset legend {
@@ -99,11 +122,164 @@
                     border: none;
                     padding: 0;
 
+                    &.dreamie-radio-group {
+                        display: flex;
+                        gap: 12px;
+                        width: 100%;
+
+                        @media (max-width: 900px) {
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                        }
+                    }
+
                     .radio-option {
                         display: flex;
                         gap: 4px;
                         justify-content: flex-start;
                         align-items: center;
+
+                        &.fancy-option {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+                            position: relative;
+
+                            .button {
+                                justify-content: space-between;
+
+                                span {
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    padding: 0;
+                                    margin: 0 auto 0 -4px;
+                                }
+                                
+                                @media (max-width: 800px) {
+                                    span {
+                                        display: none;
+                                    }
+                                }
+                            }
+
+                            label {
+                                flex: 1;
+                                display: flex;
+                                border-radius: 12px;
+                                border: 2px solid #FFD601;
+                                background: linear-gradient(180deg, #F7F3ED 0%, #FFFEFC 100%);
+                                box-shadow: $box-shadow-sm;
+                                transition: box-shadow .3s ease, background-color .3s ease;
+                                cursor: pointer;
+                                z-index: 1;
+                                width: 100%;                                
+                                padding: 24px;
+                            }
+
+                            &:first-of-type {
+                                padding-left: 128px;
+
+                                &::before {
+                                    content: '';
+                                    width: 170px;
+                                    height: 170px;
+                                    background: url('/src/img/stickers/sales-big-sticker.png') no-repeat 50%;
+                                    background-size: contain;
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: -12px;
+                                    z-index: 0;
+                                    pointer-events: none;
+
+                                    @media (max-width: 600px) {
+                                        // z-index: 2;
+                                        // right: -54px;
+                                        // top: -40px;
+                                        // bottom: auto;
+                                        // left: auto;
+                                        // width: 150px;
+
+                                        display: none;
+                                    }
+                                }
+
+                                @media (max-width: 600px) {
+                                    padding-left: 0;
+                                }
+                            }
+
+                            &:last-of-type {
+                                padding-right: 128px;
+
+                                &::before {
+                                    content: '';
+                                    width: 170px;
+                                    height: 170px;
+                                    background: url('/src/img/stickers/pa-big-sticker.png') no-repeat 50%;
+                                    background-size: contain;
+                                    position: absolute;
+                                    right: 0;
+                                    bottom: -12px;
+                                    z-index: 0;
+                                    pointer-events: none;
+
+                                    @media (max-width: 600px) {
+                                        // z-index: 2;
+                                        // right: 1px;
+                                        // top: -46px;
+                                        // bottom: auto;
+                                        // left: auto;
+                                        // width: 150px;
+
+                                        display: none;
+                                    }
+                                }
+
+                                @media (max-width: 600px) {
+                                    padding-right: 0;
+                                }
+                            }
+
+                            input {
+                                appearance: none;
+                                background: transparent;
+                                border: none;
+                                display: none;
+
+                                &:checked + label {
+                                    background: $dream-yellow;
+                                    box-shadow: $box-shadow-lg;
+
+                                    .button {
+                                        background: transparent;
+                                        box-shadow: none;
+                                        border-color: $performa-black;
+                                    }
+                                }
+                            }
+                            
+                            span {
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 800;
+                                line-height: 24px; 
+                                letter-spacing: -0.48px;
+                                margin-bottom: 24px;
+
+                                &.assistant-title {
+                                    font-size: 32px;
+                                    line-height: 40px;
+                                    font-family: 'Nature', sans-serif;
+                                    font-weight: 500;
+                                    letter-spacing: -0.05px;
+                                    margin-bottom: 0;
+                                }
+                            }
+                            
+                            
+
+                        }
 
                         label {
                             font-weight: 400;
@@ -116,6 +292,11 @@
                     border-radius: 6px;
                     padding: 8px 16px;
                     background: $plus-white;
+                    width: 100%;
+
+                    &[type=text], &[type=email], &[type=tel] {
+                        max-width: 500px;
+                    }
                 }
             }
         }
@@ -133,7 +314,7 @@
 }
 
 .modal, #mailing-list-modal {
-    @media (max-width: 600px) {
+    @media (max-width: 1160px) {
         width: 100%;
         top: 20px;
         margin: 0;
@@ -148,10 +329,15 @@
             letter-spacing: -0.06rem;
         }
     }
+
+    @media (max-width: 700px) {
+        padding: 12px;
+    }
 }
 
 ::backdrop {
-    background: rgba($wallstreet-black,.6);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 13, 38, 0.60) 0%, rgba(55, 69, 98, 0.60) 100%);
+    backdrop-filter: blur(6px);
 }
 
 #call-modal {
