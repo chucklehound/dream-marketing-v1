@@ -69,40 +69,6 @@ body {
     }
 }
 
-.highlight-title {
-    @include highlightTitle;
-}
-
-.content-title {
-    max-width: 960px;
-    margin: 0 auto;
-
-    h2 {
-        margin-bottom: 24px;
-    }
-
-    p {
-        text-align: center;
-        color: $performa-black;
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 24px;
-
-        @media (prefers-color-scheme: dark) {
-            color: $light-grey;
-        }  
-
-        @media (max-width: 960px) {
-            font-size: 16px;
-            line-height: 20px;
-
-            br {
-                display: none;
-            }
-        }
-    }
-}
-
 :root .hide-on-mobile {
     @media (max-width: 500px) {
         display: none !important;
@@ -123,6 +89,12 @@ $spacing: 8px;
 @keyframes appear {
     0% { opacity: 0; transform: translate(0, -12px) }
     100% { opacity: 1; transform: translate(0,0) }
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0) translateY(-80px) rotate(0); }
+    80% { opacity: 1; transform: scale(1.02) translateY(4px) rotate(3deg); }
+    100% { opacity: 1; transform: scale(1) translateY(0) rotate(1deg); }
 }
 
 @keyframes fade-in {
@@ -749,15 +721,18 @@ main {
     position: relative;
     z-index: 2;
     gap: 48px;
-    padding: 0 0 64px;
+    padding: 0 16px 64px;
 
-    &.pinch-footer {
-        padding-bottom: 0;
-
-        section:last-of-type {
-            padding-bottom: 0;
-        }
+    @media (min-width: 900px) {
+        padding-left: 32px;
+        padding-right: 32px;
     }
+
+    @media (min-width: 1390px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
 
     @media (min-width: 1024px) {
         gap: 64px;
@@ -1853,9 +1828,20 @@ section.content-panels {
         font-weight: 600;
         line-height: 60px; /* 115.385% */
         letter-spacing: -1.04px;
+        margin-bottom: 16px;
 
         s {
             color: $light-grey;
+        }
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 28px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+            line-height: 22px;
         }
     }
 
@@ -1868,10 +1854,42 @@ section.content-panels {
 
     .wow-content {
         padding: 24px;
-        margin: 24px 0;
+        margin: 48px 0;
         border-radius: 44px;
         background: $classic-yellow;
         min-height: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 900px) {
+            padding-top: 128px;
+            padding-bottom: 128px;
+        }
+
+        .chats {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            svg {
+                transform: translateX(-96px) rotate(-2deg) scale(1.1);
+                position: relative;
+
+                &:nth-of-type(2) {
+                    transform: translateX(-32px) rotate(1deg) scale(1.1);
+                }
+
+                &:nth-of-type(3) {
+                    transform: translateX(32px) rotate(2deg) scale(1.1);
+                }
+
+                &:nth-of-type(4) {
+                    transform: translateX(96px) rotate(-1deg) scale(1.1);
+                }
+            }
+
+        }
     }
 
     .agent-panels {
@@ -1967,6 +1985,7 @@ user-select: none;
 -webkit-user-drag: none;
 cursor: grab;
 }
+
 
 
 .sticker:active {
