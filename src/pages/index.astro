@@ -21,6 +21,10 @@ import formSticker from "/src/img/stickers/form.png";
 import emailSticker from "/src/img/stickers/email-notif.png";
 import messagesSticker from "/src/img/stickers/messages.png";
 import campaignSticker from "/src/img/stickers/campaign.png";
+import receiptSticker from "/src/img/stickers/receipt.png";
+import mapSticker from '/src/img/stickers/map.png';
+import searchSticker from '/src/img/stickers/search.png';
+import crmSticker from '/src/img/stickers/crm.png';
 
 import featureSticker1 from '/src/img/stickers/feature1.png';
 import featureSticker2 from '/src/img/stickers/feature2.png';
@@ -43,9 +47,23 @@ import Chats2Alex from '/src/img/chats/chatAlex2.svg';
 import Chats3Alex from '/src/img/chats/chatAlex3.svg';
 import Chats4Alex from '/src/img/chats/chatAlex4.svg';
 
+import Chats0Charlie from '/src/img/chats/chatBenB0.svg';
+import Chats1Charlie from '/src/img/chats/chatBenB1.svg';
+import Chats2Charlie from '/src/img/chats/chatBenB2.svg';
+import Chats3Charlie from '/src/img/chats/chatBenB3.svg';
+import Chats4Charlie from '/src/img/chats/chatBenB4.svg';
+
+import Chats0PPP from '/src/img/chats/chatBenC0.svg';
+import Chats1PPP from '/src/img/chats/chatBenC1.svg';
+import Chats2PPP from '/src/img/chats/chatBenC2.svg';
+import Chats3PPP from '/src/img/chats/chatBenC3.svg';
+import Chats4PPP from '/src/img/chats/chatBenC4.svg';
+
 import OwnerBen from '/src/img/chats/agentBen.png';
 import OwnerChris from '/src/img/chats/agentChris.png';
 import OwnerAlex from '/src/img/chats/agentAlex.png';
+import OwnerCharlie from '/src/img/chats/agentCharlie.png';
+import OwnerPPP from '/src/img/chats/agentPPP.png';
 
 ---
 
@@ -74,7 +92,8 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
       <article>
         <h4>High fidelity employees</h4>
         <h2>Proactive AI assistants at the edge of intelligence</h2>
-        <p>Our assistants are powered by the best technology, but they also have the tools and proactivity to execute like a person does.</p>
+        <p>Powered by cutting-edge technology, our assistants have the tools and proactivity to execute like a person does.</p>
+        <p>Enhanced with human helpers, they own your problems from end to end. Acting, not waiting.</p>
         <p>You could take our word for it, or we could show you some real moments.</p>
       </article>
       <div class="wow-content sticker-host customer-quote">
@@ -184,6 +203,80 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
               <div class="agent-owner">
                 <Image src={OwnerChris} alt="An avatar image of an assistant" width={160} height={160} />
                 <span>Wren, Chris's Personal Assistant</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="sticker-layer">
+              <img
+                class="sticker"
+                src={searchSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="top: 85%; left: 91%; width: 256px;"
+                data-sticker
+              />
+              <img
+                class="sticker"
+                src={crmSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="left: 8%; top: 16%; width: 256px;"
+                data-sticker
+              />
+  
+            </div>
+            <div class="chats">
+              <Chats0Charlie />
+              <Chats1Charlie />
+              <Chats2Charlie />
+              <Chats3Charlie />
+              <Chats4Charlie />
+
+              <div class="agent-owner">
+                <Image src={OwnerCharlie} alt="An avatar image of an assistant" width={160} height={160} />
+                <span>Soph, Charlie's Personal Assistant</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="sticker-layer">
+              <img
+                class="sticker"
+                src={mapSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="top: 85%; left: 91%; width: 256px;"
+                data-sticker
+              />
+              <img
+                class="sticker"
+                src={receiptSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="left: 8%; top: 16%; width: 256px;"
+                data-sticker
+              />
+  
+            </div>
+            <div class="chats">
+              <Chats0PPP />
+              <Chats1PPP />
+              <Chats2PPP />
+              <Chats3PPP />
+              <Chats4PPP />
+
+              <div class="agent-owner">
+                <Image src={OwnerPPP} alt="An avatar image of an assistant" width={160} height={160} />
+                <span>Lark, Philipp's Personal Assistant</span>
               </div>
             </div>
           </div>
@@ -357,7 +450,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
 <Footer />
 
 <Modal id="mailing-list-modal" closeLabel="Close">
-  <h2 slot="title">What assistant do you need?</h2>
+  <h2 slot="title">What assistants do you need?</h2>
   <div class="modal-form">
     <!-- Form view -->
     <form id="contactForm" class="webform" novalidate>
@@ -370,7 +463,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
           <label for="sales">
             <span class="assistant-title">Grow my business</span>
             <span>Sales Manager</span>
-            <Button class="button small secondary">Choose <span>Sales Manager</span> <ArrowCircleDark /></Button>
+            <Button class="button small secondary">Add <span>Sales Manager</span> <ArrowCircleDark /></Button>
           </label>
         </div>
         <div class="radio-option fancy-option">
@@ -378,7 +471,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
           <label for="personal-assistant">
             <span class="assistant-title">Run my life</span>
             <span>Personal Assistant</span>
-            <Button class="button small secondary">Choose <span>Personal Assistant</span> <ArrowCircleDark /></Button>
+            <Button class="button small secondary">Add <span>Personal Assistant</span> <ArrowCircleDark /></Button>
           </label>
         </div>
         <!-- <div class="radio-option">
