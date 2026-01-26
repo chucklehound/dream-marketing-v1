@@ -13,6 +13,7 @@ import salesStatue from '/src/img/statue-sales.png';
 import personalStatus from '/src/img/personal-statue.png';
 
 import ArrowCircle from '/src/img/icons/arrow-circle.svg?raw';
+import ArrowCircleDark from '/src/img/icons/arrow-circle-dark.svg';
 
 import taxiSticker from "/src/img/stickers/taxi.png";
 import calendarSticker from "/src/img/stickers/calendar.png";
@@ -57,12 +58,12 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
   <header class="hero-home index-hero">
     <div class="hero-elements main-content">
       <section class="header-text">
-        <aside class="ticker-badge">Q1 batch private sale</aside>
+        <aside class="ticker-badge">First round has been fully hired</aside>
         <h1 class="page-title">
           The assistant you’ve always been promised.
         </h1>
         <div class="actions hero-actions">
-          <Button target="" data-open-modal="mailing-list-modal">Join the waitlist <fragment set:html={ArrowCircle}/></Button>
+          <Button target="" data-open-modal="mailing-list-modal"><aside>Be first to hire</aside><span>Be first to hire the next round</span> <fragment set:html={ArrowCircle}/></Button>
         </div>
         <Image class="hero-statue" src={salesStatue} alt="A pale white statue of an assistant" width={335} height={503}/>
       </section>
@@ -73,8 +74,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
       <article>
         <h4>High fidelity employees</h4>
         <h2>Proactive AI assistants at the edge of intelligence</h2>
-        <p>Look, we get it you’ve been burned by ‘AI employees’ in the past. They promise employees, what you get is a thin ChatGPT wrapper.</p>
-        <p>Sure our assistants are powered by the best technology, but they also have the tools and proactivity to execute like a person does.</p>
+        <p>Our assistants are powered by the best technology, but they also have the tools and proactivity to execute like a person does.</p>
         <p>You could take our word for it, or we could show you some real moments.</p>
       </article>
       <div class="wow-content sticker-host customer-quote">
@@ -88,7 +88,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="top: 85%; left: 90%; width: 256px;"
+                style="top: 88%; left: 91%; width: 256px;"
                 data-sticker
               />
               <img
@@ -98,7 +98,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="left: 8%; top: 22%; width: 256px;"
+                style="left: 8%; top: 16%; width: 256px;"
                 data-sticker
               />
 
@@ -123,7 +123,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="top: 85%; left: 90%; width: 256px;"
+                style="top: 85%; left: 91%; width: 256px;"
                 data-sticker
               />
               <img
@@ -133,7 +133,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="left: 8%; top: 22%; width: 256px;"
+                style="left: 8%; top: 16%; width: 256px;"
                 data-sticker
               />
   
@@ -160,7 +160,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="top: 85%; left: 90%; width: 256px;"
+                style="top: 85%; left: 91%; width: 256px;"
                 data-sticker
               />
               <img
@@ -170,7 +170,7 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
                 draggable="false"
                 loading="eager"
                 decoding="async"
-                style="left: 8%; top: 22%; width: 256px;"
+                style="left: 8%; top: 16%; width: 256px;"
                 data-sticker
               />
   
@@ -357,14 +357,47 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
 <Footer />
 
 <Modal id="mailing-list-modal" closeLabel="Close">
-  <h2 slot="title">You’re closer than you’ve ever been</h2>
-    <p>Our assistants are tailored for you. Add your information to be one of the first to hire.</p>
+  <h2 slot="title">What assistant do you need?</h2>
   <div class="modal-form">
     <!-- Form view -->
     <form id="contactForm" class="webform" novalidate>
       <!-- honeypot -->
       <input type="text" name="address" tabindex="-1" autocomplete="off" hidden />
 
+      <fieldset class="dreamie-radio-group">      
+        <div class="radio-option fancy-option">
+          <input type="checkbox" id="sales" name="dreamie" value="Head of Sales" />
+          <label for="sales">
+            <span class="assistant-title">Grow my business</span>
+            <span>Sales Manager</span>
+            <Button class="button small secondary">Choose Sales Manager  <ArrowCircleDark /></Button>
+          </label>
+        </div>
+        <div class="radio-option fancy-option">
+          <input type="checkbox" id="personal-assistant" name="dreamie" value="Personal Assistant" />
+          <label for="personal-assistant">
+            <span class="assistant-title">Run my life</span>
+            <span>Personal Assistant</span>
+            <Button class="button small secondary">Choose Personal Assistant  <ArrowCircleDark /></Button>
+          </label>
+        </div>
+        <!-- <div class="radio-option">
+          <input type="checkbox" id="finance" name="dreamie" value="Finance Manager" />
+          <label for="finance">Finance Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="checkbox" id="marketing" name="dreamie" value="Head of Marketing" />
+          <label for="marketing">Head of Marketing</label>
+        </div>
+        <div class="radio-option">
+          <input type="checkbox" id="cs" name="dreamie" value="Customer Service Manager" />
+          <label for="cs">Customer Service Manager</label>
+        </div>
+        <div class="radio-option">
+          <input type="checkbox" id="other" name="dreamie" value="Other" />
+          <label for="other">Other</label>
+        </div> -->
+      </fieldset>
       <label>
         Name
         <input type="text" name="name" autocomplete="name" required />
@@ -386,38 +419,10 @@ import OwnerAlex from '/src/img/chats/agentAlex.png';
       </label>
       <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
 
-      <fieldset class="dreamie-radio-group">
-        <legend>Which employees are you most excited by? <span class="muted">(pick all that apply)</span></legend>
-      
-        <div class="radio-option">
-          <input type="checkbox" id="personal-assistant" name="dreamie" value="Personal Assistant" />
-          <label for="personal-assistant">Personal Assistant</label>
-        </div>
-        <div class="radio-option">
-          <input type="checkbox" id="sales" name="dreamie" value="Head of Sales" />
-          <label for="sales">Head of Sales</label>
-        </div>
-        <div class="radio-option">
-          <input type="checkbox" id="finance" name="dreamie" value="Finance Manager" />
-          <label for="finance">Finance Manager</label>
-        </div>
-        <div class="radio-option">
-          <input type="checkbox" id="marketing" name="dreamie" value="Head of Marketing" />
-          <label for="marketing">Head of Marketing</label>
-        </div>
-        <div class="radio-option">
-          <input type="checkbox" id="cs" name="dreamie" value="Customer Service Manager" />
-          <label for="cs">Customer Service Manager</label>
-        </div>
-        <div class="radio-option">
-          <input type="checkbox" id="other" name="dreamie" value="Other" />
-          <label for="other">Other</label>
-        </div>
-      </fieldset>
       
 
-      <button type="submit" class="button secondary" id="submitBtn" aria-live="polite">
-        Get updates
+      <button type="submit" class="button primary" id="submitBtn" aria-live="polite">
+        Join the waitlist for the next round
       </button>
 
       <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>

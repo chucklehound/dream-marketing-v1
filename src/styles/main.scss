@@ -234,6 +234,31 @@ header {
             .button {
                 padding-right: 12px;
                 gap: 32px;
+
+                span {
+                    color: $plus-white;
+                    font-weight: 500;
+                    font-size: 16px;
+                    letter-spacing: -0.02px;
+                }
+
+                aside {
+                    font-weight: 500;
+                    font-size: 16px;
+                    letter-spacing: -0.02px;
+                }
+
+                @media (min-width: 701px) {
+                    aside {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 700px) {
+                    span {
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -504,7 +529,7 @@ header {
             padding-left: 0;
             padding-right: 0;
         }
-        
+
         h1 {
             max-width: 1270px;
             font-size: 44px;
@@ -1673,28 +1698,37 @@ section.content-panels {
             gap: 16px;
             padding-top: 16px;
 
-            @media (max-width: 760px) {
-                transform: scale(0.85);
+            @media (max-width: 700px) {
+                transform: scale(0.8);
             }
 
+            
             svg {
                 transform: translateX(-6vw) rotate(-2deg) scale(1.1);
                 position: relative;
-
+                
                 &:nth-of-type(2) {
                     transform: translateX(-3vw) rotate(1deg) scale(1.1);
                 }
-
+                
                 &:nth-of-type(3) {
                     transform: translateX(3vw) rotate(2deg) scale(1.1);
                 }
-
+                
                 &:nth-of-type(4) {
                     transform: translateX(6vw) rotate(-1deg) scale(1.1);
                 }
-
+                
                 &:nth-of-type(5) {
                     transform: translateX(9vw) rotate(-2deg) scale(1.1);
+                }
+            }
+
+            @media (max-width: 760px) {
+                gap: 0;
+
+                svg {
+                    max-width: 100%;
                 }
             }
         }
@@ -1898,8 +1932,11 @@ cursor: grab;
     align-items: center;
 
     @media (max-width: 768px) {
+        padding: 32px 8px 96px 8px;
+
+
         .sticker {
-            max-width: 160px;
+            max-width: 128px;
         }
     }
   }
