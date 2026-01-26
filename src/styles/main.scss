@@ -56,6 +56,7 @@ $box-shadow-lg: 0px 16px 24px 0px rgba($wallstreet-black, .18), 0px 2px 4px 0px 
 
 body {
     background: linear-gradient(0deg, rgba(255, 254, 252, 0.95) 0%, rgba(255, 254, 252, 0.95) 100%), linear-gradient(141deg, #F7F3ED 0%, #97D5FC 21.99%, #F69DB0 43.98%, #FFD601 66.63%);
+    background-attachment: fixed;
     font-family: 'Geist', sans-serif;
     color: $wallstreet-black;
     margin: 0;
@@ -1568,69 +1569,7 @@ ul.all-posts {
     }
 }
 
-/* Keep your existing styles. These are just the carousel bits. */
 
-.customer-quote .quote-body { 
-    position: relative; 
-    padding: 64px 0; 
-    width: 100%; 
-
-    @media (max-width: 700px) {
-        padding: 40px 0;
-    }
-}
-.customer-quote .quote-viewport { overflow: hidden; width: 100%; }
-
-.customer-quote .quote-track {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.customer-quote .quote-track::-webkit-scrollbar { display: none; }
-
-.customer-quote .quote-slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 16px;
-
-    .pro-tag {
-        font-size: 14px;
-        line-height: 18px;
-        font-weight: 500;
-        padding: 4px 12px;
-        border-radius: 24px;
-        background: $quadra-grey;
-        color: $performa-black;
-        display: inline-block;
-        margin: 0 4px 12px;
-    }
-
-    img {
-        max-height: 48px;
-        max-width: 240px;
-        width: auto;
-        object-fit: contain;
-        margin: 12px auto 0;
-    }
-}
-
-/* Your existing typography for blockquote/cite can remain.
-   This just stabilises height so the dots don’t jump. */
-.customer-quote .quote-slide blockquote { margin: 0; min-height: 8lh; }
-
-.customer-quote .quote-dots {
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 1rem;              /* inside the box underneath the quote */
-}
 
 @keyframes backgroundGrow {
     0% { background-position: 0 0; }
@@ -1663,109 +1602,6 @@ ul.all-posts {
 
 @media (prefers-reduced-motion: reduce) {
   .customer-quote .quote-track { scroll-behavior: auto; }
-}
-
-table.how-works-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    max-width: 840px;
-    margin: 32px auto 0;
-
-    thead {
-        position: sticky;
-        top: 68px;
-        background: $classic-yellow;
-        border-bottom: 1px solid rgba($wallstreet-black, .3);
-
-        @media (prefers-color-scheme: dark) {
-            background: $wallstreet-black;
-            border-color: $performa-black;
-        }
-
-        @media (max-width: 700px) {
-            top: 64px;
-        } 
-    }
-
-    th, td {
-        padding: 12px;
-        text-align: center;
-    }
-
-    th {
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 32px; /* 133.333% */
-        letter-spacing: -0.24px;
-        color: $wallstreet-black;
-
-        @media (prefers-color-scheme: dark) {
-            color: $plus-white;
-        }
-    }
-
-    td {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 20px; /* 125% */
-        letter-spacing: 0.16px;
-        padding: 24px 12px;
-        border-bottom: 1px solid $light-grey;
-        color: $performa-black;
-
-        @media (prefers-color-scheme: dark) {
-            color: $light-grey;
-            border-color: $performa-black;
-        }
-
-        &:nth-of-type(2n) {
-            font-weight: 500;
-            color: $wallstreet-black;
-
-            @media (prefers-color-scheme: dark) {
-                color: $plus-white;
-            }
-        }
-    }
-
-    @media (max-width: 800px) {
-        th {
-            font-size: 20px;
-            line-height: 24px;
-        }
-
-        td {
-            font-size: 14px;
-            line-height: 20px;
-        }
-    }
-}
-.referral-header {
-    position: relative;
-    
-    @media (max-width: 700px) {
-        overflow: hidden;
-    }
-
-    img {
-        margin: auto;
-    }
-
-    &:after {
-        content: '';
-        display: block;
-        width: 600px;
-        height: 244px;
-        background: url('/src/img/sunburst.svg') no-repeat center;
-        background-size: cover;
-        position: absolute;
-        bottom: 48px;
-        left: 50%;
-        margin-left: -300px;
-        z-index: -1;
-    }
 }
 
 .conversation-box {
@@ -1814,11 +1650,16 @@ section.content-panels {
 
     h4 {
         color: $sawtooth-blue;
-        font-size: 16px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 600;
-        line-height: 20px;
+        line-height: 28px;
         letter-spacing: -0.32px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+            line-height: 24px;
+        }
     }
 
     h2 {
@@ -1859,8 +1700,13 @@ section.content-panels {
         background: $classic-yellow;
         min-height: 320px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        &.customer-quote {
+            padding: 0;
+        }
 
         @media (max-width: 900px) {
             padding-top: 128px;
@@ -1870,25 +1716,53 @@ section.content-panels {
         .chats {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             gap: 16px;
 
             svg {
-                transform: translateX(-96px) rotate(-2deg) scale(1.1);
+                transform: translateX(-6vw) rotate(-2deg) scale(1.1);
                 position: relative;
 
                 &:nth-of-type(2) {
-                    transform: translateX(-32px) rotate(1deg) scale(1.1);
+                    transform: translateX(-3vw) rotate(1deg) scale(1.1);
                 }
 
                 &:nth-of-type(3) {
-                    transform: translateX(32px) rotate(2deg) scale(1.1);
+                    transform: translateX(3vw) rotate(2deg) scale(1.1);
                 }
 
                 &:nth-of-type(4) {
-                    transform: translateX(96px) rotate(-1deg) scale(1.1);
+                    transform: translateX(6vw) rotate(-1deg) scale(1.1);
                 }
             }
 
+        }
+    }
+
+    .agent-owner {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        margin: 24px auto 0;
+        border-radius: 24px;
+        transform: rotate(-1deg);
+        padding: 4px;
+        width: auto;
+        background: white;
+        border: 0.5px solid $quadra-grey;
+        box-shadow: 0.5px 0.5px 1px rgba($wallstreet-black, .2);
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+        
+        span {
+            font-weight: 500;
+            font-size: 18px;
+            padding-right: 16px;
+            color: $wallstreet-black;
         }
     }
 
@@ -1991,3 +1865,98 @@ cursor: grab;
 .sticker:active {
     cursor: grabbing;
 }
+
+
+.customer-quote .quote-body { 
+    position: relative; 
+    padding: 64px 0; 
+    width: 100%; 
+  
+    @media (max-width: 700px) {
+      padding: 40px 0;
+    }
+  }
+  
+  .customer-quote .quote-track {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 44px;
+
+    width: 100%;
+    max-width: 100%;
+  }
+  .customer-quote .quote-track::-webkit-scrollbar { display: none; }
+  
+  .customer-quote .quote-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    padding: 24px 32px 96px 32px;  
+    position: relative; // anchor sticker overlay
+    display: flex;     // don't center the whole scene
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Sticker overlay */
+  
+  /* Content under overlay */
+  .customer-quote .quote-slide .chats {
+    position: relative;
+    z-index: 1;
+  }
+
+  .customer-quote .sticker-layer {
+    overflow: hidden;
+  }
+  
+  /* Old quote-only stabiliser: keep only if you still have blockquotes in chats */
+  .customer-quote .quote-slide blockquote { margin: 0; min-height: 8lh; }
+  
+  .customer-quote .quote-dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    position: relative;
+    top: -48px;
+    height: 0;
+  }
+  
+  @keyframes backgroundGrow {
+    0% { background-position: 0 0; }
+    100% { background-position: 24px 0; }
+  }
+  
+  .customer-quote .quote-dots button {
+    width: 16px; 
+    height: 16px; 
+    border-radius: 999px; 
+    border: 0; 
+    padding: 0;
+    transition: width .3s ease;
+    background: $plus-white; 
+    box-shadow: 0 0 0 1px $light-grey; 
+    cursor: pointer; 
+    background: linear-gradient(to right, $plus-white 0%, $plus-white 49.5%, rgba($wallstreet-black, .8) 49.5%, rgba($wallstreet-black, .8) 100%);
+    background-size: 200%;
+  
+    @media (prefers-color-scheme: dark) {
+      background-color: $wallstreet-black;
+      background-image: linear-gradient(to right, $wallstreet-black 0%, $wallstreet-black 49.5%, rgba($plus-white, .8) 49.5%, rgba($plus-white, .8) 100%);
+      box-shadow: 0 0 0 1px $plus-white; 
+    }
+  }
+  
+  .customer-quote .quote-dots button[aria-current="true"] {
+    animation: backgroundGrow 6.2s linear 1;
+    box-shadow: 0 0 0 1px rgba($wallstreet-black, .6);
+    width: 32px;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .customer-quote .quote-track { scroll-behavior: auto; }
+  }

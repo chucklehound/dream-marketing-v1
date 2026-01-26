@@ -16,14 +16,32 @@ import ArrowCircle from '/src/img/icons/arrow-circle.svg?raw';
 
 import taxiSticker from "/src/img/stickers/taxi.png";
 import calendarSticker from "/src/img/stickers/calendar.png";
+import formSticker from "/src/img/stickers/form.png";
 
 import featureSticker1 from '/src/img/stickers/feature1.png';
+import featureSticker2 from '/src/img/stickers/feature2.png';
+import featureSticker3 from '/src/img/stickers/feature3.png';
+import featureSticker4 from '/src/img/stickers/feature4.png';
 
 import Chats0Ben from '/src/img/chats/chatben0.svg';
 import Chats1Ben from '/src/img/chats/chatben1.svg';
 import Chats2Ben from '/src/img/chats/chatben2.svg';
 import Chats3Ben from '/src/img/chats/chatben3.svg';
 
+import Chats0Chris from '/src/img/chats/chatChris0.svg';
+import Chats1Chris from '/src/img/chats/chatChris1.svg';
+import Chats2Chris from '/src/img/chats/chatChris2.svg';
+import Chats3Chris from '/src/img/chats/chatChris3.svg';
+
+import Chats0Alex from '/src/img/chats/chatAlex0.svg';
+import Chats1Alex from '/src/img/chats/chatAlex1.svg';
+import Chats2Alex from '/src/img/chats/chatAlex2.svg';
+import Chats3Alex from '/src/img/chats/chatAlex3.svg';
+import Chats4Alex from '/src/img/chats/chatAlex4.svg';
+
+import OwnerBen from '/src/img/chats/agentBen.png';
+import OwnerChris from '/src/img/chats/agentChris.png';
+import OwnerAlex from '/src/img/chats/agentAlex.png';
 
 ---
 
@@ -56,37 +74,121 @@ import Chats3Ben from '/src/img/chats/chatben3.svg';
         <p>Sure our assistants are powered by the best technology, but they also have the tools and proactivity to execute like a person does.</p>
         <p>You could take our word for it, or we could show you some real moments.</p>
       </article>
-      <div class="wow-content sticker-host">
-        <div class="sticker-layer">
-          <img
-            class="sticker"
-            src={taxiSticker.src}
-            alt=""
-            draggable="false"
-            loading="eager"
-            decoding="async"
-            style="top: 85%; left: 95%; width: 256px;"
-            data-sticker
-          />
-          <img
-            class="sticker"
-            src={calendarSticker.src}
-            alt=""
-            draggable="false"
-            loading="eager"
-            decoding="async"
-            style="left: 5%; top: 18%; width: 256px;"
-            data-sticker
-          />
+      <div class="wow-content sticker-host customer-quote">
+        <div class="quote-track">
+          <div class="quote-slide">
+            <div class="sticker-layer">
+              <img
+                class="sticker"
+                src={taxiSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="top: 85%; left: 90%; width: 256px;"
+                data-sticker
+              />
+              <img
+                class="sticker"
+                src={calendarSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="left: 8%; top: 22%; width: 256px;"
+                data-sticker
+              />
 
+            </div>
+            <div class="chats">
+              <Chats0Ben />
+              <Chats1Ben />
+              <Chats2Ben />
+              <Chats3Ben />
+              <div class="agent-owner">
+                <Image src={OwnerBen} alt="An avatar image of an assistant" width={160} height={160} />
+                <span>Pink, Ben's Personal Assistant</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="sticker-layer">
+              <img
+                class="sticker"
+                src={formSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="top: 85%; left: 90%; width: 256px;"
+                data-sticker
+              />
+              <img
+                class="sticker"
+                src={calendarSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="left: 8%; top: 22%; width: 256px;"
+                data-sticker
+              />
+  
+            </div>
+            <div class="chats">
+              <Chats0Alex />
+              <Chats1Alex />
+              <Chats2Alex />
+              <Chats3Alex />
+              <Chats4Alex />
+
+              <div class="agent-owner">
+                <Image src={OwnerAlex} alt="An avatar image of an assistant" width={160} height={160} />
+                <span>Taffy, Alex's Sales Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote-slide">
+            <div class="sticker-layer">
+              <img
+                class="sticker"
+                src={formSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="top: 85%; left: 90%; width: 256px;"
+                data-sticker
+              />
+              <img
+                class="sticker"
+                src={calendarSticker.src}
+                alt=""
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                style="left: 8%; top: 22%; width: 256px;"
+                data-sticker
+              />
+  
+            </div>
+            <div class="chats">
+              <Chats0Chris />
+              <Chats1Chris />
+              <Chats2Chris />
+              <Chats3Chris />
+
+              <div class="agent-owner">
+                <Image src={OwnerChris} alt="An avatar image of an assistant" width={160} height={160} />
+                <span>Wren, Chris's Personal Assistant</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="chats">
-          <Chats0Ben />
-          <Chats1Ben />
-          <Chats2Ben />
-          <Chats3Ben />
-        </div>
+        
+        <div class="quote-dots" aria-label="Slide pagination"></div>
       </div>
+    </div>
     </section>
 
     <section class="content-panels">
@@ -118,7 +220,7 @@ import Chats3Ben from '/src/img/chats/chatben3.svg';
             <div class="content-box">
               <img
               class="sticker"
-              src={featureSticker1.src}
+              src={featureSticker2.src}
               alt=""
               draggable="false"
               loading="eager"
@@ -134,7 +236,7 @@ import Chats3Ben from '/src/img/chats/chatben3.svg';
             <div class="content-box">
               <img
               class="sticker"
-              src={featureSticker1.src}
+              src={featureSticker3.src}
               alt=""
               draggable="false"
               loading="eager"
@@ -150,7 +252,7 @@ import Chats3Ben from '/src/img/chats/chatben3.svg';
             <div class="content-box">
               <img
               class="sticker"
-              src={featureSticker1.src}
+              src={featureSticker4.src}
               alt=""
               draggable="false"
               loading="eager"
@@ -510,7 +612,144 @@ import Chats3Ben from '/src/img/chats/chatben3.svg';
 })();
   </script>
   
-
+  <script>
+    (function () {
+      // Your current markup: .customer-quote is the carousel root
+      const root = document.querySelector('.customer-quote');
+      if (!root) return;
+  
+      const track = root.querySelector('.quote-track');
+      const slides = Array.from(root.querySelectorAll('.quote-slide'));
+      if (!track || !slides.length) return;
+  
+      // Dots are OUTSIDE .customer-quote in your HTML, so find them as a sibling first
+      const dotsWrap =
+        root.parentElement?.querySelector(':scope > .quote-dots') ||
+        root.nextElementSibling?.classList?.contains('quote-dots')
+          ? root.nextElementSibling
+          : document.querySelector('.quote-dots');
+  
+      if (!dotsWrap) return;
+  
+      // Build dots (reset first)
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Go to quote ${i + 1}`);
+        b.addEventListener('click', () => {
+          goTo(i, true);
+          resetCycle();
+        });
+        dotsWrap.appendChild(b);
+      });
+      const dots = Array.from(dotsWrap.querySelectorAll('button'));
+  
+      let idx = 0;
+      const autoMs = 6000;
+      let timer = null;
+      let programmaticScroll = false;
+  
+      function updateDots(i) {
+        dots.forEach((d, k) =>
+          d.setAttribute('aria-current', k === i ? 'true' : 'false')
+        );
+      }
+  
+      function goTo(i, smooth = true) {
+        idx = (i + slides.length) % slides.length;
+        programmaticScroll = true;
+        track.scrollTo({
+          left: slides[idx].offsetLeft,
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+        updateDots(idx);
+      }
+  
+      // IntersectionObserver keeps idx in sync if user drags
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && e.intersectionRatio > 0.6) {
+              const n = slides.indexOf(e.target);
+              if (n !== -1) {
+                idx = n;
+                updateDots(idx);
+              }
+            }
+          });
+        },
+        { root: track, threshold: [0.6] }
+      );
+      slides.forEach((s) => io.observe(s));
+  
+      function scheduleNext() {
+        clearNext();
+        timer = window.setTimeout(() => {
+          goTo(idx + 1, true);
+          waitForScrollEnd().then(() => {
+            programmaticScroll = false;
+            scheduleNext();
+          });
+        }, autoMs);
+      }
+  
+      function clearNext() {
+        if (timer) clearTimeout(timer);
+        timer = null;
+      }
+  
+      function resetCycle() {
+        clearNext();
+        scheduleNext();
+      }
+  
+      function waitForScrollEnd() {
+        if ('onscrollend' in window) {
+          return new Promise((resolve) => {
+            const handler = () => {
+              track.removeEventListener('scrollend', handler);
+              resolve();
+            };
+            track.addEventListener('scrollend', handler, { once: true });
+          });
+        }
+        return new Promise((resolve) => {
+          let t;
+          const onScroll = () => {
+            if (!programmaticScroll) return;
+            clearTimeout(t);
+            t = window.setTimeout(() => {
+              track.removeEventListener('scroll', onScroll);
+              resolve();
+            }, 150);
+          };
+          track.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        });
+      }
+  
+      // User manual scroll: reset cycle after they stop
+      let manualDebounce;
+      track.addEventListener(
+        'scroll',
+        () => {
+          if (programmaticScroll) return;
+          clearNext();
+          clearTimeout(manualDebounce);
+          manualDebounce = window.setTimeout(() => {
+            scheduleNext();
+          }, 800);
+        },
+        { passive: true }
+      );
+  
+      // Init
+      goTo(0, false);
+      programmaticScroll = false;
+      scheduleNext();
+    })();
+  </script>
 </Modal>
 
 </Layout>
