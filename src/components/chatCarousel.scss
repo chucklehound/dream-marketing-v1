@@ -112,7 +112,7 @@
         
         
         .cc__row.is-mounted {
-        display: grid; /* or flex if you prefer */
+        display: flex;
         }
         
         
@@ -152,11 +152,14 @@
   }
   
   .cc__sticker {
-    width: clamp(22px, 4vw, 34px);
+    width: clamp(96px, 4vw, 128px);
     height: auto;
-    align-self: start;
-    margin-top: 2px;
-    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+    position: absolute;
+    right: 0;
+    top: 0%;
+    transform: rotate(1deg);
+    margin-top: -12px;
+    z-index: 2;
   }
   
   /* ACTIVE SEQUENCE STATES */
