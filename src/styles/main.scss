@@ -578,6 +578,13 @@ header {
             margin-bottom: 32px;
             font-weight: 500;
             padding-right: 64px;
+
+            @media (min-width: 960px) {
+                font-size: 22px;
+                line-height: 28px;
+                margin-top: 12px;
+                opacity: 0.9;
+            }
         }
 
         .hero-statue {
