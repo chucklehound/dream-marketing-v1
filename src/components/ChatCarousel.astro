@@ -19,6 +19,7 @@ export type Slide = {
   nameChip: string;
   characterSrc: string;
   characterAlt?: string;
+  avatarSrc?: string;
   bubbles: Bubble[];
 };
 
@@ -28,7 +29,7 @@ const {
   heroHoldMs = 2000,
   heroFadeMs = 500,
   bubbleStaggerMs = 1500,
-  bubbleFadeMs = 1500, // used in JS + data attribute
+  bubbleFadeMs = 1500,
   endHoldMs = 2000,
   startIndex = 0,
   ariaLabel = "Chat carousel",
@@ -61,7 +62,7 @@ const {
     <div class="cc__track">
       {slides.map((s, slideIndex) => (
         <article class="cc__slide" data-slide data-slide-index={slideIndex} aria-roledescription="slide">
-          {/* HERO LAYER */}
+          {/* HERO MODULE (chips + character as one unit) */}
           <div class="cc__hero" data-hero>
             <div class="cc__chip cc__chip--top">{s.heroChip}</div>
 
@@ -75,7 +76,18 @@ const {
               />
             </div>
 
-            <div class="cc__chip cc__chip--name">{s.nameChip}</div>
+            <div class="cc__chip cc__chip--name">
+              {s.avatarSrc ? (
+                <img
+                  class="cc__avatar"
+                  src={s.avatarSrc}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : null}
+              {s.nameChip}
+            </div>
           </div>
 
           {/* CHAT LAYER */}
@@ -138,7 +150,7 @@ const {
       if (!root) return;
 
       const track = root.querySelector(".cc__track");
-      const slides = Array.from(root.querySelectorAll("[data-slide]"));
+      const slideEls = Array.from(root.querySelectorAll("[data-slide]"));
       const dots = Array.from(root.querySelectorAll("[data-dot]"));
       const prevBtn = root.querySelector("[data-prev]");
       const nextBtn = root.querySelector("[data-next]");
@@ -149,13 +161,13 @@ const {
       const bubbleStaggerMs = Number(root.dataset.bubbleStagger) || 1500;
       const bubbleFadeMs = Number(root.dataset.bubbleFade) || 1500;
       const endHoldMs = Number(root.dataset.endHold) || 2000;
-      const startIndex = Math.min(Math.max(Number(root.dataset.startIndex) || 0, 0), slides.length - 1);
+      const startIndex = Math.min(
+        Math.max(Number(root.dataset.startIndex) || 0, 0),
+        slideEls.length - 1
+      );
 
       let index = startIndex;
       let timers = [];
-      let isPointerDown = false;
-      let startX = 0;
-      let currentX = 0;
 
       const clearTimers = () => {
         timers.forEach((t) => clearTimeout(t));
@@ -196,26 +208,24 @@ const {
 
       const mountAndAnimateRow = (row, slideEl) => {
         row.classList.add("is-mounted");
-        // ensure transition reliably fires after display flips on
-        row.offsetHeight;
+        row.offsetHeight; // force reflow so transition fires
         row.classList.add("is-visible");
 
-        // update immediately after layout
         requestAnimationFrame(() => updateChatOffset(slideEl));
 
-        // update again when any images (stickers) finish loading
+        // if sticker loads later, update offset
         const imgs = row.querySelectorAll("img");
         imgs.forEach((img) => {
           if (!img.complete) img.addEventListener("load", () => updateChatOffset(slideEl), { once: true });
         });
 
-        // and once more after the fade duration (fonts/layout settling)
+        // one more pass after fade
         setTimeout(() => updateChatOffset(slideEl), Math.max(0, bubbleFadeMs - 16));
       };
 
       const runSequence = (slideEl) => {
         clearTimers();
-        slides.forEach((s) => resetSlideVisuals(s));
+        slideEls.forEach((s) => resetSlideVisuals(s));
 
         const t1 = setTimeout(() => {
           slideEl.classList.add("is-hero-fading");
@@ -244,59 +254,27 @@ const {
         timers.push(t2);
       };
 
-      const goTo = (next, fromAuto = false) => {
-        if (!slides.length) return;
+      const goTo = (next, _fromAuto = false) => {
+        if (!slideEls.length) return;
 
-        if (next < 0) next = slides.length - 1;
-        if (next >= slides.length) next = 0;
+        if (next < 0) next = slideEls.length - 1;
+        if (next >= slideEls.length) next = 0;
 
         index = next;
         setTrack(index, true);
         setDotState(index);
-        runSequence(slides[index]);
+        runSequence(slideEls[index]);
       };
 
-      // Buttons + dots
+      // Controls ONLY (no drag/swipe). Clicking chat does nothing.
       prevBtn?.addEventListener("click", () => goTo(index - 1));
       nextBtn?.addEventListener("click", () => goTo(index + 1));
       dots.forEach((d) => d.addEventListener("click", () => goTo(Number(d.dataset.dotIndex || "0"))));
 
-      // Swipe / drag (simple)
-      const viewport = root.querySelector(".cc__viewport");
-      const onDown = (e) => {
-        isPointerDown = true;
-        startX = "touches" in e ? e.touches[0].clientX : e.clientX;
-        currentX = startX;
-        clearTimers();
-      };
-      const onMove = (e) => {
-        if (!isPointerDown) return;
-        currentX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      };
-      const onUp = () => {
-        if (!isPointerDown) return;
-        isPointerDown = false;
-
-        const dx = currentX - startX;
-        const threshold = 40;
-
-        if (dx > threshold) goTo(index - 1);
-        else if (dx < -threshold) goTo(index + 1);
-        else goTo(index);
-      };
-
-      viewport?.addEventListener("mousedown", onDown);
-      window.addEventListener("mousemove", onMove);
-      window.addEventListener("mouseup", onUp);
-
-      viewport?.addEventListener("touchstart", onDown, { passive: true });
-      viewport?.addEventListener("touchmove", onMove, { passive: true });
-      viewport?.addEventListener("touchend", onUp);
-
       // Init
       setTrack(startIndex, false);
       setDotState(startIndex);
-      runSequence(slides[startIndex]);
+      runSequence(slideEls[startIndex]);
     })();
   </script>
 </section>

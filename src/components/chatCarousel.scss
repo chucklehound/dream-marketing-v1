@@ -1,250 +1,319 @@
 @import '/src/styles/colours.scss';
 
 .cc {
-    width: 100%;
-    max-width: 1152px;
-    margin: 0 auto;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .cc__viewport {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 1px solid var(--Quadra-Grey, #EBE9E4);
-    background: linear-gradient(153deg, rgba(255, 254, 252, 0.10) 0%, rgba(151, 213, 252, 0.10) 33%, rgba(246, 157, 176, 0.10) 66%, rgba(255, 214, 1, 0.10) 100%), rgba(235, 233, 228, 0.50);
-  }
-  
-  .cc__track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 100%;
-    will-change: transform;
-    transform: translate3d(0,0,0);
-    transition: transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1);
-  }
-  
-  .cc__slide {
-    height: clamp(420px, 80vh, 900px);
-    padding: 0;
-    position: relative;
-    display: flex;
-    flex-direction: column; 
-  }
-  
-  /* HERO */
-  .cc__hero {
-    position: absolute;
-    inset: clamp(14px, 2.5vw, 22px);
-    display: grid;
-    gap: clamp(14px, 2vw, 20px);
-    align-content: start;
-    justify-items: center;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 500ms ease, transform 500ms ease;
-  }
-  
-  .cc__chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(15, 30, 50, 0.35);
-    background: rgba(255,255,255,0.75);
-    color: #0f1e32;
-    font-size: clamp(13px, 1.55vw, 15px);
-    line-height: 1;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-    max-width: 100%;
-    text-align: center;
-  }
-  
-  .cc__chip--top { margin-top: clamp(10px, 1.2vw, 12px); }
-  .cc__chip--name { margin-top: auto; }
-  
-  .cc__characterWrap {
-    width: min(260px, 46vw);
-    aspect-ratio: 1 / 1.08;
-    display: grid;
-    place-items: center;
-    margin-top: clamp(6px, 1vw, 10px);
-  }
-  
-  .cc__character {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.12));
-  }
-  
-  /* CHAT */
-  .cc__chat {
-    position: relative;
-    padding: 12px;
-    padding-bottom: 64px;
-  
-    flex: 1 1 auto;   // fill remaining height in the slide
-    min-height: 0;    // critical for overflow math in flex
-  
-    overflow: hidden; // mask
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 320ms ease, transform 320ms ease;
-  }
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  .cc__chatInner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transform: translateY(0);
-    will-change: transform;
-    transition: transform 380ms ease;
-    }
-  
-    .cc__row {
-        display: none;
-        opacity: 0;
-        transform: translateY(10px) scale(0.99);
-        }
-        
-        
-        .cc__row.is-mounted {
-        display: flex;
-        }
-        
-        
-        .cc__row.is-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        transition: opacity 380ms ease, transform 380ms ease;
-        }
-  
-  .cc__row.is-right {
-    justify-content: end;
-  }
-  
-  .cc__bubble {
-    display: inline-block; // shrink to content width
-    width: fit-content;
-    max-width: 90%;
-    white-space: pre-line;
-    border-radius: 8px;
-    border: 1px solid #6D94AC;
-    background: linear-gradient(90deg, #EFF3F6 0%, #CEDBE3 100%);
-    padding: 8px 12px;
+.cc__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--Quadra-Grey, #EBE9E4);
+  background: linear-gradient(
+      153deg,
+      rgba(255, 254, 252, 0.10) 0%,
+      rgba(151, 213, 252, 0.10) 33%,
+      rgba(246, 157, 176, 0.10) 66%,
+      rgba(255, 214, 1, 0.10) 100%
+    ),
+    rgba(235, 233, 228, 0.50);
+}
+
+.cc__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  transition: transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.cc__slide {
+  height: clamp(420px, 80vh, 900px);
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HERO (mobile: overlay) */
+.cc__hero {
+  position: absolute;
+  inset: clamp(14px, 2.5vw, 22px);
+  display: grid;
+  gap: 0;
+  align-content: start;
+  justify-items: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.cc__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 24px;
+    border: 1px solid var(--Performa-Black, #374562);
+    background: var(--White, #FFF);
+    box-shadow: 0 1px 2px 0 rgba(21, 38, 71, 0.20);
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    color: $wallstreet-black;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    letter-spacing: -0.16px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.cc__chip--top { margin-top: clamp(10px, 1.2vw, 12px); transform: rotate(2deg) translateY(48px); }
+.cc__chip--name { margin-top: -32px; transform: rotate(-1deg); padding: 4px 16px 4px 4px; }
+
+.cc__avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.cc__characterWrap {
+  width: min(260px, 46vw);
+  aspect-ratio: 1 / 1.08;
+  display: grid;
+  place-items: center;
+  margin-top: clamp(6px, 1vw, 10px);
+}
+
+.cc__character {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.12));
+}
+
+/* CHAT */
+.cc__chat {
+  position: relative;
+  padding: 12px;
+  padding-bottom: 64px; /* breathing room / avoids dots overlap */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 320ms ease, transform 320ms ease;
+  max-width: 640px;
+}
+
+.cc__chatInner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: translateY(0);
+  will-change: transform;
+  transition: transform 380ms ease;
+}
+
+/* rows mount -> animate */
+.cc__row {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px) scale(0.99);
+}
+
+.cc__row.is-mounted {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 100%;
+  position: relative; /* so sticker absolute anchors to the row (bubble edge) */
+}
+
+.cc__row.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 380ms ease, transform 380ms ease;
+}
+
+/* right side */
+.cc__row.is-right {
+  align-items: flex-start;   /* keep sticker aligned nicely */
+}
+
+.cc__bubble {
+  display: inline-block;
+  width: fit-content;
+  max-width: 90%;
+  white-space: pre-line;
+
+  border-radius: 8px;
+  border: 1px solid #6D94AC;
+  background: linear-gradient(90deg, #EFF3F6 0%, #CEDBE3 100%);
+  padding: 8px 12px;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: $wallstreet-black;
+
+  &.wren {
+    border-color: #B4C685;
+    background: linear-gradient(90deg, #F2F5EA 0%, #DCE3C5 100%);
   }
 
-  .cc__chatSpacer {
-    height: 32px; // or whatever bottom breathing room you want
-    flex-shrink: 0;
-    }
-  
-  .cc__row.is-right .cc__bubble {
-    background: rgba(230, 241, 255, 0.72);
+  &.taffy {
+    border-color: #799A84;
+    background: linear-gradient(90deg, #EEF2F0 0%, #D0DAD2 100%);
   }
-  
-  .cc__sticker {
-    width: clamp(96px, 4vw, 128px);
-    height: auto;
-    position: absolute;
-    right: 0;
-    top: 0%;
-    transform: rotate(1deg);
-    margin-top: -12px;
-    z-index: 2;
+}
+
+/* right bubble variant */
+.cc__row.is-right .cc__bubble {
+  background: $plus-white;
+  border-color: $light-grey;
+  margin-left: auto;
+}
+
+/* spacer ensures last visible bubble never gets clipped */
+.cc__chatSpacer {
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* sticker: positioned relative to the row, which shrink-wraps the bubble */
+.cc__sticker {
+  width: clamp(64px, 4vw, 128px);
+  height: auto;
+  top: -8px;
+  position: relative;
+  transform: rotate(1deg);
+  z-index: 2;
+}
+
+/* ACTIVE SEQUENCE STATES (mobile) */
+.cc__slide.is-hero-fading .cc__hero {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.cc__slide.is-chat-live .cc__chat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CONTROLS (inside frame) */
+.cc__controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(12px, 2.2vw, 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.cc__btn,
+.cc__dots {
+  pointer-events: auto;
+}
+
+/* dots pill */
+.cc__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba($plus-white, .6);
+  border: 1px solid $quadra-grey;
+  backdrop-filter: blur(6px);
+}
+
+.cc__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid $quadra-grey;
+  background: rgba($plus-white, .6);
+  color: $wallstreet-black;
+  font-size: 22px;
+  line-height: 1px;
+  cursor: pointer;
+}
+
+.cc__btn:active { transform: translateY(1px); }
+
+.cc__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba($wallstreet-black,.3);
+  background: rgba($wallstreet-black, .1);
+  cursor: pointer;
+  padding: 0;
+  transition: width .3s ease;
+}
+
+.cc__dot[aria-selected="true"] {
+  width: 32px;
+  background: rgba($wallstreet-black,.6);
+}
+
+/* DESKTOP LAYOUT: keep hero module left of chat, keep hero visible */
+@media (min-width: 800px) {
+  .cc__slide {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 24px;
+    padding: 22px;
   }
-  
-  /* ACTIVE SEQUENCE STATES */
-  .cc__slide.is-hero-fading .cc__hero {
-    opacity: 0;
-    transform: translateY(-6px);
+
+  .cc__hero {
+    position: relative;          /* in-flow */
+    inset: auto;
+    flex: 0 0 min(340px, 36%);   /* hero column width */
+    height: 100%;
+
+    /* keep it visible */
+    opacity: 1;
+    transform: none;
     pointer-events: none;
-  }
-  
-  .cc__slide.is-chat-live .cc__chat {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .cc__row.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 380ms ease, transform 380ms ease;
-  }
-  
-  /* ARROWS (desktop) */
-  .cc__controls {
+
+    /* no-grid preference on desktop */
     display: flex;
-    margin-top: 12px;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    justify-content: flex-start;
+    gap: 16px;
   }
 
-  
-  .cc__btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(15, 30, 50, 0.18);
-    background: rgba(255,255,255,0.75);
-    color: #0f1e32;
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  
-  .cc__btn:active { transform: translateY(1px); }
-  
-  /* PAGINATION INSIDE FRAME */
-  .cc__pagination {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: clamp(12px, 2.2vw, 16px);
-    display: flex;
-    justify-content: center;
+  /* don't fade hero on desktop */
+  .cc__slide.is-hero-fading .cc__hero {
+    opacity: 1;
+    transform: none;
     pointer-events: none;
   }
-  
-  .cc__pagination .cc__dots {
-    pointer-events: auto;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.35);
-    border: 1px solid rgba(15, 30, 50, 0.10);
-    backdrop-filter: blur(6px);
+
+  .cc__chat {
+    flex: 1 1 auto;
+    min-width: 0; /* important so bubbles wrap instead of forcing overflow */
   }
-  
-  .cc__dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(15, 30, 50, 0.22);
-    background: rgba(15, 30, 50, 0.16);
-    cursor: pointer;
-    padding: 0;
-  }
-  
-  .cc__dot[aria-selected="true"] {
-    width: 26px;
-    background: rgba(15, 30, 50, 0.45);
-  }
-  
-  /* Reduce motion */
-  @media (prefers-reduced-motion: reduce) {
-    .cc__track,
-    .cc__hero,
-    .cc__chat,
-    .cc__row { transition: none !important; }
-  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .cc__track,
+  .cc__hero,
+  .cc__chat,
+  .cc__row,
+  .cc__chatInner { transition: none !important; }
+}

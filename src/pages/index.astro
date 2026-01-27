@@ -35,6 +35,11 @@ import ChatCarousel from '../components/ChatCarousel.astro';
 
 import agentPink from '/src/img/chats/pink.png';
 import agentWren from '/src/img/chats/wren.png';
+import agentTaffy from '/src/img/chats/taffy.png';
+
+import avatarPink from '/src/img/chats/agentBen.png';
+import avatarWren from '/src/img/chats/agentChris.png';
+import avatarTaffy from '/src/img/chats/agentAlex.png';
 
 const slides = [
 {
@@ -43,6 +48,7 @@ heroChip: "Owning meeting planning, every day",
 nameChip: "Pink, Ben’s Personal Assistant",
 characterSrc: agentPink.src,
 characterAlt: "Pink character",
+avatarSrc: avatarPink.src,
 bubbles: [
 { text: "Check calendar preferences", side: "left", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
 { text: "Ok, Marcus Brody has confirmed availability on Wednesday at either 14:00 or 15:00. I’ll create and send the invite for 14:00 based on your preferences.", side: "left", role: "assistant" },
@@ -52,17 +58,33 @@ bubbles: [
 ]
 },
 {
-id: "pink-2",
+id: "wren-1",
 heroChip: "Your second brain for all admin",
 nameChip: "Wren, Chris’s Personal Assistant",
 characterSrc: agentWren.src,
 characterAlt: "Wren character",
+avatarSrc: avatarWren.src,
 bubbles: [
-{ text: "Check calendar preferences", side: "left", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
-{ text: "Ok, Marcus Brody has confirmed availability on Wednesday at either 14:00 or 15:00. I’ll create and send the invite for 14:00 based on your preferences.", side: "left", role: "assistant" },
-{ text: "I’ve sent the email to Marcus Brody to include Thursday Jan 22nd alongside Friday and Wednesday options - French time.", side: "left", role: "assistant" },
-{ text: "Marcus has accepted the meeting invite for Wednesday, January 28th at 14:00 GMT. The calendar invite has been sent with your Zoom link.\n\nThe meeting is confirmed for 30 minutes during the VentureCap summit - you mentioned you can step away from some events that day, so this should work well.", side: "left", role: "assistant" },
-{ text: "Meeting booked!", side: "left", role: "assistant", tone: "info" }
+{ text: "You’ve had an email from Calton Primary School about Drama Club. I’ve scanned the form and it’s £40 a term, and starts at 15:30. Would Charlotte like to attend? ", side: "left", role: "assistant", stickerSrc: emailSticker.src, stickerAlt: "Email sticker", className: 'wren' },
+{ text: "Yes please, can you fill the form in for me?", side: "right", role: "user", className: 'user' },
+{ text: "Great, I’ve filled in the form and drafted an email. I’ve assumed you’d be ok to pick Charlotte up as it finishes at 17:00 - your calendar is free at that time.", side: "left", role: "assistant", className: 'wren' },
+{ text: "That’s the form sent over. The club has sent over a payment link, you can find it here.", side: "left", role: "assistant", className: 'wren' },
+{ text: "Admin handled!", side: "left", role: "assistant", tone: "info", className: 'wren', stickerSrc: formSticker.src, stickerAlt: "Form sticker"  }
+]
+},
+{
+id: "taffy-1",
+heroChip: "Taking charge of campaigns",
+nameChip: "Taffy, Alex's Sales Manager",
+characterSrc: agentTaffy.src,
+characterAlt: "Taffy character",
+avatarSrc: avatarTaffy.src,
+bubbles: [
+{ text: "You’ve had an email from Calton Primary School about Drama Club. I’ve scanned the form and it’s £40 a term, and starts at 15:30. Would Charlotte like to attend? ", side: "left", role: "assistant", stickerSrc: emailSticker.src, stickerAlt: "Calendar sticker", className: 'taffy' },
+{ text: "Yes please, can you fill the form in for me?", side: "right", role: "user", className: 'user' },
+{ text: "Great, I’ve filled in the form and drafted an email. I’ve assumed you’d be ok to pick Charlotte up as it finishes at 17:00 - your calendar is free at that time.", side: "left", role: "assistant", className: 'taffy' },
+{ text: "That’s the form sent over. The club has sent over a payment link, you can find it here.", side: "left", role: "assistant", className: 'taffy' },
+{ text: "Admin handled!", side: "left", role: "assistant", tone: "info", className: 'taffy' }
 ]
 }
 ];
