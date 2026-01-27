@@ -145,9 +145,24 @@
                             flex-direction: column;
                             gap: 12px;
                             position: relative;
+                            margin-bottom: 12px;
+
+                            .fancy-option-inner {
+                                background: $plus-white;
+                                border-radius: 10px;
+                                padding: 24px;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 12px;
+                                min-height: 160px;
+
+                            }
 
                             .button {
                                 justify-content: space-between;
+                                margin-top: 24px;
+                                margin-bottom: 0;
+                                transition: opacity .2s ease;
 
                                 span {
                                     font-size: 16px;
@@ -167,14 +182,30 @@
                                 flex: 1;
                                 display: flex;
                                 border-radius: 12px;
-                                border: 2px solid #FFD601;
-                                background: linear-gradient(180deg, #F7F3ED 0%, #FFFEFC 100%);
+                                padding: 2px;
+                                background: conic-gradient(#FFD601, #EE4266,#97D5FC, #FFFEFC, #FFD601);
                                 box-shadow: $box-shadow-sm;
                                 transition: box-shadow .3s ease, background-color .3s ease;
                                 cursor: pointer;
                                 z-index: 1;
-                                width: 100%;                                
-                                padding: 24px;
+                                width: 100%;    
+                                position: relative;   
+                                
+                                &:after {
+                                    content: '';
+                                    width: 40px;
+                                    height: 40px;
+                                    background: url('/src/img/check-black.svg') no-repeat 50%;
+                                    background-size: cover;
+                                    display: block;
+                                    position: absolute;
+                                    bottom: 24px;
+                                    left: 24px;
+                                    opacity: 0;
+                                    transform: scale(0);
+                                    transform-origin: 50%;
+                                    transition: opacity .2s ease, transform .2s ease;;
+                                }
                             }
 
                             &:first-of-type {
@@ -211,6 +242,10 @@
 
                             &:last-of-type {
                                 padding-right: 128px;
+                                
+                                label {
+                                    background: conic-gradient(from -180deg, #FFD601, #EE4266,#97D5FC, #FFFEFC, #FFD601);
+                                }
 
                                 &::before {
                                     content: '';
@@ -248,13 +283,19 @@
                                 display: none;
 
                                 &:checked + label {
-                                    background: $dream-yellow;
-                                    box-shadow: $box-shadow-lg;
+
+                                    &:after {
+                                        opacity: 1;
+                                        transform: scale(1);
+                                    }
+
+                                    .fancy-option-inner {
+                                        background: rgba($plus-white, .9);
+                                        box-shadow: $box-shadow-lg;
+                                    }
 
                                     .button {
-                                        background: transparent;
-                                        box-shadow: none;
-                                        border-color: $performa-black;
+                                        opacity: 0;
                                     }
                                 }
                             }
@@ -274,6 +315,11 @@
                                     font-weight: 500;
                                     letter-spacing: -0.05px;
                                     margin-bottom: 0;
+
+                                    @media (min-width: 960px) {
+                                        font-size: 40px;
+                                        line-height: 44px;
+                                    }
                                 }
                             }
                             
