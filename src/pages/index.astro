@@ -36,10 +36,14 @@ import ChatCarousel from '../components/ChatCarousel.astro';
 import agentPink from '/src/img/chats/pink.png';
 import agentWren from '/src/img/chats/wren.png';
 import agentTaffy from '/src/img/chats/taffy.png';
+import agentSoph from '/src/img/chats/soph.png';
+import agentLark from '/src/img/chats/lark.png';
 
 import avatarPink from '/src/img/chats/agentBen.png';
 import avatarWren from '/src/img/chats/agentChris.png';
 import avatarTaffy from '/src/img/chats/agentAlex.png';
+import avatarSoph from '/src/img/chats/agentCharlie.png';
+import avatarLark from '/src/img/chats/agentPPP.png';
 
 const slides = [
 {
@@ -50,7 +54,7 @@ characterSrc: agentPink.src,
 characterAlt: "Pink character",
 avatarSrc: avatarPink.src,
 bubbles: [
-{ text: "Check calendar preferences", side: "left", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
+{ text: "Check calendar preferences", side: "left", tone: "info", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
 { text: "Ok, Marcus Brody has confirmed availability on Wednesday at either 14:00 or 15:00. I’ll create and send the invite for 14:00 based on your preferences.", side: "left", role: "assistant" },
 { text: "I’ve sent the email to Marcus Brody to include Thursday Jan 22nd alongside Friday and Wednesday options - French time.", side: "left", role: "assistant" },
 { text: "Marcus has accepted the meeting invite for Wednesday, January 28th at 14:00 GMT. The calendar invite has been sent with your Zoom link.\n\nThe meeting is confirmed for 30 minutes during the VentureCap summit - you mentioned you can step away from some events that day, so this should work well.", side: "left", role: "assistant" },
@@ -80,13 +84,49 @@ characterSrc: agentTaffy.src,
 characterAlt: "Taffy character",
 avatarSrc: avatarTaffy.src,
 bubbles: [
-{ text: "You’ve had an email from Calton Primary School about Drama Club. I’ve scanned the form and it’s £40 a term, and starts at 15:30. Would Charlotte like to attend? ", side: "left", role: "assistant", stickerSrc: emailSticker.src, stickerAlt: "Calendar sticker", className: 'taffy' },
-{ text: "Yes please, can you fill the form in for me?", side: "right", role: "user", className: 'user' },
-{ text: "Great, I’ve filled in the form and drafted an email. I’ve assumed you’d be ok to pick Charlotte up as it finishes at 17:00 - your calendar is free at that time.", side: "left", role: "assistant", className: 'taffy' },
-{ text: "That’s the form sent over. The club has sent over a payment link, you can find it here.", side: "left", role: "assistant", className: 'taffy' },
-{ text: "Admin handled!", side: "left", role: "assistant", tone: "info", className: 'taffy' }
+{ text: "Create Campaign Message Sequence", side: "left", tone: "info", role: "assistant", stickerSrc: messagesSticker.src, stickerAlt: "Message sticker", className: 'taffy' },
+{ text: "Do you have specific wording in mind for these emails, or would you like me to help structure the sequence and messaging for you?", side: "left", role: "assistant", className: 'taffy' },
+{ text: "Help structure the sequence and messaging", side: "right", role: "user", className: 'user' },
+{ text: "I'll help you structure a solid 5-7 email sequence for reaching decision makers at these speciality retailers about product samples.  I need a few product details from you first.", side: "left", role: "assistant", className: 'taffy' },
+{ text: "Can you search online for our product details for me?", side: "right", role: "user", className: 'user' },
+{ text: "I've done some digging on your brand and found everything I need to structure a strong email sequence for you.", side: "left", role: "assistant", className: 'taffy'},
+{ text: "Message sequence created!", side: "left", role: "assistant", tone: "info", className: 'taffy', stickerSrc: campaignSticker.src, stickerAlt: "Campaign sticker", }
 ]
-}
+},
+{
+id: "venn-1",
+heroChip: "Saving you hours every day",
+nameChip: "Soph, Charlie's Personal Assistant",
+characterSrc: agentSoph.src,
+characterAlt: "Soph character",
+avatarSrc: avatarSoph.src,
+bubbles: [
+{ text: "Go through my inbox and find every VC I’ve spoken to. Add them to a list with their current firm", side: "right", role: "user", stickerSrc: searchSticker.src, stickerAlt: "Search sticker", className: 'soph' },
+{ text: "Searching emails, Create ProSheet", tone: "info", side: "left", role: "assistant", className: 'soph' },
+{ text: "Done, I’ve found 233 contacts and added their up to date details.", side: "left", role: "assistant", className: 'soph' },
+{ text: "Okay, great. Now rank them based on recent statements about AI personal assistants.", side: "right", role: "user", className: 'user' },
+{ text: "Done. There are 18 who are 10/10. Want me to reach out?", side: "left", role: "assistant", className: 'soph'},
+{ text: "10 Emails drafted", side: "left", role: "assistant", tone: "info", className: 'soph' },
+{ text: "CRM updated", side: "left", role: "assistant", tone: "info", className: 'soph', stickerSrc: receiptSticker.src, stickerAlt: "Receipt sticker", }
+]
+},{
+id: "lark-1",
+heroChip: "Handling your travel headaches",
+nameChip: "Lark, Philipp's Personal Assistant",
+characterSrc: agentLark.src,
+characterAlt: "Lark character",
+avatarSrc: avatarLark.src,
+bubbles: [
+{ text: "Get quotes for a taxi transfer for my trip next week", side: "right", role: "user", stickerSrc: mapSticker.src, stickerAlt: "Map sticker", className: 'lark' },
+{ text: "Welcome Pickups has given a booking link at €35", side: "left", role: "assistant", className: 'lark' },
+{ text: "Check with local firms", side: "right", role: "user", className: 'lark' },
+{ text: "Drafting email. Translating", side: "left", tone: "info", role: "assistant", className: 'lark'},
+{ text: "Great, I’ve now received three quotes for your Istanbul transfer.\n\n1. Welcome Pickups – €29 (approx £25)\n2. Rento Transfer – $40 (approx £32)\n3. Haqqi Tours – $45 (approx £36)\n4. Al’s Taxi – €45 (approx £38)\n\nWelcome Pickups is the most competitive. Shall I book them now?", side: "left", role: "assistant", className: 'lark' },
+{ text: "Yes please", side: "right", role: "user", className: 'lark' },
+{ text: "Creating human supported task", side: "left", tone: "info", role: "assistant", className: 'lark'},
+{ text: "Travel sorted!", side: "left", role: "assistant", tone: "info", className: 'lark', stickerSrc: crmSticker.src, stickerAlt: "CRM sticker", }
+]
+},
 ];
 
 ---

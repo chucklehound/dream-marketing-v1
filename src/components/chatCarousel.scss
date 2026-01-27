@@ -39,6 +39,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (min-width: 1024px) {
+    height: clamp(400px, 75vh, 800px);
+  }
 }
 
 /* HERO (mobile: overlay) */
@@ -61,14 +65,14 @@
   justify-content: center;
   padding: 12px 16px;
   border-radius: 24px;
-    border: 1px solid var(--Performa-Black, #374562);
-    background: var(--White, #FFF);
-    box-shadow: 0 1px 2px 0 rgba(21, 38, 71, 0.20);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; /* 125% */
-    letter-spacing: -0.16px;
+  border: 1px solid var(--Performa-Black, #374562);
+  background: var(--White, #FFF);
+  box-shadow: 0 1px 2px 0 rgba(21, 38, 71, 0.20), inset -2px -1px 3px $lighter-grey;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.16px;
   max-width: 100%;
   text-align: center;
 }
@@ -76,9 +80,13 @@
 .cc__chip--top { margin-top: clamp(10px, 1.2vw, 12px); transform: rotate(2deg) translateY(48px); }
 .cc__chip--name { margin-top: -32px; transform: rotate(-1deg); padding: 4px 16px 4px 4px; }
 
+@media (max-width: 800px) {
+    .cc__chip--top { transform: rotate(2deg) translateY(16px); }
+}
+
 .cc__avatar {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 .cc__characterWrap {
@@ -129,9 +137,13 @@
 .cc__row.is-mounted {
   display: inline-flex;
   align-items: flex-start;
-  gap: 8px;
+
+  /* IMPORTANT: sticker must not affect layout */
+  gap: 0;
+
   max-width: 100%;
-  position: relative; /* so sticker absolute anchors to the row (bubble edge) */
+  position: relative;
+  overflow: visible;
 }
 
 .cc__row.is-visible {
@@ -142,7 +154,8 @@
 
 /* right side */
 .cc__row.is-right {
-  align-items: flex-start;   /* keep sticker aligned nicely */
+  align-items: flex-start; /* keep sticker aligned nicely */
+  flex-direction: row-reverse;
 }
 
 .cc__bubble {
@@ -171,29 +184,80 @@
     border-color: #799A84;
     background: linear-gradient(90deg, #EEF2F0 0%, #D0DAD2 100%);
   }
+
+  &.soph {
+    border-color: #6F69BF;
+    background: linear-gradient(90deg, #E7E6F4 0%, #C8C6E6 100%);
+  }
+
+  &.lark {
+    border-color: #BF69A6;
+    background: linear-gradient(90deg, #F3E2EE 0%, #DDB0D0 100%);
+  }
+}
+
+.cc__row[data-tone="info"] .cc__bubble {
+  font-weight: 500;
+  font-size: 14px;
 }
 
 /* right bubble variant */
 .cc__row.is-right .cc__bubble {
   background: $plus-white;
   border-color: $light-grey;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 /* spacer ensures last visible bubble never gets clipped */
 .cc__chatSpacer {
-  height: 32px;
+  height: 84px;
   flex-shrink: 0;
 }
 
-/* sticker: positioned relative to the row, which shrink-wraps the bubble */
-.cc__sticker {
-  width: clamp(64px, 4vw, 128px);
-  height: auto;
-  top: -8px;
+/* NEW: "zero-impact" sticker anchor.
+   This element should wrap the sticker IMG in markup:
+   <span class="cc__stickerAnchor"><img class="cc__sticker" .../></span>
+*/
+.cc__stickerAnchor {
   position: relative;
+  display: inline-block;
+
+  width: 0;         /* takes no horizontal space (bubble width unaffected) */
+  height: 1.2em;    /* about one text line tall (tweak if you want) */
+  flex: 0 0 auto;
+
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* sticker itself: absolute so it doesn't affect row height */
+.cc__sticker {
+  width: clamp(64px, 7vw, 128px);
+  min-width: 96px;
+  height: auto;
+
+  position: absolute;
+  left: 0px;   /* sits to the right of the bubble edge */
+  top: -16px;   /* lift a bit so it hugs the bubble */
   transform: rotate(1deg);
   z-index: 2;
+
+  @media (max-width: 600px) {
+    left: -20px;
+    top: -8px;
+    min-width: 72px;
+    transform: rotate(2deg);
+  }
+}
+
+.cc__row.is-right .cc__sticker {
+    right: -12px;
+    left: auto;
+
+    @media (max-width: 600px) {
+        right: -8px;
+        min-width: 72px;
+      }
 }
 
 /* ACTIVE SEQUENCE STATES (mobile) */
@@ -236,18 +300,22 @@
   background: rgba($plus-white, .6);
   border: 1px solid $quadra-grey;
   backdrop-filter: blur(6px);
+  box-shadow: inset 0 1px 1px rgba(252,255,255,.2);
+
 }
 
 .cc__btn {
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  border: 1px solid $quadra-grey;
+  border: 1px solid $light-grey;
   background: rgba($plus-white, .6);
+  box-shadow: inset 0 1px 1px rgba(252,255,255,.2), 0 1px 1px rgba($wallstreet-black, .1);
   color: $wallstreet-black;
   font-size: 22px;
   line-height: 1px;
   cursor: pointer;
+  backdrop-filter: blur(6px);
 }
 
 .cc__btn:active { transform: translateY(1px); }
@@ -278,17 +346,15 @@
   }
 
   .cc__hero {
-    position: relative;          /* in-flow */
+    position: relative;
     inset: auto;
-    flex: 0 0 min(340px, 36%);   /* hero column width */
+    flex: 0 0 min(340px, 36%);
     height: 100%;
 
-    /* keep it visible */
     opacity: 1;
     transform: none;
     pointer-events: none;
 
-    /* no-grid preference on desktop */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -296,7 +362,6 @@
     gap: 16px;
   }
 
-  /* don't fade hero on desktop */
   .cc__slide.is-hero-fading .cc__hero {
     opacity: 1;
     transform: none;
@@ -305,7 +370,7 @@
 
   .cc__chat {
     flex: 1 1 auto;
-    min-width: 0; /* important so bubbles wrap instead of forcing overflow */
+    min-width: 0;
   }
 }
 

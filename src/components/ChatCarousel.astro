@@ -26,11 +26,11 @@ export type Slide = {
 const {
   slides,
   auto = true,
-  heroHoldMs = 2000,
+  heroHoldMs = 1800,
   heroFadeMs = 500,
-  bubbleStaggerMs = 1500,
+  bubbleStaggerMs = 2000,
   bubbleFadeMs = 1500,
-  endHoldMs = 2000,
+  endHoldMs = 3000,
   startIndex = 0,
   ariaLabel = "Chat carousel",
 } = Astro.props as {
@@ -102,18 +102,25 @@ const {
                   data-tone={b.tone ?? ""}
                 >
                   <div class={`cc__bubble ${b.className ?? ""} ${b.tone ? `is-${b.tone}` : ""}`} data-bubble>
-                    {b.text}
-                  </div>
+                    {b.text.split('\n').map((line, i) => (
+                    <>
+                    {i > 0 && <br />}
+                    {line}
+                    </>
+                    ))}
+                    </div>
 
                   {b.stickerSrc ? (
+                    <span class="cc__stickerAnchor" aria-hidden="true">
                     <img
-                      class="cc__sticker"
-                      src={b.stickerSrc}
-                      alt={b.stickerAlt ?? ""}
-                      loading="lazy"
-                      decoding="async"
+                    class="cc__sticker"
+                    src={b.stickerSrc}
+                    alt={b.stickerAlt ?? ""}
+                    loading="lazy"
+                    decoding="async"
                     />
-                  ) : null}
+                    </span>
+                    ) : null}
                 </div>
               ))}
               <div class="cc__chatSpacer" aria-hidden="true"></div>
