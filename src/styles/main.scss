@@ -591,7 +591,10 @@ header {
             position: absolute;
             right: 12px;
             bottom: -52px;
+            transform: scale(-1, 1);
             pointer-events: none;
+            width: 320px;
+            height: auto;
 
             @media (max-width: 1119px) {
                 right: -22px;
@@ -605,7 +608,7 @@ header {
             @media (max-width: 600px) {
                 height: 320px;
                 width: auto;
-                transform: translate(40px, -48px);
+                transform: translate(40px, -48px)  scale(-1, 1);
             }
         }
 

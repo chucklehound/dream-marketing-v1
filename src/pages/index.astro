@@ -10,7 +10,7 @@ import Footer from "../components/Footer.astro";
 import Modal from "../components/Modal.astro";
 
 import salesStatue from '/src/img/statue-sales.png';
-import personalStatus from '/src/img/personal-statue.png';
+import personalStatus from '/src/img/statue-pa.png';
 
 import ArrowCircle from '/src/img/icons/arrow-circle.svg?raw';
 import ArrowCircleDark from '/src/img/icons/arrow-circle-dark.svg';
@@ -31,39 +31,41 @@ import featureSticker2 from '/src/img/stickers/feature2.png';
 import featureSticker3 from '/src/img/stickers/feature3.png';
 import featureSticker4 from '/src/img/stickers/feature4.png';
 
-import Chats0Ben from '/src/img/chats/chatBen0.svg';
-import Chats1Ben from '/src/img/chats/chatBen1.svg';
-import Chats2Ben from '/src/img/chats/chatBen2.svg';
-import Chats3Ben from '/src/img/chats/ChatBen3.svg';
+import ChatCarousel from '../components/ChatCarousel.astro';
 
-import Chats0Chris from '/src/img/chats/chatChris0.svg';
-import Chats1Chris from '/src/img/chats/chatChris1.svg';
-import Chats2Chris from '/src/img/chats/chatChris2.svg';
-import Chats3Chris from '/src/img/chats/chatChris3.svg';
+import agentPink from '/src/img/chats/pink.png';
+import agentWren from '/src/img/chats/wren.png';
 
-import Chats0Alex from '/src/img/chats/chatAlex0.svg';
-import Chats1Alex from '/src/img/chats/chatAlex1.svg';
-import Chats2Alex from '/src/img/chats/chatAlex2.svg';
-import Chats3Alex from '/src/img/chats/chatAlex3.svg';
-import Chats4Alex from '/src/img/chats/chatAlex4.svg';
-
-import Chats0Charlie from '/src/img/chats/chatBenB0.svg';
-import Chats1Charlie from '/src/img/chats/chatBenB1.svg';
-import Chats2Charlie from '/src/img/chats/chatBenB2.svg';
-import Chats3Charlie from '/src/img/chats/chatBenB3.svg';
-import Chats4Charlie from '/src/img/chats/chatBenB4.svg';
-
-import Chats0PPP from '/src/img/chats/chatBenC0.svg';
-import Chats1PPP from '/src/img/chats/chatBenC1.svg';
-import Chats2PPP from '/src/img/chats/chatBenC2.svg';
-import Chats3PPP from '/src/img/chats/chatBenC3.svg';
-import Chats4PPP from '/src/img/chats/chatBenC4.svg';
-
-import OwnerBen from '/src/img/chats/agentBen.png';
-import OwnerChris from '/src/img/chats/agentChris.png';
-import OwnerAlex from '/src/img/chats/agentAlex.png';
-import OwnerCharlie from '/src/img/chats/agentCharlie.png';
-import OwnerPPP from '/src/img/chats/agentPPP.png';
+const slides = [
+{
+id: "pink-1",
+heroChip: "Owning meeting planning, every day",
+nameChip: "Pink, Ben’s Personal Assistant",
+characterSrc: agentPink.src,
+characterAlt: "Pink character",
+bubbles: [
+{ text: "Check calendar preferences", side: "left", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
+{ text: "Ok, Marcus Brody has confirmed availability on Wednesday at either 14:00 or 15:00. I’ll create and send the invite for 14:00 based on your preferences.", side: "left", role: "assistant" },
+{ text: "I’ve sent the email to Marcus Brody to include Thursday Jan 22nd alongside Friday and Wednesday options - French time.", side: "left", role: "assistant" },
+{ text: "Marcus has accepted the meeting invite for Wednesday, January 28th at 14:00 GMT. The calendar invite has been sent with your Zoom link.\n\nThe meeting is confirmed for 30 minutes during the VentureCap summit - you mentioned you can step away from some events that day, so this should work well.", side: "left", role: "assistant" },
+{ text: "Meeting booked!", side: "left", role: "assistant", tone: "info" }
+]
+},
+{
+id: "pink-2",
+heroChip: "Your second brain for all admin",
+nameChip: "Wren, Chris’s Personal Assistant",
+characterSrc: agentWren.src,
+characterAlt: "Wren character",
+bubbles: [
+{ text: "Check calendar preferences", side: "left", role: "assistant", stickerSrc: calendarSticker.src, stickerAlt: "Calendar sticker" },
+{ text: "Ok, Marcus Brody has confirmed availability on Wednesday at either 14:00 or 15:00. I’ll create and send the invite for 14:00 based on your preferences.", side: "left", role: "assistant" },
+{ text: "I’ve sent the email to Marcus Brody to include Thursday Jan 22nd alongside Friday and Wednesday options - French time.", side: "left", role: "assistant" },
+{ text: "Marcus has accepted the meeting invite for Wednesday, January 28th at 14:00 GMT. The calendar invite has been sent with your Zoom link.\n\nThe meeting is confirmed for 30 minutes during the VentureCap summit - you mentioned you can step away from some events that day, so this should work well.", side: "left", role: "assistant" },
+{ text: "Meeting booked!", side: "left", role: "assistant", tone: "info" }
+]
+}
+];
 
 ---
 
@@ -84,7 +86,7 @@ import OwnerPPP from '/src/img/chats/agentPPP.png';
         <div class="actions hero-actions">
           <Button target="" data-open-modal="mailing-list-modal">Hire Your Teammate <fragment set:html={ArrowCircle}/></Button>
         </div>
-        <Image class="hero-statue" src={salesStatue} alt="A pale white statue of an assistant" width={335} height={503}/>
+        <Image class="hero-statue" src={salesStatue} alt="A pale white statue of an assistant" width={540} height={900}/>
       </section>
     </div>
   </header>
@@ -95,195 +97,7 @@ import OwnerPPP from '/src/img/chats/agentPPP.png';
         <h2>AI assistants who act, not ask</h2>
         <p>Deployed with human-in-the-loop oversight, your assistant owns outcomes end-to-end.</p>
       </article>
-      <div class="wow-content sticker-host customer-quote">
-        <div class="quote-track">
-          <div class="quote-slide">
-            <div class="sticker-layer">
-              <img
-                class="sticker"
-                src={taxiSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="top: 88%; left: 91%; width: 256px;"
-                data-sticker
-              />
-              <img
-                class="sticker"
-                src={calendarSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="left: 8%; top: 16%; width: 256px;"
-                data-sticker
-              />
-
-            </div>
-            <div class="chats">
-              <Chats0Ben />
-              <Chats1Ben />
-              <Chats2Ben />
-              <Chats3Ben />
-              <div class="agent-owner">
-                <Image src={OwnerBen} alt="An avatar image of an assistant" width={160} height={160} />
-                <span>Pink, Ben's Personal Assistant</span>
-              </div>
-            </div>
-          </div>
-          <div class="quote-slide">
-            <div class="sticker-layer">
-              <img
-                class="sticker"
-                src={messagesSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="top: 85%; left: 91%; width: 256px;"
-                data-sticker
-              />
-              <img
-                class="sticker"
-                src={campaignSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="left: 8%; top: 16%; width: 256px;"
-                data-sticker
-              />
-  
-            </div>
-            <div class="chats">
-              <Chats0Alex />
-              <Chats1Alex />
-              <Chats2Alex />
-              <Chats3Alex />
-              <Chats4Alex />
-
-              <div class="agent-owner">
-                <Image src={OwnerAlex} alt="An avatar image of an assistant" width={160} height={160} />
-                <span>Taffy, Alex's Sales Manager</span>
-              </div>
-            </div>
-          </div>
-          <div class="quote-slide">
-            <div class="sticker-layer">
-              <img
-                class="sticker"
-                src={formSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="top: 85%; left: 91%; width: 256px;"
-                data-sticker
-              />
-              <img
-                class="sticker"
-                src={emailSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="left: 8%; top: 16%; width: 256px;"
-                data-sticker
-              />
-  
-            </div>
-            <div class="chats">
-              <Chats0Chris />
-              <Chats1Chris />
-              <Chats2Chris />
-              <Chats3Chris />
-
-              <div class="agent-owner">
-                <Image src={OwnerChris} alt="An avatar image of an assistant" width={160} height={160} />
-                <span>Wren, Chris's Personal Assistant</span>
-              </div>
-            </div>
-          </div>
-          <div class="quote-slide">
-            <div class="sticker-layer">
-              <img
-                class="sticker"
-                src={searchSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="top: 85%; left: 91%; width: 256px;"
-                data-sticker
-              />
-              <img
-                class="sticker"
-                src={crmSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="left: 8%; top: 16%; width: 256px;"
-                data-sticker
-              />
-  
-            </div>
-            <div class="chats">
-              <Chats0Charlie />
-              <Chats1Charlie />
-              <Chats2Charlie />
-              <Chats3Charlie />
-              <Chats4Charlie />
-
-              <div class="agent-owner">
-                <Image src={OwnerCharlie} alt="An avatar image of an assistant" width={160} height={160} />
-                <span>Soph, Charlie's Personal Assistant</span>
-              </div>
-            </div>
-          </div>
-          <div class="quote-slide">
-            <div class="sticker-layer">
-              <img
-                class="sticker"
-                src={mapSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="top: 85%; left: 91%; width: 256px;"
-                data-sticker
-              />
-              <img
-                class="sticker"
-                src={receiptSticker.src}
-                alt=""
-                draggable="false"
-                loading="eager"
-                decoding="async"
-                style="left: 8%; top: 16%; width: 256px;"
-                data-sticker
-              />
-  
-            </div>
-            <div class="chats">
-              <Chats0PPP />
-              <Chats1PPP />
-              <Chats2PPP />
-              <Chats3PPP />
-              <Chats4PPP />
-
-              <div class="agent-owner">
-                <Image src={OwnerPPP} alt="An avatar image of an assistant" width={160} height={160} />
-                <span>Lark, Philipp's Personal Assistant</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="quote-dots" aria-label="Slide pagination"></div>
-      </div>
-    </div>
+      <ChatCarousel slides={slides} auto={true} />
     </section>
 
     <section class="content-panels">
@@ -402,7 +216,7 @@ import OwnerPPP from '/src/img/chats/agentPPP.png';
           
           
           <div class="agent-media">
-            <Image src={personalStatus} alt="A pale white status of an assistant" width={335} height={503}/>
+            <Image src={personalStatus} alt="A pale white status of an assistant" width={540} height={900}/>
           </div>
           </article>
           
@@ -438,7 +252,7 @@ import OwnerPPP from '/src/img/chats/agentPPP.png';
           
           
           <div class="agent-media">
-            <Image src={salesStatue} alt="A pale white status of an assistant" width={335} height={503}/>
+            <Image src={salesStatue} alt="A pale white status of an assistant" width={540} height={900}/>
           </div>
           </article>
           </section>

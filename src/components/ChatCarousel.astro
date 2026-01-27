@@ -1,0 +1,302 @@
+---
+// ChatCarousel.astro
+import "./chatCarousel.scss";
+
+export type Bubble = {
+  text: string;
+  side?: "left" | "right";
+  stickerSrc?: string;
+  stickerAlt?: string;
+
+  role?: "user" | "assistant";
+  tone?: "text" | "tool" | "info";
+  className?: string;
+};
+
+export type Slide = {
+  id: string;
+  heroChip: string;
+  nameChip: string;
+  characterSrc: string;
+  characterAlt?: string;
+  bubbles: Bubble[];
+};
+
+const {
+  slides,
+  auto = true,
+  heroHoldMs = 2000,
+  heroFadeMs = 500,
+  bubbleStaggerMs = 1500,
+  bubbleFadeMs = 1500, // used in JS + data attribute
+  endHoldMs = 2000,
+  startIndex = 0,
+  ariaLabel = "Chat carousel",
+} = Astro.props as {
+  slides: Slide[];
+  auto?: boolean;
+  heroHoldMs?: number;
+  heroFadeMs?: number;
+  bubbleStaggerMs?: number;
+  bubbleFadeMs?: number;
+  endHoldMs?: number;
+  startIndex?: number;
+  ariaLabel?: string;
+};
+---
+
+<section
+  class="cc"
+  aria-roledescription="carousel"
+  aria-label={ariaLabel}
+  data-auto={auto ? "1" : "0"}
+  data-hero-hold={heroHoldMs}
+  data-hero-fade={heroFadeMs}
+  data-bubble-stagger={bubbleStaggerMs}
+  data-bubble-fade={bubbleFadeMs}
+  data-end-hold={endHoldMs}
+  data-start-index={startIndex}
+>
+  <div class="cc__viewport">
+    <div class="cc__track">
+      {slides.map((s, slideIndex) => (
+        <article class="cc__slide" data-slide data-slide-index={slideIndex} aria-roledescription="slide">
+          {/* HERO LAYER */}
+          <div class="cc__hero" data-hero>
+            <div class="cc__chip cc__chip--top">{s.heroChip}</div>
+
+            <div class="cc__characterWrap" aria-hidden="true">
+              <img
+                class="cc__character"
+                src={s.characterSrc}
+                alt={s.characterAlt ?? ""}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="cc__chip cc__chip--name">{s.nameChip}</div>
+          </div>
+
+          {/* CHAT LAYER */}
+          <div class="cc__chat" data-chat aria-hidden="true">
+            <div class="cc__chatInner" data-chat-inner>
+              {s.bubbles.map((b, bubbleIndex) => (
+                <div
+                  class={`cc__row ${b.side === "right" ? "is-right" : "is-left"} ${b.role ? `is-${b.role}` : ""}`}
+                  data-bubble-row
+                  data-bubble-index={bubbleIndex}
+                  data-role={b.role ?? ""}
+                  data-tone={b.tone ?? ""}
+                >
+                  <div class={`cc__bubble ${b.className ?? ""} ${b.tone ? `is-${b.tone}` : ""}`} data-bubble>
+                    {b.text}
+                  </div>
+
+                  {b.stickerSrc ? (
+                    <img
+                      class="cc__sticker"
+                      src={b.stickerSrc}
+                      alt={b.stickerAlt ?? ""}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : null}
+                </div>
+              ))}
+              <div class="cc__chatSpacer" aria-hidden="true"></div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {/* CONTROLS (INSIDE FRAME) */}
+    <div class="cc__controls" aria-hidden="false">
+      <button class="cc__btn" type="button" data-prev aria-label="Previous slide">‹</button>
+
+      <div class="cc__dots" role="tablist" aria-label="Carousel pagination">
+        {slides.map((_, i) => (
+          <button
+            class="cc__dot"
+            type="button"
+            data-dot
+            data-dot-index={i}
+            role="tab"
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      <button class="cc__btn" type="button" data-next aria-label="Next slide">›</button>
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const root = document.currentScript.closest(".cc");
+      if (!root) return;
+
+      const track = root.querySelector(".cc__track");
+      const slides = Array.from(root.querySelectorAll("[data-slide]"));
+      const dots = Array.from(root.querySelectorAll("[data-dot]"));
+      const prevBtn = root.querySelector("[data-prev]");
+      const nextBtn = root.querySelector("[data-next]");
+
+      const auto = root.dataset.auto === "1";
+      const heroHoldMs = Number(root.dataset.heroHold) || 2000;
+      const heroFadeMs = Number(root.dataset.heroFade) || 500;
+      const bubbleStaggerMs = Number(root.dataset.bubbleStagger) || 1500;
+      const bubbleFadeMs = Number(root.dataset.bubbleFade) || 1500;
+      const endHoldMs = Number(root.dataset.endHold) || 2000;
+      const startIndex = Math.min(Math.max(Number(root.dataset.startIndex) || 0, 0), slides.length - 1);
+
+      let index = startIndex;
+      let timers = [];
+      let isPointerDown = false;
+      let startX = 0;
+      let currentX = 0;
+
+      const clearTimers = () => {
+        timers.forEach((t) => clearTimeout(t));
+        timers = [];
+      };
+
+      const setDotState = (i) => {
+        dots.forEach((d, di) => d.setAttribute("aria-selected", di === i ? "true" : "false"));
+      };
+
+      const setTrack = (i, animate = true) => {
+        if (!track) return;
+        if (!animate) track.style.transition = "none";
+        track.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
+        if (!animate) requestAnimationFrame(() => (track.style.transition = ""));
+      };
+
+      // Robust: use scrollHeight (includes padding + late-loading images)
+      const updateChatOffset = (slideEl) => {
+        const viewport = slideEl.querySelector("[data-chat]");
+        const inner = slideEl.querySelector("[data-chat-inner]");
+        if (!viewport || !inner) return;
+
+        const overflow = Math.max(0, inner.scrollHeight - viewport.clientHeight);
+        inner.style.transform = `translateY(${-overflow}px)`;
+      };
+
+      const resetSlideVisuals = (slideEl) => {
+        slideEl.classList.remove("is-hero-fading", "is-chat-live");
+        slideEl.querySelectorAll("[data-bubble-row]").forEach((r) => r.classList.remove("is-mounted", "is-visible"));
+
+        const chat = slideEl.querySelector("[data-chat]");
+        if (chat) chat.setAttribute("aria-hidden", "true");
+
+        const inner = slideEl.querySelector("[data-chat-inner]");
+        if (inner) inner.style.transform = "translateY(0px)";
+      };
+
+      const mountAndAnimateRow = (row, slideEl) => {
+        row.classList.add("is-mounted");
+        // ensure transition reliably fires after display flips on
+        row.offsetHeight;
+        row.classList.add("is-visible");
+
+        // update immediately after layout
+        requestAnimationFrame(() => updateChatOffset(slideEl));
+
+        // update again when any images (stickers) finish loading
+        const imgs = row.querySelectorAll("img");
+        imgs.forEach((img) => {
+          if (!img.complete) img.addEventListener("load", () => updateChatOffset(slideEl), { once: true });
+        });
+
+        // and once more after the fade duration (fonts/layout settling)
+        setTimeout(() => updateChatOffset(slideEl), Math.max(0, bubbleFadeMs - 16));
+      };
+
+      const runSequence = (slideEl) => {
+        clearTimers();
+        slides.forEach((s) => resetSlideVisuals(s));
+
+        const t1 = setTimeout(() => {
+          slideEl.classList.add("is-hero-fading");
+        }, heroHoldMs);
+        timers.push(t1);
+
+        const t2 = setTimeout(() => {
+          slideEl.classList.add("is-chat-live");
+          const chat = slideEl.querySelector("[data-chat]");
+          if (chat) chat.setAttribute("aria-hidden", "false");
+
+          requestAnimationFrame(() => updateChatOffset(slideEl));
+
+          const rows = Array.from(slideEl.querySelectorAll("[data-bubble-row]"));
+          rows.forEach((row, i) => {
+            const ti = setTimeout(() => mountAndAnimateRow(row, slideEl), i * bubbleStaggerMs);
+            timers.push(ti);
+          });
+
+          if (auto) {
+            const total = rows.length * bubbleStaggerMs + endHoldMs;
+            const tNext = setTimeout(() => goTo(index + 1, true), total);
+            timers.push(tNext);
+          }
+        }, heroHoldMs + heroFadeMs);
+        timers.push(t2);
+      };
+
+      const goTo = (next, fromAuto = false) => {
+        if (!slides.length) return;
+
+        if (next < 0) next = slides.length - 1;
+        if (next >= slides.length) next = 0;
+
+        index = next;
+        setTrack(index, true);
+        setDotState(index);
+        runSequence(slides[index]);
+      };
+
+      // Buttons + dots
+      prevBtn?.addEventListener("click", () => goTo(index - 1));
+      nextBtn?.addEventListener("click", () => goTo(index + 1));
+      dots.forEach((d) => d.addEventListener("click", () => goTo(Number(d.dataset.dotIndex || "0"))));
+
+      // Swipe / drag (simple)
+      const viewport = root.querySelector(".cc__viewport");
+      const onDown = (e) => {
+        isPointerDown = true;
+        startX = "touches" in e ? e.touches[0].clientX : e.clientX;
+        currentX = startX;
+        clearTimers();
+      };
+      const onMove = (e) => {
+        if (!isPointerDown) return;
+        currentX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      };
+      const onUp = () => {
+        if (!isPointerDown) return;
+        isPointerDown = false;
+
+        const dx = currentX - startX;
+        const threshold = 40;
+
+        if (dx > threshold) goTo(index - 1);
+        else if (dx < -threshold) goTo(index + 1);
+        else goTo(index);
+      };
+
+      viewport?.addEventListener("mousedown", onDown);
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", onUp);
+
+      viewport?.addEventListener("touchstart", onDown, { passive: true });
+      viewport?.addEventListener("touchmove", onMove, { passive: true });
+      viewport?.addEventListener("touchend", onUp);
+
+      // Init
+      setTrack(startIndex, false);
+      setDotState(startIndex);
+      runSequence(slides[startIndex]);
+    })();
+  </script>
+</section>
