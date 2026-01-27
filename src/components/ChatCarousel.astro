@@ -78,13 +78,7 @@ const {
 
             <div class="cc__chip cc__chip--name">
               {s.avatarSrc ? (
-                <img
-                  class="cc__avatar"
-                  src={s.avatarSrc}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
+                <img class="cc__avatar" src={s.avatarSrc} alt="" loading="lazy" decoding="async" />
               ) : null}
               {s.nameChip}
             </div>
@@ -102,25 +96,28 @@ const {
                   data-tone={b.tone ?? ""}
                 >
                   <div class={`cc__bubble ${b.className ?? ""} ${b.tone ? `is-${b.tone}` : ""}`} data-bubble>
-                    {b.text.split('\n').map((line, i) => (
-                    <>
-                    {i > 0 && <br />}
-                    {line}
-                    </>
+                    {/* Newlines + __underlined__ segments (no raw HTML) */}
+                    {b.text.split("\n").map((line, li) => (
+                      <>
+                        {li > 0 && <br />}
+                        {line.split("__").map((part, pi) =>
+                          pi % 2 === 1 ? <span class="is-underlined">{part}</span> : part
+                        )}
+                      </>
                     ))}
-                    </div>
+                  </div>
 
                   {b.stickerSrc ? (
                     <span class="cc__stickerAnchor" aria-hidden="true">
-                    <img
-                    class="cc__sticker"
-                    src={b.stickerSrc}
-                    alt={b.stickerAlt ?? ""}
-                    loading="lazy"
-                    decoding="async"
-                    />
+                      <img
+                        class="cc__sticker"
+                        src={b.stickerSrc}
+                        alt={b.stickerAlt ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </span>
-                    ) : null}
+                  ) : null}
                 </div>
               ))}
               <div class="cc__chatSpacer" aria-hidden="true"></div>
@@ -136,14 +133,7 @@ const {
 
       <div class="cc__dots" role="tablist" aria-label="Carousel pagination">
         {slides.map((_, i) => (
-          <button
-            class="cc__dot"
-            type="button"
-            data-dot
-            data-dot-index={i}
-            role="tab"
-            aria-label={`Go to slide ${i + 1}`}
-          />
+          <button class="cc__dot" type="button" data-dot data-dot-index={i} role="tab" aria-label={`Go to slide ${i + 1}`} />
         ))}
       </div>
 
@@ -168,9 +158,10 @@ const {
       const bubbleStaggerMs = Number(root.dataset.bubbleStagger) || 1500;
       const bubbleFadeMs = Number(root.dataset.bubbleFade) || 1500;
       const endHoldMs = Number(root.dataset.endHold) || 2000;
+
       const startIndex = Math.min(
         Math.max(Number(root.dataset.startIndex) || 0, 0),
-        slideEls.length - 1
+        Math.max(0, slideEls.length - 1)
       );
 
       let index = startIndex;
@@ -192,7 +183,6 @@ const {
         if (!animate) requestAnimationFrame(() => (track.style.transition = ""));
       };
 
-      // Robust: use scrollHeight (includes padding + late-loading images)
       const updateChatOffset = (slideEl) => {
         const viewport = slideEl.querySelector("[data-chat]");
         const inner = slideEl.querySelector("[data-chat-inner]");
@@ -204,7 +194,9 @@ const {
 
       const resetSlideVisuals = (slideEl) => {
         slideEl.classList.remove("is-hero-fading", "is-chat-live");
-        slideEl.querySelectorAll("[data-bubble-row]").forEach((r) => r.classList.remove("is-mounted", "is-visible"));
+        slideEl
+          .querySelectorAll("[data-bubble-row]")
+          .forEach((r) => r.classList.remove("is-mounted", "is-visible"));
 
         const chat = slideEl.querySelector("[data-chat]");
         if (chat) chat.setAttribute("aria-hidden", "true");
@@ -220,13 +212,11 @@ const {
 
         requestAnimationFrame(() => updateChatOffset(slideEl));
 
-        // if sticker loads later, update offset
         const imgs = row.querySelectorAll("img");
         imgs.forEach((img) => {
           if (!img.complete) img.addEventListener("load", () => updateChatOffset(slideEl), { once: true });
         });
 
-        // one more pass after fade
         setTimeout(() => updateChatOffset(slideEl), Math.max(0, bubbleFadeMs - 16));
       };
 
@@ -278,10 +268,30 @@ const {
       nextBtn?.addEventListener("click", () => goTo(index + 1));
       dots.forEach((d) => d.addEventListener("click", () => goTo(Number(d.dataset.dotIndex || "0"))));
 
-      // Init
+      // Init: wait until in view for 1s
       setTrack(startIndex, false);
       setDotState(startIndex);
-      runSequence(slideEls[startIndex]);
+
+      let started = false;
+      let viewTimer = null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !started) {
+            viewTimer = setTimeout(() => {
+              started = true;
+              runSequence(slideEls[startIndex]);
+              observer.disconnect();
+            }, 1000);
+          } else if (!entry.isIntersecting && viewTimer) {
+            clearTimeout(viewTimer);
+            viewTimer = null;
+          }
+        },
+        { threshold: 0.4 }
+      );
+
+      observer.observe(root);
     })();
   </script>
 </section>
