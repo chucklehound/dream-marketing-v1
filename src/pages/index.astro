@@ -15,6 +15,8 @@ import personalStatus from '/src/img/statue-pa.png';
 import ArrowCircle from '/src/img/icons/arrow-circle.svg?raw';
 import ArrowCircleDark from '/src/img/icons/arrow-circle-dark.svg';
 
+import IconAlarm from '/src/img/icons/alarm.svg';
+
 import taxiSticker from "/src/img/stickers/taxi.png";
 import calendarSticker from "/src/img/stickers/calendar.png";
 import formSticker from "/src/img/stickers/form.png";
@@ -25,6 +27,8 @@ import receiptSticker from "/src/img/stickers/receipt.png";
 import mapSticker from '/src/img/stickers/map.png';
 import searchSticker from '/src/img/stickers/search.png';
 import crmSticker from '/src/img/stickers/crm.png';
+
+import alarmSticker from '/src/img/stickers/alarm.png';
 
 import featureSticker1 from '/src/img/stickers/feature1.png';
 import featureSticker2 from '/src/img/stickers/feature2.png';
@@ -44,6 +48,9 @@ import avatarWren from '/src/img/chats/agentChris.png';
 import avatarTaffy from '/src/img/chats/agentAlex.png';
 import avatarSoph from '/src/img/chats/agentCharlie.png';
 import avatarLark from '/src/img/chats/agentPPP.png';
+
+import IconLinked from '/src/img/icon-linkedin.svg';
+import IconInsta from '/src/img/icon-instagram.svg';
 
 const slides = [
 {
@@ -403,21 +410,27 @@ bubbles: [
 
     <!-- Success view (hidden until success) -->
     <div id="successView" class="success-view" hidden>
-      <h4 id="successHeading">Thanks — you're on the list</h4>
-      <p>While you’re here, follow us on LinkedIn</p>
+      <img
+              class="sticker"
+              src={alarmSticker.src}
+              alt="An alarm clock sticker"
+              draggable="false"
+              loading="eager"
+              decoding="async"
+              style="left: 50%; top: 15%; width: 160px;"
+              data-sticker
+            />
+      <h4 id="successHeading">You’re all set, we’ll email you soon</h4>
       <ul class="success-links">
-        <li><a href="https://www.linkedin.com/company/dream-ai-employees">Dream on LinkedIn</a></li>
+        <li><IconAlarm />We'll email you when your assistant is ready</li>
+        <li><IconLinked /><a href="https://www.linkedin.com/company/dream-ai-employees">Follow us on LinkedIn</a></li>
+        <li><IconInsta /><a href="https://www.instagram.com/usedream.ai?igsh=OTBmanJiMXpyNDll&utm_source=modal_signup">Find us on Instagram</a></li>
       </ul>
-
-      <div class="success-actions">
-        <button type="button" class="button" data-close-modal>Close</button>
-      </div>
     </div>
   </div>
 
   <script is:inline>
     (function () {
-      // Prevent duplicate bindings if this script is included twice
       if (window.__hsMailingInit) return;
       window.__hsMailingInit = true;
   
@@ -434,6 +447,40 @@ bubbles: [
       if (!form) return;
       if (form.dataset.bound === '1') return;
       form.dataset.bound = '1';
+  
+      // ---- DEV FORCE SUCCESS (localhost + ?hsSuccess=1) ----
+      const isLocal =
+        location.hostname === 'localhost' ||
+        location.hostname === '127.0.0.1' ||
+        location.hostname.endsWith('.local');
+  
+      const qs = new URLSearchParams(location.search);
+      const forceSuccess = isLocal && qs.get('hsSuccess') === '1';
+  
+      const showSuccess = () => {
+        form.hidden = true;
+        if (successView) successView.hidden = false;
+  
+        const heading = successView?.querySelector('#successHeading');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus({ preventScroll: true });
+          setTimeout(() => heading.removeAttribute('tabindex'), 100);
+        }
+      };
+  
+      const showForm = () => {
+        form.hidden = false;
+        if (successView) successView.hidden = true;
+      };
+  
+      if (forceSuccess) {
+        // Ensure modal-open state previews correctly too (optional)
+        // modal?.setAttribute('open', '');
+        showSuccess();
+        return; // don't bind submit handler in forced mode
+      }
+      // -----------------------------------------------
   
       const getCookie = (name) =>
         document.cookie.split('; ').find(c => c.startsWith(name + '='))?.split('=')[1];
@@ -453,10 +500,9 @@ bubbles: [
         return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
       };
   
-      // Map checkbox label/value -> HubSpot CRM option value (from your HS form)
       const OPTION_MAP = {
         'Personal Assistant':        'L6cGUyY3rxjbrVhObJdhj',
-        'Head of Sales':             'heWA2aiKPXyI4gZmUDUmF',   // note: I4
+        'Head of Sales':             'heWA2aiKPXyI4gZmUDUmF',
         'Head of Marketing':         'oqS6sVZIgJPH0sSj37WLH',
         'Customer Services Manager': 'Ky7KhJjSBxEwocMYR8UOf',
         'Finance Manager':           'zToAvy_nDQn8MCqsJHTtv',
@@ -466,7 +512,6 @@ bubbles: [
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (statusElm) statusElm.textContent = '';
-        // honeypot
         if (form.address?.value?.trim()) return;
   
         setLoading(true);
@@ -478,7 +523,6 @@ bubbles: [
           const company  = (fd.get('company') || '').toString().trim();
           const phone    = (fd.get('phone')   || '').toString().trim();
   
-          // Collect all checked checkboxes named "dreamie" and map to CRM values
           const selected = Array.from(form.querySelectorAll('input[name="dreamie"]:checked'))
             .map(i => OPTION_MAP[i.value])
             .filter(Boolean);
@@ -489,9 +533,7 @@ bubbles: [
             return;
           }
   
-          // HubSpot expects semicolon-separated internal option values
           const whichEmployeesValue = selected.join(';');
-  
           const { first, last } = splitName(fullName);
   
           const fields = [
@@ -517,15 +559,7 @@ bubbles: [
   
           if (!res.ok) throw new Error('Bad response');
   
-          form.hidden = true;
-          if (successView) successView.hidden = false;
-  
-          const heading = successView?.querySelector('#successHeading');
-          if (heading) {
-            heading.setAttribute('tabindex', '-1');
-            heading.focus({ preventScroll: true });
-            setTimeout(() => heading.removeAttribute('tabindex'), 100);
-          }
+          showSuccess();
           form.reset();
         } catch {
           if (statusElm) statusElm.textContent = 'Something went wrong. Please try again.';
