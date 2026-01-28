@@ -33,7 +33,7 @@
 }
 
 .cc__slide {
-  height: clamp(420px, 80vh, 900px);
+  height: clamp(420px, 75vh, 800px);
   padding: 0;
   position: relative;
   display: flex;
@@ -41,7 +41,7 @@
   justify-content: center;
 
   @media (min-width: 1024px) {
-    height: clamp(400px, 75vh, 800px);
+    height: clamp(400px, 70vh, 700px);
   }
 }
 
@@ -111,7 +111,7 @@
   padding-bottom: 64px; /* breathing room / avoids dots overlap */
   flex: 1 1 auto;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 320ms ease, transform 320ms ease;

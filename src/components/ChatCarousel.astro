@@ -145,153 +145,204 @@ const {
     (() => {
       const root = document.currentScript.closest(".cc");
       if (!root) return;
-
+  
       const track = root.querySelector(".cc__track");
       const slideEls = Array.from(root.querySelectorAll("[data-slide]"));
       const dots = Array.from(root.querySelectorAll("[data-dot]"));
       const prevBtn = root.querySelector("[data-prev]");
       const nextBtn = root.querySelector("[data-next]");
-
+  
       const auto = root.dataset.auto === "1";
       const heroHoldMs = Number(root.dataset.heroHold) || 2000;
       const heroFadeMs = Number(root.dataset.heroFade) || 500;
       const bubbleStaggerMs = Number(root.dataset.bubbleStagger) || 1500;
       const bubbleFadeMs = Number(root.dataset.bubbleFade) || 1500;
       const endHoldMs = Number(root.dataset.endHold) || 2000;
-
+  
       const startIndex = Math.min(
         Math.max(Number(root.dataset.startIndex) || 0, 0),
         Math.max(0, slideEls.length - 1)
       );
-
+  
       let index = startIndex;
       let timers = [];
-
+  
+      const mqDesktop = window.matchMedia("(min-width: 800px)");
+  
+      const isDesktop = () => mqDesktop.matches;
+  
+      // Desktop: start chats immediately (no hero hold/fade gate)
+      // Mobile: keep your hero moment timing
+      const getHeroTimings = () => {
+        if (isDesktop()) return { hold: 0, fade: 0 };
+        return { hold: heroHoldMs, fade: heroFadeMs };
+      };
+  
       const clearTimers = () => {
         timers.forEach((t) => clearTimeout(t));
         timers = [];
       };
-
+  
       const setDotState = (i) => {
         dots.forEach((d, di) => d.setAttribute("aria-selected", di === i ? "true" : "false"));
       };
-
+  
       const setTrack = (i, animate = true) => {
         if (!track) return;
         if (!animate) track.style.transition = "none";
         track.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
         if (!animate) requestAnimationFrame(() => (track.style.transition = ""));
       };
-
+  
       const updateChatOffset = (slideEl) => {
         const viewport = slideEl.querySelector("[data-chat]");
         const inner = slideEl.querySelector("[data-chat-inner]");
         if (!viewport || !inner) return;
-
+  
         const overflow = Math.max(0, inner.scrollHeight - viewport.clientHeight);
         inner.style.transform = `translateY(${-overflow}px)`;
       };
-
+  
       const resetSlideVisuals = (slideEl) => {
         slideEl.classList.remove("is-hero-fading", "is-chat-live");
         slideEl
           .querySelectorAll("[data-bubble-row]")
           .forEach((r) => r.classList.remove("is-mounted", "is-visible"));
-
+  
         const chat = slideEl.querySelector("[data-chat]");
         if (chat) chat.setAttribute("aria-hidden", "true");
-
+  
         const inner = slideEl.querySelector("[data-chat-inner]");
         if (inner) inner.style.transform = "translateY(0px)";
       };
-
+  
       const mountAndAnimateRow = (row, slideEl) => {
         row.classList.add("is-mounted");
         row.offsetHeight; // force reflow so transition fires
         row.classList.add("is-visible");
-
+  
         requestAnimationFrame(() => updateChatOffset(slideEl));
-
+  
         const imgs = row.querySelectorAll("img");
         imgs.forEach((img) => {
           if (!img.complete) img.addEventListener("load", () => updateChatOffset(slideEl), { once: true });
         });
-
+  
         setTimeout(() => updateChatOffset(slideEl), Math.max(0, bubbleFadeMs - 16));
       };
-
+  
       const runSequence = (slideEl) => {
         clearTimers();
         slideEls.forEach((s) => resetSlideVisuals(s));
-
-        const t1 = setTimeout(() => {
-          slideEl.classList.add("is-hero-fading");
-        }, heroHoldMs);
-        timers.push(t1);
-
+  
+        const { hold, fade } = getHeroTimings();
+  
+        // Stage 1: hero "moment" (mobile only)
+        if (hold > 0) {
+          const t1 = setTimeout(() => {
+            slideEl.classList.add("is-hero-fading");
+          }, hold);
+          timers.push(t1);
+        } else {
+          // desktop: keep hero visible; no fade state needed
+          slideEl.classList.remove("is-hero-fading");
+        }
+  
+        // Stage 2: chat becomes live
         const t2 = setTimeout(() => {
           slideEl.classList.add("is-chat-live");
           const chat = slideEl.querySelector("[data-chat]");
           if (chat) chat.setAttribute("aria-hidden", "false");
-
+  
           requestAnimationFrame(() => updateChatOffset(slideEl));
-
+  
           const rows = Array.from(slideEl.querySelectorAll("[data-bubble-row]"));
           rows.forEach((row, i) => {
             const ti = setTimeout(() => mountAndAnimateRow(row, slideEl), i * bubbleStaggerMs);
             timers.push(ti);
           });
-
+  
           if (auto) {
             const total = rows.length * bubbleStaggerMs + endHoldMs;
             const tNext = setTimeout(() => goTo(index + 1, true), total);
             timers.push(tNext);
           }
-        }, heroHoldMs + heroFadeMs);
+        }, hold + fade);
+  
         timers.push(t2);
       };
-
+  
       const goTo = (next, _fromAuto = false) => {
         if (!slideEls.length) return;
-
+  
         if (next < 0) next = slideEls.length - 1;
         if (next >= slideEls.length) next = 0;
-
+  
         index = next;
         setTrack(index, true);
         setDotState(index);
         runSequence(slideEls[index]);
       };
-
-      // Controls ONLY (no drag/swipe). Clicking chat does nothing.
+  
+      // Controls ONLY
       prevBtn?.addEventListener("click", () => goTo(index - 1));
       nextBtn?.addEventListener("click", () => goTo(index + 1));
       dots.forEach((d) => d.addEventListener("click", () => goTo(Number(d.dataset.dotIndex || "0"))));
-
-      // Init: wait until in view for 1s
+  
+      // Init: in-view start (desktop immediate, mobile after 1s)
       setTrack(startIndex, false);
       setDotState(startIndex);
-
+  
       let started = false;
       let viewTimer = null;
-
+  
+      const getStartDelayMs = () => (isDesktop() ? 0 : 1000);
+  
+      const start = () => {
+        if (started) return;
+        started = true;
+        runSequence(slideEls[startIndex]);
+        observer.disconnect();
+      };
+  
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting && !started) {
-            viewTimer = setTimeout(() => {
-              started = true;
-              runSequence(slideEls[startIndex]);
-              observer.disconnect();
-            }, 100);
-          } else if (!entry.isIntersecting && viewTimer) {
+          if (started) return;
+  
+          if (entry.isIntersecting) {
+            const delay = getStartDelayMs();
+            if (delay === 0) start();
+            else viewTimer = window.setTimeout(start, delay);
+          } else if (viewTimer) {
             clearTimeout(viewTimer);
             viewTimer = null;
           }
         },
         { threshold: 0.4 }
       );
-
+  
       observer.observe(root);
+  
+      // If resized across breakpoint while waiting, re-evaluate delay
+      const onResize = () => {
+        if (started) return;
+        if (!viewTimer) return;
+  
+        clearTimeout(viewTimer);
+        viewTimer = null;
+  
+        const r = root.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const inView = r.top < vh * 0.6 && r.bottom > vh * 0.4;
+  
+        if (inView) {
+          const delay = getStartDelayMs();
+          if (delay === 0) start();
+          else viewTimer = window.setTimeout(start, delay);
+        }
+      };
+  
+      window.addEventListener("resize", onResize);
     })();
   </script>
 </section>

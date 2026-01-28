@@ -595,6 +595,7 @@ header {
             pointer-events: none;
             width: 320px;
             height: auto;
+            filter: drop-shadow(-3px 2px 12px rgba($wallstreet-black,.1));
 
             @media (max-width: 1119px) {
                 right: -22px;
@@ -1616,11 +1617,14 @@ ul.all-posts {
     color: $wallstreet-black;
 
     &.empty-box {
-        background: transparent linear-gradient(#F8F6F5, #E0DFDD);
+        background: transparent linear-gradient(rgba($plus-white, .5), rgba($quadra-grey,.5));
         border: 1px solid #ACA7A0;
         padding: 12px 16px;
         box-shadow: 0 4px 12px $quadra-grey, inset 1px 2px 4px white;
         text-shadow: 1px 1px 1px rgba(255,255,255,.5);
+        position: relative;
+        z-index: 2;
+        backdrop-filter: blur(8px);
         
         p {
             color: $wallstreet-black;
@@ -1799,6 +1803,7 @@ section.content-panels {
             left: -32px;
             width: 232px;
             height: auto;
+            filter: drop-shadow(-3px 2px 12px rgba($wallstreet-black,.15));
 
             @media (max-width: 650px) {
                 position: relative;
