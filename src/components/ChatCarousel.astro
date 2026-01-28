@@ -282,7 +282,7 @@ const {
               started = true;
               runSequence(slideEls[startIndex]);
               observer.disconnect();
-            }, 1000);
+            }, 100);
           } else if (!entry.isIntersecting && viewTimer) {
             clearTimeout(viewTimer);
             viewTimer = null;
