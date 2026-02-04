@@ -1,9 +1,17 @@
 ---
 interface Props {
   title: string;
+  ogTitle?: string;
+  description?: string;
+  noindex?: boolean;
 }
 
-const { title, noindex } = Astro.props;
+const {
+  title,
+  ogTitle,
+  description = "Dream - The assistant you’ve always been promised",
+  noindex,
+} = Astro.props;
 
 import appleIcon from "/src/img/apple-touch-icon.png";
 import favicon48 from "/src/img/favicon-48x48.png";
@@ -13,24 +21,22 @@ import safariTab from "/src/img/safari-pinned-tab.svg";
 import faviconIco from "/src/img/favicon.ico";
 
 import ogUrl from "/src/img/web-app-manifest-512x512.png";
+import promoGuy from "/src/img/promo-phone-guy.jpg";
 
 const currentPath = Astro.url.pathname;
 const baseUrl = "https://usedream.ai";
 const fullUrl = `${baseUrl}${currentPath}`;
 
-import promoGuy from '/src/img/promo-phone-guy.jpg';
-
+const finalOgTitle = ogTitle ?? title;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Dream - AI-powered employees that save you time"
-    />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
+
     <link rel="apple-touch-icon" sizes="180x180" href={appleIcon.src} />
     <link rel="icon" type="image/png" sizes="48x48" href={favicon48.src} />
     <link rel="icon" type="image/png" sizes="96x96" href={favicon96.src} />
@@ -44,13 +50,7 @@ import promoGuy from '/src/img/promo-phone-guy.jpg';
 
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-    <link
-      rel="preload"
-      as="image"
-      href={promoGuy.src}
-      fetchpriority="high"
-    />
-
+    <link rel="preload" as="image" href={promoGuy.src} fetchpriority="high" />
     <link
       rel="preload"
       as="font"
@@ -59,8 +59,15 @@ import promoGuy from '/src/img/promo-phone-guy.jpg';
       crossorigin
     />
 
-    <meta name="og:url" content={fullUrl} />
+    <meta property="og:url" content={fullUrl} />
     <meta property="og:logo" content={ogUrl.src} />
+
+    {/* ✅ default OG title, overridable per page */}
+    <meta property="og:title" content={finalOgTitle} />
+
+    {/* (optional but usually desired) */}
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
 
     <slot name="postSeo" />
 
