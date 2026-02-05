@@ -400,7 +400,14 @@ bubbles: [
       </label>
       <p id="phoneHelp" class="visually-hidden">Include country code if outside the UK.</p>
 
-      
+      <label>
+        Were you referred by someone?
+        <input
+          type="text"
+          name="0-1/did_someone_refer_you_"
+          autocomplete="name"
+        />
+      </label>
 
       <button type="submit" class="button primary" id="submitBtn" aria-live="polite">
         Join the waitlist for the next round
@@ -437,7 +444,9 @@ bubbles: [
   
       const PORTAL_ID = "49000459";
       const FORM_GUID = "4c792f29-f1da-4d96-9151-126ad0262902";
-      const HS_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
+  
+      // Use regional endpoint (your embed shows data-region="na1")
+      const HS_URL = `https://api-na1.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
   
       const modal       = document.getElementById('mailing-list-modal');
       const form        = modal?.querySelector('#contactForm');
@@ -476,7 +485,6 @@ bubbles: [
       };
   
       if (forceSuccess) {
-        // Ensure modal-open state previews correctly too (optional)
         // modal?.setAttribute('open', '');
         showSuccess();
         return; // don't bind submit handler in forced mode
@@ -510,6 +518,9 @@ bubbles: [
         'Something else':            'gRPuHuaxPur2_WQovppri'
       };
   
+      // HubSpot preview showed: name="0-1/did_someone_refer_you_"
+      const REFERRAL_FIELD_NAME = '0-1/did_someone_refer_you_';
+  
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (statusElm) statusElm.textContent = '';
@@ -523,6 +534,13 @@ bubbles: [
           const email    = (fd.get('email') || '').toString().trim();
           const company  = (fd.get('company') || '').toString().trim();
           const phone    = (fd.get('phone')   || '').toString().trim();
+  
+          // Read referral field from either your custom HTML name or HubSpot's namespaced one
+          const didSomeoneReferYou = (
+            fd.get(REFERRAL_FIELD_NAME) ??
+            fd.get('did_someone_refer_you_') ??
+            ''
+          ).toString().trim();
   
           const selected = Array.from(form.querySelectorAll('input[name="dreamie"]:checked'))
             .map(i => OPTION_MAP[i.value])
@@ -544,7 +562,14 @@ bubbles: [
             { name: 'which_employees_', value: whichEmployeesValue },
             { name: 'company', value: company },
             { name: 'phone',   value: phone },
-          ].filter(f => f.value !== '');
+          ];
+  
+          // Only include referral field if non-empty, using the exact HubSpot field name
+          if (didSomeoneReferYou) {
+            fields.push({ name: REFERRAL_FIELD_NAME, value: didSomeoneReferYou });
+          }
+  
+          const cleanFields = fields.filter(f => f.value !== '');
   
           const context = {
             hutk: getCookie('hubspotutk') || undefined,
@@ -555,10 +580,14 @@ bubbles: [
           const res = await fetch(HS_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fields, context })
+            body: JSON.stringify({ fields: cleanFields, context })
           });
   
-          if (!res.ok) throw new Error('Bad response');
+          if (!res.ok) {
+            const detail = await res.text();
+            console.error('HubSpot submit failed:', res.status, detail);
+            throw new Error(detail || 'Bad response');
+          }
   
           showSuccess();
           form.reset();
@@ -570,6 +599,7 @@ bubbles: [
       });
     })();
   </script>
+  
   
   <script>
   (() => {
